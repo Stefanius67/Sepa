@@ -3,12 +3,13 @@
 ![Latest Stable Version](https://img.shields.io/badge/release-v1.1.0-brightgreen.svg) ![License](https://img.shields.io/packagist/l/gomoob/php-pushwoosh.svg) [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%205.6-8892BF.svg)](https://php.net/)
 ----------
 ## History
-- **2020-05-21**
+##### 2020-05-21
   * new static method init() have to be called first before any use of the package!
   * added multi country validation for IBAN, BIC and CI
   * added language support for error messages
   * renamed namespace to fit PSR-4 recommendations for autoloading
-- **2020-02-18**
+
+##### 2020-02-18
   * initial Version
 
 ## Overview
