@@ -22,11 +22,12 @@ use SKien\Sepa\Sepa;
  * order to map this rule.
  * @see SepaCntryValidationBE class
  * 
- * history:
- * date         version
- * 2020-05-21   initial version
- * 
+ * ### History
+ * ** 2020-05-21 **
+ * - initial version
+ *
  * @package SKien/Sepa
+ * @since 1.1.0
  * @version 1.1.0
  * @author Stefanius <s.kien@online.de>
  * @copyright MIT License - see the LICENSE file for details
@@ -65,6 +66,7 @@ class SepaCntryValidationBase implements SepaCntryValidation
      * @link https://www.ecbs.org/iban.htm
      * @link http://www.pruefziffernberechnung.de/I/IBAN.shtml
      * 
+     * @param string $strIBAN
      * @return number OK ( 0 ) or errorcode
      *      Sepa::ERR_IBAN_INVALID_CNTRY    invalid country code
      *      Sepa::ERR_IBAN_INVALID_LENGTH   invalid length
@@ -133,10 +135,10 @@ class SepaCntryValidationBase implements SepaCntryValidation
      * 
      * @param string $strCI
      * @return number OK ( 0 ) or errorcode
-     *      Sepa::ERR_CI_INVALID_CNTRY      invalid country code
-     *      Sepa::ERR_CI_INVALID_LENGTH     invalid length
-     *      Sepa::ERR_CI_INVALID_SIGN       CI contains invalid sign(s)
-     *      Sepa::ERR_CI_CHECKSUM           wrong checksum
+     *     Sepa::ERR_CI_INVALID_CNTRY      invalid country code.
+     *     Sepa::ERR_CI_INVALID_LENGTH     invalid length.
+     *     Sepa::ERR_CI_INVALID_SIGN       CI contains invalid sign(s).
+     *     Sepa::ERR_CI_CHECKSUM           wrong checksum.
      */
     public function validateCI($strCI)
     {
@@ -167,7 +169,7 @@ class SepaCntryValidationBase implements SepaCntryValidation
     /**
      * calculate modulo 97 checksum for bankcode and accountnumber
      * MOD 97-10 (see ISO 7064)
-     * @param string $strBBAN
+     * @param string $strCheck
      * @return string
      */
     protected function getCheckSum($strCheck)

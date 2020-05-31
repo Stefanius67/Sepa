@@ -3,13 +3,16 @@ namespace SKien\Sepa;
 
 /**
  * Helper trait containing some methods used by multiple classes in package
- * 
- * history:
- * date         version
- * 2020-02-18   initial version
- * 2020-05-21   renamed namespace to fit PSR-4 recommendations for autoloading
  *
+ * ### History
+ * ** 2020-02-18 **
+ * - initial version.
+ * 
+ * ** 2020-05-21 **
+ * - renamed namespace to fit PSR-4 recommendations for autoloading.
+ * 
  * @package SKien/Sepa
+ * @since 1.0.0
  * @version 1.1.0
  * @author Stefanius <s.kien@online.de>
  * @copyright MIT License - see the LICENSE file for details
@@ -160,8 +163,8 @@ trait SepaHelper
      * calculates valid collectiondate from given date considering businessdays 
      * 
      * @param int $iDays
-     * @param unix timestamp $dtStart start date (if jull, current date is used)
-     * @return unix timestamp
+     * @param int $dtStart unix timestamp start date (if null, current date is used)
+     * @return int unix timestamp
      */
     public static function calcCollectionDate($iDays, $dtStart=null) 
     {
@@ -193,6 +196,8 @@ trait SepaHelper
      *  » 1'st May
      *  » 1.Christmas
      *  » 2.Christmas
+     *  
+     * @todo change to dynamic calculation of eastern and remove $aTarget2 - array
      *
      * @param datetime $dt  datetime to check
      * @return boolean

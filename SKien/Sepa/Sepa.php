@@ -4,25 +4,27 @@ namespace SKien\Sepa;
 /**
  * package to create sepa-xml File
  *
- * providing
+ * ## Providing
  * - Credit Transfer Initiation (CCT; pain.001.002.03.xsd)
  * - Direct Debit Initiation (CDD; pain.008.002.02.xsd)
- */
-
-/**
- * class containing some global constants, support foir country specific
+ * 
+ * ### Main class of the package
+ * class containing some global constants, support for country specific
  * validation of IBAN, BIC and CI, language support for the generated
  * error messages and to make methods of trait SepaHelper available. 
  * 
- * history:
- * date         version
- * 2020-02-18   initial version
- * 2020-05-21   new static method init() have to be called first before any use of the package!
- *              added multi country validation
- *              added language support for error messages
- *              renamed namespace to fit PSR-4 recommendations for autoloading
+ * ### History
+ * ** 2020-02-18 **
+ * - initial version.
+ * 
+ * ** 2020-05-21 **
+ * - new static method init() have to be called first before any use of the package!
+ * - added multi country validation.
+ * - added language support for error messages.
+ * - renamed namespace to fit PSR-4 recommendations for autoloading.
  * 
  * @package SKien/Sepa
+ * @since 1.0.0
  * @version 1.1.0
  * @author Stefanius <s.kien@online.de>
  * @copyright MIT License - see the LICENSE file for details
@@ -64,19 +66,19 @@ class Sepa
     /** sequence type final dd sequence */
     const SEQ_FINAL     = "FNAL";
     
-    /** @const full validation  */
+    /** full validation  */
     const V_FULL_VALIDATION         = 0;
-    /** @const no validation at all   */
+    /** no validation at all   */
     const V_NO_VALIDATION           = 0x001F;
-    /** @const no validation of IBAN   */
+    /** no validation of IBAN   */
     const V_NO_IBAN_VALIDATION      = 0x0001;
-    /** @const no validation of the BIC   */
+    /** no validation of the BIC   */
     const V_NO_BIC_VALIDATION       = 0x0002;
-    /** @const no validation of the CI   */
+    /** no validation of the CI   */
     const V_NO_CI_VALIDATION        = 0x0004;
-    /** @const no validation if no class set for country  */
+    /** no validation if no class set for country  */
     const V_IGNORE_MISSING_CNTRY    = 0x0008;
-    /** @const ignore missing mandatory value   */
+    /** ignore missing mandatory value   */
     const V_IGNORE_MISSING_VALUE    = 0x0010;
     
     /** validation succeeded    */

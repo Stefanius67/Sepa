@@ -4,37 +4,37 @@ namespace SKien\Sepa\CntryValidation;
 /**
  * Validation class for swiss IBAN and CI
  * 
- * valid testvalues:
- * -----------------
- *  IBAN:   CH18 0483 5029 8829 8100 0
- *  BIC:    CRESCHZZ80A
- *  CI:     CH79 ZZZ 12345678901
+ * ### Valid testvalues
+ *  - IBAN:   CH18 0483 5029 8829 8100 0
+ *  - BIC:    CRESCHZZ80A
+ *  - CI:     CH79 ZZZ 12345678901
  *
- * IBAN format:
- * ------------
- *  CCpp bbbb bkkk kkkk kkkk k
- *      CC:    ISO Country Code
- *      pp:    two-digit IBAN checksum
- *      b:     banking code 5 digits
- *      k:     account number 12 digits
- *  Length: 21
+ * ### IBAN format
+ * ** CCpp bbbb bkkk kkkk kkkk k **
+ *  - CC:    ISO Country Code
+ *  - pp:    2 digits IBAN checksum
+ *  - b:     banking code 5 digits
+ *  - k:     account number 12 digits
+ *      
+ * Length: 21
  *
- *  CI format:
- *  -----------
- *  CCpp ZZZ nnnnnnnnnnnn
- *      C:    ISO Country Code
- *      p:    two-digit IBAN checksum
- *      Z:    3 digits alphanum creditor business code
- *      n:    11 digits numeric national identification code 
- *  Length: 18
+ * ### CI format
+ * ** CCpp ZZZ nnnnnnnnnnnn **
+ *  - C:    ISO Country Code
+ *  - p:    2 digits IBAN checksum
+ *  - Z:    3 digits alphanum creditor business code
+ *  - n:    11 digits numeric national identification code 
+ *      
+ * Length: 18
  *
- *  All validation can be done with specification of length and regex to match format!
- *
- * history:
- * date         version
- * 2020-05-21   initial version
+ * *** All validation can be done with specification of length and regex to match format! ***
+ * 
+ * ### History
+ * ** 2020-05-21 **
+ * - initial version
  *
  * @package SKien/Sepa
+ * @since 1.1.0
  * @version 1.1.0
  * @author Stefanius <s.kien@online.de>
  * @copyright MIT License - see the LICENSE file for details

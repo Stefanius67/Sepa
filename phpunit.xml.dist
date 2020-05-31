@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    verbose="true"
+    colors="true">
+    <testsuites>
+        <testsuite name="Sepa">
+            <directory>test</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">SKien/Sepa</directory>
+            <directory suffix=".php">SKien/Sepa/CntryValidation</directory>
+        </whitelist>
+    </filter>
+
+    <logging>
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="true" showOnlySummary="true"/>
+        <log type="coverage-html" target="test/coverage"/>
+        <log type="coverage-clover" target="test/coverage/clover.xml"/>
+    </logging>
+</phpunit>

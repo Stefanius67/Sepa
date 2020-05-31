@@ -5,31 +5,30 @@ use SKien\Sepa\Sepa;
 /**
  * Validation class for belgian IBAN and CI
  *
- * valid testvalues:
- * -----------------
- *  IBAN:   BE68 5390 0754 7034
- *  BIC:    ???
- *  CI:     BE69 ZZZ 050 D 000000008 / BE68 ZZZ 0123456789 
+ * ### Valid testvalues
+ *  - IBAN:   BE68 5390 0754 7034
+ *  - BIC:    ???
+ *  - CI:     BE69 ZZZ 050 D 000000008 / BE68 ZZZ 0123456789 
  *
- * IBAN format:
- * ------------
- *  CCpp bbbk kkkk kkPP
- *      CC:    ISO Country Code
- *      pp:    two-digit IBAN checksum
- *      b:     3 digits numeric banking code 
- *      k:     7 digits numeric account number
- *      PP:    2 digits numeric national check code
- *  Length: 16
+ * ### IBAN format
+ * ** CCpp bbbk kkkk kkPP **
+ *  - CC:    ISO Country Code
+ *  - pp:    2 digits IBAN checksum
+ *  - b:     3 digits numeric banking code 
+ *  - k:     7 digits numeric account number
+ *  - PP:    2 digits numeric national check code
+ *  
+ * Length: 16
  *
- *  CI format:
- *  -----------
- *  @see SepaCntryValidationBE::validateCI()
- *
- * history:
- * date         version
- * 2020-05-21   initial version
+ * ### CI format
+ * See method SepaCntryValidationBE::validateCI()
+ *  
+ * ### History
+ * ** 2020-05-21 **
+ * - initial version
  *
  * @package SKien/Sepa
+ * @since 1.1.0
  * @version 1.1.0
  * @author Stefanius <s.kien@online.de>
  * @copyright MIT License - see the LICENSE file for details
@@ -56,7 +55,7 @@ class SepaCntryValidationBE extends SepaCntryValidationBase
      * --------------------------------------------
      *  CCpp ZZZ nnnnnnnnnn
      *      C:    ISO Country Code
-     *      p:    two-digit IBAN checksum
+     *      p:    2 digits IBAN checksum
      *      Z:    3 digits alphanum creditor business code (CBC)
      *      n:    10 digits numeric 'Enterprise Number'
      *  Length: 17
@@ -69,7 +68,7 @@ class SepaCntryValidationBE extends SepaCntryValidationBase
      * ------------------------------------------------------
      *  CCpp ZZZ bbbDnnnnnnnnn
      *      C:    ISO Country Code
-     *      p:    two-digit IBAN checksum
+     *      p:    2 digits IBAN checksum
      *      Z:    3 digits alphanum creditor business code (CBC)
      *      b:    3 digits numeric internal bank code (specific for Belgium)
      *      D:    1 digit fixed 'D' character

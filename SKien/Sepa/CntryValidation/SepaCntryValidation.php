@@ -6,11 +6,12 @@ namespace SKien\Sepa\CntryValidation;
  * Classes to define the country specific validation of IBAN, BIC and
  * CI must implement this interfaace.
  * 
- * history:
- * date         version
- * 2020-05-21   initial version
- * 
+ * ### History
+ * ** 2020-05-21 **
+ * - initial version
+ *
  * @package SKien/Sepa
+ * @since 1.1.0
  * @version 1.1.0
  * @author Stefanius <s.kien@online.de>
  * @copyright MIT License - see the LICENSE file for details
@@ -25,6 +26,7 @@ interface SepaCntryValidation
     
     /**
      * validates given IBAN.
+     * @param string $strIBAN
      * @return number OK ( 0 ) or errorcode
      */
     public function validateIBAN($strIBAN);

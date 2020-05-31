@@ -7,13 +7,16 @@ namespace SKien\Sepa;
  * uses helpers and const from trait SepaHelper
  * @see SepaHelper
  *
- * history:
- * date         version
- * 2020-02-18   initial version
- * 2020-05-21   added multi country validation
- *              renamed namespace to fit PSR-4 recommendations for autoloading
- *
+ * ### History
+ * ** 2020-02-18 **
+ * - initial version.
+ * 
+ * ** 2020-05-21 **
+ * - added multi country validation.
+ * - renamed namespace to fit PSR-4 recommendations for autoloading.
+ * 
  * @package SKien/Sepa
+ * @since 1.0.0
  * @version 1.1.0
  * @author Stefanius <s.kien@online.de>
  * @copyright MIT License - see the LICENSE file for details
@@ -256,6 +259,7 @@ class SepaPmtInf extends \DOMElement
     }
     
     /**
+     * Return the ID
      * @return string
      */
     public function getId() 
@@ -264,7 +268,7 @@ class SepaPmtInf extends \DOMElement
     }
     
     /**
-     * get collectiondate
+     * get collectiondate.
      * @return string
      */
     public function getCollectionDate() 
@@ -276,6 +280,7 @@ class SepaPmtInf extends \DOMElement
     }
 
     /**
+     * Set the xml node containing transactions count.
      * @param \DOMElement $xmlNode
      */
     public function setTxCountNode(\DOMElement $xmlNode) 
@@ -284,6 +289,7 @@ class SepaPmtInf extends \DOMElement
     }
     
     /**
+     * Set the xml node containing control sum.
      * @param \DOMElement $xmlNode
      */
     public function setCtrlSumNode(\DOMElement $xmlNode) 

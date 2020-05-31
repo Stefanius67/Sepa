@@ -7,12 +7,15 @@ namespace SKien\Sepa;
  * uses helpers and const from trait SepaHelper
  * @see SepaHelper
  *
- * history:
- * date         version
- * 2020-02-18   initial version
- * 2020-05-21   renamed namespace to fit PSR-4 recommendations for autoloading
- *
+ * ### History
+ * ** 2020-02-18 **
+ * - initial version.
+ * 
+ * ** 2020-05-21 **
+ * - renamed namespace to fit PSR-4 recommendations for autoloading.
+ * 
  * @package SKien/Sepa
+ * @since 1.0.0
  * @version 1.1.0
  * @author Stefanius <s.kien@online.de>
  * @copyright MIT License - see the LICENSE file for details
@@ -247,6 +250,7 @@ class SepaDoc extends \DOMDocument
     }
     
     /**
+     * Return the ID (may be internal generated).
      * @return string
      */
     public function getId() 
@@ -255,6 +259,7 @@ class SepaDoc extends \DOMDocument
     }
 
     /**
+     * Return the type.
      * @return string
      */
     public function getType() 
@@ -263,7 +268,7 @@ class SepaDoc extends \DOMDocument
     }
 
     /**
-     * count of valid transactions
+     * Count of valid transactions
      * @return int
      */
     public function getTxCount() 
@@ -272,7 +277,7 @@ class SepaDoc extends \DOMDocument
     }
 
     /**
-     * total value of valid transactions
+     * Total value of valid transactions
      * @return float
      */
     public function getCtrlSum() 
