@@ -6,7 +6,7 @@ namespace SKien\Sepa\CntryValidation;
  * 
  * ### Valid testvalues
  *  - IBAN:   AT61 1904 3002 3457 3201
- *  - BIC:    
+ *  - BIC:    RVVGAT2B468
  *  - CI:     AT61 ZZZ 01234567890
  * 
  * ### IBAN format

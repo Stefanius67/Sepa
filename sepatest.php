@@ -78,7 +78,7 @@ use SKien\Sepa\SepaTxInf;
 	// create payment info instruction (PII) and set all needet creditor information
 	$oPPI = new SepaPmtInf($oSepaDoc);
 	$oPPI->setName('Testfirma');
-	$oPPI->setCI('DE79 ZZZ 01234567890');
+	$oPPI->setCI('CH79 ZZZ 12345678901');
 	$oPPI->setIBAN('DE71664500500070143559');
 	$oPPI->setBIC('GENODE61LAH');
 	$oPPI->setSeqType(Sepa::SEQ_RECURRENT);

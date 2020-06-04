@@ -6,7 +6,7 @@ namespace SKien\Sepa\CntryValidation;
  *
  * ### Valid testvalues
  *  - IBAN:   LU28 0019 4006 4475 0000
- *  - BIC:    ???
+ *  - BIC:    BSUILULLREG
  *  - CI:     ???
  *
  * ### IBAN format
@@ -52,7 +52,7 @@ class SepaCntryValidationLU extends SepaCntryValidationBase
         $this->iLenIBAN = 20;
         $this->strRegExIBAN = '/^([A-Z]){2}([0-9]){18}?$/';
         $this->iLenCI = 26;
-        $this->strRegExCI = '/^([A-Z]){2}([0-9]){2}([0-9A-Z]){3}0([0-9][A-Z]){18}?$/';
+        $this->strRegExCI = '/^([A-Z]){2}([0-9]){2}([0-9A-Z]){3}0([0-9A-Z]){18}?$/';
         $this->bAlphaNumCI = true;
         
         parent::__construct(strtoupper($strCntry));

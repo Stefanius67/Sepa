@@ -29,7 +29,6 @@ trait SepaHelper
     {
         if( $type != Sepa::CCT && $type != Sepa::CDD ) {
             trigger_error('invalid type for ' . get_class($this), E_USER_ERROR);
-            return false;
         }
         return true;
     }
@@ -168,16 +167,13 @@ trait SepaHelper
      */
     public static function calcCollectionDate($iDays, $dtStart=null) 
     {
-        $dtCollect = $dtStart;
-        if( $dtStart == null )
-            $dtCollect = time();
+        $dtCollect = ($dtStart == null) ? time() : $dtStart;
             
-        // should daytime ( < 08:30 / < 18:30 ) bear in mind ?
+        // @todo should daytime ( < 08:30 / < 18:30 ) bear in mind ?
         $iBDays = 0;
         while ($iBDays < $iDays) {
             $dtCollect += 86400; // add day ( 24 * 60 * 60 );
-            if (!self::isTarget2Day($dtCollect))
-            {
+            if (!self::isTarget2Day($dtCollect)) {
                 $iBDays++;
             }
         }

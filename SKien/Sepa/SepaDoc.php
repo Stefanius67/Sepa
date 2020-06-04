@@ -213,6 +213,11 @@ class SepaDoc extends \DOMDocument
      */
     public function calc($dblValue) 
     {
+        if ($this->xmlTxCount == null || $this->xmlCtrlSum == null) {
+            trigger_error('call createGroupHeader() before calc()', E_USER_ERROR);
+            return -1;
+        }
+
         if (is_numeric($dblValue)) {
             $this->iTxCount++;
             $this->xmlTxCount->nodeValue = $this->iTxCount;

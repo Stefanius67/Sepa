@@ -48,6 +48,8 @@ class SepaCntryValidationBase implements SepaCntryValidation
     protected $strRegExCI = '';
     /** @var bool   if true, alphanum values in the CI allowed    */ 
     protected $bAlphaNumCI = false;
+    /** @var string last calculated checksum    */
+    protected $strLastCheckSum = '';
     
     /**
      * create instance of validation.
@@ -110,6 +112,9 @@ class SepaCntryValidationBase implements SepaCntryValidation
      */
     public function validateBIC($strBIC)
     {
+        if (substr($strBIC, 4, 2) != $this->strCntry) {
+            return Sepa::ERR_BIC_INVALID_CNTRY;
+        }
         $iErr = Sepa::ERR_BIC_INVALID;
         if (preg_match('/^([A-Z]){4}([A-Z]){2}([0-9A-Z]){2}([0-9A-Z]{3})?$/', $strBIC)) {
             $iErr = Sepa::OK;
@@ -167,6 +172,15 @@ class SepaCntryValidationBase implements SepaCntryValidation
     }
 
     /**
+     * Return last calculated checksum.
+     * @return string
+     */
+    public function getLastCheckSum() 
+    {
+        return $this->strLastCheckSum;
+    }
+
+	/**
      * calculate modulo 97 checksum for bankcode and accountnumber
      * MOD 97-10 (see ISO 7064)
      * @param string $strCheck
@@ -185,6 +199,7 @@ class SepaCntryValidationBase implements SepaCntryValidation
         if (strlen($strCS) < 2 ) {
             $strCS = '0' . $strCS;
         }
+        $this->strLastCheckSum = $strCS;
         return $strCS;
     }
     
@@ -197,8 +212,9 @@ class SepaCntryValidationBase implements SepaCntryValidation
      */
     protected function adjustFP( $str ) 
     {
-        if( strpos( '.', $str ) !== false )
+        if( strpos( '.', $str ) !== false ) {
             $str = substr($str, 0, strpos('.', $str));
+        }
         return $str;
     }
     

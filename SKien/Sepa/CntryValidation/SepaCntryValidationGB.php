@@ -6,8 +6,8 @@ namespace SKien\Sepa\CntryValidation;
  *
  * ### Valid testvalues
  *  - IBAN:   GB29 NWBK 6016 1331 9268 19
- *  - BIC:    ???
- *  - CI:     ???
+ *  - BIC:    BKENGB54XXX
+ *  - CI:     GB26 ZZZ SDD BKEN 000000012345678901234
  *
  * ### IBAN format
  * ** CCpp bbbb bsss sskk kkkk kkkk kPP **

@@ -7,7 +7,7 @@ use SKien\Sepa\Sepa;
  *
  * ### Valid testvalues
  *  - IBAN:   BE68 5390 0754 7034
- *  - BIC:    ???
+ *  - BIC:    JCAEBE9AXXX
  *  - CI:     BE69 ZZZ 050 D 000000008 / BE68 ZZZ 0123456789 
  *
  * ### IBAN format

@@ -156,6 +156,9 @@ class Sepa
      */
     public static function init()
     {
+        if (count(self::$aValidation) > 0) {
+            return;
+        }
         self::addValidation('DE', 'SKien\Sepa\CntryValidation\SepaCntryValidationDE');
         self::addValidation('CH', 'SKien\Sepa\CntryValidation\SepaCntryValidationCH');
         self::addValidation('FR', 'SKien\Sepa\CntryValidation\SepaCntryValidationFR');
@@ -344,7 +347,7 @@ class Sepa
             if ((self::$wValidation & self::V_IGNORE_MISSING_CNTRY) != 0) {
                 return Sepa::OK;
             } else {
-                return Sepa::ERR_IBAN_INVALID_CNTRY;
+                return Sepa::ERR_BIC_INVALID_CNTRY;
             }
         }
         $strClass = self::$aValidation[$strCntry];

@@ -6,8 +6,8 @@ namespace SKien\Sepa\CntryValidation;
  * 
  * ### Valid testvalues
  *  - IBAN:   EE38 2200 2210 2014 5685
- *  - BIC:    ???
- *  - CI:     ???
+ *  - BIC:    RIKOEE22CBC
+ *  - CI:     EE43 ZZZ EE 00012345678
  *
  * ### IBAN format
  * ** CCpp bbss kkkk kkkk kkkP **

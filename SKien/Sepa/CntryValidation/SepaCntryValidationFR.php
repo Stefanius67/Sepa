@@ -6,8 +6,8 @@ namespace SKien\Sepa\CntryValidation;
  *
  * ### Valid testvalues
  *  - IBAN:   FR14 2004 1010 0505 0001 3M02 606
- *  - BIC:    ???
- *  - CI:     ???
+ *  - BIC:    PARBFRPP757
+ *  - CI:     FR72 ZZZ 123456
  *
  * ### IBAN format
  * ** CCpp bbbb bsss sskk kkkk kkkk kPP **

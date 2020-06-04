@@ -7,7 +7,7 @@ namespace SKien\Sepa\CntryValidation;
  * ### Valid testvalues
  *  - IBAN:   CH18 0483 5029 8829 8100 0
  *  - BIC:    CRESCHZZ80A
- *  - CI:     CH79 ZZZ 12345678901
+ *  - CI:     CH51 ZZZ 12345678901
  *
  * ### IBAN format
  * ** CCpp bbbb bkkk kkkk kkkk k **
