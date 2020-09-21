@@ -13,19 +13,18 @@ namespace SKien\Sepa;
  * validation of IBAN, BIC and CI, language support for the generated
  * error messages and to make methods of trait SepaHelper available. 
  * 
- * ### History
- * ** 2020-02-18 **
- * - initial version.
- * 
- * ** 2020-05-21 **
- * - new static method init() have to be called first before any use of the package!
- * - added multi country validation.
- * - added language support for error messages.
- * - renamed namespace to fit PSR-4 recommendations for autoloading.
+ * #### History
+ * - *2020-02-18*   initial version.
+ * - *2020-05-21*   new static method init() have to be called first before any use of the package!
+ * - *2020-05-21*   added multi country validation.
+ * - *2020-05-21*   added language support for error messages.
+ * - *2020-05-21*   renamed namespace to fit PSR-4 recommendations for autoloading.
+ * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes 
+ * - *2020-07-22*   added validation class for italy 
  * 
  * @package SKien/Sepa
  * @since 1.0.0
- * @version 1.1.0
+ * @version 1.2.0
  * @author Stefanius <s.kien@online.de>
  * @copyright MIT License - see the LICENSE file for details
  */
@@ -136,25 +135,25 @@ class Sepa
     const ERR_TX_MAX                = 0x4000;
     
     /** @var array  validation classes for different countries     */
-    static protected $aValidation = array();
-    /** @var set the validation level. Any combination of the self::V_... flags (default: V_FULL)    */
-    static protected $wValidation = 0;
+    static protected array $aValidation = array();
+    /** @var int set the validation level. Any combination of the self::V_... flags (default: V_FULL)    */
+    static protected int $wValidation = 0;
 
     /** @var array error messoges for IBAN validation   */
-    static protected $aIBANError = array();
+    static protected array $aIBANError = array();
     /** @var array error messoges for BIC validation   */
-    static protected $aBICError = array();
+    static protected array $aBICError = array();
     /** @var array error messoges for CI validation   */
-    static protected $aCIError = array();
+    static protected array $aCIError = array();
     /** @var array error messoges for payment info validation   */
-    static protected $aPmtInfError = array();
+    static protected array $aPmtInfError = array();
     /** @var array error messoges for transaction info validation   */
-    static protected $aTxInfError = array();
+    static protected array $aTxInfError = array();
     
     /**
      * initializition of package
      */
-    public static function init()
+    public static function init() : void
     {
         if (count(self::$aValidation) > 0) {
             return;
@@ -167,6 +166,7 @@ class Sepa
         self::addValidation('BE', 'SKien\Sepa\CntryValidation\SepaCntryValidationBE');
         self::addValidation('GB', 'SKien\Sepa\CntryValidation\SepaCntryValidationGB');
         self::addValidation('EE', 'SKien\Sepa\CntryValidation\SepaCntryValidationEE');
+        self::addValidation('IT', 'SKien\Sepa\CntryValidation\SepaCntryValidationIT');
         
         self::$aIBANError = array(
                  Sepa::ERR_IBAN_INVALID_CNTRY   => 'The country code of the IBAN is not supported!'
@@ -220,7 +220,7 @@ class Sepa
      * @param string $strCntry
      * @param string $strValidationClass
      */
-    public static function addValidation($strCntry, $strValidationClass)
+    public static function addValidation(string $strCntry, string $strValidationClass) : void
     {
         if (isset(self::$aValidation[$strCntry])) {
             trigger_error('validation for cntry ' . $strCntry . ' already defined!', E_USER_ERROR);
@@ -244,19 +244,19 @@ class Sepa
      * or:
      *  Sepa::V_FULL_VALIDATION       full validation (default)
      *  
-     * @param number $wValidation
+     * @param int $wValidation
      */
-    public static function setValidationLevel($wValidation)
+    public static function setValidationLevel(int $wValidation) : void
     {
         self::$wValidation = $wValidation;
     }
     
     /**
      * Check, if validation level is set.
-     * @param number $wValidation
-     * @return boolean
+     * @param int $wValidation
+     * @return bool
      */
-    public static function checkValidation($wValidation)
+    public static function checkValidation(int $wValidation) : bool
     {
         return (self::$wValidation & $wValidation) != 0;
     }
@@ -265,7 +265,7 @@ class Sepa
      * Load error messages from JSON file
      * @param string $strFilename
      */
-    public static function loadErrorMsg($strFilename='sepa_error.json')
+    public static function loadErrorMsg(string $strFilename='sepa_error.json') : void
     {
         /*
         // ... testcode to create sample json file
@@ -301,9 +301,9 @@ class Sepa
     /**
      * validates given IBAN.
      * @param string $strIBAN
-     * @return number OK ( 0 ) or errorcode
+     * @return int OK ( 0 ) or errorcode
      */
-    public static function validateIBAN(&$strIBAN)
+    public static function validateIBAN(string &$strIBAN) : int
     {
         $strIBAN = str_replace(' ', '', trim(strtoupper($strIBAN)));
         if ((self::$wValidation & self::V_NO_IBAN_VALIDATION) != 0) {
@@ -330,9 +330,9 @@ class Sepa
     /**
      * validates given BIC.
      * @param string $strBIC
-     * @return number OK ( 0 ) or errorcode
+     * @return int OK ( 0 ) or errorcode
      */
-    public static function validateBIC(&$strBIC)
+    public static function validateBIC(string &$strBIC) : int
     {
         $strBIC = str_replace(' ', '', trim(strtoupper($strBIC)));
         if ((self::$wValidation & self::V_NO_BIC_VALIDATION) != 0) {
@@ -359,9 +359,9 @@ class Sepa
     /**
      * validates given CI (Creditor Scheme Identification).
      * @param string $strCI
-     * @return number OK ( 0 ) or errorcode
+     * @return int OK ( 0 ) or errorcode
      */
-    public static function validateCI(&$strCI)
+    public static function validateCI(string &$strCI) : int
     {
         $strCI = str_replace(' ', '', trim(strtoupper($strCI)));
         if ((self::$wValidation & self::V_NO_CI_VALIDATION) != 0) {
@@ -390,7 +390,7 @@ class Sepa
      * @param int $iError
      * @return string
      */
-    public static function errorMsg($iError)
+    public static function errorMsg(int $iError) : string
     {
         $aError = array_merge(self::$aIBANError, self::$aBICError, self::$aCIError);
         $strMsg = 'unbekanter Fehler (' . $iError . ')!';
@@ -405,7 +405,7 @@ class Sepa
      * @param int $iError
      * @return string
      */
-    public static function errorMsgIBAN($iError) 
+    public static function errorMsgIBAN(int $iError) : string 
     {
         $strMsg = 'unbekanter Fehler (' . $iError . ')!';
         if (isset(self::$aIBANError[$iError])) {
@@ -419,7 +419,7 @@ class Sepa
      * @param int $iError
      * @return string
      */
-    public static function errorMsgBIC($iError)
+    public static function errorMsgBIC(int $iError) : string
     {
         $strMsg = 'unbekanter Fehler (' . $iError . ')!';
         if (isset(self::$aBICError[$iError])) {
@@ -433,7 +433,7 @@ class Sepa
      * @param int $iError
      * @return string
      */
-    public static function errorMsgCI($iError) 
+    public static function errorMsgCI(int $iError) : string 
     {
         $strMsg = 'unbekanter Fehler (' . $iError . ')!';
         if (isset(self::$aCIError[$iError])) {
@@ -448,7 +448,7 @@ class Sepa
      * @param string $strLF     Separator for multi errors (default: PHP_EOL; posible values: '<br />', '; ', ...)
      * @return string
      */
-    public static function errorMsgPmtInf($iError, $strLF = PHP_EOL)
+    public static function errorMsgPmtInf(int $iError, string $strLF = PHP_EOL) : string
     {
         $strSep = '';
         $strMsg = '';
@@ -467,7 +467,7 @@ class Sepa
      * @param string $strLF     Separator for multi errors (default: PHP_EOL; posible values: '<br />', '; ', ...)
      * @return string
      */
-    public static function errorMsgTxInf($iError, $strLF = PHP_EOL)
+    public static function errorMsgTxInf(int $iError, string $strLF = PHP_EOL) : string
     {
         $strSep = '';
         $strMsg = '';

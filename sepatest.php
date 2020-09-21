@@ -60,6 +60,8 @@ use SKien\Sepa\SepaTxInf;
 			)
 	);
 	
+	$bValidTest = isset($_GET['valid']) && $_GET['valid'] == 1;
+	
 	// initialize package
 	// - init() have to be called first before any use of the package!
 	// - full validation is by default activated
@@ -78,7 +80,7 @@ use SKien\Sepa\SepaTxInf;
 	// create payment info instruction (PII) and set all needet creditor information
 	$oPPI = new SepaPmtInf($oSepaDoc);
 	$oPPI->setName('Testfirma');
-	$oPPI->setCI('CH79 ZZZ 12345678901');
+	$oPPI->setCI('CH51 ZZZ 12345678901');
 	$oPPI->setIBAN('DE71664500500070143559');
 	$oPPI->setBIC('GENODE61LAH');
 	$oPPI->setSeqType(Sepa::SEQ_RECURRENT);
@@ -86,8 +88,9 @@ use SKien\Sepa\SepaTxInf;
 	// add the PII to the document.
 	// NOTE: dont' add any transaction to the PII bofore added to the doc!   
 	if (($iErr = $oSepaDoc->addPaymentInstructionInfo($oPPI)) == Sepa::OK) {
-		// test for transactions through SepaTxInf::fromArray() 
-		foreach ($aInvalidTransactions as $aTrans) {
+		// test for transactions through SepaTxInf::fromArray()
+	    $aTransactions = $bValidTest ? $aValidTransactions : $aInvalidTransactions;
+	    foreach ($aTransactions as $aTrans) {
 			$oTxInf = new SepaTxInf($type);
 			$oTxInf->fromArray($aTrans);
 			$iErr = $oPPI->addTransaction($oTxInf);
@@ -95,8 +98,8 @@ use SKien\Sepa\SepaTxInf;
 				echo '<h2>' . $oTxInf->getName() . ' (' . $oTxInf->getDescription() . ')</h2>';
 				echo $oTxInf->errorMsg($iErr, '<br />');
 			} else {
-				$strPaymentId = $oTxInf->getPaymentId();
 				// ... may write back generated id to database 
+			    // $strPaymentId = $oTxInf->getPaymentId();
 			}
 		}
 		
@@ -121,10 +124,11 @@ use SKien\Sepa\SepaTxInf;
 		
 		if ($oSepaDoc->getInvalidCount() == 0) {
 			// ... may cretae some loging etc.
+			/*
 			$strLog = date('Y-m-d H:i') . ': SEPA Direct Debit Transactions erzeugt (';
 			$strLog .= $oSepaDoc->getTxCount() . 'Transaktionen / ';
 			$strLog .= sprintf("%01.2f", $oSepaDoc->getCtrlSum()) . ' &euro;)';
-			
+			*/
 			$oSepaDoc->output('test.xml');
 		}
 	} else {

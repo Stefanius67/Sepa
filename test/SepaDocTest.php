@@ -14,6 +14,7 @@ class SepaDocTest extends TestCase
     {
         $this->expectError();
         $oSepaDoc = new SepaDoc('invalid');
+        $oSepaDoc->createGroupHeader('invalid');
     }
     
     public function testCreateGroupHeader()

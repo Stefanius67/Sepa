@@ -7,16 +7,14 @@ namespace SKien\Sepa;
  * uses helpers and const from trait SepaHelper
  * @see SepaHelper
  *
- * ### History
- * ** 2020-02-18 **
- * - initial version.
- * 
- * ** 2020-05-21 **
- * - renamed namespace to fit PSR-4 recommendations for autoloading.
+ * #### History:
+ * - *2020-02-18*   initial version.
+ * - *2020-05-21*   renamed namespace to fit PSR-4 recommendations for autoloading.
+ * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes 
  * 
  * @package SKien/Sepa
  * @since 1.0.0
- * @version 1.1.0
+ * @version 1.2.0
  * @author Stefanius <s.kien@online.de>
  * @copyright MIT License - see the LICENSE file for details
  */
@@ -24,36 +22,28 @@ class SepaDoc extends \DOMDocument
 {
     use SepaHelper;
     
-    /** unique id
-     *  @var string  */
-    protected $id = '';
-    /** type of sepa document
-     *  @var string  */
-    protected $type = '';
-    /** XML Base-Element
-     *  @var DOMElement  */
-    protected $xmlBase  = null; 
-    /** overall count of transactions
-     *  @var int     */
-    protected $iTxCount = 0;
-    /** DOM element containing overall count of transactions;
-     *  @var DOMElement  */
-    protected $xmlTxCount = null;
-    /** controlsum (sum of all PII's)
-     * @var float    */
-    protected $dblCtrlSum = 0.0;
-    /** DOM element containing controlsum
-     *  @var DOMElement  */
-    protected $xmlCtrlSum = null;
-    /** count of invalid transactions
-     *  @var int     */
-    protected $iInvalidTxCount = 0;
+    /** @var string  unique id  */
+    protected string $id = '';
+    /** @var string  type of sepa document  */
+    protected string $type = '';
+    /** @var \DOMElement  XML Base-Element       */
+    protected ?\DOMElement $xmlBase  = null; 
+    /** @var int     overall count of transactions  */
+    protected int $iTxCount = 0;
+    /** @var \DOMElement  DOM element containing overall count of transactions   */
+    protected ?\DOMElement $xmlTxCount = null;
+    /** @var float    controlsum (sum of all PII's) */
+    protected float $dblCtrlSum = 0.0;
+    /** @var \DOMElement  DOM element containing controlsum      */
+    protected ?\DOMElement $xmlCtrlSum = null;
+    /** @var int     count of invalid transactions*/
+    protected int $iInvalidTxCount = 0;
     
     /**
      * creating SEPA document
      * @param string $type  type of transaction: Credit Transfer Transaction (SepaHelper::CCT) or Direct Debit Transaction (SepaHelper::CDD)
      */
-    public function __construct($type) 
+    public function __construct(string $type) 
     {
         if (!$this->isValidType($type)) {
             return;
@@ -87,13 +77,12 @@ class SepaDoc extends \DOMDocument
     /**
      * creating group header and required elements
      * @param string $strName   name to use in header
-     * @return string:          created unique id for document
+     * @return string          created unique id for document
      */
-    public function createGroupHeader($strName) 
+    public function createGroupHeader(string $strName) : string
     {
         if ($this->xmlBase == null) {
             trigger_error('object not created successfull', E_USER_ERROR);
-            return;
         }
         $xmlGrpHdr = $this->createElement("GrpHdr");
         $this->xmlBase->appendChild($xmlGrpHdr);
@@ -121,7 +110,7 @@ class SepaDoc extends \DOMDocument
      * @param SepaPmtInf $oPmtInf
      * @return int
      */
-    public function addPaymentInstructionInfo(SepaPmtInf $oPmtInf) 
+    public function addPaymentInstructionInfo(SepaPmtInf $oPmtInf) : int
     {
         if ($this->xmlTxCount == null || $this->xmlCtrlSum == null) {
             trigger_error('call createGroupHeader() before add PII', E_USER_ERROR);
@@ -191,12 +180,13 @@ class SepaDoc extends \DOMDocument
     }
     
     /**
-     * outputs generated SEPA document (XML - File)
+     * Outputs generated SEPA document (XML - File).
+     * Set the HTTP header and echo the generated content.
      * 
      * @param string $strName       output filename
      * @param string $strTarget     target (default: 'attachment')
      */
-    function output($strName, $strTarget='attachment') 
+    function output(string $strName, string $strTarget='attachment') : void
     {
         // send to browser
         header('Content-Type: application/xml');
@@ -211,16 +201,15 @@ class SepaDoc extends \DOMDocument
      * calculate overall transactioncount and controlsum
      * @param float $dblValue
      */
-    public function calc($dblValue) 
+    public function calc(float $dblValue) : void
     {
         if ($this->xmlTxCount == null || $this->xmlCtrlSum == null) {
             trigger_error('call createGroupHeader() before calc()', E_USER_ERROR);
-            return -1;
         }
 
         if (is_numeric($dblValue)) {
             $this->iTxCount++;
-            $this->xmlTxCount->nodeValue = $this->iTxCount;
+            $this->xmlTxCount->nodeValue = (string)$this->iTxCount;
             $this->dblCtrlSum += $dblValue;
             $this->xmlCtrlSum->nodeValue = sprintf("%01.2f", $this->dblCtrlSum);
         }
@@ -229,7 +218,7 @@ class SepaDoc extends \DOMDocument
     /**
      * increments count of invalid transactions
      */
-    public function incInvalidCount() 
+    public function incInvalidCount() : void
     {
         $this->iInvalidTxCount++;
     }
@@ -237,18 +226,17 @@ class SepaDoc extends \DOMDocument
     /**
      * create child element for given parent
      *
-     * @param DOMElement    $xmlParent  parent for the node. If null, child of current instance is created
+     * @param \DOMElement   $xmlParent  parent for the node. If null, child of current instance is created
      * @param string        $strNode    nodename
-     * @param string        $strValue   nodevalue. If empty, no value will be assigned (to create node only containing child elements)
-     * @return DOMElement
+     * @param mixed         $value      nodevalue. If empty, no value will be assigned (to create node only containing child elements)
+     * @return \DOMElement
      */
-    protected function addChild($xmlParent, $strNode, $strValue='') 
+    protected function addChild(\DOMElement $xmlParent, string $strNode, $value='') : \DOMElement 
     {
         $xmlNode = $this->createElement($strNode);
-        if (!empty($strValue)) {
-            $xmlNode->nodeValue = $strValue;
+        if (!empty($value)) {
+            $xmlNode->nodeValue = $value;
         }
-
         $xmlParent->appendChild($xmlNode);
         
         return $xmlNode;
@@ -258,7 +246,7 @@ class SepaDoc extends \DOMDocument
      * Return the ID (may be internal generated).
      * @return string
      */
-    public function getId() 
+    public function getId() : string
     {
         return $this->id;
     }
@@ -267,7 +255,7 @@ class SepaDoc extends \DOMDocument
      * Return the type.
      * @return string
      */
-    public function getType() 
+    public function getType() : string
     {
         return $this->type;
     }
@@ -276,7 +264,7 @@ class SepaDoc extends \DOMDocument
      * Count of valid transactions
      * @return int
      */
-    public function getTxCount() 
+    public function getTxCount() : int
     {
         return $this->iTxCount;
     }
@@ -285,7 +273,7 @@ class SepaDoc extends \DOMDocument
      * Total value of valid transactions
      * @return float
      */
-    public function getCtrlSum() 
+    public function getCtrlSum() : float
     {
         return $this->dblCtrlSum;
     }
@@ -294,7 +282,7 @@ class SepaDoc extends \DOMDocument
      * count of invalid transactions
      * @return int
      */
-    public function getInvalidCount() 
+    public function getInvalidCount() : int
     {
         return $this->iInvalidTxCount;
     }

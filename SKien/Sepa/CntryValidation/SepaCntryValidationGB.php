@@ -37,13 +37,13 @@ namespace SKien\Sepa\CntryValidation;
  *  
  * *** All validation can be done with specification of length and regex to match format! ***
  * 
- * ### History
- * ** 2020-05-21 **
- * - initial version
+ * #### History:
+ * - *2020-05-21*   initial version.
+ * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes 
  *
  * @package SKien/Sepa
  * @since 1.1.0
- * @version 1.1.0
+ * @version 1.2.0
  * @author Stefanius <s.kien@online.de>
  * @copyright MIT License - see the LICENSE file for details
  */
@@ -53,7 +53,7 @@ class SepaCntryValidationGB extends SepaCntryValidationBase
      * create instance of validation.
      * @param string $strCntry  2 sign country code
      */
-    public function __construct($strCntry)
+    public function __construct(string $strCntry)
     {
         $this->strCntry = 'GB';
         $this->iLenIBAN = 22;

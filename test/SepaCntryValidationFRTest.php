@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../autoloader.php';
 
 use PHPUnit\Framework\TestCase;
+use SKien\Sepa\CntryValidation\SepaCntryValidation;
 use SKien\Sepa\CntryValidation\SepaCntryValidationFR;
 use SKien\Sepa\Sepa;
 
@@ -10,7 +11,7 @@ use SKien\Sepa\Sepa;
  */
 class SepaCntryValidationFRTest extends TestCase
 {
-    /** @var SepaCntryValidationBase     */
+    /** @var SepaCntryValidation     */
     private $oValidation;
     
     public function test__construct()

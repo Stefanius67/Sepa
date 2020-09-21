@@ -7,17 +7,15 @@ namespace SKien\Sepa;
  * uses helpers and const from trait SepaHelper
  * @see SepaHelper
  *
- * ### History
- * ** 2020-02-18 **
- * - initial version.
- * 
- * ** 2020-05-21 **
- * - added multi country validation.
- * - renamed namespace to fit PSR-4 recommendations for autoloading.
+ * #### History
+ * - *2020-02-18*   initial version.
+ * - *2020-05-21*   added multi country validation.
+ * - *2020-05-21*   renamed namespace to fit PSR-4 recommendations for autoloading.
+ * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes 
  * 
  * @package SKien/Sepa
  * @since 1.0.0
- * @version 1.1.0
+ * @version 1.2.0
  * @author Stefanius <s.kien@online.de>
  * @copyright MIT License - see the LICENSE file for details
  */
@@ -25,42 +23,32 @@ class SepaTxInf
 {
     use SepaHelper;
     
-    /** Type (Sepa::CDD or Sepa::CCT)
-     *  @var string  */
-    protected $type = '';
-    /** Full name (lastname, firstname; company name; ...)
-     *  @var string  */
-    protected $strName = '';
-    /** IBAN
-     *  @var string  */
-    protected $strIBAN = '';
-    /** BIC
-     *  @var string  */
-    protected $strBIC = '';
-    /** Mandate identification (only debit)
-     *  @var string  */
-    protected $strMandateId = '';
-    /** Date when the mandate identification signed (only debit)
-     *  @var string  (format YYYY-MM-DD) */
-    protected $strDateOfSignature = '';
-    /** Ultimate debitor name (information purpose only)
-     *  @var string  */
-    protected $strUltimateName = '';
-    /** Payment id
-     *  @var string  */
-    protected $strPaymentId = '';
-    /** Description
-     *  @var string  */
-    protected $strDescription = '';
-    /** Value of the transaction in EUR
-     *  @var float   */
-    protected $dblValue = '';
+    /** @var string Type (Sepa::CDD or Sepa::CCT) */
+    protected string $type = '';
+    /** @var string Full name (lastname, firstname; company name; ...) */
+    protected string $strName = '';
+    /** @var string IBAN */
+    protected string $strIBAN = '';
+    /** @var string BIC */
+    protected string $strBIC = '';
+    /** @var string Mandate identification (only debit) */
+    protected string $strMandateId = '';
+    /** @var string Date when the mandate identification signed (only debit) (format YYYY-MM-DD) */
+    protected string $strDateOfSignature = '';
+    /** @var string Ultimate debitor name (information purpose only) */
+    protected string $strUltimateName = '';
+    /** @var string Payment id */
+    protected string $strPaymentId = '';
+    /** @var string Description */
+    protected string $strDescription = '';
+    /** @var float Value of the transaction in EUR */
+    protected float $dblValue = 0.0;
     
     /**
      * Create transaction info.
      * @param string $type (Sepa::CDD or Sepa::CCT)
      */
-    public function __construct($type)
+    public function __construct(string $type)
     {
         if (!$this->isValidType($type)) {
             return;
@@ -72,7 +60,7 @@ class SepaTxInf
      * Validate object
      * @return int
      */
-    public function validate() 
+    public function validate() : int
     {
         $iErr = Sepa::OK;
         if (!Sepa::checkValidation(Sepa::V_NO_IBAN_VALIDATION)) {
@@ -124,11 +112,11 @@ class SepaTxInf
     /**
      * Get error message for error code.
      * There can be multiple errors on one single transaction.
-     * @param string $iError
+     * @param int $iError
      * @param string $strLF     Separator for multi errors (default: PHP_EOL; posible values: '<br />', '; ', ...) 
      * @return string
      */
-    public function errorMsg($iError, $strLF = PHP_EOL) 
+    public function errorMsg(int $iError, string $strLF = PHP_EOL) : string 
     {
         return Sepa::errorMsgTxInf($iError, $strLF);
     }
@@ -137,7 +125,7 @@ class SepaTxInf
      * Set properties through associative array 
      * @param array $aProperties
      */
-    public function fromArray(array $aProperties) 
+    public function fromArray(array $aProperties) : void 
     {
         if (isset( $aProperties['strName']) ) {
             $this->setName($aProperties['strName']); 
@@ -158,13 +146,13 @@ class SepaTxInf
             $this->setDescription($aProperties['strDescription']); 
         }
         if (isset( $aProperties['dblValue']) ) {
-            $this->setValue($aProperties['dblValue']); 
+            $this->setValue(floatval($aProperties['dblValue'])); 
         }
         if (isset( $aProperties['strUltimateName']) ) {
             $this->setUltimateName($aProperties['strUltimateName']); 
         }
         if (isset( $aProperties['strPaymentId']) ) {
-            $this->setId($aProperties['strPaymentId']); 
+            $this->setPaymentId($aProperties['strPaymentId']); 
         }
     }
     
@@ -172,7 +160,7 @@ class SepaTxInf
      * Set full name (lastname, firstname; company name; ...) 
      * @param string $strName
      */
-    public function setName($strName) 
+    public function setName(string $strName) : void 
     {
         $this->strName = self::validString($strName, Sepa::MAX70);
     }
@@ -181,7 +169,7 @@ class SepaTxInf
      * Set IBAN
      * @param string $strIBAN
      */
-    public function setIBAN($strIBAN) 
+    public function setIBAN(string $strIBAN) : void
     {
         $this->strIBAN = $strIBAN;
     }
@@ -190,7 +178,7 @@ class SepaTxInf
      * Set BIC
      * @param string $strBIC
      */
-    public function setBIC($strBIC) 
+    public function setBIC(string $strBIC) : void
     {
         $this->strBIC = $strBIC;
     }
@@ -199,7 +187,7 @@ class SepaTxInf
      * Set mandate identification (only debit) 
      * @param string $strMandateId
      */
-    public function setMandateId($strMandateId) 
+    public function setMandateId(string $strMandateId) : void
     {
         $this->strMandateId = self::validString($strMandateId, Sepa::ID2);
     }
@@ -208,7 +196,7 @@ class SepaTxInf
      * Set the date when the mandate identification signed (only debit)
      * @param mixed $DateOfSignature    may be string (format YYYY-MM-DD), int (unixtimestamp) or DateTime - object
      */
-    public function setDateOfSignature($DateOfSignature) 
+    public function setDateOfSignature($DateOfSignature) : void
     {
         if (is_object($DateOfSignature) && get_class($DateOfSignature) == 'DateTime') {
             // DateTime -object
@@ -224,7 +212,7 @@ class SepaTxInf
      * Set ultimate debitor name (information purpose only) 
      * @param string $strUltimateName
      */
-    public function setUltimateName($strUltimateName) 
+    public function setUltimateName(string $strUltimateName) : void
     {
         $this->strUltimateName = self::validString($strUltimateName, Sepa::MAX70);
     }
@@ -233,7 +221,7 @@ class SepaTxInf
      * Set payment id 
      * @param string $strPaymentId
      */
-    public function setPaymentId($strPaymentId) 
+    public function setPaymentId(string $strPaymentId) : void
     {
         $strPaymentId = self::validString($strPaymentId, Sepa::ID1);
         if (empty($strPaymentId)) {
@@ -246,7 +234,7 @@ class SepaTxInf
      * Set description
      * @param string $strDescription
      */
-    public function setDescription($strDescription) 
+    public function setDescription(string $strDescription) : void
     {
         $this->strDescription = self::validString($strDescription, Sepa::MAX140);
     }
@@ -255,7 +243,7 @@ class SepaTxInf
      * Set value of the transaction
      * @param float $dblValue
      */
-    public function setValue($dblValue) 
+    public function setValue(float $dblValue) : void 
     {
         $this->dblValue = $dblValue;
     }
@@ -264,7 +252,7 @@ class SepaTxInf
      * Return type 
      * @return string
      */
-    public function getType() 
+    public function getType() : string
     {
         return $this->type;
     }
@@ -273,7 +261,7 @@ class SepaTxInf
      * Get full name (lastname, firstname; company name; ...)
      * @return string
      */
-    public function getName() 
+    public function getName() : string
     {
         return $this->strName;
     }
@@ -282,7 +270,7 @@ class SepaTxInf
      * Get IBAN
      * @return string
      */
-    public function getIBAN() 
+    public function getIBAN() : string
     {
         return $this->strIBAN;
     }
@@ -291,7 +279,7 @@ class SepaTxInf
      * Get BIC
      * @return string
      */
-    public function getBIC() 
+    public function getBIC() : string
     {
         return $this->strBIC;
     }
@@ -300,7 +288,7 @@ class SepaTxInf
      * Get mandate mdentification (only debit) 
      * @return string
      */
-    public function getMandateId() 
+    public function getMandateId() : string
     {
         return $this->strMandateId;
     }
@@ -309,7 +297,7 @@ class SepaTxInf
      * Return the date when the mandate identification signed (only debit)
      * @return string   (format YYYY-MM-DD)
      */
-    public function getDateOfSignature() 
+    public function getDateOfSignature() : string
     {
         return $this->strDateOfSignature;           
     }
@@ -318,7 +306,7 @@ class SepaTxInf
      * Get ultimate debitor name (information purpose only) 
      * @return string
      */
-    public function getUltimateName() 
+    public function getUltimateName() : string
     {
         return $this->strUltimateName;
     }
@@ -327,7 +315,7 @@ class SepaTxInf
      * Get payment id 
      * @return string
      */
-    public function getPaymentId() 
+    public function getPaymentId() : string
     {
         return $this->strPaymentId;
     }
@@ -336,7 +324,7 @@ class SepaTxInf
      * Get description
      * @return string
      */
-    public function getDescription() 
+    public function getDescription() : string
     {
         return $this->strDescription;
     }
@@ -345,7 +333,7 @@ class SepaTxInf
      * Get value of the transaction
      * @return float
      */
-    public function getValue() 
+    public function getValue() : float
     {
         return $this->dblValue;
     }

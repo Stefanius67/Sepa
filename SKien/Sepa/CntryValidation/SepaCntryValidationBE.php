@@ -23,13 +23,13 @@ use SKien\Sepa\Sepa;
  * ### CI format
  * See method SepaCntryValidationBE::validateCI()
  *  
- * ### History
- * ** 2020-05-21 **
- * - initial version
+ * #### History:
+ * - *2020-05-21*   initial version.
+ * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes 
  *
  * @package SKien/Sepa
  * @since 1.1.0
- * @version 1.1.0
+ * @version 1.2.0
  * @author Stefanius <s.kien@online.de>
  * @copyright MIT License - see the LICENSE file for details
  */
@@ -39,7 +39,7 @@ class SepaCntryValidationBE extends SepaCntryValidationBase
      * create instance of validation.
      * @param string $strCntry  2 sign country code
      */
-    public function __construct($strCntry)
+    public function __construct(string $strCntry)
     {
         $this->strCntry = 'BE';
         $this->iLenIBAN = 16;
@@ -76,9 +76,9 @@ class SepaCntryValidationBE extends SepaCntryValidationBase
      *  Length: 20
      *
      * @param string $strCI
-     * @return number OK ( 0 ) or errorcode
+     * @return int OK ( 0 ) or errorcode
      */
-    public function validateCI($strCI)
+    public function validateCI(string $strCI) : int
     {
         // toupper, trim and remove containing blanks
         $strCheck = str_replace(' ', '', trim(strtoupper($strCI)));

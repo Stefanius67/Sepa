@@ -3,9 +3,6 @@ require_once __DIR__ . '/../autoloader.php';
 
 use PHPUnit\Framework\TestCase;
 use SKien\Sepa\Sepa;
-use SKien\Sepa\SepaPmtInf;
-use SKien\Sepa\SepaDoc;
-use SKien\Sepa\SepaTxInf;
 
 /**
  * oValidation test case.

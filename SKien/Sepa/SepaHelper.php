@@ -4,16 +4,14 @@ namespace SKien\Sepa;
 /**
  * Helper trait containing some methods used by multiple classes in package
  *
- * ### History
- * ** 2020-02-18 **
- * - initial version.
- * 
- * ** 2020-05-21 **
- * - renamed namespace to fit PSR-4 recommendations for autoloading.
+ * #### History
+ * - *2020-02-18*   initial version.
+ * - *2020-05-21*   renamed namespace to fit PSR-4 recommendations for autoloading.
+ * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes 
  * 
  * @package SKien/Sepa
  * @since 1.0.0
- * @version 1.1.0
+ * @version 1.2.0
  * @author Stefanius <s.kien@online.de>
  * @copyright MIT License - see the LICENSE file for details
  */
@@ -23,9 +21,9 @@ trait SepaHelper
      * check for valid type and trigger error in case of invalid type
      * 
      * @param string $type
-     * @return boolean
+     * @return bool
      */
-    protected function isValidType($type) 
+    protected function isValidType(string $type) : bool 
     {
         if( $type != Sepa::CCT && $type != Sepa::CDD ) {
             trigger_error('invalid type for ' . get_class($this), E_USER_ERROR);
@@ -39,10 +37,10 @@ trait SepaHelper
      * 
      * @return string
      */
-    public static function createUID()  
+    public static function createUID() : string
     {
-        mt_srand((double)microtime() * 10000);
-        $charid = strtoupper(md5(uniqid(rand(), true)));
+        mt_srand((int)microtime(true) * 10000);
+        $charid = strtoupper(md5(uniqid((string)rand(), true)));
         $uuid =  substr($charid,  0, 8) . chr( 45 )
                 .substr($charid,  8, 4) . chr( 45 )
                 .substr($charid, 12, 4) . chr( 45 )
@@ -84,7 +82,7 @@ trait SepaHelper
      * @param int $iType    type of validation: one of SepaHelper::MAX35, SepaHelper::MAX70, SepaHelper::MAX140, SepaHelper::MAX1025, SepaHelper::ID1, SepaHelper::ID2
      * @return string
      */
-    public static function validString($str, $iType) 
+    public static function validString(string $str, int $iType) : string 
     {
         // replace specialchars...
         $strValid = self::replaceSpecialChars($str);
@@ -130,7 +128,7 @@ trait SepaHelper
      * @param string $str text to process
      * @return string
      */
-    public static function replaceSpecialChars($str) 
+    public static function replaceSpecialChars(string $str) : string
     {
         $strReplaced = '';
         if( strlen($str) > 0 ) {
@@ -165,7 +163,7 @@ trait SepaHelper
      * @param int $dtStart unix timestamp start date (if null, current date is used)
      * @return int unix timestamp
      */
-    public static function calcCollectionDate($iDays, $dtStart=null) 
+    public static function calcCollectionDate(int $iDays, ?int $dtStart=null) : int 
     {
         $dtCollect = ($dtStart == null) ? time() : $dtStart;
             
@@ -195,10 +193,10 @@ trait SepaHelper
      *  
      * @todo change to dynamic calculation of eastern and remove $aTarget2 - array
      *
-     * @param datetime $dt  datetime to check
-     * @return boolean
+     * @param int $dt  unix timestamp to check
+     * @return bool
      */
-    public static function isTarget2Day($dt) 
+    public static function isTarget2Day(int $dt) : bool 
     {
         $iWeekDay = date('N', $dt);
         
