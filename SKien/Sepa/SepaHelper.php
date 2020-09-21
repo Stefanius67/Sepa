@@ -165,9 +165,9 @@ trait SepaHelper
      */
     public static function calcCollectionDate(int $iDays, ?int $dtStart=null) : int 
     {
-        $dtCollect = ($dtStart == null) ? time() : $dtStart;
+        $dtCollect = ($dtStart === null) ? time() : $dtStart;
             
-        // @todo should daytime ( < 08:30 / < 18:30 ) bear in mind ?
+        // FORWARD: should daytime ( < 08:30 / < 18:30 ) bear in mind ?
         $iBDays = 0;
         while ($iBDays < $iDays) {
             $dtCollect += 86400; // add day ( 24 * 60 * 60 );

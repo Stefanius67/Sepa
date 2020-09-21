@@ -193,7 +193,7 @@ class SepaCntryValidationBase implements SepaCntryValidation
     {
         // calculate checksum
         // 1. move 6 digit feft and add numerical countrycode
-        $strCS1 = $this->adjustFP(bcadd(bcmul($strCheck, '1000000'), $this->getAlpha2CntryCode() * 100));
+        $strCS1 = $this->adjustFP(bcadd(bcmul($strCheck, '1000000'), $this->getAlpha2CntryCode() . '00'));
         // 2. modulo 97 value
         $strCS2 = $this->adjustFP(bcmod($strCS1, '97'));
         // 3. subtract value from 98

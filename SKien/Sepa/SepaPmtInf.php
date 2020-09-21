@@ -121,6 +121,10 @@ class SepaPmtInf extends \DOMElement
      */
     public function addTransaction(SepaTxInf $oTxInf) : int
     {
+        if ($this->sepaDoc === null) {
+            trigger_error('no valid parant document set!', E_USER_ERROR);
+            return -1;
+        }
         // transaction method have to fit to parent doc
         if ($this->sepaDoc->getType() != $oTxInf->getType()) {
             return Sepa::ERR_TX_INVALID_TYPE;
@@ -233,14 +237,12 @@ class SepaPmtInf extends \DOMElement
      */
     public function calc(float $dblValue) : void 
     {
-        if (is_numeric($dblValue)) {
-            $this->iTxCount++;
-            $this->xmlTxCount->nodeValue = $this->iTxCount;
-            $this->dblCtrlSum += $dblValue;
-            $this->xmlCtrlSum->nodeValue = sprintf("%01.2f", $this->dblCtrlSum);
-            
-            $this->sepaDoc->calc($dblValue);
-        }
+        $this->iTxCount++;
+        $this->xmlTxCount->nodeValue = $this->iTxCount;
+        $this->dblCtrlSum += $dblValue;
+        $this->xmlCtrlSum->nodeValue = sprintf("%01.2f", $this->dblCtrlSum);
+        
+        $this->sepaDoc->calc($dblValue);
     }
     
     /**

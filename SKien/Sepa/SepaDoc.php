@@ -83,6 +83,7 @@ class SepaDoc extends \DOMDocument
     {
         if ($this->xmlBase == null) {
             trigger_error('object not created successfull', E_USER_ERROR);
+            return '';
         }
         $xmlGrpHdr = $this->createElement("GrpHdr");
         $this->xmlBase->appendChild($xmlGrpHdr);
@@ -186,7 +187,7 @@ class SepaDoc extends \DOMDocument
      * @param string $strName       output filename
      * @param string $strTarget     target (default: 'attachment')
      */
-    function output(string $strName, string $strTarget='attachment') : void
+    public function output(string $strName, string $strTarget='attachment') : void
     {
         // send to browser
         header('Content-Type: application/xml');
@@ -205,14 +206,13 @@ class SepaDoc extends \DOMDocument
     {
         if ($this->xmlTxCount == null || $this->xmlCtrlSum == null) {
             trigger_error('call createGroupHeader() before calc()', E_USER_ERROR);
+            return;
         }
 
-        if (is_numeric($dblValue)) {
-            $this->iTxCount++;
-            $this->xmlTxCount->nodeValue = (string)$this->iTxCount;
-            $this->dblCtrlSum += $dblValue;
-            $this->xmlCtrlSum->nodeValue = sprintf("%01.2f", $this->dblCtrlSum);
-        }
+        $this->iTxCount++;
+        $this->xmlTxCount->nodeValue = (string)$this->iTxCount;
+        $this->dblCtrlSum += $dblValue;
+        $this->xmlCtrlSum->nodeValue = sprintf("%01.2f", $this->dblCtrlSum);
     }
     
     /**
