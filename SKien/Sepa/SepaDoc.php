@@ -113,7 +113,7 @@ class SepaDoc extends \DOMDocument
      */
     public function addPaymentInstructionInfo(SepaPmtInf $oPmtInf) : int
     {
-        if ($this->xmlTxCount == null || $this->xmlCtrlSum == null) {
+        if ($this->xmlBase === null || $this->xmlTxCount === null || $this->xmlCtrlSum === null) {
             trigger_error('call createGroupHeader() before add PII', E_USER_ERROR);
             return -1;
         }

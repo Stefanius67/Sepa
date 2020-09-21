@@ -217,8 +217,12 @@ class SepaPmtInf extends \DOMElement
      * @param mixed         $value      nodevalue. If empty, no value will be assigned (to create node only containing child elements)
      * @return \DOMElement
      */
-    protected function addChild(?\DOMElement $xmlParent, string $strNode, $value = '') 
+    protected function addChild(?\DOMElement $xmlParent, string $strNode, $value = '') : \DOMElement
     {
+        if ($this->sepaDoc === null) {
+            trigger_error('no valid parant document set!', E_USER_ERROR);
+            exit();
+        }
         if($xmlParent == null) {
             $xmlParent = $this;
         }
@@ -237,6 +241,10 @@ class SepaPmtInf extends \DOMElement
      */
     public function calc(float $dblValue) : void 
     {
+        if ($this->sepaDoc === null) {
+            trigger_error('no valid parant document set!', E_USER_ERROR);
+            return;
+        }
         $this->iTxCount++;
         $this->xmlTxCount->nodeValue = $this->iTxCount;
         $this->dblCtrlSum += $dblValue;
