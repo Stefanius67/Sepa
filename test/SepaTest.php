@@ -11,11 +11,10 @@ class SepaTest extends TestCase
 {
     public function testInit()
     {
+        Sepa::reset();
         $strBIC = 'PARBFRPP757';
         $this->expectError();
         Sepa::validateBIC($strBIC);
-        Sepa::init();
-        $this->assertSame(Sepa::validateBIC($strBIC), 0);
     }
     
     public function testSetValidationLevel()
@@ -32,7 +31,9 @@ class SepaTest extends TestCase
     // Tests for the static methods of trait SepaHelper
     public function testCreateUID()
     {
-        $this->assertSame(preg_match('/^([0-9]){8}-([0-9]){4}-([0-9]){4}-([0-9]){12}?$/', Sepa::createUID()), 0);
+        // $this->assertSame(preg_match('/^([0-9]){8}-([0-9]){4}-([0-9]){4}-([0-9]){12}?$/', Sepa::createUID()), 0);
+        $this->assertMatchesRegularExpression('/^([0-9A-F]){8}-([0-9A-F]){4}-([0-9A-F]){4}-([0-9A-F]){12}?$/', Sepa::createUID());
+        
     }
     
     public function testReplaceSpecialChars()
@@ -43,6 +44,7 @@ class SepaTest extends TestCase
     public function testValidString()
     {
         $this->assertSame(Sepa::validString('abcdefghijklmnopqrstuvwxyz12345678901234', Sepa::MAX35), 'abcdefghijklmnopqrstuvwxyz123456789');
+        $this->assertSame(Sepa::validString('abcdefghijklmnopqrstuvwxyz12345678901234', Sepa::MAX1025), 'abcdefghijklmnopqrstuvwxyz12345678901234');
     }
     
     public function testIsTarget2Day()

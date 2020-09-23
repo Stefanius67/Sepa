@@ -213,6 +213,21 @@ class Sepa
                 Sepa::ERR_TX_INVALID_MAND_DOS   => 'Invalid date value'
             );
     }
+    
+    /**
+     * Destroing the static arrays.
+     * This method mainly is provided for use in the PHPUnit TestCases to reset the static object!
+     */
+    public static function reset() : void
+    {
+        self::$aValidation = array();
+        self::$wValidation = 0;
+        self::$aIBANError = array();
+        self::$aBICError = array();
+        self::$aCIError = array();
+        self::$aPmtInfError = array();
+        self::$aTxInfError = array();
+    }
 
     /**
      * Add validation to the package.
@@ -225,7 +240,7 @@ class Sepa
         if (isset(self::$aValidation[$strCntry])) {
             trigger_error('validation for cntry ' . $strCntry . ' already defined!', E_USER_ERROR);
         }
-        if (!is_subclass_of ($strValidationClass, 'SKien\Sepa\CntryValidation\SepaCntryValidation', true)) {
+        if (!is_subclass_of($strValidationClass, 'SKien\Sepa\CntryValidation\SepaCntryValidation', true)) {
             trigger_error('class ' . $strValidationClass . ' must implement SepaCntryValidation interface!', E_USER_ERROR);
         }
         self::$aValidation[$strCntry] = $strValidationClass;
@@ -265,7 +280,7 @@ class Sepa
      * Load error messages from JSON file
      * @param string $strFilename
      */
-    public static function loadErrorMsg(string $strFilename='sepa_error.json') : void
+    public static function loadErrorMsg(string $strFilename = 'sepa_error.json') : void
     {
         /*
         // ... testcode to create sample json file

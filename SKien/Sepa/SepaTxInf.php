@@ -12,6 +12,7 @@ namespace SKien\Sepa;
  * - *2020-05-21*   added multi country validation.
  * - *2020-05-21*   renamed namespace to fit PSR-4 recommendations for autoloading.
  * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes 
+ * - *2020-09-23*   splited validate() into validateXXX()-Methods 
  * 
  * @package SKien/Sepa
  * @since 1.0.0
@@ -50,10 +51,10 @@ class SepaTxInf
      */
     public function __construct(string $type)
     {
-        if (!$this->isValidType($type)) {
-            return;
+        // invalid type causes E_USER_ERROR
+        if ($this->isValidType($type)) {
+            $this->type = $type;
         }
-        $this->type = $type;
     }
     
     /**
@@ -62,50 +63,12 @@ class SepaTxInf
      */
     public function validate() : int
     {
-        $iErr = Sepa::OK;
-        if (!Sepa::checkValidation(Sepa::V_NO_IBAN_VALIDATION)) {
-            if (strlen($this->strIBAN) == 0) {
-                $iErr |= Sepa::ERR_TX_IBAN_MISSING;
-            } else if( Sepa::validateIBAN($this->strIBAN) != Sepa::OK) {
-                $iErr |= Sepa::ERR_TX_INVALID_IBAN;
-            }
-        }
-        if (!Sepa::checkValidation(Sepa::V_NO_BIC_VALIDATION)) {
-            if (strlen($this->strBIC) == 0) {
-                $iErr |= Sepa::ERR_TX_BIC_MISSING;
-            } else if( Sepa::validateBIC($this->strBIC) != Sepa::OK) {
-                $iErr |= Sepa::ERR_TX_INVALID_BIC;
-            }
-        }
-        if (!Sepa::checkValidation(Sepa::V_IGNORE_MISSING_VALUE)) {
-            if (strlen($this->strName) == 0) {
-                $iErr |= Sepa::ERR_TX_NAME_MISSING;
-            }
-            if (strlen($this->strDescription) == 0) {
-                $iErr |= Sepa::ERR_TX_DESCR_MISSING;
-            }
-            if ($this->dblValue <= 0.0) {
-                $iErr |= Sepa::ERR_TX_ZERO_VALUE;
-            }
-            
-            // additional check for debit
-            if ($this->type == Sepa::CDD) {
-                if (strlen($this->strMandateId) == 0) {
-                    $iErr |= Sepa::ERR_TX_MAND_ID_MISSING;
-                }
-                if (strlen($this->strDateOfSignature) == 0) {
-                    $iErr |= Sepa::ERR_TX_MAND_DOS_MISSING;
-                } else if (!preg_match('/^([0-9]){4}-([0-9]){2}-([0-9]{2})/', $this->strDateOfSignature)) {
-                    $iErr |= Sepa::ERR_TX_INVALID_MAND_DOS;
-                }
-            }
-        }
+        $iErr = $this->validateIBAN() | $this->validateBIC() | $this->validateMandatory();
         
         // create payment id if empty so far!
         if (empty($this->strPaymentId)) {
             $this->strPaymentId = ($this->type == Sepa::CDD ? self::createUID() : 'NOTPROVIDED');
         }
-        
         return $iErr;
     }
     
@@ -127,31 +90,31 @@ class SepaTxInf
      */
     public function fromArray(array $aProperties) : void 
     {
-        if (isset( $aProperties['strName']) ) {
+        if (isset($aProperties['strName']) ) {
             $this->setName($aProperties['strName']); 
         }
-        if (isset( $aProperties['strIBAN']) ) {
+        if (isset($aProperties['strIBAN']) ) {
             $this->setIBAN($aProperties['strIBAN']); 
         }
-        if (isset( $aProperties['strBIC']) ) {
+        if (isset($aProperties['strBIC']) ) {
             $this->setBIC($aProperties['strBIC']); 
         }
-        if (isset( $aProperties['strMandateId']) ) {
+        if (isset($aProperties['strMandateId']) ) {
             $this->setMandateId($aProperties['strMandateId']); 
         }
-        if (isset( $aProperties['strDateOfSignature']) ) {
+        if (isset($aProperties['strDateOfSignature']) ) {
             $this->setDateOfSignature($aProperties['strDateOfSignature']); 
         }
-        if (isset( $aProperties['strDescription']) ) {
+        if (isset($aProperties['strDescription']) ) {
             $this->setDescription($aProperties['strDescription']); 
         }
-        if (isset( $aProperties['dblValue']) ) {
+        if (isset($aProperties['dblValue']) ) {
             $this->setValue(floatval($aProperties['dblValue'])); 
         }
-        if (isset( $aProperties['strUltimateName']) ) {
+        if (isset($aProperties['strUltimateName']) ) {
             $this->setUltimateName($aProperties['strUltimateName']); 
         }
-        if (isset( $aProperties['strPaymentId']) ) {
+        if (isset($aProperties['strPaymentId']) ) {
             $this->setPaymentId($aProperties['strPaymentId']); 
         }
     }
@@ -336,5 +299,72 @@ class SepaTxInf
     public function getValue() : float
     {
         return $this->dblValue;
+    }
+    
+    /**
+     * Validate IBAN
+     * @return int
+     */
+    private function validateIBAN() : int
+    {
+        $iErr = Sepa::OK;
+        if (!Sepa::checkValidation(Sepa::V_NO_IBAN_VALIDATION)) {
+            if (strlen($this->strIBAN) == 0) {
+                $iErr |= Sepa::ERR_TX_IBAN_MISSING;
+            } else if (Sepa::validateIBAN($this->strIBAN) != Sepa::OK) {
+                $iErr |= Sepa::ERR_TX_INVALID_IBAN;
+            }
+        }
+        return $iErr;
+    }
+    
+    /**
+     * Validate BIC
+     * @return int
+     */
+    private function validateBIC() : int
+    {
+        $iErr = Sepa::OK;
+        if (!Sepa::checkValidation(Sepa::V_NO_BIC_VALIDATION)) {
+            if (strlen($this->strBIC) == 0) {
+                $iErr |= Sepa::ERR_TX_BIC_MISSING;
+            } else if (Sepa::validateBIC($this->strBIC) != Sepa::OK) {
+                $iErr |= Sepa::ERR_TX_INVALID_BIC;
+            }
+        }
+        return $iErr;
+    }
+    
+    /**
+     * Validate mandatory properties
+     * @return int
+     */
+    private function validateMandatory() : int
+    {
+        $iErr = Sepa::OK;
+        if (!Sepa::checkValidation(Sepa::V_IGNORE_MISSING_VALUE)) {
+            if (strlen($this->strName) == 0) {
+                $iErr |= Sepa::ERR_TX_NAME_MISSING;
+            }
+            if (strlen($this->strDescription) == 0) {
+                $iErr |= Sepa::ERR_TX_DESCR_MISSING;
+            }
+            if ($this->dblValue <= 0.0) {
+                $iErr |= Sepa::ERR_TX_ZERO_VALUE;
+            }
+            
+            // additional check for debit
+            if ($this->type == Sepa::CDD) {
+                if (strlen($this->strMandateId) == 0) {
+                    $iErr |= Sepa::ERR_TX_MAND_ID_MISSING;
+                }
+                if (strlen($this->strDateOfSignature) == 0) {
+                    $iErr |= Sepa::ERR_TX_MAND_DOS_MISSING;
+                } else if (!preg_match('/^([0-9]){4}-([0-9]){2}-([0-9]{2})/', $this->strDateOfSignature)) {
+                    $iErr |= Sepa::ERR_TX_INVALID_MAND_DOS;
+                }
+            }
+        }
+        return $iErr;
     }
 }

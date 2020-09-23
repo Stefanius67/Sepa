@@ -45,10 +45,8 @@ class SepaDoc extends \DOMDocument
      */
     public function __construct(string $type) 
     {
-        if (!$this->isValidType($type)) {
-            return;
-        }
-        
+        // invalid type causes E_USER_ERROR
+        $this->isValidType($type);
         $aTypeInfo = array(
             Sepa::CCT   =>  array( 'pain' => '001.002.03', 'base' => 'CstmrCdtTrfInitn' ),  
             Sepa::CDD   =>  array( 'pain' => '008.002.02', 'base' => 'CstmrDrctDbtInitn' )
@@ -81,23 +79,21 @@ class SepaDoc extends \DOMDocument
      */
     public function createGroupHeader(string $strName) : string
     {
-        if ($this->xmlBase == null) {
-            trigger_error('object not created successfull', E_USER_ERROR);
-            return '';
+        if ($this->xmlBase != null) {
+            $xmlGrpHdr = $this->createElement("GrpHdr");
+            $this->xmlBase->appendChild($xmlGrpHdr);
+            
+            $this->id = self::createUID();
+            
+            $this->addChild($xmlGrpHdr, 'MsgId', $this->id);
+            $this->addChild($xmlGrpHdr, 'CreDtTm', date(DATE_ATOM));  // str_replace(' ', 'T', date('Y-m-d h:i:s'))); 
+            $this->xmlTxCount = $this->addChild($xmlGrpHdr, 'NbOfTxs', 0);
+            $this->xmlCtrlSum = $this->addChild($xmlGrpHdr, 'CtrlSum', sprintf("%01.2f", 0.0));
+            
+            $xmlNode = $this->addChild($xmlGrpHdr, 'InitgPty');
+            $this->addChild($xmlNode, 'Nm', self::validString($strName, Sepa::MAX70));
+            // SEPA spec recommends not to support 'InitgPty' -> 'Id'
         }
-        $xmlGrpHdr = $this->createElement("GrpHdr");
-        $this->xmlBase->appendChild($xmlGrpHdr);
-        
-        $this->id = self::createUID();
-        
-        $this->addChild($xmlGrpHdr, 'MsgId', $this->id);
-        $this->addChild($xmlGrpHdr, 'CreDtTm', date(DATE_ATOM));  // str_replace(' ', 'T', date('Y-m-d h:i:s'))); 
-        $this->xmlTxCount = $this->addChild($xmlGrpHdr, 'NbOfTxs', 0);
-        $this->xmlCtrlSum = $this->addChild($xmlGrpHdr, 'CtrlSum', sprintf("%01.2f", 0.0));
-        
-        $xmlNode = $this->addChild($xmlGrpHdr, 'InitgPty');
-        $this->addChild($xmlNode, 'Nm', self::validString($strName, Sepa::MAX70));
-        // SEPA spec recommends not to support 'InitgPty' -> 'Id'
         
         return $this->id;
     }
@@ -115,7 +111,6 @@ class SepaDoc extends \DOMDocument
     {
         if ($this->xmlBase === null || $this->xmlTxCount === null || $this->xmlCtrlSum === null) {
             trigger_error('call createGroupHeader() before add PII', E_USER_ERROR);
-            return -1;
         }
 
         $iErr = $oPmtInf->validate();
@@ -206,7 +201,6 @@ class SepaDoc extends \DOMDocument
     {
         if ($this->xmlTxCount == null || $this->xmlCtrlSum == null) {
             trigger_error('call createGroupHeader() before calc()', E_USER_ERROR);
-            return;
         }
 
         $this->iTxCount++;

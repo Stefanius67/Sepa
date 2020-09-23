@@ -35,5 +35,12 @@ class SepaDocTest extends TestCase
         $this->assertSame($oSepaDoc->getTxCount(), 2);
         $this->assertSame($oSepaDoc->getType(), Sepa::CCT);
     }
+    
+    public function test_CalcError()
+    {
+        $oSepaDoc = new SepaDoc(Sepa::CCT);
+        $this->expectError();
+        $oSepaDoc->calc(1234.5);
+    }
 }
 

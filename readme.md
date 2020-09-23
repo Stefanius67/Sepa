@@ -1,8 +1,16 @@
 # PHP SEPA XML Generator: Generate SEPA XML to define a payment instructions
 
-![Latest Stable Version](https://img.shields.io/badge/release-v1.1.0-brightgreen.svg) ![License](https://img.shields.io/packagist/l/gomoob/php-pushwoosh.svg) [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%205.6-8892BF.svg)](https://php.net/)
+ ![Latest Stable Version](https://img.shields.io/badge/release-v1.2.0-brightgreen.svg)
+ ![License](https://img.shields.io/packagist/l/gomoob/php-pushwoosh.svg) 
+ [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)](https://php.net/)
+ [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Stefanius67/Sepa/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Stefanius67/Sepa/?branch=master)
+ 
 ----------
 ## History
+##### 2020-09-21
+  * added missing PHP 7.4 type hints
+  * added validation for Italy
+  
 ##### 2020-05-21
   * new static method init() have to be called first before any use of the package!
   * added multi country validation for IBAN, BIC and CI

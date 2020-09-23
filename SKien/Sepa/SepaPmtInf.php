@@ -12,6 +12,7 @@ namespace SKien\Sepa;
  * - *2020-05-21*   added multi country validation.
  * - *2020-05-21*   renamed namespace to fit PSR-4 recommendations for autoloading.
  * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes 
+ * - *2020-09-23*   splited validate() into validateXXX()-Methods 
  * 
  * @package SKien/Sepa
  * @since 1.0.0
@@ -67,38 +68,7 @@ class SepaPmtInf extends \DOMElement
      */
     public function validate() : int
     {
-        $iErr = Sepa::OK;
-        if (!Sepa::checkValidation(Sepa::V_NO_IBAN_VALIDATION)) {
-            if (strlen($this->strIBAN) == 0) {
-                $iErr |= Sepa::ERR_PMT_IBAN_MISSING;
-            } else if( Sepa::validateIBAN($this->strIBAN) != Sepa::OK) {
-                $iErr |= Sepa::ERR_PMT_INVALID_IBAN;
-            }
-        }
-        if (!Sepa::checkValidation(Sepa::V_NO_BIC_VALIDATION)) {
-            if (strlen($this->strBIC) == 0) {
-                $iErr |= Sepa::ERR_PMT_BIC_MISSING;
-            } else if( Sepa::validateBIC($this->strBIC) != Sepa::OK) {
-                $iErr |= Sepa::ERR_PMT_INVALID_BIC;
-            }
-        }
-        if (!Sepa::checkValidation(Sepa::V_NO_CI_VALIDATION)) {
-            if (strlen($this->strCI) == 0) {
-                $iErr |= Sepa::ERR_PMT_CI_MISSING;
-            } else if( Sepa::validateCI($this->strCI) != Sepa::OK) {
-                $iErr |= Sepa::ERR_PMT_INVALID_CI;
-            }
-        }
-        if (!Sepa::checkValidation(Sepa::V_IGNORE_MISSING_VALUE)) {
-            if (strlen($this->strName) == 0) {
-                $iErr |= Sepa::ERR_PMT_NAME_MISSING;
-            }
-            if (strlen($this->strSeqType) == 0) {
-                $iErr |= Sepa::ERR_PMT_SEQ_TYPE_MISSING;
-            } else if( $this->strSeqType != Sepa::SEQ_FIRST && $this->strSeqType != Sepa::SEQ_RECURRENT && $this->strSeqType != Sepa::SEQ_ONE_OFF && $this->strSeqType != Sepa::SEQ_FINAL) {
-                $iErr |= Sepa::ERR_PMT_INVALID_SEQ_TYPE;
-            }
-        }
+        $iErr = $this->validateIBAN() | $this->validateBIC() | $this->validateCI() | $this->validateMandatory();
         return $iErr;
     }
 
@@ -121,9 +91,9 @@ class SepaPmtInf extends \DOMElement
      */
     public function addTransaction(SepaTxInf $oTxInf) : int
     {
-        if ($this->sepaDoc === null) {
-            trigger_error('no valid parant document set!', E_USER_ERROR);
-            return -1;
+        // element must been added as child to valid parent
+        if ($this->xmlCtrlSum === null || $this->xmlTxCount === null) {
+            trigger_error('element not added to parent (you must call SepaDoc::addPaymentInstructionInfo() before)!', E_USER_ERROR);
         }
         // transaction method have to fit to parent doc
         if ($this->sepaDoc->getType() != $oTxInf->getType()) {
@@ -217,12 +187,8 @@ class SepaPmtInf extends \DOMElement
      * @param mixed         $value      nodevalue. If empty, no value will be assigned (to create node only containing child elements)
      * @return \DOMElement
      */
-    protected function addChild(?\DOMElement $xmlParent, string $strNode, $value = '') : \DOMElement
+    protected function addChild(?\DOMElement $xmlParent, string $strNode, $value = '') : ?\DOMElement
     {
-        if ($this->sepaDoc === null) {
-            trigger_error('no valid parant document set!', E_USER_ERROR);
-            exit();
-        }
         if($xmlParent == null) {
             $xmlParent = $this;
         }
@@ -241,10 +207,6 @@ class SepaPmtInf extends \DOMElement
      */
     public function calc(float $dblValue) : void 
     {
-        if ($this->sepaDoc === null) {
-            trigger_error('no valid parant document set!', E_USER_ERROR);
-            return;
-        }
         $this->iTxCount++;
         $this->xmlTxCount->nodeValue = $this->iTxCount;
         $this->dblCtrlSum += $dblValue;
@@ -380,5 +342,76 @@ class SepaPmtInf extends \DOMElement
     public function getSeqType() : string
     {
         return $this->strSeqType;
+    }
+    
+    /**
+     * validate IBAN
+     * @return int errorcode (call errorMsg() to get coresponding text message)
+     */
+    private function validateIBAN() : int
+    {
+        $iErr = Sepa::OK;
+        if (!Sepa::checkValidation(Sepa::V_NO_IBAN_VALIDATION)) {
+            if (strlen($this->strIBAN) == 0) {
+                $iErr |= Sepa::ERR_PMT_IBAN_MISSING;
+            } else if( Sepa::validateIBAN($this->strIBAN) != Sepa::OK) {
+                $iErr |= Sepa::ERR_PMT_INVALID_IBAN;
+            }
+        }
+        return $iErr;
+    }
+    
+    /**
+     * validate BIC
+     * @return int errorcode (call errorMsg() to get coresponding text message)
+     */
+    private function validateBIC() : int
+    {
+        $iErr = Sepa::OK;
+        if (!Sepa::checkValidation(Sepa::V_NO_BIC_VALIDATION)) {
+            if (strlen($this->strBIC) == 0) {
+                $iErr |= Sepa::ERR_PMT_BIC_MISSING;
+            } else if( Sepa::validateBIC($this->strBIC) != Sepa::OK) {
+                $iErr |= Sepa::ERR_PMT_INVALID_BIC;
+            }
+        }
+        return $iErr;
+    }
+    
+    /**
+     * validate CI
+     * @return int errorcode (call errorMsg() to get coresponding text message)
+     */
+    private function validateCI() : int
+    {
+        $iErr = Sepa::OK;
+        if (!Sepa::checkValidation(Sepa::V_NO_CI_VALIDATION)) {
+            if (strlen($this->strCI) == 0) {
+                $iErr |= Sepa::ERR_PMT_CI_MISSING;
+            } else if( Sepa::validateCI($this->strCI) != Sepa::OK) {
+                $iErr |= Sepa::ERR_PMT_INVALID_CI;
+            }
+        }
+        return $iErr;
+    }
+    
+    /**
+     * validate mandatory fields
+     * @return int errorcode (call errorMsg() to get coresponding text message)
+     */
+    private function validateMandatory() : int
+    {
+        $iErr = Sepa::OK;
+        if (!Sepa::checkValidation(Sepa::V_IGNORE_MISSING_VALUE)) {
+            if (strlen($this->strName) == 0) {
+                $iErr |= Sepa::ERR_PMT_NAME_MISSING;
+            }
+            if (strlen($this->strSeqType) == 0) {
+                $iErr |= Sepa::ERR_PMT_SEQ_TYPE_MISSING;
+            } else if( $this->strSeqType != Sepa::SEQ_FIRST && $this->strSeqType != Sepa::SEQ_RECURRENT && $this->strSeqType != Sepa::SEQ_ONE_OFF && $this->strSeqType != Sepa::SEQ_FINAL) {
+                $iErr |= Sepa::ERR_PMT_INVALID_SEQ_TYPE;
+            }
+        }
+        return $iErr;
     }
 }
