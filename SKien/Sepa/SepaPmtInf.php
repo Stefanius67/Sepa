@@ -37,7 +37,7 @@ class SepaPmtInf extends \DOMElement
     /** @var string  sequence type (Sepa::FRST, Sepa::SEQ_RECURRENT, Sepa::SEQ_ONE_OFF, Sepa::SEQ_FINAL)*/
     protected string $strSeqType = '';
     /** @var SepaDoc parent document */
-    private ?SepaDoc $sepaDoc = null;
+    private SepaDoc $sepaDoc;
     /** @var int count of transactions contained in PII */
     private int $iTxCount = 0;
     /** @var \DOMElement DOM element containing count of transactions */
