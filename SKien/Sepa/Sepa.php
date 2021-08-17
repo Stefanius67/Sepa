@@ -169,49 +169,49 @@ class Sepa
         self::addValidation('IT', 'SKien\Sepa\CntryValidation\SepaCntryValidationIT');
 
         self::$aIBANError = array(
-                 Sepa::ERR_IBAN_INVALID_CNTRY   => 'The country code of the IBAN is not supported!'
-                ,Sepa::ERR_IBAN_INVALID_LENGTH  => 'Invalid length of the IBAN!'
-                ,Sepa::ERR_IBAN_INVALID_SIGN    => 'The IBAN contains invalid characters!'
-                ,Sepa::ERR_IBAN_CHECKSUM        => 'Invalid IBAN checksum!'
-            );
+            Sepa::ERR_IBAN_INVALID_CNTRY   => 'The country code of the IBAN is not supported!',
+            Sepa::ERR_IBAN_INVALID_LENGTH  => 'Invalid length of the IBAN!',
+            Sepa::ERR_IBAN_INVALID_SIGN    => 'The IBAN contains invalid characters!',
+            Sepa::ERR_IBAN_CHECKSUM        => 'Invalid IBAN checksum!',
+        );
 
         self::$aBICError = array(
-                 Sepa::ERR_BIC_INVALID          => 'Invalid BIC!'
-                ,Sepa::ERR_BIC_INVALID_CNTRY    => 'The country code of the BIC is not supported!'
-            );
+            Sepa::ERR_BIC_INVALID          => 'Invalid BIC!',
+            Sepa::ERR_BIC_INVALID_CNTRY    => 'The country code of the BIC is not supported!',
+        );
 
         self::$aCIError = array(
-                 Sepa::ERR_IBAN_INVALID_CNTRY   => 'The country code of the CI is not supported!'
-                ,Sepa::ERR_IBAN_INVALID_LENGTH  => 'Invalid length of the CI!'
-                ,Sepa::ERR_IBAN_INVALID_SIGN    => 'The CI contains invalid characters!'
-                ,Sepa::ERR_IBAN_CHECKSUM        => 'Invalid CI checksum!'
-            );
+            Sepa::ERR_IBAN_INVALID_CNTRY   => 'The country code of the CI is not supported!',
+            Sepa::ERR_IBAN_INVALID_LENGTH  => 'Invalid length of the CI!',
+            Sepa::ERR_IBAN_INVALID_SIGN    => 'The CI contains invalid characters!',
+            Sepa::ERR_IBAN_CHECKSUM        => 'Invalid CI checksum!',
+        );
 
         self::$aPmtInfError = array(
-                Sepa::ERR_PMT_NAME_MISSING      => 'Name missing',
-                Sepa::ERR_PMT_IBAN_MISSING      => 'IBAN missing',
-                Sepa::ERR_PMT_BIC_MISSING       => 'BIC missing',
-                Sepa::ERR_PMT_CI_MISSING        => 'CI missing',
-                Sepa::ERR_PMT_INVALID_IBAN      => 'Invalid IBAN',
-                Sepa::ERR_PMT_INVALID_BIC       => 'Invalid BIC',
-                Sepa::ERR_PMT_INVALID_CI        => 'Invalid CI',
-                Sepa::ERR_PMT_SEQ_TYPE_MISSING  => 'Sequence type missing',
-                Sepa::ERR_PMT_INVALID_SEQ_TYPE  => 'Invalid sequence type',
-            );
+            Sepa::ERR_PMT_NAME_MISSING      => 'Name missing',
+            Sepa::ERR_PMT_IBAN_MISSING      => 'IBAN missing',
+            Sepa::ERR_PMT_BIC_MISSING       => 'BIC missing',
+            Sepa::ERR_PMT_CI_MISSING        => 'CI missing',
+            Sepa::ERR_PMT_INVALID_IBAN      => 'Invalid IBAN',
+            Sepa::ERR_PMT_INVALID_BIC       => 'Invalid BIC',
+            Sepa::ERR_PMT_INVALID_CI        => 'Invalid CI',
+            Sepa::ERR_PMT_SEQ_TYPE_MISSING  => 'Sequence type missing',
+            Sepa::ERR_PMT_INVALID_SEQ_TYPE  => 'Invalid sequence type',
+        );
 
         self::$aTxInfError = array(
-                Sepa::ERR_TX_NAME_MISSING       => 'Name missing',
-                Sepa::ERR_TX_IBAN_MISSING       => 'IBAN missing',
-                Sepa::ERR_TX_BIC_MISSING        => 'BIC missing',
-                Sepa::ERR_TX_INVALID_IBAN       => 'Invalid IBAN',
-                Sepa::ERR_TX_INVALID_BIC        => 'Invalid BIC',
-                Sepa::ERR_TX_MAND_ID_MISSING    => 'SEPA mandate missing',
-                Sepa::ERR_TX_MAND_DOS_MISSING   => 'Invalid date of the SEPA mandate',
-                Sepa::ERR_TX_DESCR_MISSING      => 'Usage text missing',
-                Sepa::ERR_TX_ZERO_VALUE         => 'The value is 0.0 EUR',
-                Sepa::ERR_TX_INVALID_TYPE       => 'Invalid transaction type',
-                Sepa::ERR_TX_INVALID_MAND_DOS   => 'Invalid date value'
-            );
+            Sepa::ERR_TX_NAME_MISSING       => 'Name missing',
+            Sepa::ERR_TX_IBAN_MISSING       => 'IBAN missing',
+            Sepa::ERR_TX_BIC_MISSING        => 'BIC missing',
+            Sepa::ERR_TX_INVALID_IBAN       => 'Invalid IBAN',
+            Sepa::ERR_TX_INVALID_BIC        => 'Invalid BIC',
+            Sepa::ERR_TX_MAND_ID_MISSING    => 'SEPA mandate missing',
+            Sepa::ERR_TX_MAND_DOS_MISSING   => 'Invalid date of the SEPA mandate',
+            Sepa::ERR_TX_DESCR_MISSING      => 'Usage text missing',
+            Sepa::ERR_TX_ZERO_VALUE         => 'The value is 0.0 EUR',
+            Sepa::ERR_TX_INVALID_TYPE       => 'Invalid transaction type',
+            Sepa::ERR_TX_INVALID_MAND_DOS   => 'Invalid date value',
+        );
     }
 
     /**

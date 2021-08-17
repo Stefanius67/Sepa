@@ -10,21 +10,21 @@ use SKien\Sepa\Sepa;
  * the values.
  * Format check is made with regular expressions that can be set to
  * the country specific rules.
- * 
+ *
  * Create for each country to support a class extending this class.
- * For most of the participating countries, it is sufficient to 
- * specify in the constructor the respective length, the formatting 
- * rule (RegEx) and the information whether alphanumeric characters 
+ * For most of the participating countries, it is sufficient to
+ * specify in the constructor the respective length, the formatting
+ * rule (RegEx) and the information whether alphanumeric characters
  * are allowed.
- * 
- * If more complicated rules apply in a country, the respective 
- * method for validation can be redefined in the extended class in 
+ *
+ * If more complicated rules apply in a country, the respective
+ * method for validation can be redefined in the extended class in
  * order to map this rule.
  * @see SepaCntryValidationBE class
- * 
+ *
  * #### History:
  * - *2020-05-21*   initial version.
- * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes 
+ * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes
  *
  * @package SKien/Sepa
  * @since 1.1.0
@@ -40,17 +40,17 @@ class SepaCntryValidationBase implements SepaCntryValidation
     protected int $iLenIBAN = -1;
     /** @var string regular expression to validate the format of the IBAN    */
     protected string $strRegExIBAN = '';
-    /** @var bool   if true, alphanum values in the IBAN allowed    */ 
+    /** @var bool   if true, alphanum values in the IBAN allowed    */
     protected bool $bAlphaNumIBAN = false;
     /** @var int    length of the IC     */
     protected int $iLenCI = -1;
     /** @var string regular expression to validate the format of the CI    */
     protected string $strRegExCI = '';
-    /** @var bool   if true, alphanum values in the CI allowed    */ 
+    /** @var bool   if true, alphanum values in the CI allowed    */
     protected bool $bAlphaNumCI = false;
     /** @var string last calculated checksum    */
     protected string $strLastCheckSum = '';
-    
+
     /**
      * create instance of validation.
      * @param string $strCntry  2 sign country code
@@ -61,13 +61,13 @@ class SepaCntryValidationBase implements SepaCntryValidation
             trigger_error('instanciation with invalid country ' . $strCntry . ' (expected ' . $this->strCntry . ')', E_USER_ERROR);
         }
     }
-    
+
     /**
      * validates given IBAN.
      *
      * @link https://www.ecbs.org/iban.htm
      * @link http://www.pruefziffernberechnung.de/I/IBAN.shtml
-     * 
+     *
      * @param string $strIBAN
      * @return int OK ( 0 ) or errorcode
      *      Sepa::ERR_IBAN_INVALID_CNTRY    invalid country code
@@ -88,10 +88,10 @@ class SepaCntryValidationBase implements SepaCntryValidation
         if (!preg_match($this->strRegExIBAN, $strIBAN)) {
             return Sepa::ERR_IBAN_INVALID_SIGN;
         }
-        
+
         $strCS = substr($strIBAN, 2, 2);
         $strBBAN = substr($strIBAN, 4);
-        
+
         // alphanumeric account number allowed (except the country code...)?
         if ($this->bAlphaNumIBAN) {
             $strBBAN = $this->replaceAlpha($strBBAN);
@@ -121,26 +121,26 @@ class SepaCntryValidationBase implements SepaCntryValidation
         }
         return $iErr;
     }
-        
+
     /**
      * Validates given CI (Creditor Scheme Identification).
-     * 
+     *
      * The general structure for the CI is the following:
      * - Position 1-2 filled with the ISO country code
      * - Position 3-4 filled with the check digit according to ISO 7064 Mod 97-10
      * - Position 5-7 filled with the Creditor Business Code, if not used then filled with ZZZ
-     * - Position 8 onwards filled with the country specific part of the identifier being 
+     * - Position 8 onwards filled with the country specific part of the identifier being
      *   a national identifier of the Creditor as defined by the concerned national community.
-     *   
+     *
      * NOTE: the CBC is not taken into account when calculating the checksum!
-     *   
+     *
      * @link https://www.sepaforcorporates.com/sepa-direct-debits/sepa-creditor-identifier/
      * @link https://www.europeanpaymentscouncil.eu/sites/default/files/kb/file/2019-09/EPC262-08%20v7.0%20Creditor%20Identifier%20Overview_0.pdf
      * @link https://www.europeanpaymentscouncil.eu/sites/default/files/KB/files/EPC114-06%20SDD%20Core%20Interbank%20IG%20V9.0%20Approved.pdf#page=10
-     * 
+     *
      * online CI Validator
      * @link http://www.maric.info/fin/SEPA/ddchkden.htm
-     * 
+     *
      * @param string $strCI
      * @return int OK ( 0 ) or errorcode
      *     Sepa::ERR_CI_INVALID_CNTRY      invalid country code.
@@ -161,10 +161,10 @@ class SepaCntryValidationBase implements SepaCntryValidation
         if (!preg_match($this->strRegExCI, $strCheck)) {
             return Sepa::ERR_CI_INVALID_SIGN;
         }
-        
-        $strCS = substr($strCheck,  2, 2);
+
+        $strCS = substr($strCheck, 2, 2);
         // NOTE: the CBC is not taken into account when calculating the checksum!
-        $strCheck = substr($strCheck,  7);
+        $strCheck = substr($strCheck, 7);
         if ($this->bAlphaNumCI) {
             $strCheck = $this->replaceAlpha($strCheck);
         }
@@ -183,7 +183,7 @@ class SepaCntryValidationBase implements SepaCntryValidation
         return $this->strLastCheckSum;
     }
 
-	/**
+    /**
      * calculate modulo 97 checksum for bankcode and accountnumber
      * MOD 97-10 (see ISO 7064)
      * @param string $strCheck
@@ -199,13 +199,13 @@ class SepaCntryValidationBase implements SepaCntryValidation
         // 3. subtract value from 98
         $strCS = $this->adjustFP(bcsub('98', $strCS2));
         // 4. always 2 digits...
-        if (strlen($strCS) < 2 ) {
+        if (strlen($strCS) < 2) {
             $strCS = '0' . $strCS;
         }
         $this->strLastCheckSum = $strCS;
         return $strCS;
     }
-    
+
     /**
      * in some cases there appears unwanted decimals (floatingpoint drift from bc - operations)
      * ... just cut them off
@@ -215,22 +215,22 @@ class SepaCntryValidationBase implements SepaCntryValidation
      */
     protected function adjustFP(string $str) : string
     {
-        if( strpos( '.', $str ) !== false ) {
+        if (strpos('.', $str) !== false) {
             $str = substr($str, 0, strpos('.', $str));
         }
         return $str;
     }
-    
+
     /**
      * Get the ALPHA-2 country code.
-     * To calc the checksum, the first four digits of the IBAN (country code and check digit) 
+     * To calc the checksum, the first four digits of the IBAN (country code and check digit)
      * have to be placed at the end of the IBAN. Check digit is represented by 00 for calculation.
      * @return string
      */
     protected function getAlpha2CntryCode() : string
     {
         $strNumCode = $this->convCharToNum($this->strCntry[0]) . $this->convCharToNum($this->strCntry[1]);
-        return $strNumCode; 
+        return $strNumCode;
     }
 
     /**
@@ -241,27 +241,27 @@ class SepaCntryValidationBase implements SepaCntryValidation
     protected function replaceAlpha(string $strCheck) : string
     {
         // account number may contains characters
-        foreach (range('A', 'Z') as $ch){
+        foreach (range('A', 'Z') as $ch) {
             $strCheck = str_replace((string)$ch, $this->convCharToNum((string)$ch), $strCheck);
         }
         return $strCheck;
     }
-    
+
     /**
      * Existing non-numeric characters must be converted to a numeric value for the calculation.
-     * 
+     *
      *  A = 10  F = 15  K = 20  P = 25  U = 30  Z = 35
      *  B = 11  G = 16  L = 21  Q = 26  V = 31
      *  C = 12  H = 17  M = 22  R = 27  W = 32
      *  D = 13  I = 18  N = 23  S = 28  X = 33
      *  E = 14  J = 19  O = 24  T = 29  Y = 34
-     * 
+     *
      * @param string $ch
      * @return string
      */
     protected function convCharToNum(string $ch) : string
     {
         $iValue = ord($ch) - ord('A') + 10;
-        return strval($iValue); 
+        return strval($iValue);
     }
 }

@@ -8,24 +8,24 @@ use SKien\Sepa\Sepa;
  * ### Valid testvalues
  *  - IBAN:   BE68 5390 0754 7034
  *  - BIC:    JCAEBE9AXXX
- *  - CI:     BE69 ZZZ 050 D 000000008 / BE68 ZZZ 0123456789 
+ *  - CI:     BE69 ZZZ 050 D 000000008 / BE68 ZZZ 0123456789
  *
  * ### IBAN format
  * ** CCpp bbbk kkkk kkPP **
  *  - CC:    ISO Country Code
  *  - pp:    2 digits IBAN checksum
- *  - b:     3 digits numeric banking code 
+ *  - b:     3 digits numeric banking code
  *  - k:     7 digits numeric account number
  *  - PP:    2 digits numeric national check code
- *  
+ *
  * Length: 16
  *
  * ### CI format
  * See method SepaCntryValidationBE::validateCI()
- *  
+ *
  * #### History:
  * - *2020-05-21*   initial version.
- * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes 
+ * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes
  *
  * @package SKien/Sepa
  * @since 1.1.0
@@ -44,7 +44,7 @@ class SepaCntryValidationBE extends SepaCntryValidationBase
         $this->strCntry = 'BE';
         $this->iLenIBAN = 16;
         $this->strRegExIBAN = '/^([A-Z]){2}([0-9]){14}?$/';
-        
+
         parent::__construct(strtoupper($strCntry));
     }
 
@@ -59,11 +59,11 @@ class SepaCntryValidationBE extends SepaCntryValidationBase
      *      Z:    3 digits alphanum creditor business code (CBC)
      *      n:    10 digits numeric 'Enterprise Number'
      *  Length: 17
-     *  
-     * For the national identifier 10 numeric positions fixed length are used. 
-     * It is called the 'Enterprise Number' (this number is also used as the VAT 
+     *
+     * For the national identifier 10 numeric positions fixed length are used.
+     * It is called the 'Enterprise Number' (this number is also used as the VAT
      * Number by the company).
-     * 
+     *
      * When the Creditor does not have an 'Enterprise Number'
      * ------------------------------------------------------
      *  CCpp ZZZ bbbDnnnnnnnnn
@@ -86,20 +86,20 @@ class SepaCntryValidationBE extends SepaCntryValidationBase
         $bAlphaNum = false;
         if (strlen($strCheck) == 17) {
             $strRegEx = '/^([A-Z]){2}([0-9]){2}([0-9A-Z]){3}([0-9]){10}?$/';
-        } else if(strlen($strCheck) == 20) {
+        } else if (strlen($strCheck) == 20) {
             $strRegEx = '/^([A-Z]){2}([0-9]){2}([0-9A-Z]){3}([0-9]){3}D([0-9]){9}?$/';
             $bAlphaNum = true;
         } else {
             return Sepa::ERR_CI_INVALID_LENGTH;
         }
-        
+
         if (substr($strCheck, 0, 2) != $this->strCntry) {
             return Sepa::ERR_CI_INVALID_CNTRY;
         }
         if (!preg_match($strRegEx, $strCheck)) {
             return Sepa::ERR_CI_INVALID_SIGN;
         }
-        $strCS = substr($strCheck,  2, 2);
+        $strCS = substr($strCheck, 2, 2);
         // NOTE: the CBC is not taken into account when calculating the checksum!
         $strCheck = substr($strCheck, 7);
         if ($bAlphaNum) {
