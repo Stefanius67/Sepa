@@ -7,8 +7,8 @@ namespace SKien\Sepa;
  * #### History
  * - *2020-02-18*   initial version.
  * - *2020-05-21*   renamed namespace to fit PSR-4 recommendations for autoloading.
- * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes 
- * 
+ * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes
+ *
  * @package SKien/Sepa
  * @since 1.0.0
  * @version 1.2.0
@@ -19,22 +19,22 @@ trait SepaHelper
 {
     /**
      * check for valid type and trigger error in case of invalid type
-     * 
+     *
      * @param string $type
      * @return bool
      */
-    protected function isValidType(string $type) : bool 
+    protected function isValidType(string $type) : bool
     {
         if( $type != Sepa::CCT && $type != Sepa::CDD ) {
             trigger_error('invalid type for ' . get_class($this), E_USER_ERROR);
         }
         return true;
     }
-    
+
     /**
      * create unique ID.
      * format: 99999999-9999-9999-999999999999
-     * 
+     *
      * @return string
      */
     public static function createUID() : string
@@ -45,10 +45,10 @@ trait SepaHelper
                 .substr($charid,  8, 4) . chr( 45 )
                 .substr($charid, 12, 4) . chr( 45 )
                 .substr($charid, 16,12);
-                
+
         return $uuid;
     }
-    
+
     /**
      * <b>make valid SEPA string.</b>
      * <ol>
@@ -56,7 +56,7 @@ trait SepaHelper
      *      <li>limitation to supported chars dependend on validation type</li>
      *      <li>restriction to max length dependend on validation type</li>
      * </ol>
-     * 
+     *
      * <ul>
      *      <li>SepaHelper::MAX35:</li>
      *      <li>SepaHelper::MAX70:</li>
@@ -77,17 +77,17 @@ trait SepaHelper
      *              <li>supported chars: ID1 without blank</li>
      *          </ul></li>
      * </ul>
-     * 
+     *
      * @param string $str   string to validate
      * @param int $iType    type of validation: one of SepaHelper::MAX35, SepaHelper::MAX70, SepaHelper::MAX140, SepaHelper::MAX1025, SepaHelper::ID1, SepaHelper::ID2
      * @return string
      */
-    public static function validString(string $str, int $iType) : string 
+    public static function validString(string $str, int $iType) : string
     {
         // replace specialchars...
         $strValid = self::replaceSpecialChars($str);
-        
-        // regular expresion for 'standard' types MAXxxx 
+
+        // regular expresion for 'standard' types MAXxxx
         $strRegEx = '/[^A-Za-z0-9 \.,\-\/\+():?]/';   // A...Z, a...z, 0...9, blank, dot, comma plus, minus, slash, questionmark, colon, open/closing bracket
         $strReplace = ' ';
         $iMaxLen = 1025;
@@ -115,11 +115,11 @@ trait SepaHelper
             default:
                 break;
         }
-        
+
         $strValid = preg_replace($strRegEx, $strReplace, $strValid);
-        return substr($strValid, 0, $iMaxLen);
+        return substr($strValid ?? '', 0, $iMaxLen);
     }
-    
+
     /**
      * replace some special chars with nearest equivalent.
      * - umlauts, acute, circumflex, ...
@@ -150,23 +150,23 @@ trait SepaHelper
                 '[' => '(', ']' => ')', '{' => '(', '}' => ')',
                 '_' => '-', '@' => '(at)', '€' => 'EUR'
             );
-            
+
             $strReplaced = strtr( $str, $aSpecialChars );
         }
         return $strReplaced;
     }
-    
+
     /**
-     * calculates valid collectiondate from given date considering businessdays 
-     * 
+     * calculates valid collectiondate from given date considering businessdays
+     *
      * @param int $iDays
      * @param int $dtStart unix timestamp start date (if null, current date is used)
      * @return int unix timestamp
      */
-    public static function calcCollectionDate(int $iDays, ?int $dtStart=null) : int 
+    public static function calcCollectionDate(int $iDays, ?int $dtStart=null) : int
     {
         $dtCollect = ($dtStart === null) ? time() : $dtStart;
-            
+
         // FORWARD: should daytime ( < 08:30 / < 18:30 ) bear in mind ?
         $iBDays = 0;
         while ($iBDays < $iDays) {
@@ -177,12 +177,12 @@ trait SepaHelper
         }
         return $dtCollect;
     }
-    
+
     /**
      * checks for target2-Day (Sepa-Businessday)
-     * 
+     *
      * Mo...Fr and NOT TARGET1-Day
-     * 
+     *
      * TARGET1 Days:
      *  » New Year
      *  » Good Day
@@ -190,16 +190,16 @@ trait SepaHelper
      *  » 1'st May
      *  » 1.Christmas
      *  » 2.Christmas
-     *  
+     *
      * @todo change to dynamic calculation of eastern and remove $aTarget2 - array
      *
      * @param int $dt  unix timestamp to check
      * @return bool
      */
-    public static function isTarget2Day(int $dt) : bool 
+    public static function isTarget2Day(int $dt) : bool
     {
         $iWeekDay = date('N', $dt);
-        
+
         //  New Year        Good Day        Easter Monday   1'stMay         1.Christmas     2.Christmas
         $aTarget2 = array(
              '2019-01-01',  '2019-04-18',   '2019-04-21',   '2019-05-01',   '2019-12-25',   '2019-12-26'

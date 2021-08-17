@@ -1,5 +1,6 @@
 parameters:
-	level: 6
-	checkMissingIterableValueType: false
+	level: max
+	checkMissingIterableValueType: true
 	paths:
 		- SKien/Sepa
+		- SKien/Sepa/CntryValidation

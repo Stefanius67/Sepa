@@ -3,7 +3,7 @@ namespace SKien\Sepa;
 
 /**
  * Class representing Payment Instruction Info (PII)
- * 
+ *
  * uses helpers and const from trait SepaHelper
  * @see SepaHelper
  *
@@ -11,9 +11,9 @@ namespace SKien\Sepa;
  * - *2020-02-18*   initial version.
  * - *2020-05-21*   added multi country validation.
  * - *2020-05-21*   renamed namespace to fit PSR-4 recommendations for autoloading.
- * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes 
- * - *2020-09-23*   splited validate() into validateXXX()-Methods 
- * 
+ * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes
+ * - *2020-09-23*   splited validate() into validateXXX()-Methods
+ *
  * @package SKien/Sepa
  * @since 1.0.0
  * @version 1.2.0
@@ -23,7 +23,7 @@ namespace SKien\Sepa;
 class SepaPmtInf extends \DOMElement
 {
     use SepaHelper;
-        
+
     /** @var string  unique id*/
     protected string $id = '';
     /** @var string  full name of applicant*/
@@ -46,18 +46,18 @@ class SepaPmtInf extends \DOMElement
     private float $dblCtrlSum = 0.0;
     /** @var \DOMElement DOM element containing controlsum */
     private ?\DOMElement $xmlCtrlSum = null;
-    
+
     /**
      * creating SEPA Payment Instruction Info (PII)
-     * 
-     * store parent doc and generate unique id 
+     *
+     * store parent doc and generate unique id
      * @param SepaDoc $sepaDoc
      */
-    function __construct(SepaDoc $sepaDoc) 
+    function __construct(SepaDoc $sepaDoc)
     {
         parent::__construct("PmtInf");
-        // don't append any child at this point - created element have to be associated with a document after creation 
-        
+        // don't append any child at this point - created element have to be associated with a document after creation
+
         $this->sepaDoc = $sepaDoc;
         $this->id = self::createUID();
     }
@@ -78,14 +78,14 @@ class SepaPmtInf extends \DOMElement
      * @param string $strLF     Separator for multi errors (default: PHP_EOL; posible values: '<br />', '; ', ...)
      * @return string
      */
-    public function errorMsg(int $iError, string $strLF = PHP_EOL) : string 
+    public function errorMsg(int $iError, string $strLF = PHP_EOL) : string
     {
         return Sepa::errorMsgPmtInf($iError, $strLF);
     }
-    
+
     /**
      * create transaction
-     * 
+     *
      * @param SepaTxInf $oTxInf
      * @return int
      */
@@ -99,38 +99,38 @@ class SepaPmtInf extends \DOMElement
         if ($this->sepaDoc->getType() != $oTxInf->getType()) {
             return Sepa::ERR_TX_INVALID_TYPE;
         }
-        
-        $iErr = $oTxInf->validate(); 
+
+        $iErr = $oTxInf->validate();
         if ( $iErr == Sepa::OK) {
             if ($oTxInf->getType() == Sepa::CDD) {
                 $xmlTx = $this->addChild(null, 'DrctDbtTxInf');
-                
+
                 $xmlNode = $this->addChild($xmlTx, 'PmtId');
                 $this->addChild($xmlNode, 'EndToEndId', $oTxInf->getPaymentId());
-                
+
                 // Instructed Amount
                 $xmlNode = $this->addChild($xmlTx, 'InstdAmt', sprintf("%01.2f", $oTxInf->getValue()));
                 $xmlNode->SetAttribute('Ccy', 'EUR');
-                
+
                 // Mandate Related Information
                 $xmlNode = $this->addChild($xmlTx, 'DrctDbtTx');
                 $xmlNode = $this->addChild($xmlNode, 'MndtRltdInf');
                 $this->addChild($xmlNode, 'MndtId', $oTxInf->getMandateId());
-                $this->addChild($xmlNode, 'DtOfSgntr', $oTxInf->getDateOfSignature()); 
+                $this->addChild($xmlNode, 'DtOfSgntr', $oTxInf->getDateOfSignature());
                 $this->addChild($xmlNode, 'AmdmntInd', 'false');
-        
+
                 // Debitor Information  Name, IBAN, BIC
                 $xmlNode = $this->addChild($xmlTx, 'DbtrAgt');
                 $xmlNode = $this->addChild($xmlNode, 'FinInstnId');
                 $this->addChild($xmlNode, 'BIC', $oTxInf->getBIC());
-        
+
                 $xmlNode = $this->addChild($xmlTx, 'Dbtr');
                 $this->addChild($xmlNode, 'Nm', $oTxInf->getName());
-        
+
                 $xmlNode = $this->addChild($xmlTx, 'DbtrAcct');
                 $xmlNode = $this->addChild($xmlNode, 'Id');
                 $this->addChild($xmlNode, 'IBAN', $oTxInf->getIBAN());
-                
+
                 // Ultimate Debitor if requested
                 $strUltmtDbtr = $oTxInf->getUltimateName();
                 if ( strlen($strUltmtDbtr) > 0) {
@@ -142,23 +142,23 @@ class SepaPmtInf extends \DOMElement
 
                 $xmlNode = $this->addChild($xmlTx, 'PmtId');
                 $this->addChild($xmlNode, 'EndToEndId', $oTxInf->getPaymentId());
-                
+
                 // Instructed Amount
                 $xmlNode = $this->addChild($xmlTx, 'InstdAmt', sprintf("%01.2f", $oTxInf->getValue()));
                 $xmlNode->SetAttribute('Ccy', 'EUR');
-                
+
                 // Creditor Information  Name, IBAN, BIC
                 $xmlNode = $this->addChild($xmlTx, 'CdtrAgt');
                 $xmlNode = $this->addChild($xmlNode, 'FinInstnId');
                 $this->addChild($xmlNode, 'BIC', $oTxInf->getBIC());
-                
+
                 $xmlNode = $this->addChild($xmlTx, 'Cdtr');
                 $this->addChild($xmlNode, 'Nm', $oTxInf->getName());
-                
+
                 $xmlNode = $this->addChild($xmlTx, 'CdtrAcct');
                 $xmlNode = $this->addChild($xmlNode, 'Id');
                 $this->addChild($xmlNode, 'IBAN', $oTxInf->getIBAN());
-                                
+
                 // Ultimate Creditor if requested
                 $strUltmtCbtr = $oTxInf->getUltimateName();
                 if ( strlen($strUltmtCbtr) > 0) {
@@ -170,7 +170,7 @@ class SepaPmtInf extends \DOMElement
             // Remittance Information
             $xmlNode = $this->addChild($xmlTx, 'RmtInf');
             $this->addChild($xmlNode, 'Ustrd', $oTxInf->getDescription());
-                
+
             // calculate count and controlsum of transactions
             $this->calc($oTxInf->getValue());
         } else {
@@ -178,16 +178,16 @@ class SepaPmtInf extends \DOMElement
         }
         return $iErr;
     }
-    
+
     /**
      * create child element for given parent
-     * 
+     *
      * @param \DOMElement   $xmlParent  parent for the node. If null, child of current instance is created
      * @param string        $strNode    nodename
      * @param mixed         $value      nodevalue. If empty, no value will be assigned (to create node only containing child elements)
      * @return \DOMElement
      */
-    protected function addChild(?\DOMElement $xmlParent, string $strNode, $value = '') : ?\DOMElement
+    protected function addChild(?\DOMElement $xmlParent, string $strNode, $value = '') : \DOMElement
     {
         if($xmlParent == null) {
             $xmlParent = $this;
@@ -197,7 +197,7 @@ class SepaPmtInf extends \DOMElement
             $xmlNode->nodeValue = $value;
         }
         $xmlParent->appendChild($xmlNode);
-        
+
         return $xmlNode;
     }
 
@@ -205,16 +205,19 @@ class SepaPmtInf extends \DOMElement
      * calculate transactioncount and controlsum for PII and update overall in parent doc
      * @param float $dblValue
      */
-    public function calc(float $dblValue) : void 
+    public function calc(float $dblValue) : void
     {
+        if ($this->xmlTxCount === null || $this->xmlCtrlSum === null) {
+            return;
+        }
         $this->iTxCount++;
-        $this->xmlTxCount->nodeValue = $this->iTxCount;
+        $this->xmlTxCount->nodeValue = (string) $this->iTxCount;
         $this->dblCtrlSum += $dblValue;
         $this->xmlCtrlSum->nodeValue = sprintf("%01.2f", $this->dblCtrlSum);
-        
+
         $this->sepaDoc->calc($dblValue);
     }
-    
+
     /**
      * Return the ID
      * @return string
@@ -223,7 +226,7 @@ class SepaPmtInf extends \DOMElement
     {
         return $this->id;
     }
-    
+
     /**
      * get collectiondate.
      * @return string
@@ -244,7 +247,7 @@ class SepaPmtInf extends \DOMElement
     {
         $this->xmlTxCount = $xmlNode;
     }
-    
+
     /**
      * Set the xml node containing control sum.
      * @param \DOMElement $xmlNode
@@ -253,30 +256,30 @@ class SepaPmtInf extends \DOMElement
     {
         $this->xmlCtrlSum = $xmlNode;
     }
-    
+
     /**
      * set full name (lastname, firstname; company name; ...)
      * @param string $strName
      */
-    public function setName(string $strName) : void 
+    public function setName(string $strName) : void
     {
         $this->strName = self::validString($strName, Sepa::MAX70);
     }
-    
+
     /**
      * set IBAN
      * @param string $strIBAN
      */
-    public function setIBAN(string $strIBAN) : void 
+    public function setIBAN(string $strIBAN) : void
     {
         $this->strIBAN = $strIBAN;
     }
-    
+
     /**
      * set BIC
      * @param string $strBIC
      */
-    public function setBIC(string $strBIC) : void 
+    public function setBIC(string $strBIC) : void
     {
         $this->strBIC = $strBIC;
     }
@@ -285,7 +288,7 @@ class SepaPmtInf extends \DOMElement
      * set CI (Creditor Scheme Identification)
      * @param string $strCI
      */
-    public function setCI(string $strCI) : void 
+    public function setCI(string $strCI) : void
     {
         $this->strCI = $strCI;
     }
@@ -294,11 +297,11 @@ class SepaPmtInf extends \DOMElement
      * set sequence type (Sepa::FRST, Sepa::SEQ_RECURRENT, Sepa::SEQ_ONE_OFF, Sepa::SEQ_FINAL)
      * @param string $strSeqType
      */
-    public function setSeqType(string $strSeqType) : void 
+    public function setSeqType(string $strSeqType) : void
     {
         $this->strSeqType = $strSeqType;
     }
-    
+
     /**
      * get full name (lastname, firstname; company name; ...)
      * @return string
@@ -307,7 +310,7 @@ class SepaPmtInf extends \DOMElement
     {
         return $this->strName;
     }
-    
+
     /**
      * get IBAN
      * @return string
@@ -316,7 +319,7 @@ class SepaPmtInf extends \DOMElement
     {
         return $this->strIBAN;
     }
-    
+
     /**
      * get BIC
      * @return string
@@ -343,7 +346,7 @@ class SepaPmtInf extends \DOMElement
     {
         return $this->strSeqType;
     }
-    
+
     /**
      * validate IBAN
      * @return int errorcode (call errorMsg() to get coresponding text message)
@@ -360,7 +363,7 @@ class SepaPmtInf extends \DOMElement
         }
         return $iErr;
     }
-    
+
     /**
      * validate BIC
      * @return int errorcode (call errorMsg() to get coresponding text message)
@@ -377,7 +380,7 @@ class SepaPmtInf extends \DOMElement
         }
         return $iErr;
     }
-    
+
     /**
      * validate CI
      * @return int errorcode (call errorMsg() to get coresponding text message)
@@ -394,7 +397,7 @@ class SepaPmtInf extends \DOMElement
         }
         return $iErr;
     }
-    
+
     /**
      * validate mandatory fields
      * @return int errorcode (call errorMsg() to get coresponding text message)

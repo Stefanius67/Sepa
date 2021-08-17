@@ -7,21 +7,21 @@ namespace SKien\Sepa;
  * ## Providing
  * - Credit Transfer Initiation (CCT; pain.001.002.03.xsd)
  * - Direct Debit Initiation (CDD; pain.008.002.02.xsd)
- * 
+ *
  * ### Main class of the package
  * class containing some global constants, support for country specific
  * validation of IBAN, BIC and CI, language support for the generated
- * error messages and to make methods of trait SepaHelper available. 
- * 
+ * error messages and to make methods of trait SepaHelper available.
+ *
  * #### History
  * - *2020-02-18*   initial version.
  * - *2020-05-21*   new static method init() have to be called first before any use of the package!
  * - *2020-05-21*   added multi country validation.
  * - *2020-05-21*   added language support for error messages.
  * - *2020-05-21*   renamed namespace to fit PSR-4 recommendations for autoloading.
- * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes 
- * - *2020-07-22*   added validation class for italy 
- * 
+ * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes
+ * - *2020-07-22*   added validation class for italy
+ *
  * @package SKien/Sepa
  * @since 1.0.0
  * @version 1.2.0
@@ -31,12 +31,12 @@ namespace SKien\Sepa;
 class Sepa
 {
     use SepaHelper;
-    
+
     /** Credit Transfer Transaction  */
     const   CCT = "TRF";
     /** Direct Debit Transaction     */
     const   CDD = "DD";
-    
+
     /** ID1 validation
      * @see SepaHelper::validString()   */
     const   ID1     = 1;
@@ -55,7 +55,7 @@ class Sepa
     /** MAX1025 validation
      * @see SepaHelper::validString()   */
     const   MAX1025 = 6;
-    
+
     /** sequence type first dd sequence     */
     const SEQ_FIRST     = "FRST";
     /** sequence type recurrent dd sequence */
@@ -64,7 +64,7 @@ class Sepa
     const SEQ_ONE_OFF   = "OOFF";
     /** sequence type final dd sequence */
     const SEQ_FINAL     = "FNAL";
-    
+
     /** full validation  */
     const V_FULL_VALIDATION         = 0;
     /** no validation at all   */
@@ -79,7 +79,7 @@ class Sepa
     const V_IGNORE_MISSING_CNTRY    = 0x0008;
     /** ignore missing mandatory value   */
     const V_IGNORE_MISSING_VALUE    = 0x0010;
-    
+
     /** validation succeeded    */
     const OK                        = 0;
     // error codes for IBAN validation
@@ -91,13 +91,13 @@ class Sepa
     const ERR_IBAN_INVALID_SIGN     = 3;
     /** wrong checksum  */
     const ERR_IBAN_CHECKSUM         = 4;
-    
+
     // error codes for BIC validation
     /** invalid BIC */
     const ERR_BIC_INVALID           = 10;
     /** invalid country code   */
     const ERR_BIC_INVALID_CNTRY     = 11;
-    
+
     // error codes for CI validation
     /** invalid country code  */
     const ERR_CI_INVALID_CNTRY      = 20;
@@ -107,7 +107,7 @@ class Sepa
     const ERR_CI_INVALID_SIGN       = 22;
     /** wrong checksum  */
     const ERR_CI_CHECKSUM           = 23;
-    
+
     // error codes for payment info validation
     const ERR_PMT_NAME_MISSING      = 0x0001;
     const ERR_PMT_IBAN_MISSING      = 0x0002;
@@ -133,23 +133,23 @@ class Sepa
     const ERR_TX_INVALID_TYPE       = 0x2000;
     const ERR_TX_INVALID_MAND_DOS   = 0x4000;
     const ERR_TX_MAX                = 0x4000;
-    
-    /** @var array  validation classes for different countries     */
+
+    /** @var array<string>  validation classes for different countries     */
     static protected array $aValidation = array();
     /** @var int set the validation level. Any combination of the self::V_... flags (default: V_FULL)    */
     static protected int $wValidation = 0;
 
-    /** @var array error messoges for IBAN validation   */
+    /** @var array<string> error messages for IBAN validation   */
     static protected array $aIBANError = array();
-    /** @var array error messoges for BIC validation   */
+    /** @var array<string> error messages for BIC validation   */
     static protected array $aBICError = array();
-    /** @var array error messoges for CI validation   */
+    /** @var array<string> error messages for CI validation   */
     static protected array $aCIError = array();
-    /** @var array error messoges for payment info validation   */
+    /** @var array<string> error messages for payment info validation   */
     static protected array $aPmtInfError = array();
-    /** @var array error messoges for transaction info validation   */
+    /** @var array<string> error messages for transaction info validation   */
     static protected array $aTxInfError = array();
-    
+
     /**
      * initializition of package
      */
@@ -167,7 +167,7 @@ class Sepa
         self::addValidation('GB', 'SKien\Sepa\CntryValidation\SepaCntryValidationGB');
         self::addValidation('EE', 'SKien\Sepa\CntryValidation\SepaCntryValidationEE');
         self::addValidation('IT', 'SKien\Sepa\CntryValidation\SepaCntryValidationIT');
-        
+
         self::$aIBANError = array(
                  Sepa::ERR_IBAN_INVALID_CNTRY   => 'The country code of the IBAN is not supported!'
                 ,Sepa::ERR_IBAN_INVALID_LENGTH  => 'Invalid length of the IBAN!'
@@ -186,7 +186,7 @@ class Sepa
                 ,Sepa::ERR_IBAN_INVALID_SIGN    => 'The CI contains invalid characters!'
                 ,Sepa::ERR_IBAN_CHECKSUM        => 'Invalid CI checksum!'
             );
-        
+
         self::$aPmtInfError = array(
                 Sepa::ERR_PMT_NAME_MISSING      => 'Name missing',
                 Sepa::ERR_PMT_IBAN_MISSING      => 'IBAN missing',
@@ -198,7 +198,7 @@ class Sepa
                 Sepa::ERR_PMT_SEQ_TYPE_MISSING  => 'Sequence type missing',
                 Sepa::ERR_PMT_INVALID_SEQ_TYPE  => 'Invalid sequence type',
             );
-        
+
         self::$aTxInfError = array(
                 Sepa::ERR_TX_NAME_MISSING       => 'Name missing',
                 Sepa::ERR_TX_IBAN_MISSING       => 'IBAN missing',
@@ -213,7 +213,7 @@ class Sepa
                 Sepa::ERR_TX_INVALID_MAND_DOS   => 'Invalid date value'
             );
     }
-    
+
     /**
      * Destroing the static arrays.
      * This method mainly is provided for use in the PHPUnit TestCases to reset the static object!
@@ -245,7 +245,7 @@ class Sepa
         }
         self::$aValidation[$strCntry] = $strValidationClass;
     }
-    
+
     /**
      * Set the validation level.
      * Any combination of:
@@ -255,17 +255,17 @@ class Sepa
      *  Sepa::V_NO_CI_VALIDATION      no validation of the CI
      *  Sepa::V_IGNORE_MISSING_CNTRY  no validation if no class sdet for country
      *  Sepa::V_IGNORE_MISSING_VALUE  no error on missing mandatory value
-     *  
+     *
      * or:
      *  Sepa::V_FULL_VALIDATION       full validation (default)
-     *  
+     *
      * @param int $wValidation
      */
     public static function setValidationLevel(int $wValidation) : void
     {
         self::$wValidation = $wValidation;
     }
-    
+
     /**
      * Check, if validation level is set.
      * @param int $wValidation
@@ -291,7 +291,7 @@ class Sepa
         */
         if (file_exists($strFilename)) {
             $strJson = file_get_contents($strFilename);
-            $jsonData = json_decode($strJson, true);
+            $jsonData = json_decode((string) $strJson, true);
             if ($jsonData) {
                 if (isset($jsonData['aIBAN'])) {
                     self::$aIBANError = $jsonData['aIBAN'];
@@ -311,8 +311,8 @@ class Sepa
         } else {
             trigger_error('error message file ' . $strFilename . ' not exist!', E_USER_ERROR);
         }
-    } 
-    
+    }
+
     /**
      * validates given IBAN.
      * @param string $strIBAN
@@ -322,9 +322,9 @@ class Sepa
     {
         $strIBAN = str_replace(' ', '', trim(strtoupper($strIBAN)));
         if ((self::$wValidation & self::V_NO_IBAN_VALIDATION) != 0) {
-            return self::OK;    
+            return self::OK;
         }
-            
+
         if (count(self::$aValidation) == 0) {
             trigger_error('no country validation specified! (possibly forgotten to call Sepa::init()?)', E_USER_ERROR);
         }
@@ -338,10 +338,10 @@ class Sepa
         }
         $strClass = self::$aValidation[$strCntry];
         $oValidate = new $strClass($strCntry);
-         
+
         return $oValidate->validateIBAN($strIBAN);
     }
-    
+
     /**
      * validates given BIC.
      * @param string $strBIC
@@ -351,9 +351,9 @@ class Sepa
     {
         $strBIC = str_replace(' ', '', trim(strtoupper($strBIC)));
         if ((self::$wValidation & self::V_NO_BIC_VALIDATION) != 0) {
-            return self::OK;    
+            return self::OK;
         }
-            
+
         if (count(self::$aValidation) == 0) {
             trigger_error('no country validation specified! (possibly forgotten to call Sepa::init()?)', E_USER_ERROR);
         }
@@ -367,10 +367,10 @@ class Sepa
         }
         $strClass = self::$aValidation[$strCntry];
         $oValidate = new $strClass($strCntry);
-    
+
         return $oValidate->validateBIC($strBIC);
     }
-    
+
     /**
      * validates given CI (Creditor Scheme Identification).
      * @param string $strCI
@@ -380,9 +380,9 @@ class Sepa
     {
         $strCI = str_replace(' ', '', trim(strtoupper($strCI)));
         if ((self::$wValidation & self::V_NO_CI_VALIDATION) != 0) {
-            return self::OK;    
+            return self::OK;
         }
-            
+
         if (count(self::$aValidation) == 0) {
             trigger_error('no country validation specified! (possibly forgotten to call Sepa::init()?)', E_USER_ERROR);
         }
@@ -396,7 +396,7 @@ class Sepa
         }
         $strClass = self::$aValidation[$strCntry];
         $oValidate = new $strClass($strCntry);
-         
+
         return $oValidate->validateCI($strCI);
     }
 
@@ -414,13 +414,13 @@ class Sepa
         }
         return $strMsg;
     }
-    
+
     /**
      * Message to given IBAN errorcode
      * @param int $iError
      * @return string
      */
-    public static function errorMsgIBAN(int $iError) : string 
+    public static function errorMsgIBAN(int $iError) : string
     {
         $strMsg = 'unbekanter Fehler (' . $iError . ')!';
         if (isset(self::$aIBANError[$iError])) {
@@ -442,13 +442,13 @@ class Sepa
         }
         return $strMsg;
     }
-    
+
     /**
      * Message to given CI errorcode
      * @param int $iError
      * @return string
      */
-    public static function errorMsgCI(int $iError) : string 
+    public static function errorMsgCI(int $iError) : string
     {
         $strMsg = 'unbekanter Fehler (' . $iError . ')!';
         if (isset(self::$aCIError[$iError])) {
