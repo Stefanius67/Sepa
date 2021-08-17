@@ -229,6 +229,59 @@ class SepaTest extends TestCase
      */
     public function test_Output()
     {
+        $oSepaDoc = $this->createValidCDD();
+
+        ob_start();
+        $oSepaDoc->output('test.xml');
+
+        /*
+        header('Content-Type: application/xml');
+        header('Content-Disposition: ' . $strTarget . '; filename="' . $strName . '"');
+        header('Pragma: public');
+        */
+        $aHeaders = xdebug_get_headers();
+        $aAssocHeaders = [];
+        foreach ($aHeaders as $strHeader) {
+            list($strName, $strValue) = explode(':', $strHeader, 2);
+            $aAssocHeaders[trim($strName)] = trim($strValue);
+        }
+        $this->assertArrayHasKey('Content-Type', $aAssocHeaders);
+        $this->assertEquals('application/xml', $aAssocHeaders['Content-Type']);
+        $this->assertArrayHasKey('Content-Disposition', $aAssocHeaders);
+        $this->assertNotFalse(strpos($aAssocHeaders['Content-Disposition'], 'attachment'));
+        $this->assertNotFalse(strpos($aAssocHeaders['Content-Disposition'], '"test.xml"'));
+
+        $this->assertArrayHasKey('Pragma', $aAssocHeaders);
+
+        ob_end_clean();
+    }
+
+    public function test_validateCDDagainstXSD()
+    {
+        $oSepaDoc = $this->createValidCDD();
+        $strErrorMsg = $this->validateAgainstXSD($oSepaDoc, 'pain.008.002.02.xsd');
+
+        if (strlen($strErrorMsg) > 0) {
+            $this->fail($strErrorMsg);
+        }
+        // valid HTML
+        $this->assertTrue(true);
+    }
+
+    public function test_validateCCTagainstXSD()
+    {
+        $oSepaDoc = $this->createValidCCT();
+        $strErrorMsg = $this->validateAgainstXSD($oSepaDoc, 'pain.001.002.03.xsd');
+
+        if (strlen($strErrorMsg) > 0) {
+            $this->fail($strErrorMsg);
+        }
+        // valid HTML
+        $this->assertTrue(true);
+    }
+
+    protected function createValidCDD() : SepaDoc
+    {
         $aValidTransaction = array(
             'dblValue' => 104.45,
             'strDescription' => 'Test Betreff 1',
@@ -265,29 +318,79 @@ class SepaTest extends TestCase
         $oTxInf->fromArray($aValidTransaction);
         $this->assertEquals(Sepa::OK, $oPPI->addTransaction($oTxInf));
 
-        ob_start();
-        $oSepaDoc->output('test.xml');
+        return $oSepaDoc;
+    }
+
+    protected function createValidCCT() : SepaDoc
+    {
+        $aValidTransaction = array(
+            'dblValue' => 104.45,
+            'strDescription' => 'Test Betreff 1',
+            'strName' => 'Mustermann, Max',
+            'strIBAN' => 'DE11682900000009215808',
+            'strBIC' => 'GENODE61LAH',
+            'strMandateId' => 'ID-0815',
+            'strDateOfSignature' => '2018-04-03'
+        );
+
+        Sepa::init();
+        Sepa::setValidationLevel(Sepa::V_FULL_VALIDATION);
+
+        // test for dirct debit transdaction
+        $type = Sepa::CCT;
+
+        // create new SEPA document with header
+        $oSepaDoc = new SepaDoc($type);
+        $oSepaDoc->createGroupHeader('Test company 4711');
+
+        // create payment info instruction (PII) and set all needet creditor information
+        $oPPI = new SepaPmtInf($oSepaDoc);
+        $oPPI->setName('Testfirma');
+        $oPPI->setCI('CH51 ZZZ 12345678901');
+        $oPPI->setIBAN('DE71664500500070143559');
+        $oPPI->setBIC('GENODE61LAH');
+        $oPPI->setSeqType(Sepa::SEQ_RECURRENT);
+
+        // add the PII to the document.
+        $this->assertEquals(Sepa::OK, $oSepaDoc->addPaymentInstructionInfo($oPPI));
+
+        $oTxInf = new SepaTxInf($type);
+        $oTxInf->fromArray($aValidTransaction);
+        $this->assertEquals(Sepa::OK, $oPPI->addTransaction($oTxInf));
+
+        return $oSepaDoc;
+    }
+
+    protected function validateAgainstXSD(SepaDoc $oSepaDoc, string $strXSD) : string
+    {
+        $strErrorMsg = '';
+
+        libxml_use_internal_errors(true);
 
         /*
-        header('Content-Type: application/xml');
-        header('Content-Disposition: ' . $strTarget . '; filename="' . $strName . '"');
-        header('Pragma: public');
-        */
-        $aHeaders = xdebug_get_headers();
-        $aAssocHeaders = [];
-        foreach ($aHeaders as $strHeader) {
-            list($strName, $strValue) = explode(':', $strHeader, 2);
-            $aAssocHeaders[trim($strName)] = trim($strValue);
+         * save the created xml in temp folder and reload
+         * -> schemaValidation doesn't work correct on 'memory created' DOM document
+         *    see: https://www.php.net/manual/de/domdocument.schemavalidate.php#89893
+         */
+        $oSepaDoc->save(__DIR__ . '/temp/test.xml');
+        $oTempDoc = new \DOMDocument();
+        $oTempDoc->load(__DIR__ . '/temp/test.xml');
+        if (!$oTempDoc->schemaValidate(__DIR__ . '/testdata/' . $strXSD)) {
+            $errors = libxml_get_errors();
+            $aLevel = [LIBXML_ERR_WARNING => 'Warning ', LIBXML_ERR_ERROR => 'Error ', LIBXML_ERR_FATAL => 'Fatal Error '];
+
+            $strStart = "Schema validation failed (" . $strXSD . "):";
+            foreach ($errors as $error) {
+                $strErrorMsg .= $strStart . PHP_EOL . '   ' . $aLevel[$error->level] . $error->code;
+                $strErrorMsg .= ' -> (Line ' . $error->line . ', Col ' . $error->column . '): ' . trim($error->message);
+                $strStart = '';
+            }
         }
-        $this->assertArrayHasKey('Content-Type', $aAssocHeaders);
-        $this->assertEquals('application/xml', $aAssocHeaders['Content-Type']);
-        $this->assertArrayHasKey('Content-Disposition', $aAssocHeaders);
-        $this->assertNotFalse(strpos($aAssocHeaders['Content-Disposition'], 'attachment'));
-        $this->assertNotFalse(strpos($aAssocHeaders['Content-Disposition'], '"test.xml"'));
 
-        $this->assertArrayHasKey('Pragma', $aAssocHeaders);
+        unlink(__DIR__ . '/temp/test.xml');
+        libxml_clear_errors();
 
-        ob_end_clean();
+        return $strErrorMsg;
     }
 }
 

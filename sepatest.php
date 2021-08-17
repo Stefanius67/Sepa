@@ -10,25 +10,25 @@ use SKien\Sepa\SepaTxInf;
 	// some valid transactions
 	$aValidTransactions = array(
 		array(
-				'dblValue' => 104.45, 
-				'strDescription' => 'Test Betreff 1', 
-				'strName' => 'Mustermann, Max', 
-				'strIBAN' => 'DE11682900000009215808', 
-				'strBIC' => 'GENODE61LAH', 
-				'strMandateId' => 'ID-0815', 
+				'dblValue' => 104.45,
+				'strDescription' => 'Test Betreff 1',
+				'strName' => 'Mustermann, Max',
+				'strIBAN' => 'DE11682900000009215808',
+				'strBIC' => 'GENODE61LAH',
+				'strMandateId' => 'ID-0815',
 				'strDateOfSignature' => '2018-04-03'
 		),
 		array(
-				'dblValue' => 205.67, 
-				'strDescription' => 'Test Betreff 2', 
-				'strName' => 'Musterfrau, Karin', 
-				'strIBAN' => 'DE71664500500070143559', 
-				'strBIC' => 'SOLADES1OFG', 
-				'strMandateId' => 'ID-0816', 
+				'dblValue' => 205.67,
+				'strDescription' => 'Test Betreff 2',
+				'strName' => 'Musterfrau, Karin',
+				'strIBAN' => 'DE71664500500070143559',
+				'strBIC' => 'SOLADES1OFG',
+				'strMandateId' => 'ID-0816',
 				'strDateOfSignature' => '2019-06-09'
 		)
 	);
-	
+
 	// some invalid transactions to test validation
 	$aInvalidTransactions = array(
 			array(
@@ -45,7 +45,7 @@ use SKien\Sepa\SepaTxInf;
 					'strDescription' => '',					// missing descr
 					'strName' => 'Mustermann, Max',
 					'strIBAN' => 'FR14 2004 1010 0505 0001 3M02 606',
-					'strBIC' => 'GENODE61LAH',				
+					'strBIC' => 'GENODE61LAH',
 					// 'strMandateId' => 'ID-0815',			// missing
 					// 'strDateOfSignature' => '18-04-03'	// missing
 			),
@@ -59,9 +59,9 @@ use SKien\Sepa\SepaTxInf;
 					'strDateOfSignature' => '2019-06-09'
 			)
 	);
-	
+
 	$bValidTest = isset($_GET['valid']) && $_GET['valid'] == 1;
-	
+
 	// initialize package
 	// - init() have to be called first before any use of the package!
 	// - full validation is by default activated
@@ -69,10 +69,10 @@ use SKien\Sepa\SepaTxInf;
 	Sepa::init();
 	Sepa::setValidationLevel(Sepa::V_FULL_VALIDATION);
 	Sepa::loadErrorMsg('sepa_errormsg_de.json');
-	
+
 	// test for dirct debit transdaction
 	$type = Sepa::CDD;
-	
+
 	// create new SEPA document with header
 	$oSepaDoc = new SepaDoc($type);
 	$oSepaDoc->createGroupHeader('Test company 4711');
@@ -84,9 +84,9 @@ use SKien\Sepa\SepaTxInf;
 	$oPPI->setIBAN('DE71664500500070143559');
 	$oPPI->setBIC('GENODE61LAH');
 	$oPPI->setSeqType(Sepa::SEQ_RECURRENT);
-	
+
 	// add the PII to the document.
-	// NOTE: dont' add any transaction to the PII bofore added to the doc!   
+	// NOTE: dont' add any transaction to the PII bofore added to the doc!
 	if (($iErr = $oSepaDoc->addPaymentInstructionInfo($oPPI)) == Sepa::OK) {
 		// test for transactions through SepaTxInf::fromArray()
 	    $aTransactions = $bValidTest ? $aValidTransactions : $aInvalidTransactions;
@@ -98,14 +98,14 @@ use SKien\Sepa\SepaTxInf;
 				echo '<h2>' . $oTxInf->getName() . ' (' . $oTxInf->getDescription() . ')</h2>';
 				echo $oTxInf->errorMsg($iErr, '<br />');
 			} else {
-				// ... may write back generated id to database 
+				// ... may write back generated id to database
 			    // $strPaymentId = $oTxInf->getPaymentId();
 			}
 		}
-		
+
 		// test for direct call of SepaTxInf::setXXX Methods
 		$oTxInf = new SepaTxInf($type);
-	
+
 		$oTxInf->setValue( 168.24 );
 		$oTxInf->setDescription('Test Betreff 3');
 		$oTxInf->setName('Doe, John');
@@ -113,7 +113,7 @@ use SKien\Sepa\SepaTxInf;
 		$oTxInf->setBIC('SOLADES1OFG');
 		$oTxInf->setMandateId('ID-4711');
 		$oTxInf->setDateOfSignature(new DateTime('22.12.2017'));
-		
+
 		$iErr = $oTxInf->validate();
 		if ($iErr == Sepa::OK) {
 			$oPPI->addTransaction($oTxInf);
@@ -121,7 +121,7 @@ use SKien\Sepa\SepaTxInf;
 			echo $oTxInf->getName() . ' (' . $oTxInf->getDescription() . ')<br />';
 			echo $oTxInf->errorMsg($iErr, '<br />');
 		}
-		
+
 		if ($oSepaDoc->getInvalidCount() == 0) {
 			// ... may cretae some loging etc.
 			/*
@@ -129,10 +129,9 @@ use SKien\Sepa\SepaTxInf;
 			$strLog .= $oSepaDoc->getTxCount() . 'Transaktionen / ';
 			$strLog .= sprintf("%01.2f", $oSepaDoc->getCtrlSum()) . ' &euro;)';
 			*/
-			$oSepaDoc->output('test.xml');
+  			$oSepaDoc->output('test.xml');
 		}
 	} else {
 		echo '<h2>' . $oPPI->getName() . '</h2>';
 		echo $oPPI->errorMsg($iErr, '<br />');
 	}
-	
