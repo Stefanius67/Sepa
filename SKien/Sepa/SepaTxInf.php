@@ -90,6 +90,7 @@ class SepaTxInf
      */
     public function fromArray(array $aProperties) : void
     {
+        // use the setter methods to ensure that all validations are made!
         if (isset($aProperties['strName'])) {
             $this->setName($aProperties['strName']);
         }
