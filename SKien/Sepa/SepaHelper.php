@@ -44,7 +44,7 @@ trait SepaHelper
         $uuid = substr($charid, 0, 8) . chr(45) .
                 substr($charid, 8, 4) . chr(45) .
                 substr($charid, 12, 4) . chr(45) .
-                substr($charid, 16,12);
+                substr($charid, 16, 12);
 
         return $uuid;
     }
