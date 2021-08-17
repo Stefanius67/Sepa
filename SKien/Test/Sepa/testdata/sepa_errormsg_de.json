@@ -1,0 +1,42 @@
+{
+    "aIBAN": {
+        "1":        "Der Ländercode der IBAN wird nicht unterstützt!",
+        "2":        "Ungültige Länge der IBAN!",
+        "3":        "Die IBAN enthält ungültige Zeichen!",
+        "4":        "ungültige IBAN - Prüfsumme!"
+    },
+    "aBIC": {
+        "10":       "Ungültige BIC!",
+        "11":       "Der Ländercode der BIC wird nicht unterstützt!"
+    },
+    "aCI": {
+        "20":       "Der Ländercode der CI wird nicht unterstützt!",
+        "21":       "Ungültige Länge der CI!",
+        "22":       "Die CI enthält ungültige Zeichen",
+        "23":       "ungültige CI - Prüfsumme"
+    },
+    "aPmtInf": {
+        "1":        "Der Name fehlt",
+        "2":        "Die IBAN fehlt",
+        "4":        "Die BIC fehlt",
+        "8":        "Die CI fehlt",
+        "16":       "Ungültige IBAN",
+        "32":       "Ungültige BIC",
+        "64":       "Ungültige CI",
+        "128":      "Der Sequence Type fehlt",
+        "256":      "Ungültiger Sequence Type"
+    },
+    "aTxInf": {
+        "1":        "Der Name fehlt",
+        "2":        "Die IBAN fehlt",
+        "4":        "Die BIC fehlt",
+        "16":       "Ungültige IBAN",
+        "32":       "Ungültige BIC",
+        "512":      "Das SEPA Mandat fehlt",
+        "1024":     "Die Gültigkeit des SEPA Mandats fehlt",
+        "2048":     "Der Verwendungszweck fehlt",
+        "4096":     "Der Betrag ist 0.0 EUR",
+        "8192":     "Ungültige Transaktionsart",
+        "16384":    "Ungültige Datumsangabe"
+    }
+}

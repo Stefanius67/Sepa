@@ -20,6 +20,7 @@ class SepaTxInfTest extends TestCase
 
     public function test__construct()
     {
+        Sepa::init();
         $oTxInf = new SepaTxInf(Sepa::CCT);
         $this->assertSame(Sepa::CCT, $oTxInf->getType());
         $oTxInf = new SepaTxInf(Sepa::CDD);
