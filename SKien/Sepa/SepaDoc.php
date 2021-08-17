@@ -155,9 +155,9 @@ class SepaDoc extends \DOMDocument
                     $xmlNode = $this->addChild($xmlNode, 'SchmeNm');
                     $this->addChild($xmlNode, 'Prtry', 'SEPA');
                 } else {
-                    // Requested Collection Date always 1999-01-01 for Credit Transfer
+                    // Requested Execution Date always 1999-01-01 for Credit Transfer
                     //   -> will be set to next possible date by executing Financial Institute
-                    $this->addChild($oPmtInf, 'ReqdColltnDt', date('1999-01-01'));
+                    $this->addChild($oPmtInf, 'ReqdExctnDt', date('1999-01-01'));
 
                     // Creditor Information
                     $xmlNode = $this->addChild($oPmtInf, 'Dbtr');
