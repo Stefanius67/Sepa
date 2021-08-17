@@ -215,10 +215,21 @@ class SepaCntryValidationBase implements SepaCntryValidation
      */
     protected function adjustFP(string $str) : string
     {
+        // @codeCoverageIgnoreStart
+        /*
+         * Note:
+         * This problem actually occurred in practice, unfortunately at the time I wrote
+         * the tests, I no longer have any concrete sample data that cause this error.
+         * This means that I am currently not in a position to intentionally induce the
+         * error in order to test its correct handling.
+         * That's why I take the function out of the coverage so that I don't have to look
+         * over and over again with every run to see what is not covered ...
+         */
         if (strpos('.', $str) !== false) {
             $str = substr($str, 0, strpos('.', $str));
         }
         return $str;
+        // @codeCoverageIgnoreEnd
     }
 
     /**

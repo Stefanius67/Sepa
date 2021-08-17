@@ -181,10 +181,10 @@ class Sepa
         );
 
         self::$aCIError = array(
-            Sepa::ERR_IBAN_INVALID_CNTRY   => 'The country code of the CI is not supported!',
-            Sepa::ERR_IBAN_INVALID_LENGTH  => 'Invalid length of the CI!',
-            Sepa::ERR_IBAN_INVALID_SIGN    => 'The CI contains invalid characters!',
-            Sepa::ERR_IBAN_CHECKSUM        => 'Invalid CI checksum!',
+            Sepa::ERR_CI_INVALID_CNTRY     => 'The country code of the CI is not supported!',
+            Sepa::ERR_CI_INVALID_LENGTH    => 'Invalid length of the CI!',
+            Sepa::ERR_CI_INVALID_SIGN      => 'The CI contains invalid characters!',
+            Sepa::ERR_CI_CHECKSUM          => 'Invalid CI checksum!',
         );
 
         self::$aPmtInfError = array(
@@ -408,7 +408,7 @@ class Sepa
     public static function errorMsg(int $iError) : string
     {
         $aError = array_merge(self::$aIBANError, self::$aBICError, self::$aCIError);
-        $strMsg = 'unbekanter Fehler (' . $iError . ')!';
+        $strMsg = 'unknown Error (' . $iError . ')!';
         if (isset($aError[$iError])) {
             $strMsg = $aError[$iError];
         }
@@ -422,7 +422,7 @@ class Sepa
      */
     public static function errorMsgIBAN(int $iError) : string
     {
-        $strMsg = 'unbekanter Fehler (' . $iError . ')!';
+        $strMsg = 'unknown Error (' . $iError . ')!';
         if (isset(self::$aIBANError[$iError])) {
             $strMsg = self::$aIBANError[$iError];
         }
@@ -436,7 +436,7 @@ class Sepa
      */
     public static function errorMsgBIC(int $iError) : string
     {
-        $strMsg = 'unbekanter Fehler (' . $iError . ')!';
+        $strMsg = 'unknown Error (' . $iError . ')!';
         if (isset(self::$aBICError[$iError])) {
             $strMsg = self::$aBICError[$iError];
         }
@@ -450,7 +450,7 @@ class Sepa
      */
     public static function errorMsgCI(int $iError) : string
     {
-        $strMsg = 'unbekanter Fehler (' . $iError . ')!';
+        $strMsg = 'unknown Error (' . $iError . ')!';
         if (isset(self::$aCIError[$iError])) {
             $strMsg = self::$aCIError[$iError];
         }

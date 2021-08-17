@@ -109,68 +109,68 @@ class SepaDoc extends \DOMDocument
      */
     public function addPaymentInstructionInfo(SepaPmtInf $oPmtInf) : int
     {
+        $iErr = -1;
         if ($this->xmlBase === null || $this->xmlTxCount === null || $this->xmlCtrlSum === null) {
             trigger_error('call createGroupHeader() before add PII', E_USER_ERROR);
-            return -1;
-        }
+        } else {
+            $iErr = $oPmtInf->validate();
+            if ($iErr == Sepa::OK) {
+                $this->xmlBase->appendChild($oPmtInf);
 
-        $iErr = $oPmtInf->validate();
-        if ($iErr == Sepa::OK) {
-            $this->xmlBase->appendChild($oPmtInf);
+                $this->addChild($oPmtInf, 'PmtInfId', $this->id);
+                $this->addChild($oPmtInf, 'PmtMtd', $this->type);
+                $oPmtInf->setTxCountNode($this->addChild($oPmtInf, 'NbOfTxs', 0));
+                $oPmtInf->setCtrlSumNode($this->addChild($oPmtInf, 'CtrlSum', sprintf("%01.2f", 0.0)));
 
-            $this->addChild($oPmtInf, 'PmtInfId', $this->id);
-            $this->addChild($oPmtInf, 'PmtMtd', $this->type);
-            $oPmtInf->setTxCountNode($this->addChild($oPmtInf, 'NbOfTxs', 0));
-            $oPmtInf->setCtrlSumNode($this->addChild($oPmtInf, 'CtrlSum', sprintf("%01.2f", 0.0)));
+                // Payment Type Information
+                $xmlPmtTpInf = $this->addChild($oPmtInf, 'PmtTpInf');
+                $xmlNode = $this->addChild($xmlPmtTpInf, 'SvcLvl');
+                $this->addChild($xmlNode, 'Cd', 'SEPA');
 
-            // Payment Type Information
-            $xmlPmtTpInf = $this->addChild($oPmtInf, 'PmtTpInf');
-            $xmlNode = $this->addChild($xmlPmtTpInf, 'SvcLvl');
-            $this->addChild($xmlNode, 'Cd', 'SEPA');
+                if ($this->type == Sepa::CDD) {
+                    // only for directdebit
+                    $xmlNode = $this->addChild($xmlPmtTpInf, 'LclInstrm');
+                    $this->addChild($xmlNode, 'Cd', 'CORE');
+                    $this->addChild($xmlPmtTpInf, 'SeqTp', $oPmtInf->getSeqType());
+                    $this->addChild($oPmtInf, 'ReqdColltnDt', $oPmtInf->getCollectionDate());
 
-            if ($this->type == Sepa::CDD) {
-                // only for directdebit
-                $xmlNode = $this->addChild($xmlPmtTpInf, 'LclInstrm');
-                $this->addChild($xmlNode, 'Cd', 'CORE');
-                $this->addChild($xmlPmtTpInf, 'SeqTp', $oPmtInf->getSeqType());
-                $this->addChild($oPmtInf, 'ReqdColltnDt', $oPmtInf->getCollectionDate());
+                    // Creditor Information
+                    $xmlNode = $this->addChild($oPmtInf, 'Cdtr');
+                    $this->addChild($xmlNode, 'Nm', $oPmtInf->getName());
 
-                // Creditor Information
-                $xmlNode = $this->addChild($oPmtInf, 'Cdtr');
-                $this->addChild($xmlNode, 'Nm', $oPmtInf->getName());
+                    $xmlNode = $this->addChild($oPmtInf, 'CdtrAcct');
+                    $xmlNode = $this->addChild($xmlNode, 'Id');
+                    $this->addChild($xmlNode, 'IBAN', $oPmtInf->getIBAN());
 
-                $xmlNode = $this->addChild($oPmtInf, 'CdtrAcct');
-                $xmlNode = $this->addChild($xmlNode, 'Id');
-                $this->addChild($xmlNode, 'IBAN', $oPmtInf->getIBAN());
+                    $xmlNode = $this->addChild($oPmtInf, 'CdtrAgt');
+                    $xmlNode = $this->addChild($xmlNode, 'FinInstnId');
+                    $this->addChild($xmlNode, 'BIC', $oPmtInf->getBIC());
 
-                $xmlNode = $this->addChild($oPmtInf, 'CdtrAgt');
-                $xmlNode = $this->addChild($xmlNode, 'FinInstnId');
-                $this->addChild($xmlNode, 'BIC', $oPmtInf->getBIC());
+                    // Creditor Scheme Identification
+                    $xmlNode = $this->addChild($oPmtInf, 'CdtrSchmeId');
+                    $xmlNode = $this->addChild($xmlNode, 'Id');
+                    $xmlNode = $this->addChild($xmlNode, 'PrvtId');
+                    $xmlNode = $this->addChild($xmlNode, 'Othr');
+                    $this->addChild($xmlNode, 'Id', $oPmtInf->getCI());
+                    $xmlNode = $this->addChild($xmlNode, 'SchmeNm');
+                    $this->addChild($xmlNode, 'Prtry', 'SEPA');
+                } else {
+                    // Requested Collection Date always 1999-01-01 for Credit Transfer
+                    //   -> will be set to next possible date by executing Financial Institute
+                    $this->addChild($oPmtInf, 'ReqdColltnDt', date('1999-01-01'));
 
-                // Creditor Scheme Identification
-                $xmlNode = $this->addChild($oPmtInf, 'CdtrSchmeId');
-                $xmlNode = $this->addChild($xmlNode, 'Id');
-                $xmlNode = $this->addChild($xmlNode, 'PrvtId');
-                $xmlNode = $this->addChild($xmlNode, 'Othr');
-                $this->addChild($xmlNode, 'Id', $oPmtInf->getCI());
-                $xmlNode = $this->addChild($xmlNode, 'SchmeNm');
-                $this->addChild($xmlNode, 'Prtry', 'SEPA');
-            } else {
-                // Requested Collection Date always 1999-01-01 for Credit Transfer
-                //   -> will be set to next possible date by executing Financial Institute
-                $this->addChild($oPmtInf, 'ReqdColltnDt', date('1999-01-01'));
+                    // Creditor Information
+                    $xmlNode = $this->addChild($oPmtInf, 'Dbtr');
+                    $this->addChild($xmlNode, 'Nm', $oPmtInf->getName());
 
-                // Creditor Information
-                $xmlNode = $this->addChild($oPmtInf, 'Dbtr');
-                $this->addChild($xmlNode, 'Nm', $oPmtInf->getName());
+                    $xmlNode = $this->addChild($oPmtInf, 'DbtrAcct');
+                    $xmlNode = $this->addChild($xmlNode, 'Id');
+                    $this->addChild($xmlNode, 'IBAN', $oPmtInf->getIBAN());
 
-                $xmlNode = $this->addChild($oPmtInf, 'DbtrAcct');
-                $xmlNode = $this->addChild($xmlNode, 'Id');
-                $this->addChild($xmlNode, 'IBAN', $oPmtInf->getIBAN());
-
-                $xmlNode = $this->addChild($oPmtInf, 'DbtrAgt');
-                $xmlNode = $this->addChild($xmlNode, 'FinInstnId');
-                $this->addChild($xmlNode, 'BIC', $oPmtInf->getBIC());
+                    $xmlNode = $this->addChild($oPmtInf, 'DbtrAgt');
+                    $xmlNode = $this->addChild($xmlNode, 'FinInstnId');
+                    $this->addChild($xmlNode, 'BIC', $oPmtInf->getBIC());
+                }
             }
         }
         return $iErr;
@@ -202,12 +202,12 @@ class SepaDoc extends \DOMDocument
     {
         if ($this->xmlTxCount === null || $this->xmlCtrlSum === null) {
             trigger_error('call createGroupHeader() before calc()', E_USER_ERROR);
-            return;
+        } else {
+            $this->iTxCount++;
+            $this->xmlTxCount->nodeValue = (string)$this->iTxCount;
+            $this->dblCtrlSum += $dblValue;
+            $this->xmlCtrlSum->nodeValue = sprintf("%01.2f", $this->dblCtrlSum);
         }
-        $this->iTxCount++;
-        $this->xmlTxCount->nodeValue = (string)$this->iTxCount;
-        $this->dblCtrlSum += $dblValue;
-        $this->xmlCtrlSum->nodeValue = sprintf("%01.2f", $this->dblCtrlSum);
     }
 
     /**

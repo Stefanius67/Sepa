@@ -207,15 +207,14 @@ class SepaPmtInf extends \DOMElement
      */
     public function calc(float $dblValue) : void
     {
-        if ($this->xmlTxCount === null || $this->xmlCtrlSum === null) {
-            return;
-        }
-        $this->iTxCount++;
-        $this->xmlTxCount->nodeValue = (string)$this->iTxCount;
-        $this->dblCtrlSum += $dblValue;
-        $this->xmlCtrlSum->nodeValue = sprintf("%01.2f", $this->dblCtrlSum);
+        if ($this->xmlTxCount !== null && $this->xmlCtrlSum !== null) {
+            $this->iTxCount++;
+            $this->xmlTxCount->nodeValue = (string)$this->iTxCount;
+            $this->dblCtrlSum += $dblValue;
+            $this->xmlCtrlSum->nodeValue = sprintf("%01.2f", $this->dblCtrlSum);
 
-        $this->sepaDoc->calc($dblValue);
+            $this->sepaDoc->calc($dblValue);
+        }
     }
 
     /**
