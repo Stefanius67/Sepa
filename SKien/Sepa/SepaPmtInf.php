@@ -143,8 +143,9 @@ class SepaPmtInf extends \DOMElement
                 $xmlNode = $this->addChild($xmlTx, 'PmtId');
                 $this->addChild($xmlNode, 'EndToEndId', $oTxInf->getPaymentId());
 
-                // Instructed Amount
-                $xmlNode = $this->addChild($xmlTx, 'InstdAmt', sprintf("%01.2f", $oTxInf->getValue()));
+                // Amount
+                $xmlNode = $this->addChild($xmlTx, 'Amt');
+                $xmlNode = $this->addChild($xmlNode, 'InstdAmt', sprintf("%01.2f", $oTxInf->getValue()));
                 $xmlNode->SetAttribute('Ccy', 'EUR');
 
                 // Creditor Information  Name, IBAN, BIC
