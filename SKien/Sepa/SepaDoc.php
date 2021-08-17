@@ -27,7 +27,7 @@ class SepaDoc extends \DOMDocument
     /** @var string  type of sepa document  */
     protected string $type = '';
     /** @var \DOMElement  XML Base-Element       */
-    protected ?\DOMElement $xmlBase  = null;
+    protected ?\DOMElement $xmlBase = null;
     /** @var int     overall count of transactions  */
     protected int $iTxCount = 0;
     /** @var \DOMElement  DOM element containing overall count of transactions   */
@@ -48,8 +48,8 @@ class SepaDoc extends \DOMDocument
         // invalid type causes E_USER_ERROR
         $this->isValidType($type);
         $aTypeInfo = array(
-            Sepa::CCT   =>  array( 'pain' => '001.002.03', 'base' => 'CstmrCdtTrfInitn' ),
-            Sepa::CDD   =>  array( 'pain' => '008.002.02', 'base' => 'CstmrDrctDbtInitn' )
+            Sepa::CCT => array('pain' => '001.002.03', 'base' => 'CstmrCdtTrfInitn'),
+            Sepa::CDD => array('pain' => '008.002.02', 'base' => 'CstmrDrctDbtInitn')
         );
 
         $strPain = $aTypeInfo[$type]['pain'];
@@ -60,12 +60,12 @@ class SepaDoc extends \DOMDocument
         $this->type = $type;
 
         $this->formatOutput = true;
-        $this->preserveWhiteSpace = false;  // 'formatOutput' only works if 'preserveWhiteSpace' set to false
+        $this->preserveWhiteSpace = false; // 'formatOutput' only works if 'preserveWhiteSpace' set to false
 
         $xmlRoot = $this->createElement("Document");
-        $xmlRoot->setAttribute("xmlns",                 "urn:iso:std:iso:20022:tech:xsd:pain." . $strPain);
-        $xmlRoot->setAttribute("xmlns:xsi",             "http://www.w3.org/2001/XMLSchema-instance");
-        $xmlRoot->setAttribute("xsi:schemaLocation",    "urn:iso:std:iso:20022:tech:xsd:pain." . $strPain . " pain." . $strPain . ".xsd");
+        $xmlRoot->setAttribute("xmlns", "urn:iso:std:iso:20022:tech:xsd:pain." . $strPain);
+        $xmlRoot->setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+        $xmlRoot->setAttribute("xsi:schemaLocation", "urn:iso:std:iso:20022:tech:xsd:pain." . $strPain . " pain." . $strPain . ".xsd");
         $this->appendChild($xmlRoot);
 
         $this->xmlBase = $this->createElement($strBase);
@@ -86,7 +86,7 @@ class SepaDoc extends \DOMDocument
             $this->id = self::createUID();
 
             $this->addChild($xmlGrpHdr, 'MsgId', $this->id);
-            $this->addChild($xmlGrpHdr, 'CreDtTm', date(DATE_ATOM));  // str_replace(' ', 'T', date('Y-m-d h:i:s')));
+            $this->addChild($xmlGrpHdr, 'CreDtTm', date(DATE_ATOM)); // str_replace(' ', 'T', date('Y-m-d h:i:s')));
             $this->xmlTxCount = $this->addChild($xmlGrpHdr, 'NbOfTxs', 0);
             $this->xmlCtrlSum = $this->addChild($xmlGrpHdr, 'CtrlSum', sprintf("%01.2f", 0.0));
 
@@ -115,7 +115,7 @@ class SepaDoc extends \DOMDocument
         }
 
         $iErr = $oPmtInf->validate();
-        if ( $iErr == Sepa::OK) {
+        if ($iErr == Sepa::OK) {
             $this->xmlBase->appendChild($oPmtInf);
 
             $this->addChild($oPmtInf, 'PmtInfId', $this->id);
@@ -183,7 +183,7 @@ class SepaDoc extends \DOMDocument
      * @param string $strName       output filename
      * @param string $strTarget     target (default: 'attachment')
      */
-    public function output(string $strName, string $strTarget='attachment') : void
+    public function output(string $strName, string $strTarget = 'attachment') : void
     {
         // send to browser
         header('Content-Type: application/xml');
@@ -226,7 +226,7 @@ class SepaDoc extends \DOMDocument
      * @param mixed         $value      nodevalue. If empty, no value will be assigned (to create node only containing child elements)
      * @return \DOMElement
      */
-    protected function addChild(\DOMElement $xmlParent, string $strNode, $value='') : \DOMElement
+    protected function addChild(\DOMElement $xmlParent, string $strNode, $value = '') : \DOMElement
     {
         $xmlNode = $this->createElement($strNode);
         if (!empty($value)) {

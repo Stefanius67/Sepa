@@ -291,7 +291,7 @@ class Sepa
         */
         if (file_exists($strFilename)) {
             $strJson = file_get_contents($strFilename);
-            $jsonData = json_decode((string) $strJson, true);
+            $jsonData = json_decode((string)$strJson, true);
             if ($jsonData) {
                 if (isset($jsonData['aIBAN'])) {
                     self::$aIBANError = $jsonData['aIBAN'];

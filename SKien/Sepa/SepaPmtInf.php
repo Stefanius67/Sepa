@@ -101,7 +101,7 @@ class SepaPmtInf extends \DOMElement
         }
 
         $iErr = $oTxInf->validate();
-        if ( $iErr == Sepa::OK) {
+        if ($iErr == Sepa::OK) {
             if ($oTxInf->getType() == Sepa::CDD) {
                 $xmlTx = $this->addChild(null, 'DrctDbtTxInf');
 
@@ -133,7 +133,7 @@ class SepaPmtInf extends \DOMElement
 
                 // Ultimate Debitor if requested
                 $strUltmtDbtr = $oTxInf->getUltimateName();
-                if ( strlen($strUltmtDbtr) > 0) {
+                if (strlen($strUltmtDbtr) > 0) {
                     $xmlNode = $this->addChild($xmlTx, 'UltmtDbtr');
                     $this->addChild($xmlNode, 'Nm', $strUltmtDbtr);
                 }
@@ -161,7 +161,7 @@ class SepaPmtInf extends \DOMElement
 
                 // Ultimate Creditor if requested
                 $strUltmtCbtr = $oTxInf->getUltimateName();
-                if ( strlen($strUltmtCbtr) > 0) {
+                if (strlen($strUltmtCbtr) > 0) {
                     $xmlNode = $this->addChild($xmlTx, 'UltmtCbtr');
                     $this->addChild($xmlNode, 'Nm', $strUltmtCbtr);
                 }
@@ -189,7 +189,7 @@ class SepaPmtInf extends \DOMElement
      */
     protected function addChild(?\DOMElement $xmlParent, string $strNode, $value = '') : \DOMElement
     {
-        if($xmlParent == null) {
+        if ($xmlParent == null) {
             $xmlParent = $this;
         }
         $xmlNode = $this->sepaDoc->createElement($strNode);
@@ -211,7 +211,7 @@ class SepaPmtInf extends \DOMElement
             return;
         }
         $this->iTxCount++;
-        $this->xmlTxCount->nodeValue = (string) $this->iTxCount;
+        $this->xmlTxCount->nodeValue = (string)$this->iTxCount;
         $this->dblCtrlSum += $dblValue;
         $this->xmlCtrlSum->nodeValue = sprintf("%01.2f", $this->dblCtrlSum);
 
@@ -357,7 +357,7 @@ class SepaPmtInf extends \DOMElement
         if (!Sepa::checkValidation(Sepa::V_NO_IBAN_VALIDATION)) {
             if (strlen($this->strIBAN) == 0) {
                 $iErr |= Sepa::ERR_PMT_IBAN_MISSING;
-            } else if( Sepa::validateIBAN($this->strIBAN) != Sepa::OK) {
+            } else if (Sepa::validateIBAN($this->strIBAN) != Sepa::OK) {
                 $iErr |= Sepa::ERR_PMT_INVALID_IBAN;
             }
         }
@@ -374,7 +374,7 @@ class SepaPmtInf extends \DOMElement
         if (!Sepa::checkValidation(Sepa::V_NO_BIC_VALIDATION)) {
             if (strlen($this->strBIC) == 0) {
                 $iErr |= Sepa::ERR_PMT_BIC_MISSING;
-            } else if( Sepa::validateBIC($this->strBIC) != Sepa::OK) {
+            } else if (Sepa::validateBIC($this->strBIC) != Sepa::OK) {
                 $iErr |= Sepa::ERR_PMT_INVALID_BIC;
             }
         }
@@ -391,7 +391,7 @@ class SepaPmtInf extends \DOMElement
         if (!Sepa::checkValidation(Sepa::V_NO_CI_VALIDATION)) {
             if (strlen($this->strCI) == 0) {
                 $iErr |= Sepa::ERR_PMT_CI_MISSING;
-            } else if( Sepa::validateCI($this->strCI) != Sepa::OK) {
+            } else if (Sepa::validateCI($this->strCI) != Sepa::OK) {
                 $iErr |= Sepa::ERR_PMT_INVALID_CI;
             }
         }
@@ -411,7 +411,7 @@ class SepaPmtInf extends \DOMElement
             }
             if (strlen($this->strSeqType) == 0) {
                 $iErr |= Sepa::ERR_PMT_SEQ_TYPE_MISSING;
-            } else if( $this->strSeqType != Sepa::SEQ_FIRST && $this->strSeqType != Sepa::SEQ_RECURRENT && $this->strSeqType != Sepa::SEQ_ONE_OFF && $this->strSeqType != Sepa::SEQ_FINAL) {
+            } else if ($this->strSeqType != Sepa::SEQ_FIRST && $this->strSeqType != Sepa::SEQ_RECURRENT && $this->strSeqType != Sepa::SEQ_ONE_OFF && $this->strSeqType != Sepa::SEQ_FINAL) {
                 $iErr |= Sepa::ERR_PMT_INVALID_SEQ_TYPE;
             }
         }

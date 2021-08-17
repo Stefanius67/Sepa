@@ -90,31 +90,31 @@ class SepaTxInf
      */
     public function fromArray(array $aProperties) : void
     {
-        if (isset($aProperties['strName']) ) {
+        if (isset($aProperties['strName'])) {
             $this->setName($aProperties['strName']);
         }
-        if (isset($aProperties['strIBAN']) ) {
+        if (isset($aProperties['strIBAN'])) {
             $this->setIBAN($aProperties['strIBAN']);
         }
-        if (isset($aProperties['strBIC']) ) {
+        if (isset($aProperties['strBIC'])) {
             $this->setBIC($aProperties['strBIC']);
         }
-        if (isset($aProperties['strMandateId']) ) {
+        if (isset($aProperties['strMandateId'])) {
             $this->setMandateId($aProperties['strMandateId']);
         }
-        if (isset($aProperties['strDateOfSignature']) ) {
+        if (isset($aProperties['strDateOfSignature'])) {
             $this->setDateOfSignature($aProperties['strDateOfSignature']);
         }
-        if (isset($aProperties['strDescription']) ) {
+        if (isset($aProperties['strDescription'])) {
             $this->setDescription($aProperties['strDescription']);
         }
-        if (isset($aProperties['dblValue']) ) {
+        if (isset($aProperties['dblValue'])) {
             $this->setValue(floatval($aProperties['dblValue']));
         }
-        if (isset($aProperties['strUltimateName']) ) {
+        if (isset($aProperties['strUltimateName'])) {
             $this->setUltimateName($aProperties['strUltimateName']);
         }
-        if (isset($aProperties['strPaymentId']) ) {
+        if (isset($aProperties['strPaymentId'])) {
             $this->setPaymentId($aProperties['strPaymentId']);
         }
     }

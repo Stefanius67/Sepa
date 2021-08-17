@@ -25,7 +25,7 @@ trait SepaHelper
      */
     protected function isValidType(string $type) : bool
     {
-        if( $type != Sepa::CCT && $type != Sepa::CDD ) {
+        if ($type != Sepa::CCT && $type != Sepa::CDD) {
             trigger_error('invalid type for ' . get_class($this), E_USER_ERROR);
         }
         return true;
@@ -39,11 +39,11 @@ trait SepaHelper
      */
     public static function createUID() : string
     {
-        mt_srand((int)microtime(true) * 10000);
-        $charid = strtoupper(md5(uniqid((string)rand(), true)));
-        $uuid =  substr($charid,  0, 8) . chr( 45 )
-                .substr($charid,  8, 4) . chr( 45 )
-                .substr($charid, 12, 4) . chr( 45 )
+        mt_srand((int) microtime(true) * 10000);
+        $charid = strtoupper(md5(uniqid((string) rand(), true)));
+        $uuid =  substr($charid, 0, 8) . chr(45)
+                .substr($charid, 8, 4) . chr(45)
+                .substr($charid, 12, 4) . chr(45)
                 .substr($charid, 16,12);
 
         return $uuid;
@@ -88,7 +88,7 @@ trait SepaHelper
         $strValid = self::replaceSpecialChars($str);
 
         // regular expresion for 'standard' types MAXxxx
-        $strRegEx = '/[^A-Za-z0-9 \.,\-\/\+():?]/';   // A...Z, a...z, 0...9, blank, dot, comma plus, minus, slash, questionmark, colon, open/closing bracket
+        $strRegEx = '/[^A-Za-z0-9 \.,\-\/\+():?]/'; // A...Z, a...z, 0...9, blank, dot, comma plus, minus, slash, questionmark, colon, open/closing bracket
         $strReplace = ' ';
         $iMaxLen = 1025;
         switch ($iType) {
@@ -99,7 +99,7 @@ trait SepaHelper
                 break;
             case Sepa::ID2:
                 $iMaxLen = 35;
-                $strRegEx = '/[^A-Za-z0-9\.,\+\-\/]/';   // same as ID1 except blank...
+                $strRegEx = '/[^A-Za-z0-9\.,\+\-\/]/'; // same as ID1 except blank...
                 $strReplace = '';
                 break;
             case Sepa::MAX35:
@@ -131,7 +131,7 @@ trait SepaHelper
     public static function replaceSpecialChars(string $str) : string
     {
         $strReplaced = '';
-        if( strlen($str) > 0 ) {
+        if (strlen($str) > 0) {
             // replace known special chars
             $aSpecialChars = array(
                 'á' => 'a', 'à' => 'a', 'ä' => 'ae', 'â' => 'a', 'ã' => 'a', 'å' => 'a', 'æ' => 'ae',
@@ -151,7 +151,7 @@ trait SepaHelper
                 '_' => '-', '@' => '(at)', '€' => 'EUR'
             );
 
-            $strReplaced = strtr( $str, $aSpecialChars );
+            $strReplaced = strtr($str, $aSpecialChars);
         }
         return $strReplaced;
     }
@@ -163,7 +163,7 @@ trait SepaHelper
      * @param int $dtStart unix timestamp start date (if null, current date is used)
      * @return int unix timestamp
      */
-    public static function calcCollectionDate(int $iDays, ?int $dtStart=null) : int
+    public static function calcCollectionDate(int $iDays, ?int $dtStart = null) : int
     {
         $dtCollect = ($dtStart === null) ? time() : $dtStart;
 
@@ -200,16 +200,16 @@ trait SepaHelper
     {
         $iWeekDay = date('N', $dt);
 
-        //  New Year        Good Day        Easter Monday   1'stMay         1.Christmas     2.Christmas
+        //  New Year        Good Day     Easter Monday  1'stMay      1.Christmas   2.Christmas
         $aTarget2 = array(
-             '2019-01-01',  '2019-04-18',   '2019-04-21',   '2019-05-01',   '2019-12-25',   '2019-12-26'
-            ,'2020-01-01',  '2020-04-10',   '2020-04-13',   '2020-05-01',   '2020-12-25',   '2020-12-26'
-            ,'2021-01-01',  '2021-04-02',   '2021-04-05',   '2021-05-01',   '2021-12-25',   '2021-12-26'
-            ,'2022-01-01',  '2022-04-15',   '2022-04-18',   '2022-05-01',   '2022-12-25',   '2022-12-26'
-            ,'2023-01-01',  '2023-04-07',   '2023-04-10',   '2023-05-01',   '2023-12-25',   '2023-12-26'
-            ,'2024-01-01',  '2024-03-29',   '2024-04-01',   '2024-05-01',   '2024-12-25',   '2024-12-26'
-            ,'2025-01-01',  '2025-04-18',   '2025-04-21',   '2025-05-01',   '2025-12-25',   '2025-12-26'
+             '2019-01-01', '2019-04-18', '2019-04-21', '2019-05-01', '2019-12-25', '2019-12-26'
+            ,'2020-01-01', '2020-04-10', '2020-04-13', '2020-05-01', '2020-12-25', '2020-12-26'
+            ,'2021-01-01', '2021-04-02', '2021-04-05', '2021-05-01', '2021-12-25', '2021-12-26'
+            ,'2022-01-01', '2022-04-15', '2022-04-18', '2022-05-01', '2022-12-25', '2022-12-26'
+            ,'2023-01-01', '2023-04-07', '2023-04-10', '2023-05-01', '2023-12-25', '2023-12-26'
+            ,'2024-01-01', '2024-03-29', '2024-04-01', '2024-05-01', '2024-12-25', '2024-12-26'
+            ,'2025-01-01', '2025-04-18', '2025-04-21', '2025-05-01', '2025-12-25', '2025-12-26'
         );
-        return ($iWeekDay > 5 || in_array( date( 'Y-m-d', $dt ), $aTarget2 ));
+        return ($iWeekDay > 5 || in_array(date('Y-m-d', $dt), $aTarget2));
     }
 }
