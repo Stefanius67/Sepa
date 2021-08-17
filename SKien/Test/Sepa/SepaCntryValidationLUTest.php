@@ -1,26 +1,28 @@
 <?php
-require_once __DIR__ . '/../autoloader.php';
+declare(strict_types=1);
+
+namespace SKien\Test\Sepa;
 
 use PHPUnit\Framework\TestCase;
+use SKien\Sepa\Sepa;
 use SKien\Sepa\CntryValidation\SepaCntryValidation;
 use SKien\Sepa\CntryValidation\SepaCntryValidationLU;
-use SKien\Sepa\Sepa;
 
 /**
- * oValidation test case.
+ * SepaCntryValidationLU test case.
  */
 class SepaCntryValidationLUTest extends TestCase
 {
     /** @var SepaCntryValidation     */
     private $oValidation;
-    
+
     public function test__construct()
     {
         $this->oValidation = new SepaCntryValidationLU('LU');
         $this->expectError();
         $this->oValidation = new SepaCntryValidationLU('DE');
     }
-    
+
     public function testValidateIBAN()
     {
         $this->oValidation = new SepaCntryValidationLU('LU');
@@ -36,7 +38,7 @@ class SepaCntryValidationLUTest extends TestCase
         $this->oValidation = new SepaCntryValidationLU('LU');
         $this->assertSame($this->oValidation->validateBIC('BSUILULLREG'), 0);
     }
-    
+
     public function testValidateCI()
     {
         $this->oValidation = new SepaCntryValidationLU('LU');

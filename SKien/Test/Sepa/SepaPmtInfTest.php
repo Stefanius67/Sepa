@@ -1,14 +1,16 @@
 <?php
-require_once __DIR__ . '/../autoloader.php';
+declare(strict_types=1);
+
+namespace SKien\Test\Sepa;
 
 use PHPUnit\Framework\TestCase;
 use SKien\Sepa\Sepa;
-use SKien\Sepa\SepaPmtInf;
 use SKien\Sepa\SepaDoc;
+use SKien\Sepa\SepaPmtInf;
 use SKien\Sepa\SepaTxInf;
 
 /**
- * oValidation test case.
+ * SepaPmtInf test case.
  */
 class SepaPmtInfTest extends TestCase
 {
@@ -18,16 +20,16 @@ class SepaPmtInfTest extends TestCase
     const invalidIBAN = 'DE21 6829 0000 0009 2158 08';
     const invalidBIC = 'GEN0DE61LAH';
     const invalidCI = 'DE49 ZZZ 01234567890';
-    
+
     protected ?SepaDoc $oSD = null;
-    
+
     public function test__construct()
     {
         $this->createValidDoc(Sepa::CDD);
         $oPmtInf = new SepaPmtInf($this->oSD);
         $this->assertNotEmpty($oPmtInf->getId());
     }
-    
+
     public function testValidate()
     {
         $this->createValidDoc(Sepa::CDD);
@@ -37,7 +39,7 @@ class SepaPmtInfTest extends TestCase
         $this->assertEquals(self::validCI, $oPmtInf->getCI());
         $this->assertEquals('Testname', $oPmtInf->getName());
         $this->assertEquals(Sepa::SEQ_FIRST, $oPmtInf->getSeqType());
-        
+
         $this->assertEquals(0, $oPmtInf->validate());
     }
 
@@ -50,32 +52,32 @@ class SepaPmtInfTest extends TestCase
         $oPmtInf->setCI(self::invalidCI);
         $oPmtInf->setName('Testname');
         $oPmtInf->setSeqType(Sepa::SEQ_FIRST);
-        
+
         $iExpectedErr = Sepa::ERR_PMT_INVALID_IBAN | Sepa::ERR_PMT_INVALID_BIC | Sepa::ERR_PMT_INVALID_CI;
         $this->assertEquals($iExpectedErr, $oPmtInf->validate());
-        
+
         Sepa::setValidationLevel(Sepa::V_NO_IBAN_VALIDATION | Sepa::V_NO_BIC_VALIDATION | Sepa::V_NO_CI_VALIDATION);
         $this->assertEquals(0, $oPmtInf->validate());
     }
-    
+
     public function testValidateMissing()
     {
         $this->createValidDoc(Sepa::CDD);
         $oPmtInf = new SepaPmtInf($this->oSD);
-        
-        $iExpectedErr = 
-            Sepa::ERR_PMT_IBAN_MISSING | 
+
+        $iExpectedErr =
+            Sepa::ERR_PMT_IBAN_MISSING |
             Sepa::ERR_PMT_BIC_MISSING |
             Sepa::ERR_PMT_CI_MISSING |
             Sepa::ERR_PMT_NAME_MISSING
         ;
-            
+
         $this->assertEquals($iExpectedErr | Sepa::ERR_PMT_SEQ_TYPE_MISSING, $oPmtInf->validate());
-    
+
         $oPmtInf->setSeqType('invalid');
         $this->assertEquals($iExpectedErr | Sepa::ERR_PMT_INVALID_SEQ_TYPE, $oPmtInf->validate());
     }
-    
+
     public function testGetCollectionDate()
     {
         $this->createValidDoc(Sepa::CDD);
@@ -83,14 +85,14 @@ class SepaPmtInfTest extends TestCase
         // only check for well formed date - for value test see SepaTest::testCalcCollectionDate()
         $this->assertMatchesRegularExpression('/^([0-9]){4}-([0-9]){2}-([0-9]){2}?$/', $oPmtInf->getCollectionDate());
     }
-    
+
     public function testErrorMsg()
     {
         $this->createValidDoc(Sepa::CDD);
         $oPmtInf = new SepaPmtInf($this->oSD);
         $this->assertNotEmpty($oPmtInf->errorMsg(Sepa::ERR_PMT_IBAN_MISSING));
     }
-    
+
     public function testAddPaymentInstructionInfoError()
     {
         Sepa::Init();
@@ -100,7 +102,7 @@ class SepaPmtInfTest extends TestCase
         $this->expectError();
         $this->oSD->addPaymentInstructionInfo($oPmtInf);
     }
-    
+
     public function testAddTransactionCDD()
     {
         $this->createValidDoc(Sepa::CDD);
@@ -114,7 +116,7 @@ class SepaPmtInfTest extends TestCase
         $this->assertEquals(2, $this->oSD->getTxCount());
         $this->assertEquals(246.9, $this->oSD->getCtrlSum());
     }
-    
+
     public function testAddTransactionCCT()
     {
         $this->createValidDoc(Sepa::CCT);
@@ -122,7 +124,7 @@ class SepaPmtInfTest extends TestCase
         $this->assertEquals(0, $this->oSD->addPaymentInstructionInfo($oPmtInf));
         $this->assertEquals(0, $oPmtInf->addTransaction($this->createValidTxInf(Sepa::CCT)));
     }
-    
+
     public function testAddTransactionError1()
     {
         $this->createValidDoc(Sepa::CDD);
@@ -130,7 +132,7 @@ class SepaPmtInfTest extends TestCase
         $this->expectError();
         $oPmtInf->addTransaction($this->createValidTxInf(Sepa::CDD));
     }
-    
+
     public function testAddTransactionError2()
     {
         $this->createValidDoc(Sepa::CDD);
@@ -138,7 +140,7 @@ class SepaPmtInfTest extends TestCase
         $this->oSD->addPaymentInstructionInfo($oPmtInf);
         $this->assertEquals(Sepa::ERR_TX_INVALID_TYPE, $oPmtInf->addTransaction($this->createValidTxInf(Sepa::CCT)));
     }
-    
+
     public function testAddTransactionError3()
     {
         $this->createValidDoc(Sepa::CDD);
@@ -149,8 +151,8 @@ class SepaPmtInfTest extends TestCase
         $this->assertEquals(Sepa::ERR_TX_BIC_MISSING, $oPmtInf->addTransaction($oTxInf));
         $this->assertEquals(1, $this->oSD->getInvalidCount());
     }
-    
-    
+
+
     private function createValidDoc($type) : void
     {
         Sepa::Init();
@@ -158,7 +160,7 @@ class SepaPmtInfTest extends TestCase
         $this->oSD = new SepaDoc($type);
         $this->oSD->createGroupHeader('Test company 4711');
     }
-    
+
     private function createValidTxInf($type) : SepaTxInf
     {
         $oTxInf = new SepaTxInf($type);
@@ -170,10 +172,10 @@ class SepaPmtInfTest extends TestCase
         $oTxInf->setMandateId('MD1234');
         $oTxInf->setDateOfSignature('2019-06-09');
         $oTxInf->setUltimateName('Ultimate Name');
-        
+
         return $oTxInf;
     }
-    
+
     private function createValidPmtInf() : SepaPmtInf
     {
         $oPmtInf = new SepaPmtInf($this->oSD);
@@ -182,7 +184,7 @@ class SepaPmtInfTest extends TestCase
         $oPmtInf->setCI(self::validCI);
         $oPmtInf->setName('Testname');
         $oPmtInf->setSeqType(Sepa::SEQ_FIRST);
-        
+
         return $oPmtInf;
     }
 }

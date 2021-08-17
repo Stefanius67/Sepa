@@ -1,26 +1,28 @@
 <?php
-require_once __DIR__ . '/../autoloader.php';
+declare(strict_types=1);
+
+namespace SKien\Test\Sepa;
 
 use PHPUnit\Framework\TestCase;
+use SKien\Sepa\Sepa;
 use SKien\Sepa\CntryValidation\SepaCntryValidation;
 use SKien\Sepa\CntryValidation\SepaCntryValidationAT;
-use SKien\Sepa\Sepa;
 
 /**
- * oValidation test case.
+ * SepaCntryValidationAT test case.
  */
 class SepaCntryValidationATTest extends TestCase
 {
     /** @var SepaCntryValidation     */
     private $oValidation;
-    
+
     public function test__construct()
     {
         $this->oValidation = new SepaCntryValidationAT('AT');
         $this->expectError();
         $this->oValidation = new SepaCntryValidationAT('DE');
     }
-    
+
     public function testValidateIBAN()
     {
         $this->oValidation = new SepaCntryValidationAT('AT');
@@ -38,7 +40,7 @@ class SepaCntryValidationATTest extends TestCase
         $this->assertSame($this->oValidation->validateBIC('RVVGAB2B468'), Sepa::ERR_BIC_INVALID_CNTRY);
         $this->assertSame($this->oValidation->validateBIC('R1VGAT2B468'), Sepa::ERR_BIC_INVALID);
     }
-    
+
     public function testValidateCI()
     {
         $this->oValidation = new SepaCntryValidationAT('AT');

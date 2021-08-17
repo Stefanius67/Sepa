@@ -1,11 +1,13 @@
 <?php
-require_once __DIR__ . '/../autoloader.php';
+declare(strict_types=1);
+
+namespace SKien\Test\Sepa;
 
 use PHPUnit\Framework\TestCase;
 use SKien\Sepa\Sepa;
 
 /**
- * oValidation test case.
+ * Sepa test case.
  */
 class SepaTest extends TestCase
 {
@@ -16,7 +18,7 @@ class SepaTest extends TestCase
         $this->expectError();
         Sepa::validateBIC($strBIC);
     }
-    
+
     public function testSetValidationLevel()
     {
         Sepa::init();
@@ -27,26 +29,26 @@ class SepaTest extends TestCase
         Sepa::setValidationLevel(Sepa::V_IGNORE_MISSING_CNTRY);
         $this->assertSame(Sepa::validateBIC($strBIC), 0);
     }
-    
+
     // Tests for the static methods of trait SepaHelper
     public function testCreateUID()
     {
         // $this->assertSame(preg_match('/^([0-9]){8}-([0-9]){4}-([0-9]){4}-([0-9]){12}?$/', Sepa::createUID()), 0);
         $this->assertMatchesRegularExpression('/^([0-9A-F]){8}-([0-9A-F]){4}-([0-9A-F]){4}-([0-9A-F]){12}?$/', Sepa::createUID());
-        
+
     }
-    
+
     public function testReplaceSpecialChars()
     {
         $this->assertSame(Sepa::replaceSpecialChars('äöüßÄÖÜ'), 'aeoeuessAeOeUe');
     }
-    
+
     public function testValidString()
     {
         $this->assertSame(Sepa::validString('abcdefghijklmnopqrstuvwxyz12345678901234', Sepa::MAX35), 'abcdefghijklmnopqrstuvwxyz123456789');
         $this->assertSame(Sepa::validString('abcdefghijklmnopqrstuvwxyz12345678901234', Sepa::MAX1025), 'abcdefghijklmnopqrstuvwxyz12345678901234');
     }
-    
+
     public function testIsTarget2Day()
     {
         $dt = mktime(0, 0, 0, 12, 25, 2024); // 1'st chrismasday
@@ -56,7 +58,7 @@ class SepaTest extends TestCase
         $dt = mktime(0, 0, 0, 6, 21, 2020); // Sunday...
         $this->assertTrue(Sepa::isTarget2Day($dt));
     }
-    
+
     public function testCalcCollectionDate()
     {
         $dt = mktime(0, 0, 0, 6, 17, 2020); // Wednesday
