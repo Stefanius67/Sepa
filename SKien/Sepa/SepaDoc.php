@@ -2,20 +2,10 @@
 namespace SKien\Sepa;
 
 /**
- * Main class representing Sepa-Document
+ * Main class to create a Sepa-Document.
  *
- * uses helpers and const from trait SepaHelper
- * @see SepaHelper
- *
- * #### History:
- * - *2020-02-18*   initial version.
- * - *2020-05-21*   renamed namespace to fit PSR-4 recommendations for autoloading.
- * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes
- *
- * @package SKien/Sepa
- * @since 1.0.0
- * @version 1.2.0
- * @author Stefanius <s.kien@online.de>
+ * @package Sepa
+ * @author Stefanius <s.kientzler@online.de>
  * @copyright MIT License - see the LICENSE file for details
  */
 class SepaDoc extends \DOMDocument
@@ -40,8 +30,11 @@ class SepaDoc extends \DOMDocument
     protected int $iInvalidTxCount = 0;
 
     /**
-     * creating SEPA document
-     * @param string $type  type of transaction: Credit Transfer Transaction (SepaHelper::CCT) or Direct Debit Transaction (SepaHelper::CDD)
+     * Creating a SEPA document.
+     * A single SEPA document can only hold one type of transactions: <ul>
+     * <li> Credit Transfer Transaction (Sepa::CCT) </li>
+     * <li> Direct Debit Transaction (Sepa::CDD) </li></ul>
+     * @param string $type  type of transaction
      */
     public function __construct(string $type)
     {
@@ -73,9 +66,12 @@ class SepaDoc extends \DOMDocument
     }
 
     /**
-     * creating group header and required elements
-     * @param string $strName   name to use in header
-     * @return string          created unique id for document
+     * Creating group header and required elements.
+     * The method returns a generated unique identifier that can be used to assign it to
+     * the data elements that were used to generate the transactions contained in this file.
+     * This ID is also used by the receiving bank institute to avoid double processing.
+     * @param string $strName   name (initiator of the transactions)
+     * @return string   created unique id for document
      */
     public function createGroupHeader(string $strName) : string
     {
@@ -99,13 +95,12 @@ class SepaDoc extends \DOMDocument
     }
 
     /**
-     * add payment instruction info (PII) to SEPAdocument.
-     *
-     * PII is the base element to add transactions to SEPA document.
-     * one SEPA document may contains multiple PII
-     *
+     * Add payment instruction info (PII) to the document.
+     * PII is the base element to add transactions to the SEPA document.
+     * > One SEPA document may contains multiple PII.
+     * @see SepaPmtInf
      * @param SepaPmtInf $oPmtInf
-     * @return int
+     * @return int Sepa::OK or error code from SepaPmtInf::validate()
      */
     public function addPaymentInstructionInfo(SepaPmtInf $oPmtInf) : int
     {
@@ -177,15 +172,20 @@ class SepaDoc extends \DOMDocument
     }
 
     /**
-     * Outputs generated SEPA document (XML - File).
-     * Set the HTTP header and echo the generated content.
+     * Outputs the generated SEPA document as XML-File through the browser.
+     * > - To save the XML file direct anywhere on the server, use the `DOMDocument::save()` method.<br/>
+     * > - To save the XML file in a database use the `DOMDocument::saveXML()` method.<br/>
      *
+     * The target should always be 'attachment' (<i>indicating it should be downloaded; most browsers
+     * presenting a 'Save as' dialog, prefilled with the value of the filename parameter</i>). <br/>
+     * For test purposes you can change it to 'inline' to display the XML inside of the browser
+     * rather than save it to a file.
      * @param string $strName       output filename
      * @param string $strTarget     target (default: 'attachment')
      */
     public function output(string $strName, string $strTarget = 'attachment') : void
     {
-        // send to browser
+        // Set the HTTP header and echo the generated content
         header('Content-Type: application/xml');
         header('Content-Disposition: ' . $strTarget . '; filename="' . $strName . '"');
         header('Cache-Control: private, max-age=0, must-revalidate');
@@ -195,8 +195,10 @@ class SepaDoc extends \DOMDocument
     }
 
     /**
-     * calculate overall transactioncount and controlsum
+     * Calculate overall transaction count and controlsum.
+     * This method should only be called internal by the `SepaPmtInf`class!
      * @param float $dblValue
+     * @internal
      */
     public function calc(float $dblValue) : void
     {
@@ -211,7 +213,8 @@ class SepaDoc extends \DOMDocument
     }
 
     /**
-     * increments count of invalid transactions
+     * Increments the count of invalid transactions.
+     * @internal
      */
     public function incInvalidCount() : void
     {
@@ -219,8 +222,7 @@ class SepaDoc extends \DOMDocument
     }
 
     /**
-     * create child element for given parent
-     *
+     * Create child element for given parent.
      * @param \DOMElement   $xmlParent  parent for the node. If null, child of current instance is created
      * @param string        $strNode    nodename
      * @param mixed         $value      nodevalue. If empty, no value will be assigned (to create node only containing child elements)
@@ -238,7 +240,7 @@ class SepaDoc extends \DOMDocument
     }
 
     /**
-     * Return the ID (may be internal generated).
+     * Return the internal generated ID.
      * @return string
      */
     public function getId() : string
@@ -256,7 +258,7 @@ class SepaDoc extends \DOMDocument
     }
 
     /**
-     * Count of valid transactions
+     * Count of valid transactions.
      * @return int
      */
     public function getTxCount() : int
@@ -265,7 +267,7 @@ class SepaDoc extends \DOMDocument
     }
 
     /**
-     * Total value of valid transactions
+     * Total value of valid transactions.
      * @return float
      */
     public function getCtrlSum() : float
@@ -274,7 +276,7 @@ class SepaDoc extends \DOMDocument
     }
 
     /**
-     * count of invalid transactions
+     * Get the count of invalid transactions passed.
      * @return int
      */
     public function getInvalidCount() : int

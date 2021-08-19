@@ -291,6 +291,13 @@ class SepaTest extends TestCase
             'strMandateId' => 'ID-0815',
             'strDateOfSignature' => '2018-04-03'
         );
+        $aValidPPI = array(
+            'strName' => 'Testfirma',
+            'strCI' => 'CH51 ZZZ 12345678901',
+            'strIBAN' => 'DE71664500500070143559',
+            'strBIC' => 'GENODE61LAH',
+            'strSeqType' => Sepa::SEQ_RECURRENT,
+        );
 
         Sepa::init();
         Sepa::setValidationLevel(Sepa::V_FULL_VALIDATION);
@@ -305,11 +312,7 @@ class SepaTest extends TestCase
 
         // create payment info instruction (PII) and set all needet creditor information
         $oPPI = new SepaPmtInf($oSepaDoc);
-        $oPPI->setName('Testfirma');
-        $oPPI->setCI('CH51 ZZZ 12345678901');
-        $oPPI->setIBAN('DE71664500500070143559');
-        $oPPI->setBIC('GENODE61LAH');
-        $oPPI->setSeqType(Sepa::SEQ_RECURRENT);
+        $oPPI->fromArray($aValidPPI);
 
         // add the PII to the document.
         $this->assertEquals(Sepa::OK, $oSepaDoc->addPaymentInstructionInfo($oPPI));

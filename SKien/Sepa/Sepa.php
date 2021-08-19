@@ -2,30 +2,21 @@
 namespace SKien\Sepa;
 
 /**
- * package to create sepa-xml File
+ * Package to create sepa-xml File.
  *
- * ## Providing
- * - Credit Transfer Initiation (CCT; pain.001.002.03.xsd)
- * - Direct Debit Initiation (CDD; pain.008.002.02.xsd)
+ * #### Providing
+ * <ul>
+ * <li> Credit Transfer Initiation (CCT; pain.001.002.03.xsd) </li>
+ * <li> Direct Debit Initiation (CDD; pain.008.002.02.xsd) </li>
+ * </ul>
  *
- * ### Main class of the package
- * class containing some global constants, support for country specific
- * validation of IBAN, BIC and CI, language support for the generated
- * error messages and to make methods of trait SepaHelper available.
+ * #### Main class of the package
+ * This class containins some global constants, support for country specific
+ * validation of IBAN / BIC / CI and language support for the generated
+ * error messages.
  *
- * #### History
- * - *2020-02-18*   initial version.
- * - *2020-05-21*   new static method init() have to be called first before any use of the package!
- * - *2020-05-21*   added multi country validation.
- * - *2020-05-21*   added language support for error messages.
- * - *2020-05-21*   renamed namespace to fit PSR-4 recommendations for autoloading.
- * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes
- * - *2020-07-22*   added validation class for italy
- *
- * @package SKien/Sepa
- * @since 1.0.0
- * @version 1.2.0
- * @author Stefanius <s.kien@online.de>
+ * @package Sepa
+ * @author Stefanius <s.kientzler@online.de>
  * @copyright MIT License - see the LICENSE file for details
  */
 class Sepa
@@ -151,7 +142,10 @@ class Sepa
     static protected array $aTxInfError = array();
 
     /**
-     * initializition of package
+     * Initializition of the package.
+     * This static method must be called before using the package. <br/>
+     * All available country validations are added and the errormessages are
+     * initialized in english language.
      */
     public static function init() : void
     {
@@ -217,6 +211,7 @@ class Sepa
     /**
      * Destroing the static arrays.
      * This method mainly is provided for use in the PHPUnit TestCases to reset the static object!
+     * @internal
      */
     public static function reset() : void
     {
@@ -231,9 +226,9 @@ class Sepa
 
     /**
      * Add validation to the package.
-     * PHP class $strValidationClass must inmplement the SepaCntryValidation interface.
-     * @param string $strCntry
-     * @param string $strValidationClass
+     * The PHP class `$strValidationClass` must implement the `SepaCntryValidation` interface.
+     * @param string $strCntry  the 2 digit country code
+     * @param string $strValidationClass    name of the PHP class for validation
      */
     public static function addValidation(string $strCntry, string $strValidationClass) : void
     {
@@ -248,18 +243,25 @@ class Sepa
 
     /**
      * Set the validation level.
-     * Any combination of:
-     *  Sepa::V_NO_VALIDATION         no validation at all (not recommended!)
-     *  Sepa::V_NO_IBAN_VALIDATION    no validation of IBAN
-     *  Sepa::V_NO_BIC_VALIDATION     no validation of the BIC
-     *  Sepa::V_NO_CI_VALIDATION      no validation of the CI
-     *  Sepa::V_IGNORE_MISSING_CNTRY  no validation if no class sdet for country
-     *  Sepa::V_IGNORE_MISSING_VALUE  no error on missing mandatory value
+     * This method can be used to disable some or complete validation. <br/>
+     * > It is recommended to deactivate the validations only for test purposes or if you can
+     * guarantee the validity of all values based on previous checks. <br/>
+     * A partial deactivation with `Sepa::V_IGNORE_MISSING_CNTRY` may be useful if you sometimes
+     * have to process data from a country for which there is (still) no validation in the package.
      *
-     * or:
-     *  Sepa::V_FULL_VALIDATION       full validation (default)
+     * Supported is any combination of:
      *
-     * @param int $wValidation
+     * | Flag                           | Description                               |
+     * |--------------------------------|-------------------------------------------|
+     * | `Sepa::V_NO_VALIDATION`        | no validation at all (not recommended!)   |
+     * | `Sepa::V_NO_IBAN_VALIDATION`   | no validation of IBAN                     |
+     * | `Sepa::V_NO_BIC_VALIDATION`    | no validation of the BIC                  |
+     * | `Sepa::V_NO_CI_VALIDATION`     | no validation of the CI                   |
+     * | `Sepa::V_IGNORE_MISSING_CNTRY` | no validation if no class set for country |
+     * | `Sepa::V_IGNORE_MISSING_VALUE` | no error on missing mandatory value       |
+     *
+     * Default value is full validation:  `Sepa::V_FULL_VALIDATION`
+     * @param int $wValidation  see the description
      */
     public static function setValidationLevel(int $wValidation) : void
     {
@@ -270,6 +272,7 @@ class Sepa
      * Check, if validation level is set.
      * @param int $wValidation
      * @return bool
+     * @internal
      */
     public static function checkValidation(int $wValidation) : bool
     {
@@ -277,8 +280,11 @@ class Sepa
     }
 
     /**
-     * Load error messages from JSON file
-     * @param string $strFilename
+     * Load error messages from JSON file.
+     * For different language support, all messages can be loaded from a JSON file.
+     * > Use the `sepa_errormsg_en.json` or `sepa_errormsg_de.json` contained in the
+     * package as a starting point for your own translation .
+     * @param string $strFilename   relative or absolute JSON file
      */
     public static function loadErrorMsg(string $strFilename = 'sepa_error.json') : void
     {
@@ -314,9 +320,11 @@ class Sepa
     }
 
     /**
-     * validates given IBAN.
-     * @param string $strIBAN
-     * @return int OK ( 0 ) or errorcode
+     * Validates given IBAN.
+     * If the passed value contains any leading/trailing or formating spaces, they all
+     * will be removed.
+     * @param string $strIBAN   IBAN to validate
+     * @return int Sepa::OK or errorcode
      */
     public static function validateIBAN(string &$strIBAN) : int
     {
@@ -344,8 +352,10 @@ class Sepa
 
     /**
      * validates given BIC.
-     * @param string $strBIC
-     * @return int OK ( 0 ) or errorcode
+     * If the passed value contains any leading/trailing or formating spaces, they all
+     * will be removed.
+     * @param string $strBIC    BIC to validate
+     * @return int Sepa::OK or errorcode
      */
     public static function validateBIC(string &$strBIC) : int
     {
@@ -373,8 +383,10 @@ class Sepa
 
     /**
      * validates given CI (Creditor Scheme Identification).
-     * @param string $strCI
-     * @return int OK ( 0 ) or errorcode
+     * If the passed value contains any leading/trailing or formating spaces, they all
+     * will be removed.
+     * @param string $strCI     CI to validate
+     * @return int Sepa::OK or errorcode
      */
     public static function validateCI(string &$strCI) : int
     {
@@ -401,8 +413,8 @@ class Sepa
     }
 
     /**
-     * Message to given BIC errorcode
-     * @param int $iError
+     * Message to the given errorcode for IBAN / BIC / CI validation errors.
+     * @param int $iError   the errorcode
      * @return string
      */
     public static function errorMsg(int $iError) : string
@@ -416,9 +428,10 @@ class Sepa
     }
 
     /**
-     * Message to given IBAN errorcode
-     * @param int $iError
+     * Message to the given IBAN errorcode.
+     * @param int $iError   the errorcode
      * @return string
+     * @internal
      */
     public static function errorMsgIBAN(int $iError) : string
     {
@@ -430,9 +443,10 @@ class Sepa
     }
 
     /**
-     * Message to given BIC errorcode
-     * @param int $iError
+     * Message to the given BIC errorcode.
+     * @param int $iError   the errorcode
      * @return string
+     * @internal
      */
     public static function errorMsgBIC(int $iError) : string
     {
@@ -444,9 +458,10 @@ class Sepa
     }
 
     /**
-     * Message to given CI errorcode
-     * @param int $iError
+     * Message to the given CI errorcode.
+     * @param int $iError   the errorcode
      * @return string
+     * @internal
      */
     public static function errorMsgCI(int $iError) : string
     {
@@ -458,10 +473,12 @@ class Sepa
     }
 
     /**
-     * Message to given payment info errorcode
+     * Message to the given payment info errorcode.
+     * Used by `SepaPmtInf::getError()` to get localized message.
      * @param int $iError
-     * @param string $strLF     Separator for multi errors (default: PHP_EOL; posible values: '<br />', '; ', ...)
+     * @param string $strLF
      * @return string
+     * @internal
      */
     public static function errorMsgPmtInf(int $iError, string $strLF = PHP_EOL) : string
     {
@@ -477,10 +494,12 @@ class Sepa
     }
 
     /**
-     * Message to given transaction info errorcode
+     * Message to the given transaction info errorcode.
+     * Used by `SepaTxInf::getError()` to get localized message.
      * @param int $iError
-     * @param string $strLF     Separator for multi errors (default: PHP_EOL; posible values: '<br />', '; ', ...)
+     * @param string $strLF
      * @return string
+     * @internal
      */
     public static function errorMsgTxInf(int $iError, string $strLF = PHP_EOL) : string
     {

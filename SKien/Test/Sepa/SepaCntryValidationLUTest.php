@@ -42,8 +42,10 @@ class SepaCntryValidationLUTest extends TestCase
     public function testValidateCI()
     {
         $this->oValidation = new SepaCntryValidationLU('LU');
+        if ($this->oValidation->validateCI('LU02 ZZZ 0ABCDEFGHIJKL123488') != 0) {
+            $this->assertSame($this->oValidation->getLastCheckSum(), 'XX');
+        }
         $this->assertSame($this->oValidation->validateCI('LU02 ZZZ 0ABCDEFGHIJKL123488'), 0);
-        $this->assertSame($this->oValidation->getLastCheckSum(), '02');
         $this->assertSame($this->oValidation->validateCI('LU22 ZZZ 0123456789ABCDEFGHI'), Sepa::ERR_CI_CHECKSUM);
         $this->assertSame($this->oValidation->validateCI('LU13 ZZZ 123456789ABCDEFGHI'), Sepa::ERR_CI_INVALID_LENGTH);
         $this->assertSame($this->oValidation->validateCI('DE13 ZZZ 0123456789ABCDEFGHI'), Sepa::ERR_CI_INVALID_CNTRY);

@@ -112,8 +112,7 @@
 			<xs:element name="Tp" type="CreditorReferenceTypeSEPA"/>
 			<xs:element name="Ref" type="Max35Text">
 				<xs:annotation>
-					<xs:documentation>If a Creditor Reference contains a check digit, the receiving bank is not required to validate this.
-If the receiving bank validates the check digit and if this validation fails, the bank may continue its processing and send the transaction to the next party in the chain.</xs:documentation>
+					<xs:documentation>If a Creditor Reference contains a check digit, the receiving bank is not required to validate this. If the receiving bank validates the check digit and if this validation fails, the bank may continue its processing and send the transaction to the next party in the chain.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -154,9 +153,7 @@ If the receiving bank validates the check digit and if this validation fails, th
 			<xs:element name="MndtRltdInf" type="MandateRelatedInformationSDD"/>
 			<xs:element name="CdtrSchmeId" type="PartyIdentificationSEPA3" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>It is recommended that all transactions within the same ‘Payment Information’ block have the same ‘Creditor Scheme Identification’.
-This data element must be present at either ‘Payment Information’ or ‘Direct Debit
-Transaction’ level.</xs:documentation>
+					<xs:documentation>It is recommended that all transactions within the same ‘Payment Information’ block have the same ‘Creditor Scheme Identification’. This data element must be present at either ‘Payment Information’ or ‘Direct Debit Transaction’ level.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -324,8 +321,7 @@ Transaction’ level.</xs:documentation>
 			<xs:element name="AmdmntInd" type="TrueFalseIndicator" minOccurs="0"/>
 			<xs:element name="AmdmntInfDtls" type="AmendmentInformationDetailsSDD" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>Mandatory if 'Amendment Indicator' is 'TRUE'
-The reason code from the Rulebook is indicated using one of the following message subelements.</xs:documentation>
+					<xs:documentation>Mandatory if 'Amendment Indicator' is 'TRUE' The reason code from the Rulebook is indicated using one of the following message subelements.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="ElctrncSgntr" type="Max1025Text" minOccurs="0"/>
@@ -381,8 +377,7 @@ The reason code from the Rulebook is indicated using one of the following messag
 			<xs:choice>
 				<xs:element name="OrgId" type="OrganisationIdentificationSEPAChoice">
 					<xs:annotation>
-						<xs:documentation>Either ‘BIC or BEI’ or one
-occurrence of ‘Other’ is allowed.</xs:documentation>
+						<xs:documentation>Either ‘BIC or BEI’ or one occurrence of ‘Other’ is allowed.</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 				<xs:element name="PrvtId" type="PersonIdentificationSEPA1Choice">
@@ -397,8 +392,7 @@ occurrence of ‘Other’ is allowed.</xs:documentation>
 		<xs:sequence>
 			<xs:element name="PrvtId" type="PersonIdentificationSEPA2">
 				<xs:annotation>
-					<xs:documentation>Private Identification is used to identify either an organisation or a private
-person.</xs:documentation>
+					<xs:documentation>Private Identification is used to identify either an organisation or a private person.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -483,9 +477,7 @@ person.</xs:documentation>
 			</xs:element>
 			<xs:element name="CdtrSchmeId" type="PartyIdentificationSEPA3" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>It is recommended that all transactions within the same ‘Payment Information’ block have the same ‘Creditor Scheme Identification’.
-This data element must be present at either ‘Payment Information’ or ‘Direct Debit
-Transaction’ level.</xs:documentation>
+					<xs:documentation>It is recommended that all transactions within the same ‘Payment Information’ block have the same ‘Creditor Scheme Identification’. This data element must be present at either ‘Payment Information’ or ‘Direct Debit Transaction’ level.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="DrctDbtTxInf" type="DirectDebitTransactionInformationSDD" maxOccurs="unbounded"/>
@@ -528,9 +520,7 @@ Transaction’ level.</xs:documentation>
 		<xs:sequence>
 			<xs:element name="Othr" type="RestrictedPersonIdentificationSEPA">
 				<xs:annotation>
-					<xs:documentation>Only one occurrence of ‘Other’ is allowed, and no other sub-elements are allowed.
-Identification must be used with an identifier described in General Message Element Specifications, Chapter 1.5.2 of the Implementation Guide.
-Scheme Name’ under ‘Other’ must specify ‘SEPA’ under ‘Proprietary</xs:documentation>
+					<xs:documentation>Only one occurrence of ‘Other’ is allowed, and no other sub-elements are allowed. Identification must be used with an identifier described in General Message Element Specifications, Chapter 1.5.2 of the Implementation Guide. Scheme Name’ under ‘Other’ must specify ‘SEPA’ under ‘Proprietary</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>

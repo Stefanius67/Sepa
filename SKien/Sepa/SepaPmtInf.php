@@ -2,22 +2,16 @@
 namespace SKien\Sepa;
 
 /**
- * Class representing Payment Instruction Info (PII)
+ * Class representing Payment Instruction Info (PII).
  *
- * uses helpers and const from trait SepaHelper
- * @see SepaHelper
+ * #### Usage:
+ * 1. Create a instance of this class and set all properties using the `SepaPmtInf::setXXX()` methods
+ *    or `SepaPmtInf::fromArray()`.
+ * 2. Attach the instance to the `SepaDoc` using the `SepaDoc::addPaymentInstructionInfo()` method.
+ * 3. Generate the desired transactions (`new SepaTxInf()`) and assign them to this payment info instance.
  *
- * #### History
- * - *2020-02-18*   initial version.
- * - *2020-05-21*   added multi country validation.
- * - *2020-05-21*   renamed namespace to fit PSR-4 recommendations for autoloading.
- * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes
- * - *2020-09-23*   splited validate() into validateXXX()-Methods
- *
- * @package SKien/Sepa
- * @since 1.0.0
- * @version 1.2.0
- * @author Stefanius <s.kien@online.de>
+ * @package Sepa
+ * @author Stefanius <s.kientzler@online.de>
  * @copyright MIT License - see the LICENSE file for details
  */
 class SepaPmtInf extends \DOMElement
@@ -48,46 +42,57 @@ class SepaPmtInf extends \DOMElement
     private ?\DOMElement $xmlCtrlSum = null;
 
     /**
-     * creating SEPA Payment Instruction Info (PII)
-     *
-     * store parent doc and generate unique id
+     * Creating SEPA Payment Instruction Info (PII).
      * @param SepaDoc $sepaDoc
      */
     function __construct(SepaDoc $sepaDoc)
     {
+        // store the parent doc and generate an unique id
         parent::__construct("PmtInf");
-        // don't append any child at this point - created element have to be associated with a document after creation
 
+        // don't append any child at this point - created element have to be associated with a document after creation
         $this->sepaDoc = $sepaDoc;
         $this->id = self::createUID();
     }
 
     /**
-     * validate object
-     * @return int errorcode (call errorMsg() to get coresponding text message)
+     * Validate the object.
+     * > This method usually dont have to be called from outside. It is
+     * called, when an instance is attached to a SepaDoc!
+     * @return int Sepa::OK or error code
+     * @internal
      */
     public function validate() : int
     {
-        $iErr = $this->validateIBAN() | $this->validateBIC() | $this->validateCI() | $this->validateMandatory();
+        $iErr = $this->validateIBAN();
+        $iErr |= $this->validateBIC();
+        $iErr |= $this->validateCI();
+        $iErr |= $this->validateMandatory();
         return $iErr;
     }
 
     /**
-     * get error message for error code
-     * @param int $iError
-     * @param string $strLF     Separator for multi errors (default: PHP_EOL; posible values: '<br />', '; ', ...)
+     * Get the error message for given error code.
+     * Since a payment info can contain multiple errors, the result may contain more than
+     * one message separated by a separator. <br/>
+     * The separator can be specified to meet the needs of different output destinations.
+     * Default value is a linefeed.
+     * @param int $iError   the errorcode
+     * @param string $strLF     Separator for multiple errors (default: PHP_EOL; posible values: '&lt;br/&gt;', ';', ...)
      * @return string
      */
     public function errorMsg(int $iError, string $strLF = PHP_EOL) : string
     {
+        // route to the Sepa class to get localized message
         return Sepa::errorMsgPmtInf($iError, $strLF);
     }
 
     /**
-     * create transaction
-     *
+     * Add a transaction.
+     * <b>Important:</b><br/>
+     * The PPI <b>must</b> be attached to the SepaDoc <b>before</b> the first transaktion is added!
      * @param SepaTxInf $oTxInf
-     * @return int
+     * @return int Sepa::OK or error code from SepaTxInf::validate()
      */
     public function addTransaction(SepaTxInf $oTxInf) : int
     {
@@ -181,8 +186,7 @@ class SepaPmtInf extends \DOMElement
     }
 
     /**
-     * create child element for given parent
-     *
+     * Create a element and set it as child for given parent.
      * @param \DOMElement   $xmlParent  parent for the node. If null, child of current instance is created
      * @param string        $strNode    nodename
      * @param mixed         $value      nodevalue. If empty, no value will be assigned (to create node only containing child elements)
@@ -203,10 +207,10 @@ class SepaPmtInf extends \DOMElement
     }
 
     /**
-     * calculate transactioncount and controlsum for PII and update overall in parent doc
+     * Calculate transaction count and controlsum for PII and update overall in parent doc.
      * @param float $dblValue
      */
-    public function calc(float $dblValue) : void
+    protected function calc(float $dblValue) : void
     {
         if ($this->xmlTxCount !== null && $this->xmlCtrlSum !== null) {
             $this->iTxCount++;
@@ -219,7 +223,7 @@ class SepaPmtInf extends \DOMElement
     }
 
     /**
-     * Return the ID
+     * Return the internal unique ID.
      * @return string
      */
     public function getId() : string
@@ -228,7 +232,7 @@ class SepaPmtInf extends \DOMElement
     }
 
     /**
-     * get collectiondate.
+     * Get the collection date.
      * @return string
      */
     public function getCollectionDate() : string
@@ -258,7 +262,41 @@ class SepaPmtInf extends \DOMElement
     }
 
     /**
-     * set full name (lastname, firstname; company name; ...)
+     * Set properties through associative array.
+     * Example array:
+     * ```php
+     *   $aPPI = [
+     *       'strName' => '<name>',
+     *       'strCI' => '<CI>',
+     *       'strIBAN' => '<IBAN>',
+     *       'strBIC' => '<BIC>',
+     *       'strSeqType' => Sepa::SEQ_xxx,
+     *   ];
+     * ```
+     * The array does not have to contain all of the properties. The missing properties
+     * can be set later using the respective `setXXX()` method.
+     *
+     * @param array<string> $aProperties    see description
+     */
+    public function fromArray(array $aProperties) : void
+    {
+        // use the setter methods to ensure that all validations are made!
+        $aPropertyMap = [
+            'strName' => 'setName',
+            'strIBAN' => 'setIBAN',
+            'strBIC' => 'setBIC',
+            'strCI' => 'setCI',
+            'strSeqType' => 'setSeqType',
+        ];
+        foreach ($aPropertyMap as $strKey => $strFunc) {
+            if (isset($aProperties[$strKey])) {
+                $this->$strFunc($aProperties[$strKey]);
+            }
+        }
+    }
+
+    /**
+     * Set full name (lastname, firstname; company name; ...).
      * @param string $strName
      */
     public function setName(string $strName) : void
@@ -267,7 +305,7 @@ class SepaPmtInf extends \DOMElement
     }
 
     /**
-     * set IBAN
+     * Set IBAN.
      * @param string $strIBAN
      */
     public function setIBAN(string $strIBAN) : void
@@ -276,7 +314,7 @@ class SepaPmtInf extends \DOMElement
     }
 
     /**
-     * set BIC
+     * Set BIC.
      * @param string $strBIC
      */
     public function setBIC(string $strBIC) : void
@@ -285,7 +323,7 @@ class SepaPmtInf extends \DOMElement
     }
 
     /**
-     * set CI (Creditor Scheme Identification)
+     * Sset CI (Creditor Scheme Identification).
      * @param string $strCI
      */
     public function setCI(string $strCI) : void
@@ -294,7 +332,7 @@ class SepaPmtInf extends \DOMElement
     }
 
     /**
-     * set sequence type (Sepa::FRST, Sepa::SEQ_RECURRENT, Sepa::SEQ_ONE_OFF, Sepa::SEQ_FINAL)
+     * Set sequence type (Sepa::FRST, Sepa::SEQ_RECURRENT, Sepa::SEQ_ONE_OFF, Sepa::SEQ_FINAL).
      * @param string $strSeqType
      */
     public function setSeqType(string $strSeqType) : void
@@ -303,7 +341,7 @@ class SepaPmtInf extends \DOMElement
     }
 
     /**
-     * get full name (lastname, firstname; company name; ...)
+     * Get full name (lastname, firstname; company name; ...).
      * @return string
      */
     public function getName() : string
@@ -312,7 +350,7 @@ class SepaPmtInf extends \DOMElement
     }
 
     /**
-     * get IBAN
+     * Get IBAN.
      * @return string
      */
     public function getIBAN() : string
@@ -321,7 +359,7 @@ class SepaPmtInf extends \DOMElement
     }
 
     /**
-     * get BIC
+     * Get BIC.
      * @return string
      */
     public function getBIC() : string
@@ -330,7 +368,7 @@ class SepaPmtInf extends \DOMElement
     }
 
     /**
-     * get CI (Creditor Scheme Identification)
+     * Get CI (Creditor Scheme Identification).
      * @return string
      */
     public function getCI() : string
@@ -339,7 +377,7 @@ class SepaPmtInf extends \DOMElement
     }
 
     /**
-     * get sequence type (Sepa::FRST, Sepa::SEQ_RECURRENT, Sepa::SEQ_ONE_OFF, Sepa::SEQ_FINAL)
+     * Get sequence type (Sepa::FRST, Sepa::SEQ_RECURRENT, Sepa::SEQ_ONE_OFF, Sepa::SEQ_FINAL).
      * @return string
      */
     public function getSeqType() : string
@@ -348,59 +386,59 @@ class SepaPmtInf extends \DOMElement
     }
 
     /**
-     * validate IBAN
-     * @return int errorcode (call errorMsg() to get coresponding text message)
+     * Validate the IBAN.
+     * @return int Sepa::OK or errorcode
      */
     private function validateIBAN() : int
     {
         $iErr = Sepa::OK;
         if (!Sepa::checkValidation(Sepa::V_NO_IBAN_VALIDATION)) {
             if (strlen($this->strIBAN) == 0) {
-                $iErr |= Sepa::ERR_PMT_IBAN_MISSING;
+                $iErr = Sepa::ERR_PMT_IBAN_MISSING;
             } else if (Sepa::validateIBAN($this->strIBAN) != Sepa::OK) {
-                $iErr |= Sepa::ERR_PMT_INVALID_IBAN;
+                $iErr = Sepa::ERR_PMT_INVALID_IBAN;
             }
         }
         return $iErr;
     }
 
     /**
-     * validate BIC
-     * @return int errorcode (call errorMsg() to get coresponding text message)
+     * Validate the BIC.
+     * @return int Sepa::OK or errorcode
      */
     private function validateBIC() : int
     {
         $iErr = Sepa::OK;
         if (!Sepa::checkValidation(Sepa::V_NO_BIC_VALIDATION)) {
             if (strlen($this->strBIC) == 0) {
-                $iErr |= Sepa::ERR_PMT_BIC_MISSING;
+                $iErr = Sepa::ERR_PMT_BIC_MISSING;
             } else if (Sepa::validateBIC($this->strBIC) != Sepa::OK) {
-                $iErr |= Sepa::ERR_PMT_INVALID_BIC;
+                $iErr = Sepa::ERR_PMT_INVALID_BIC;
             }
         }
         return $iErr;
     }
 
     /**
-     * validate CI
-     * @return int errorcode (call errorMsg() to get coresponding text message)
+     * Validate the CI.
+     * @return int Sepa::OK or errorcode
      */
     private function validateCI() : int
     {
         $iErr = Sepa::OK;
         if (!Sepa::checkValidation(Sepa::V_NO_CI_VALIDATION)) {
             if (strlen($this->strCI) == 0) {
-                $iErr |= Sepa::ERR_PMT_CI_MISSING;
+                $iErr = Sepa::ERR_PMT_CI_MISSING;
             } else if (Sepa::validateCI($this->strCI) != Sepa::OK) {
-                $iErr |= Sepa::ERR_PMT_INVALID_CI;
+                $iErr = Sepa::ERR_PMT_INVALID_CI;
             }
         }
         return $iErr;
     }
 
     /**
-     * validate mandatory fields
-     * @return int errorcode (call errorMsg() to get coresponding text message)
+     * Validate mandatory fields.
+     * @return int Sepa::OK or errorcode
      */
     private function validateMandatory() : int
     {
@@ -411,10 +449,26 @@ class SepaPmtInf extends \DOMElement
             }
             if (strlen($this->strSeqType) == 0) {
                 $iErr |= Sepa::ERR_PMT_SEQ_TYPE_MISSING;
-            } else if ($this->strSeqType != Sepa::SEQ_FIRST && $this->strSeqType != Sepa::SEQ_RECURRENT && $this->strSeqType != Sepa::SEQ_ONE_OFF && $this->strSeqType != Sepa::SEQ_FINAL) {
+            } else if (!$this->isValidateSeqType($this->strSeqType)) {
                 $iErr |= Sepa::ERR_PMT_INVALID_SEQ_TYPE;
             }
         }
         return $iErr;
+    }
+
+    /**
+     * Check for valid sequence type.
+     * @param string $strSeqType type to check
+     * @return bool
+     */
+    private function isValidateSeqType(string $strSeqType) : bool
+    {
+        $aValid = [
+            Sepa::SEQ_FIRST,
+            Sepa::SEQ_RECURRENT,
+            Sepa::SEQ_ONE_OFF,
+            Sepa::SEQ_FINAL
+        ];
+        return in_array($strSeqType, $aValid);
     }
 }

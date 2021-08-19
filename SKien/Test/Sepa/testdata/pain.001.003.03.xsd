@@ -119,9 +119,7 @@
 			<xs:element name="Tp" type="CreditorReferenceTypeSEPA"/>
 			<xs:element name="Ref" type="Max35Text">
 				<xs:annotation>
-					<xs:documentation>If a Creditor Reference contains a check digit, the receiving bank is not required to validate this.
-If the receiving bank validates the check digit and if this validation fails, the bank may continue its processing and send the transaction to the next party in the chain.
-RF Creditor Reference may be used (ISO 11649).</xs:documentation>
+					<xs:documentation>If a Creditor Reference contains a check digit, the receiving bank is not required to validate this. If the receiving bank validates the check digit and if this validation fails, the bank may continue its processing and send the transaction to the next party in the chain. RF Creditor Reference may be used (ISO 11649).</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>
@@ -298,8 +296,7 @@ RF Creditor Reference may be used (ISO 11649).</xs:documentation>
 			<xs:choice>
 				<xs:element name="OrgId" type="OrganisationIdentificationSEPAChoice">
 					<xs:annotation>
-						<xs:documentation>Either ‘BIC or BEI’ or one
-occurrence of ‘Other’ is allowed.</xs:documentation>
+						<xs:documentation>Either ‘BIC or BEI’ or one occurrence of ‘Other’ is allowed.</xs:documentation>
 					</xs:annotation>
 				</xs:element>
 				<xs:element name="PrvtId" type="PersonIdentificationSEPA1Choice">
@@ -314,8 +311,7 @@ occurrence of ‘Other’ is allowed.</xs:documentation>
 		<xs:sequence>
 			<xs:element name="Nm" type="Max70Text" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>‘Name’ is limited to 70 characters
-in length.</xs:documentation>
+					<xs:documentation>‘Name’ is limited to 70 characters in length.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="Id" type="PartySEPAChoice" minOccurs="0"/>
@@ -325,8 +321,7 @@ in length.</xs:documentation>
 		<xs:sequence>
 			<xs:element name="Nm" type="Max70Text">
 				<xs:annotation>
-					<xs:documentation>‘Name’ is limited to 70 characters
-in length.</xs:documentation>
+					<xs:documentation>‘Name’ is limited to 70 characters in length.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="PstlAdr" type="PostalAddressSEPA" minOccurs="0"/>
@@ -356,8 +351,7 @@ in length.</xs:documentation>
 			<xs:element name="CtrlSum" type="DecimalNumber" minOccurs="0"/>
 			<xs:element name="PmtTpInf" type="PaymentTypeInformationSCT1" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>If used, it is recommended to be used only at ‘Payment Information’ level and not at Credit Transfer Transaction Information’ level.
-When Instruction Priority is to be used, ‘Payment Type Information’ must be present at ‘Payment Information’ level. </xs:documentation>
+					<xs:documentation>If used, it is recommended to be used only at ‘Payment Information’ level and not at Credit Transfer Transaction Information’ level. When Instruction Priority is to be used, ‘Payment Type Information’ must be present at ‘Payment Information’ level.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 			<xs:element name="ReqdExctnDt" type="ISODate"/>
@@ -461,7 +455,7 @@ When Instruction Priority is to be used, ‘Payment Type Information’ must be 
 		<xs:sequence>
 			<xs:element name="CdtrRefInf" type="CreditorReferenceInformationSEPA1" minOccurs="0">
 				<xs:annotation>
-					<xs:documentation>When present, the receiving bank is not obliged to validate the the reference information. </xs:documentation>
+					<xs:documentation>When present, the receiving bank is not obliged to validate the the reference information.</xs:documentation>
 				</xs:annotation>
 			</xs:element>
 		</xs:sequence>

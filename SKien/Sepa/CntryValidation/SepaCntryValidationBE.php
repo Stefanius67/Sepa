@@ -5,38 +5,37 @@ use SKien\Sepa\Sepa;
 /**
  * Validation class for belgian IBAN and CI
  *
- * ### Valid testvalues
- *  - IBAN:   BE68 5390 0754 7034
- *  - BIC:    JCAEBE9AXXX
- *  - CI:     BE69 ZZZ 050 D 000000008 / BE68 ZZZ 0123456789
+ * #### Valid testvalues
+ * <table><tbody>
+ * <tr><td>   IBAN   </td><td> BE68 5390 0754 7034 </td></tr>
+ * <tr><td>   BIC    </td><td> JCAEBE9AXXX </td></tr>
+ * <tr><td>   CI     </td><td> BE69 ZZZ 050 D 000000008 / BE68 ZZZ 0123456789 </td></tr>
+ * </tbody></table>
  *
- * ### IBAN format
- * ** CCpp bbbk kkkk kkPP **
- *  - CC:    ISO Country Code
- *  - pp:    2 digits IBAN checksum
- *  - b:     3 digits numeric banking code
- *  - k:     7 digits numeric account number
- *  - PP:    2 digits numeric national check code
+ * #### IBAN format
+ * #### ` CCpp bbbk kkkk kkPP `
+ * <table><tbody>
+ * <tr><td>   CC     </td><td> ISO Country Code </td></tr>
+ * <tr><td>   pp     </td><td> 2 digits IBAN checksum </td></tr>
+ * <tr><td>   b      </td><td> 3 digits numeric banking code </td></tr>
+ * <tr><td>   k      </td><td> 7 digits numeric account number </td></tr>
+ * <tr><td>   PP     </td><td> 2 digits numeric national check code </td></tr>
+ * </tbody></table>
  *
  * Length: 16
  *
- * ### CI format
- * See method SepaCntryValidationBE::validateCI()
+ * #### CI format
+ * Belgium has a more complex format for the CI. For more information
+ * see method SepaCntryValidationBE::validateCI()
  *
- * #### History:
- * - *2020-05-21*   initial version.
- * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes
- *
- * @package SKien/Sepa
- * @since 1.1.0
- * @version 1.2.0
- * @author Stefanius <s.kien@online.de>
+ * @package Sepa
+ * @author Stefanius <s.kientzler@online.de>
  * @copyright MIT License - see the LICENSE file for details
  */
 class SepaCntryValidationBE extends SepaCntryValidationBase
 {
     /**
-     * create instance of validation.
+     * Create instance of belgian validation.
      * @param string $strCntry  2 sign country code
      */
     public function __construct(string $strCntry)
@@ -51,29 +50,42 @@ class SepaCntryValidationBE extends SepaCntryValidationBase
     /**
      * Validates given CI for belgium.
      *
-     * When the Creditor has an 'Enterprise Number'
-     * --------------------------------------------
-     *  CCpp ZZZ nnnnnnnnnn
-     *      C:    ISO Country Code
-     *      p:    2 digits IBAN checksum
-     *      Z:    3 digits alphanum creditor business code (CBC)
-     *      n:    10 digits numeric 'Enterprise Number'
-     *  Length: 17
+     * In Belgium there are two different formats for the CI, depending on whether the holder
+     * has an 'Enterprise' number or not
      *
+     * #### 1. When the Creditor has an 'Enterprise Number'
+     * #### ` CCpp ZZZ nnnnnnnnnn `
+     * <table><tbody>
+     * <tr><td>   C     </td><td> ISO Country Code </td></tr>
+     * <tr><td>   p     </td><td> 2 digits IBAN checksum </td></tr>
+     * <tr><td>   Z     </td><td> 3 digits alphanum creditor business code (CBC) </td></tr>
+     * <tr><td>   n     </td><td> 10 digits numeric 'Enterprise Number' </td></tr>
+     * </tbody></table>
+     *
+     * Length: 17
+     *
+     * <i>
      * For the national identifier 10 numeric positions fixed length are used.
      * It is called the 'Enterprise Number' (this number is also used as the VAT
-     * Number by the company).
+     * number by the company).
+     * </i>
      *
-     * When the Creditor does not have an 'Enterprise Number'
-     * ------------------------------------------------------
-     *  CCpp ZZZ bbbDnnnnnnnnn
-     *      C:    ISO Country Code
-     *      p:    2 digits IBAN checksum
-     *      Z:    3 digits alphanum creditor business code (CBC)
-     *      b:    3 digits numeric internal bank code (specific for Belgium)
-     *      D:    1 digit fixed 'D' character
-     *      n:    9 digits numeric increasing number issued by the Creditor Bank
-     *  Length: 20
+     * #### 2. When the Creditor does not have an 'Enterprise Number'
+     * #### ` CCpp ZZZ bbbDnnnnnnnnn `
+     * <table><tbody>
+     * <tr><td>   C     </td><td> ISO Country Code </td></tr>
+     * <tr><td>   p     </td><td> 2 digits IBAN checksum </td></tr>
+     * <tr><td>   Z     </td><td> 3 digits alphanum creditor business code (CBC) </td></tr>
+     * <tr><td>   b     </td><td> 3 digits numeric internal bank code (specific for Belgium) </td></tr>
+     * <tr><td>   D     </td><td> 1 digit fixed 'D' character </td></tr>
+     * <tr><td>   n     </td><td> 9 digits numeric increasing number issued by the Creditor Bank </td></tr>
+     * </tbody></table>
+     *
+     * Length: 20
+     *
+     * <b>
+     * The differentiation between the two formats is done through the length!
+     * </b>
      *
      * @param string $strCI
      * @return int OK ( 0 ) or errorcode

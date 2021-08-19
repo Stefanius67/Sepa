@@ -4,22 +4,15 @@ namespace SKien\Sepa;
 /**
  * Helper trait containing some methods used by multiple classes in package
  *
- * #### History
- * - *2020-02-18*   initial version.
- * - *2020-05-21*   renamed namespace to fit PSR-4 recommendations for autoloading.
- * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes
- *
- * @package SKien/Sepa
- * @since 1.0.0
- * @version 1.2.0
- * @author Stefanius <s.kien@online.de>
+ * @package Sepa
+ * @author Stefanius <s.kientzler@online.de>
  * @copyright MIT License - see the LICENSE file for details
+ * @internal
  */
 trait SepaHelper
 {
     /**
-     * check for valid type and trigger error in case of invalid type
-     *
+     * Check for valid type and trigger error in case of invalid type.
      * @param string $type
      * @return bool
      */
@@ -32,9 +25,8 @@ trait SepaHelper
     }
 
     /**
-     * create unique ID.
-     * format: 99999999-9999-9999-999999999999
-     *
+     * Create unique ID.
+     * Format: 99999999-9999-9999-999999999999
      * @return string
      */
     public static function createUID() : string
@@ -50,26 +42,26 @@ trait SepaHelper
     }
 
     /**
-     * <b>make valid SEPA string.</b>
+     * Convert input to valid SEPA string.
      * <ol>
      *      <li>replacement of special chars</li>
      *      <li>limitation to supported chars dependend on validation type</li>
      *      <li>restriction to max length dependend on validation type</li>
      * </ol>
      *
-     * <ul>
+     * Validation Types: <ul>
      *      <li>SepaHelper::MAX35:</li>
      *      <li>SepaHelper::MAX70:</li>
      *      <li>SepaHelper::MAX140:</li>
      *      <li>SepaHelper::MAX1025:
      *          <ul>
      *              <li>max length = MAX[xxx]</li>
-     *              <li>supported chars: A...Z, a...z, 0...9, blank, dot, comma plus, minus, slash, questionmark, colon, open/closing bracket</li>
+     *              <li>supported chars: A...Z, a...z, 0...9, blank, dot, comma, plus, minus, slash, questionmark, colon, open/closing bracket</li>
      *          </ul></li>
      *      <li>SepaHelper::ID1:
      *          <ul>
      *              <li>max length = 35</li>
-     *              <li>supported chars: A...Z, a...z, 0...9, blank, dot, comma plus, minus, slash</li>
+     *              <li>supported chars: A...Z, a...z, 0...9, blank, dot, comma, plus, minus, slash</li>
      *          </ul></li>
      *      <li>SepaHelper::ID2:
      *          <ul>
@@ -121,7 +113,7 @@ trait SepaHelper
     }
 
     /**
-     * replace some special chars with nearest equivalent.
+     * Replace some special chars with nearest equivalent.
      * - umlauts, acute, circumflex, ...
      * - square/curly brackets
      * - underscore, at
@@ -157,8 +149,7 @@ trait SepaHelper
     }
 
     /**
-     * calculates valid collectiondate from given date considering businessdays
-     *
+     * Calculates valid collectiondate from given date considering businessdays.
      * @param int $iDays
      * @param int $dtStart unix timestamp start date (if null, current date is used)
      * @return int unix timestamp
@@ -179,20 +170,16 @@ trait SepaHelper
     }
 
     /**
-     * checks for target2-Day (Sepa-Businessday)
-     *
+     * Check for target2-Day (Sepa-Businessday).
      * Mo...Fr and NOT TARGET1-Day
-     *
      * TARGET1 Days:
-     *  » New Year
-     *  » Good Day
-     *  » Easter Monday
-     *  » 1'st May
-     *  » 1.Christmas
-     *  » 2.Christmas
-     *
+     *  - New Year
+     *  - Good Day
+     *  - Easter Monday
+     *  - 1'st May
+     *  - 1.Christmas
+     *  - 2.Christmas
      * @todo change to dynamic calculation of eastern and remove $aTarget2 - array
-     *
      * @param int $dt  unix timestamp to check
      * @return bool
      */

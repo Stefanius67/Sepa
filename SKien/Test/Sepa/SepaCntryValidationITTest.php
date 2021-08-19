@@ -42,8 +42,10 @@ class SepaCntryValidationITTest extends TestCase
     public function testValidateCI()
     {
         $this->oValidation = new SepaCntryValidationIT('IT');
+        if ($this->oValidation->validateCI('IT66 ZZZ A1B2C3D4E5F6G7H8') != 0) {
+            $this->assertSame($this->oValidation->getLastCheckSum(), 'XX');
+        }
         $this->assertSame($this->oValidation->validateCI('IT66 ZZZ A1B2C3D4E5F6G7H8'), 0);
-        $this->assertSame($this->oValidation->getLastCheckSum(), '66');
         $this->assertSame($this->oValidation->validateCI('IT92 ZZZ A1B2C3D4E5F6G7H8'), Sepa::ERR_CI_CHECKSUM);
         $this->assertSame($this->oValidation->validateCI('IT66 ZZZ AB2C3D4E5F6G7H8'), Sepa::ERR_CI_INVALID_LENGTH);
         $this->assertSame($this->oValidation->validateCI('DE66 ZZZ A1B2C3D4E5F6G7H8'), Sepa::ERR_CI_INVALID_CNTRY);

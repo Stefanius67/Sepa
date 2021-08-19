@@ -4,7 +4,7 @@ namespace SKien\Sepa\CntryValidation;
 use SKien\Sepa\Sepa;
 
 /**
- * Base class for country specific validation for IBAN, BIC and CI
+ * Base class for country specific validation for IBAN, BIC and CI.
  *
  * Needed methods to calculate checksum and check the format of
  * the values.
@@ -22,14 +22,8 @@ use SKien\Sepa\Sepa;
  * order to map this rule.
  * @see SepaCntryValidationBE class
  *
- * #### History:
- * - *2020-05-21*   initial version.
- * - *2020-07-22*   added missing PHP 7.4 type hints / docBlock changes
- *
- * @package SKien/Sepa
- * @since 1.1.0
- * @version 1.2.0
- * @author Stefanius <s.kien@online.de>
+ * @package Sepa
+ * @author Stefanius <s.kientzler@online.de>
  * @copyright MIT License - see the LICENSE file for details
  */
 class SepaCntryValidationBase implements SepaCntryValidation
@@ -52,7 +46,10 @@ class SepaCntryValidationBase implements SepaCntryValidation
     protected string $strLastCheckSum = '';
 
     /**
-     * create instance of validation.
+     * Create instance of validation.
+     * This constructor checks, if the country code from the parameter equals to the
+     * code defined in the extension class. This prevents the wrong class from being used
+     * for validation for a given country.
      * @param string $strCntry  2 sign country code
      */
     public function __construct(string $strCntry)
@@ -63,17 +60,17 @@ class SepaCntryValidationBase implements SepaCntryValidation
     }
 
     /**
-     * validates given IBAN.
+     * Validates given IBAN.
      *
      * @link https://www.ecbs.org/iban.htm
      * @link http://www.pruefziffernberechnung.de/I/IBAN.shtml
      *
-     * @param string $strIBAN
-     * @return int OK ( 0 ) or errorcode
-     *      Sepa::ERR_IBAN_INVALID_CNTRY    invalid country code
-     *      Sepa::ERR_IBAN_INVALID_LENGTH   invalid length
-     *      Sepa::ERR_IBAN_INVALID_SIGN     IBAN contains invalid sign(s)
-     *      Sepa::ERR_IBAN_CHECKSUM         wrong checksum
+     * @param string $strIBAN   IBAN to validate
+     * @return int OK ( 0 ) or errorcode <ul>
+     * <li><b> Sepa::ERR_IBAN_INVALID_CNTRY   </b>  invalid country code </li>
+     * <li><b> Sepa::ERR_IBAN_INVALID_LENGTH  </b>  invalid length </li>
+     * <li><b> Sepa::ERR_IBAN_INVALID_SIGN    </b>  IBAN contains invalid sign(s) </li>
+     * <li><b> Sepa::ERR_IBAN_CHECKSUM        </b>  wrong checksum </li></ul>
      */
     public function validateIBAN(string $strIBAN) : int
     {
@@ -104,10 +101,10 @@ class SepaCntryValidationBase implements SepaCntryValidation
 
     /**
      * Validates given BIC.
-     * ISO 9362
+     * Follows <b> ISO 9362 </b><br/>
      * as far as I have determined, the format of the BIC is uniform within
-     * the participating countries.
-     * @param string $strBIC
+     * the participating countries for SEPA.
+     * @param string $strBIC    BIC to validate
      * @return int OK ( 0 ) or errorcode
      */
     public function validateBIC(string $strBIC) : int
@@ -141,12 +138,12 @@ class SepaCntryValidationBase implements SepaCntryValidation
      * online CI Validator
      * @link http://www.maric.info/fin/SEPA/ddchkden.htm
      *
-     * @param string $strCI
-     * @return int OK ( 0 ) or errorcode
-     *     Sepa::ERR_CI_INVALID_CNTRY      invalid country code.
-     *     Sepa::ERR_CI_INVALID_LENGTH     invalid length.
-     *     Sepa::ERR_CI_INVALID_SIGN       CI contains invalid sign(s).
-     *     Sepa::ERR_CI_CHECKSUM           wrong checksum.
+     * @param string $strCI     CI to validate
+     * @return int OK ( 0 ) or errorcode<ul>
+     * <li><b> Sepa::ERR_CI_INVALID_CNTRY   </b>  invalid country code </li>
+     * <li><b> Sepa::ERR_CI_INVALID_LENGTH  </b>  invalid length </li>
+     * <li><b> Sepa::ERR_CI_INVALID_SIGN    </b>  CI contains invalid sign(s) </li>
+     * <li><b> Sepa::ERR_CI_CHECKSUM        </b>  wrong checksum </li></ul>
      */
     public function validateCI(string $strCI) : int
     {
@@ -176,15 +173,23 @@ class SepaCntryValidationBase implements SepaCntryValidation
 
     /**
      * Return last calculated checksum.
+     * This method is only for test purposes.
      * @return string
+     * @internal
      */
     public function getLastCheckSum() : string
     {
+        // @codeCoverageIgnoreStart
+        /*
+         * Outside of coverge, since this method only can be used to retrieve
+         * any calculated checksum for testpurposes and shouldn't be used in production code!
+         */
         return $this->strLastCheckSum;
+        // @codeCoverageIgnoreEnd
     }
 
     /**
-     * calculate modulo 97 checksum for bankcode and accountnumber
+     * Calculate modulo 97 checksum for bankcode and accountnumber
      * MOD 97-10 (see ISO 7064)
      * @param string $strCheck
      * @return string
@@ -207,7 +212,7 @@ class SepaCntryValidationBase implements SepaCntryValidation
     }
 
     /**
-     * in some cases there appears unwanted decimals (floatingpoint drift from bc - operations)
+     * In some cases there appears unwanted decimals (floatingpoint drift from bc - operations)
      * ... just cut them off
      *
      * @param string $str
@@ -245,7 +250,7 @@ class SepaCntryValidationBase implements SepaCntryValidation
     }
 
     /**
-     * replace all alpha chars with the numeric substitution
+     * Replace all alpha chars with it's numeric substitution.
      * @param string $strCheck
      * @return string
      */
