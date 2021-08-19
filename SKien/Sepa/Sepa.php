@@ -23,29 +23,36 @@ class Sepa
 {
     use SepaHelper;
 
+    /** Version 2.6 (2012: pain.001.002.03 / pain.008.002.02)*/
+    const V26 = "2.6";
+    /** Version 2.9 (2015: pain.001.003.03 / pain.008.003.02)*/
+    const V29 = "2.9";
+    /** Version 3.0 (2016: pain.001.001.03 / pain.008.001.02)*/
+    const V30 = "3.0";
+
     /** Credit Transfer Transaction  */
-    const   CCT = "TRF";
+    const CCT = "TRF";
     /** Direct Debit Transaction     */
-    const   CDD = "DD";
+    const CDD = "DD";
 
     /** ID1 validation
      * @see SepaHelper::validString()   */
-    const   ID1     = 1;
+    const ID1     = 1;
     /** ID2 validation
      * @see SepaHelper::validString()   */
-    const   ID2     = 2;
+    const ID2     = 2;
     /** MAX35 validation
      * @see SepaHelper::validString()   */
-    const   MAX35   = 3;
+    const MAX35   = 3;
     /** MAX70 validation
      * @see SepaHelper::validString()   */
-    const   MAX70   = 4;
+    const MAX70   = 4;
     /** MAX140 validation
      * @see SepaHelper::validString()   */
-    const   MAX140  = 5;
+    const MAX140  = 5;
     /** MAX1025 validation
      * @see SepaHelper::validString()   */
-    const   MAX1025 = 6;
+    const MAX1025 = 6;
 
     /** sequence type first dd sequence     */
     const SEQ_FIRST     = "FRST";
@@ -140,6 +147,38 @@ class Sepa
     static protected array $aPmtInfError = array();
     /** @var array<string> error messages for transaction info validation   */
     static protected array $aTxInfError = array();
+
+    /**
+     * Get the pain version for requested SEPA version and -type.
+     * The pain version is needed to bind the SEPA XML document to the correct namespace and XSD schema.
+     * @param string $strType
+     * @param string $strSepaVersion
+     * @return string
+     */
+    public static function getPainVersion(string $strType, string $strSepaVersion = Sepa::V30) : string
+    {
+        $aPainVersion = [
+            self::V26 => [
+                self::CCT => 'pain.001.002.03',
+                self::CDD => 'pain.008.002.02',
+                'year' => 2012,
+            ],
+            self::V29 => [
+                self::CCT => 'pain.001.003.03',
+                self::CDD => 'pain.008.003.02',
+                'year' => 2015,
+            ],
+            self::V30 => [
+                self::CCT => 'pain.001.001.03',
+                self::CDD => 'pain.008.001.02',
+                'year' => 2016,
+            ],
+        ];
+        if (!isset($aPainVersion[$strSepaVersion])) {
+            trigger_error('Not supported SEPA Version: ' . $strSepaVersion . ' (Supported versions: ' . implode(', ', array_keys($aPainVersion)) . ')!', E_USER_ERROR);
+        }
+        return $aPainVersion[$strSepaVersion][$strType];
+    }
 
     /**
      * Initializition of the package.

@@ -14,19 +14,21 @@ class SepaDoc extends \DOMDocument
 
     /** @var string  unique id  */
     protected string $id = '';
-    /** @var string  type of sepa document  */
+    /** @var string type of sepa document  */
     protected string $type = '';
-    /** @var \DOMElement  XML Base-Element       */
+    /** @var string sepa version to use  */
+    protected string $strSepaVersion = '';
+    /** @var \DOMElement XML Base-Element       */
     protected ?\DOMElement $xmlBase = null;
-    /** @var int     overall count of transactions  */
+    /** @var int overall count of transactions  */
     protected int $iTxCount = 0;
-    /** @var \DOMElement  DOM element containing overall count of transactions   */
+    /** @var \DOMElement DOM element containing overall count of transactions   */
     protected ?\DOMElement $xmlTxCount = null;
-    /** @var float    controlsum (sum of all PII's) */
+    /** @var float controlsum (sum of all PII's) */
     protected float $dblCtrlSum = 0.0;
-    /** @var \DOMElement  DOM element containing controlsum      */
+    /** @var \DOMElement DOM element containing controlsum      */
     protected ?\DOMElement $xmlCtrlSum = null;
-    /** @var int     count of invalid transactions*/
+    /** @var int count of invalid transactions*/
     protected int $iInvalidTxCount = 0;
 
     /**
@@ -36,29 +38,27 @@ class SepaDoc extends \DOMDocument
      * <li> Direct Debit Transaction (Sepa::CDD) </li></ul>
      * @param string $type  type of transaction
      */
-    public function __construct(string $type)
+    public function __construct(string $type, string $strSepaVersion = Sepa::V30)
     {
         // invalid type causes E_USER_ERROR
         $this->isValidType($type);
-        $aTypeInfo = array(
-            Sepa::CCT => array('pain' => '001.002.03', 'base' => 'CstmrCdtTrfInitn'),
-            Sepa::CDD => array('pain' => '008.002.02', 'base' => 'CstmrDrctDbtInitn')
-        );
+        $aTypeBase = [Sepa::CCT => 'CstmrCdtTrfInitn', Sepa::CDD => 'CstmrDrctDbtInitn'];
 
-        $strPain = $aTypeInfo[$type]['pain'];
-        $strBase = $aTypeInfo[$type]['base'];
+        $strPain = Sepa::getPainVersion($type, $strSepaVersion);
+        $strBase = $aTypeBase[$type];
 
         parent::__construct("1.0", "UTF-8");
 
         $this->type = $type;
+        $this->strSepaVersion = $strSepaVersion;
 
         $this->formatOutput = true;
         $this->preserveWhiteSpace = false; // 'formatOutput' only works if 'preserveWhiteSpace' set to false
 
         $xmlRoot = $this->createElement("Document");
-        $xmlRoot->setAttribute("xmlns", "urn:iso:std:iso:20022:tech:xsd:pain." . $strPain);
+        $xmlRoot->setAttribute("xmlns", "urn:iso:std:iso:20022:tech:xsd:" . $strPain);
         $xmlRoot->setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
-        $xmlRoot->setAttribute("xsi:schemaLocation", "urn:iso:std:iso:20022:tech:xsd:pain." . $strPain . " pain." . $strPain . ".xsd");
+        $xmlRoot->setAttribute("xsi:schemaLocation", "urn:iso:std:iso:20022:tech:xsd:" . $strPain . " " . $strPain . ".xsd");
         $this->appendChild($xmlRoot);
 
         $this->xmlBase = $this->createElement($strBase);

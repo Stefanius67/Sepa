@@ -22,6 +22,12 @@ class SepaTest extends TestCase
         Sepa::validateBIC($strBIC);
     }
 
+    public function test_NotSupportedVersion()
+    {
+        $this->expectError();
+        Sepa::getPainVersion(Sepa::CDD, '2.0');
+    }
+
     public function testSetValidationLevel()
     {
         Sepa::init();
@@ -256,10 +262,14 @@ class SepaTest extends TestCase
         ob_end_clean();
     }
 
-    public function test_validateCDDagainstXSD()
+    /**
+     * @dataProvider versionProvider
+     */
+    public function test_validateCDDagainstXSD(string $strVersion)
     {
-        $oSepaDoc = $this->createValidCDD();
-        $strErrorMsg = $this->validateAgainstXSD($oSepaDoc, 'pain.008.002.02.xsd');
+        $oSepaDoc = $this->createValidCDD($strVersion);
+        $strPain = Sepa::getPainVersion(Sepa::CDD, $strVersion);
+        $strErrorMsg = $this->validateAgainstXSD($oSepaDoc, $strPain . '.xsd');
 
         if (strlen($strErrorMsg) > 0) {
             $this->fail($strErrorMsg);
@@ -268,10 +278,14 @@ class SepaTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function test_validateCCTagainstXSD()
+    /**
+     * @dataProvider versionProvider
+     */
+    public function test_validateCCTagainstXSD(string $strVersion)
     {
-        $oSepaDoc = $this->createValidCCT();
-        $strErrorMsg = $this->validateAgainstXSD($oSepaDoc, 'pain.001.002.03.xsd');
+        $oSepaDoc = $this->createValidCCT($strVersion);
+        $strPain = Sepa::getPainVersion(Sepa::CCT, $strVersion);
+        $strErrorMsg = $this->validateAgainstXSD($oSepaDoc, $strPain . '.xsd');
 
         if (strlen($strErrorMsg) > 0) {
             $this->fail($strErrorMsg);
@@ -280,7 +294,16 @@ class SepaTest extends TestCase
         $this->assertTrue(true);
     }
 
-    protected function createValidCDD() : SepaDoc
+    public function versionProvider() : array
+    {
+        return [
+            Sepa::V26 => [Sepa::V26],
+            Sepa::V29 => [Sepa::V29],
+            Sepa::V30 => [Sepa::V30],
+        ];
+    }
+
+    protected function createValidCDD(string $strVersion = Sepa::V30) : SepaDoc
     {
         $aValidTransaction = array(
             'dblValue' => 104.45,
@@ -307,7 +330,7 @@ class SepaTest extends TestCase
         $type = Sepa::CDD;
 
         // create new SEPA document with header
-        $oSepaDoc = new SepaDoc($type);
+        $oSepaDoc = new SepaDoc($type, $strVersion);
         $oSepaDoc->createGroupHeader('Test company 4711');
 
         // create payment info instruction (PII) and set all needet creditor information
@@ -324,7 +347,7 @@ class SepaTest extends TestCase
         return $oSepaDoc;
     }
 
-    protected function createValidCCT() : SepaDoc
+    protected function createValidCCT(string $strVersion = Sepa::V30) : SepaDoc
     {
         $aValidTransaction = array(
             'dblValue' => 104.45,
@@ -343,7 +366,7 @@ class SepaTest extends TestCase
         $type = Sepa::CCT;
 
         // create new SEPA document with header
-        $oSepaDoc = new SepaDoc($type);
+        $oSepaDoc = new SepaDoc($type, $strVersion);
         $oSepaDoc->createGroupHeader('Test company 4711');
 
         // create payment info instruction (PII) and set all needet creditor information
