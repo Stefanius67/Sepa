@@ -105,19 +105,27 @@ class SepaTest extends TestCase
         $this->assertFalse(strpos($strErr, 'unbekanter Fehler'));
     }
 
+    public function testValidateBICExpand()
+    {
+        // test if 8-digit BIC is expanded to 11-digits
+        Sepa::init();
+        $strBIC = 'GEBADE33';
+        $this->assertEquals(Sepa::OK, Sepa::validateBIC($strBIC));
+        $this->assertEquals('GEBADE33XXX', $strBIC);
+    }
+
     public function testValidateBICError1()
     {
-        // test for OK, if IBAN validation is deactivated
-        Sepa::init();
-        Sepa::setValidationLevel(Sepa::V_NO_BIC_VALIDATION);
+        // test for error, if no validation set (Sepa::Init() not called)
+        Sepa::reset();
         $strBIC = 'GENODE1234';
-        $this->assertEquals(Sepa::OK, Sepa::validateBIC($strBIC));
-        Sepa::setValidationLevel(Sepa::V_FULL_VALIDATION);
+        $this->expectError();
+        Sepa::validateBIC($strBIC);
     }
 
     public function testValidateBICError2()
     {
-        // test for OK, if CI validation is deactivated
+        // test for OK, if BIC validation is deactivated
         Sepa::init();
         Sepa::setValidationLevel(Sepa::V_NO_BIC_VALIDATION);
         $strBIC = 'GENODE1234';

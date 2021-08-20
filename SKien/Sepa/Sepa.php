@@ -399,6 +399,10 @@ class Sepa
     public static function validateBIC(string &$strBIC) : int
     {
         $strBIC = str_replace(' ', '', trim(strtoupper($strBIC)));
+        if (strlen($strBIC) == 8) {
+            // expand an 8-digit code to 11 digits for validation...
+            $strBIC .= 'XXX';
+        }
         if ((self::$wValidation & self::V_NO_BIC_VALIDATION) != 0) {
             return self::OK;
         }
