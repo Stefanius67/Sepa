@@ -66,7 +66,7 @@ class SepaCntryValidationBase implements SepaCntryValidation
      * @link http://www.pruefziffernberechnung.de/I/IBAN.shtml
      *
      * @param string $strIBAN   IBAN to validate
-     * @return int OK ( 0 ) or errorcode <ul>
+     * @return int Sepa::OK or errorcode <ul>
      * <li><b> Sepa::ERR_IBAN_INVALID_CNTRY   </b>  invalid country code </li>
      * <li><b> Sepa::ERR_IBAN_INVALID_LENGTH  </b>  invalid length </li>
      * <li><b> Sepa::ERR_IBAN_INVALID_SIGN    </b>  IBAN contains invalid sign(s) </li>
@@ -105,7 +105,9 @@ class SepaCntryValidationBase implements SepaCntryValidation
      * as far as I have determined, the format of the BIC is uniform within
      * the participating countries for SEPA.
      * @param string $strBIC    BIC to validate
-     * @return int OK ( 0 ) or errorcode
+     * @return int Sepa::OK or errorcode<ul>
+     * <li><b> Sepa::ERR_BIC_INVALID        </b>  invalid BIC </li>
+     * <li><b> Sepa::ERR_BIC_INVALID_CNTRY  </b>  invalid country code </li></ul>
      */
     public function validateBIC(string $strBIC) : int
     {
@@ -139,7 +141,7 @@ class SepaCntryValidationBase implements SepaCntryValidation
      * @link http://www.maric.info/fin/SEPA/ddchkden.htm
      *
      * @param string $strCI     CI to validate
-     * @return int OK ( 0 ) or errorcode<ul>
+     * @return int Sepa::OK or errorcode<ul>
      * <li><b> Sepa::ERR_CI_INVALID_CNTRY   </b>  invalid country code </li>
      * <li><b> Sepa::ERR_CI_INVALID_LENGTH  </b>  invalid length </li>
      * <li><b> Sepa::ERR_CI_INVALID_SIGN    </b>  CI contains invalid sign(s) </li>
