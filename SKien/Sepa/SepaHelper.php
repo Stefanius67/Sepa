@@ -149,24 +149,24 @@ trait SepaHelper
     }
 
     /**
-     * Calculates valid collectiondate from given date considering businessdays.
-     * @param int $iDays
-     * @param int $dtStart unix timestamp start date (if null, current date is used)
+     * Calculates valid delayed date from given date considering SEPA businessdays.
+     * @param int $iDaysDelay   min count of days the payment delays
+     * @param int $dtRequested  requested date (unix timestamp)
      * @return int unix timestamp
      */
-    public static function calcCollectionDate(int $iDays, ?int $dtStart = null) : int
+    public static function calcDelayedDate(int $iDaysDelay, int $dtRequested = 0) : int
     {
-        $dtCollect = ($dtStart === null) ? time() : $dtStart;
+        $dtEarliest = time();
 
         // FORWARD: should daytime ( < 08:30 / < 18:30 ) bear in mind ?
         $iBDays = 0;
-        while ($iBDays < $iDays) {
-            $dtCollect += 86400; // add day ( 24 * 60 * 60 );
-            if (!self::isTarget2Day($dtCollect)) {
+        while ($iBDays < $iDaysDelay) {
+            $dtEarliest += 86400; // add day ( 24 * 60 * 60 );
+            if (self::isTarget2Day($dtEarliest)) {
                 $iBDays++;
             }
         }
-        return $dtCollect;
+        return $dtEarliest > $dtRequested ? $dtEarliest : $dtRequested;
     }
 
     /**
@@ -197,6 +197,6 @@ trait SepaHelper
             '2024-01-01', '2024-03-29', '2024-04-01', '2024-05-01', '2024-12-25', '2024-12-26',
             '2025-01-01', '2025-04-18', '2025-04-21', '2025-05-01', '2025-12-25', '2025-12-26',
         );
-        return ($iWeekDay > 5 || in_array(date('Y-m-d', $dt), $aTarget2));
+        return !($iWeekDay > 5 || in_array(date('Y-m-d', $dt), $aTarget2));
     }
 }

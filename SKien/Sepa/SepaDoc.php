@@ -36,7 +36,11 @@ class SepaDoc extends \DOMDocument
      * A single SEPA document can only hold one type of transactions: <ul>
      * <li> Credit Transfer Transaction (Sepa::CCT) </li>
      * <li> Direct Debit Transaction (Sepa::CDD) </li></ul>
+     * The Sepa version in which the file is to be created depends primarily on the
+     * requirements of the bank to which the created file is to be submitted. It is
+     * recommended to use the latest version supported by the institute.
      * @param string $type  type of transaction
+     * @param string $strSepaVersion    Sepa version to use (Sepa::V26, Sepa::V29, Sepa::V30)
      */
     public function __construct(string $type, string $strSepaVersion = Sepa::V30)
     {
@@ -67,19 +71,21 @@ class SepaDoc extends \DOMDocument
 
     /**
      * Creating group header and required elements.
-     * The method returns a generated unique identifier that can be used to assign it to
-     * the data elements that were used to generate the transactions contained in this file.
-     * This ID is also used by the receiving bank institute to avoid double processing.
+     * If no `id` i spassed, a unique identifier is internaly generated. This id
+     * can be used to assign it to the data elements that were used to generate the
+     * transactions contained in this file.
+     * This ID is used by the receiving bank institute to avoid double processing.
      * @param string $strName   name (initiator of the transactions)
-     * @return string   created unique id for document
+     * @param string $id        unique id for the document (if null, id will be generated)
+     * @return string           the (possibly created) id for the document
      */
-    public function createGroupHeader(string $strName) : string
+    public function createGroupHeader(string $strName, string $id = null) : string
     {
         if ($this->xmlBase != null) {
             $xmlGrpHdr = $this->createElement("GrpHdr");
             $this->xmlBase->appendChild($xmlGrpHdr);
 
-            $this->id = self::createUID();
+            $this->id = $id ?? self::createUID();
 
             $this->addChild($xmlGrpHdr, 'MsgId', $this->id);
             $this->addChild($xmlGrpHdr, 'CreDtTm', date(DATE_ATOM)); // str_replace(' ', 'T', date('Y-m-d h:i:s')));
@@ -122,12 +128,17 @@ class SepaDoc extends \DOMDocument
                 $xmlNode = $this->addChild($xmlPmtTpInf, 'SvcLvl');
                 $this->addChild($xmlNode, 'Cd', 'SEPA');
 
+                if (($strCategoryPurpose = $oPmtInf->getCategoryPurpose()) != '') {
+                    $xmlNode = $this->addChild($xmlPmtTpInf, 'CtgyPurp');
+                    $this->addChild($xmlNode, 'Cd', $strCategoryPurpose);
+                }
+
                 if ($this->type == Sepa::CDD) {
                     // only for directdebit
                     $xmlNode = $this->addChild($xmlPmtTpInf, 'LclInstrm');
                     $this->addChild($xmlNode, 'Cd', 'CORE');
                     $this->addChild($xmlPmtTpInf, 'SeqTp', $oPmtInf->getSeqType());
-                    $this->addChild($oPmtInf, 'ReqdColltnDt', $oPmtInf->getCollectionDate());
+                    $this->addChild($oPmtInf, 'ReqdColltnDt', $oPmtInf->getCollExecDate(Sepa::CDD));
 
                     // Creditor Information
                     $xmlNode = $this->addChild($oPmtInf, 'Cdtr');
@@ -150,9 +161,7 @@ class SepaDoc extends \DOMDocument
                     $xmlNode = $this->addChild($xmlNode, 'SchmeNm');
                     $this->addChild($xmlNode, 'Prtry', 'SEPA');
                 } else {
-                    // Requested Execution Date always 1999-01-01 for Credit Transfer
-                    //   -> will be set to next possible date by executing Financial Institute
-                    $this->addChild($oPmtInf, 'ReqdExctnDt', date('1999-01-01'));
+                    $this->addChild($oPmtInf, 'ReqdExctnDt', $oPmtInf->getCollExecDate(Sepa::CCT));
 
                     // Creditor Information
                     $xmlNode = $this->addChild($oPmtInf, 'Dbtr');

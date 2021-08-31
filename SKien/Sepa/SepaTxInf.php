@@ -20,7 +20,8 @@ namespace SKien\Sepa;
  *
  * > <b>Note:</b><br/>
  * > The return values of the `getXXX()` methods can differ from the passed values
- * (`setXXX() / fromArray()`) since they  may have been converted and limited to a max. length.
+ * (`setXXX() / fromArray()`) since they  may have been converted too allowed charecters and
+ * limited to a max. length.
  *
  * @package Sepa
  * @author Stefanius <s.kientzler@online.de>
@@ -50,6 +51,8 @@ class SepaTxInf
     protected string $strDescription = '';
     /** @var float Value of the transaction in EUR */
     protected float $dblValue = 0.0;
+    /** @var string purpose */
+    protected string $strPurpose = '';
 
     /**
      * Create transaction info.
@@ -110,6 +113,7 @@ class SepaTxInf
      *       'strDescription' => '<Description>',
      *       'strUltimateName' => '<UltimateName>',
      *       'strPaymentId' => '<PaymentId>',
+     *       'strPurpose' => 'setPurpose',
      *       'dblValue' => 123.4,
      *   ];
      * ```
@@ -130,6 +134,7 @@ class SepaTxInf
             'strDescription' => 'setDescription',
             'strUltimateName' => 'setUltimateName',
             'strPaymentId' => 'setPaymentId',
+            'strPurpose' => 'setPurpose',
         ];
         foreach ($aPropertyMap as $strKey => $strFunc) {
             if (isset($aProperties[$strKey])) {
@@ -226,6 +231,24 @@ class SepaTxInf
     }
 
     /**
+     * Set the purpose.
+     * The purpose is an optional value!
+     * If set, only ISO 20022 codes of the ExternalPurpose1Code list are allowed.
+     * Referr to the actual list that is available in worksheet '11-Purpose 'of the Excel
+     * file provided in the download at
+     * [www.iso20022.org](https://www.iso20022.org/catalogue-messages/additional-content-messages/external-code-sets)
+     * > <b>Attention:</b><br/>
+     * > There is no validation whether in this module nor through the provided XSD schemas for
+     * this value. To avoid rejection of your data, you have to take care for valid values on your own.
+     * @link ./Transaction-Purpose-Codes
+     * @param string $strPurpose
+     */
+    public function setPurpose(string $strPurpose) : void
+    {
+        $this->strPurpose = strtoupper(substr($strPurpose, 0, 4));
+    }
+
+    /**
      * Set the value (amount) of the transaction.
      * @param float $dblValue
      */
@@ -314,6 +337,15 @@ class SepaTxInf
     public function getDescription() : string
     {
         return $this->strDescription;
+    }
+
+    /**
+     * Get the purpose.
+     * @return string
+     */
+    public function getPurpose() : string
+    {
+        return $this->strPurpose;
     }
 
     /**

@@ -30,6 +30,10 @@ class SepaPmtInf extends \DOMElement
     protected string $strCI = '';
     /** @var string  sequence type (Sepa::FRST, Sepa::SEQ_RECURRENT, Sepa::SEQ_ONE_OFF, Sepa::SEQ_FINAL)*/
     protected string $strSeqType = '';
+    /** @var int requested collection/execution date */
+    protected int $uxtsCollExecDate = 0;
+    /** @var string an optional category purpose code (if all payments for the PII belongs to same purpose)     */
+    protected string $strCategoryPurpose = '';
     /** @var SepaDoc parent document */
     private SepaDoc $sepaDoc;
     /** @var int count of transactions contained in PII */
@@ -142,6 +146,10 @@ class SepaPmtInf extends \DOMElement
                     $xmlNode = $this->addChild($xmlTx, 'UltmtDbtr');
                     $this->addChild($xmlNode, 'Nm', $strUltmtDbtr);
                 }
+                if (($strPurpose = $oTxInf->getPurpose()) != '') {
+                    $xmlNode = $this->addChild($xmlTx, 'Purp');
+                    $this->addChild($xmlNode, 'Cd', $strPurpose);
+                }
             } else {
                 $xmlTx = $this->addChild(null, 'CdtTrfTxInf');
 
@@ -170,6 +178,10 @@ class SepaPmtInf extends \DOMElement
                 if (strlen($strUltmtCbtr) > 0) {
                     $xmlNode = $this->addChild($xmlTx, 'UltmtCbtr');
                     $this->addChild($xmlNode, 'Nm', $strUltmtCbtr);
+                }
+                if (($strPurpose = $oTxInf->getPurpose()) != '') {
+                    $xmlNode = $this->addChild($xmlTx, 'Purp');
+                    $this->addChild($xmlNode, 'Cd', $strPurpose);
                 }
             }
 
@@ -235,11 +247,15 @@ class SepaPmtInf extends \DOMElement
      * Get the collection date.
      * @return string
      */
-    public function getCollectionDate() : string
+    public function getCollExecDate(string $type) : string
     {
-        // Requested Collection Date depends on sequence type
-        $this->strSeqType == Sepa::SEQ_RECURRENT ? $iDays = 3 : $iDays = 6;
-        $dtCollect = self::calcCollectionDate($iDays);
+        // no delay for CCT
+        $iDays = 0;
+        if ($type == Sepa::CDD) {
+            // CDD: Requested Collection Date depends on sequence type
+            $this->strSeqType == Sepa::SEQ_RECURRENT ? $iDays = 2 : $iDays = 5;
+        }
+        $dtCollect = self::calcDelayedDate($iDays, $this->uxtsCollExecDate);
         return date('Y-m-d', $dtCollect);
     }
 
@@ -271,6 +287,7 @@ class SepaPmtInf extends \DOMElement
      *       'strIBAN' => '<IBAN>',
      *       'strBIC' => '<BIC>',
      *       'strSeqType' => Sepa::SEQ_xxx,
+     *       'strCollExecDate' => 'setCollExecDate',
      *   ];
      * ```
      * The array does not have to contain all of the properties. The missing properties
@@ -287,6 +304,7 @@ class SepaPmtInf extends \DOMElement
             'strBIC' => 'setBIC',
             'strCI' => 'setCI',
             'strSeqType' => 'setSeqType',
+            'strCollExecDate' => 'setCollExecDate',
         ];
         foreach ($aPropertyMap as $strKey => $strFunc) {
             if (isset($aProperties[$strKey])) {
@@ -323,7 +341,7 @@ class SepaPmtInf extends \DOMElement
     }
 
     /**
-     * Sset CI (Creditor Scheme Identification).
+     * Set CI (Creditor Scheme Identification).
      * @param string $strCI
      */
     public function setCI(string $strCI) : void
@@ -338,6 +356,44 @@ class SepaPmtInf extends \DOMElement
     public function setSeqType(string $strSeqType) : void
     {
         $this->strSeqType = $strSeqType;
+    }
+
+    /**
+     * Set the requested collection/execution date.
+     * If no date set, the next possible date for execution/collection is calculated.
+     * > <b>Note:</b><br/>
+     * > Banks are not obliged to process order data that was submitted more than 15 calendar days
+     * BEFORE the execution date.
+     * @param mixed $date    may be string (format YYYY-MM-DD), int (unixtimestamp) or DateTime - object
+     */
+    public function setCollExecDate($date) : void
+    {
+        if (is_object($date) && get_class($date) == 'DateTime') {
+            // DateTime -object
+            $this->uxtsCollExecDate = $date->getTimestamp();
+        } else if (is_numeric($date)) {
+            $this->uxtsCollExecDate = intval($date);
+        } else {
+            $this->uxtsCollExecDate = strtotime($date);
+        }
+    }
+
+    /**
+     * Set the payment instruction category purpose.
+     * This is an optional value!
+     * If set, only ISO 20022 codes of the ExternalCategoryPurpose1Code list are allowed.
+     * Referr to the actual list that is available in worksheet '4-CategoryPurpose 'of the Excel
+     * file provided in the download at
+     * [www.iso20022.org](https://www.iso20022.org/catalogue-messages/additional-content-messages/external-code-sets)
+     * > <b>Attention:</b><br/>
+     * > There is no validation whether in this module nor through the provided XSD schemas for
+     * this value. To avoid rejection of your data, you have to take care for valid values on your own.
+     * @link ./Category-Purpose-Codes
+     * @param string $strCategoryPurpose
+     */
+    public function setCategoryPurpose(string $strCategoryPurpose) : void
+    {
+        $this->strCategoryPurpose = strtoupper(substr($strCategoryPurpose, 0, 4));
     }
 
     /**
@@ -383,6 +439,15 @@ class SepaPmtInf extends \DOMElement
     public function getSeqType() : string
     {
         return $this->strSeqType;
+    }
+
+    /**
+     * Get the payment instruction category purpose
+     * @return string
+     */
+    public function getCategoryPurpose() : string
+    {
+        return $this->strCategoryPurpose;
     }
 
     /**

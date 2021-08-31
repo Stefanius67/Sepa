@@ -78,12 +78,28 @@ class SepaPmtInfTest extends TestCase
         $this->assertEquals($iExpectedErr | Sepa::ERR_PMT_INVALID_SEQ_TYPE, $oPmtInf->validate());
     }
 
-    public function testGetCollectionDate()
+    public function testGetCollExecDate()
     {
         $this->createValidDoc(Sepa::CDD);
         $oPmtInf = new SepaPmtInf($this->oSD);
         // only check for well formed date - for value test see SepaTest::testCalcCollectionDate()
-        $this->assertMatchesRegularExpression('/^([0-9]){4}-([0-9]){2}-([0-9]){2}?$/', $oPmtInf->getCollectionDate());
+        $this->assertMatchesRegularExpression('/^([0-9]){4}-([0-9]){2}-([0-9]){2}?$/', $oPmtInf->getCollExecDate(Sepa::CDD));
+    }
+
+    public function testSetCollExecDate1()
+    {
+        $this->createValidDoc(Sepa::CDD);
+        $oPmtInf = new SepaPmtInf($this->oSD);
+        $oPmtInf->setCollExecDate('2030-06-12');
+        $this->assertEquals('2030-06-12', $oPmtInf->getCollExecDate(Sepa::CDD));
+    }
+
+    public function testSetCollExecDate2()
+    {
+        $this->createValidDoc(Sepa::CDD);
+        $oPmtInf = new SepaPmtInf($this->oSD);
+        $oPmtInf->setCollExecDate(new \DateTime('12 June 2030'));
+        $this->assertEquals('2030-06-12', $oPmtInf->getCollExecDate(Sepa::CDD));
     }
 
     public function testErrorMsg()

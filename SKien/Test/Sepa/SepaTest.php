@@ -222,19 +222,16 @@ class SepaTest extends TestCase
     public function testIsTarget2Day()
     {
         $dt = mktime(0, 0, 0, 12, 25, 2024); // 1'st chrismasday
-        $this->assertTrue(Sepa::isTarget2Day($dt));
-        $dt = mktime(0, 0, 0, 12, 16, 2020); // Wednesday...
         $this->assertFalse(Sepa::isTarget2Day($dt));
-        $dt = mktime(0, 0, 0, 6, 21, 2020); // Sunday...
+        $dt = mktime(0, 0, 0, 12, 16, 2020); // Wednesday...
         $this->assertTrue(Sepa::isTarget2Day($dt));
+        $dt = mktime(0, 0, 0, 6, 21, 2020); // Sunday...
+        $this->assertFalse(Sepa::isTarget2Day($dt));
     }
 
     public function testCalcCollectionDate()
     {
-        $dt = mktime(0, 0, 0, 6, 17, 2020); // Wednesday
-        $dtCalc = Sepa::calcCollectionDate(5, $dt);
-        $this->assertSame($dtCalc, mktime(0, 0, 0, 6, 24, 2020));
-        $dtCalc = Sepa::calcCollectionDate(5);
+        $dtCalc = Sepa::calcDelayedDate(5);
         $this->assertTrue($dtCalc >= mktime() + 5 * 86400);
     }
 
@@ -320,14 +317,16 @@ class SepaTest extends TestCase
             'strIBAN' => 'DE11682900000009215808',
             'strBIC' => 'GENODE61LAH',
             'strMandateId' => 'ID-0815',
-            'strDateOfSignature' => '2018-04-03'
+            'strDateOfSignature' => '2018-04-03',
+            'strPurpose' => 'CASH',
         );
-        $aValidPPI = array(
+        $aValidPII = array(
             'strName' => 'Testfirma',
             'strCI' => 'CH51 ZZZ 12345678901',
             'strIBAN' => 'DE71664500500070143559',
             'strBIC' => 'GENODE61LAH',
             'strSeqType' => Sepa::SEQ_RECURRENT,
+            'strCollExecDate' => '2024-05-16',
         );
 
         Sepa::init();
@@ -342,15 +341,15 @@ class SepaTest extends TestCase
         $oSepaDoc->createGroupHeader('Test company 4711');
 
         // create payment info instruction (PII) and set all needet creditor information
-        $oPPI = new SepaPmtInf($oSepaDoc);
-        $oPPI->fromArray($aValidPPI);
+        $oPII = new SepaPmtInf($oSepaDoc);
+        $oPII->fromArray($aValidPII);
 
         // add the PII to the document.
-        $this->assertEquals(Sepa::OK, $oSepaDoc->addPaymentInstructionInfo($oPPI));
+        $this->assertEquals(Sepa::OK, $oSepaDoc->addPaymentInstructionInfo($oPII));
 
         $oTxInf = new SepaTxInf($type);
         $oTxInf->fromArray($aValidTransaction);
-        $this->assertEquals(Sepa::OK, $oPPI->addTransaction($oTxInf));
+        $this->assertEquals(Sepa::OK, $oPII->addTransaction($oTxInf));
 
         return $oSepaDoc;
     }
@@ -378,19 +377,22 @@ class SepaTest extends TestCase
         $oSepaDoc->createGroupHeader('Test company 4711');
 
         // create payment info instruction (PII) and set all needet creditor information
-        $oPPI = new SepaPmtInf($oSepaDoc);
-        $oPPI->setName('Testfirma');
-        $oPPI->setCI('CH51 ZZZ 12345678901');
-        $oPPI->setIBAN('DE71664500500070143559');
-        $oPPI->setBIC('GENODE61LAH');
-        $oPPI->setSeqType(Sepa::SEQ_RECURRENT);
+        $oPII = new SepaPmtInf($oSepaDoc);
+        $oPII->setName('Testfirma');
+        $oPII->setCI('CH51 ZZZ 12345678901');
+        $oPII->setIBAN('DE71664500500070143559');
+        $oPII->setBIC('GENODE61LAH');
+        $oPII->setSeqType(Sepa::SEQ_RECURRENT);
+        $oPII->setCollExecDate(time() + 86400);
+        $oPII->setCategoryPurpose('DCRD');
 
         // add the PII to the document.
-        $this->assertEquals(Sepa::OK, $oSepaDoc->addPaymentInstructionInfo($oPPI));
+        $this->assertEquals(Sepa::OK, $oSepaDoc->addPaymentInstructionInfo($oPII));
 
         $oTxInf = new SepaTxInf($type);
         $oTxInf->fromArray($aValidTransaction);
-        $this->assertEquals(Sepa::OK, $oPPI->addTransaction($oTxInf));
+        $oTxInf->setPurpose('CASH');
+        $this->assertEquals(Sepa::OK, $oPII->addTransaction($oTxInf));
 
         return $oSepaDoc;
     }

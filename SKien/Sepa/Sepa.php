@@ -150,7 +150,8 @@ class Sepa
 
     /**
      * Get the pain version for requested SEPA version and -type.
-     * The pain version is needed to bind the SEPA XML document to the correct namespace and XSD schema.
+     * The pain version is needed to bind the SEPA XML document to the correct namespace and
+     * can be used to validate any sepa document against the corrresponding XSD schema.
      * @param string $strType
      * @param string $strSepaVersion
      * @return string
@@ -161,17 +162,17 @@ class Sepa
             self::V26 => [
                 self::CCT => 'pain.001.002.03',
                 self::CDD => 'pain.008.002.02',
-                'year' => 2012,
+                'year' => '2012',
             ],
             self::V29 => [
                 self::CCT => 'pain.001.003.03',
                 self::CDD => 'pain.008.003.02',
-                'year' => 2015,
+                'year' => '2015',
             ],
             self::V30 => [
                 self::CCT => 'pain.001.001.03',
                 self::CDD => 'pain.008.001.02',
-                'year' => 2016,
+                'year' => '2016',
             ],
         ];
         if (!isset($aPainVersion[$strSepaVersion])) {
@@ -392,7 +393,8 @@ class Sepa
     /**
      * validates given BIC.
      * If the passed value contains any leading/trailing or formating spaces, they all
-     * will be removed.
+     * will be removed. If a 8-digit BIC is passed, it will be expanded to 11 digits using
+     * 'XXX'.
      * @param string $strBIC    BIC to validate
      * @return int Sepa::OK or errorcode
      */
