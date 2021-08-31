@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="CategoryPurposes.xsl"?>
+<CategoryPurposes>
+	<Purpose Code="BONU" Name="BonusPayment">Zahlung eines Bonus.</Purpose>
+	<Purpose Code="CASH" Name="CashManagementTransfer">Allgemeine Cash-Management-Anweisung.</Purpose>
+	<Purpose Code="CBLK" Name="CardBulkClearing">Ein Dienst, der Geld für einen Großteil von Kartentransaktionen abwickelt, während er sich auf eine bestimmte Transaktionsdatei oder andere Informationen wie Terminal-ID, Kartenakzeptor-ID oder andere Transaktionsdetails bezieht.</Purpose>
+	<Purpose Code="CCRD" Name="CreditCardPayment">Zahlung per Kreditkarte.</Purpose>
+	<Purpose Code="CORT" Name="TradeSettlementPayment">Abwicklung eines Handelsgeschäfts, z.B. ein Devisen- oder Wertpapiergeschäft.</Purpose>
+	<Purpose Code="DCRD" Name="DebitCardPayment">Zahlung per Debit-/Bankkarte.</Purpose>
+	<Purpose Code="DIVI" Name="Dividend">Zahlung von Dividenden.</Purpose>
+	<Purpose Code="DVPM" Name="DeliverAgainstPayment">Code um den Kontodienstleister über eine bevorstehende Lieferung gegen Zahlungsanweisung vorab zu informieren.</Purpose>
+	<Purpose Code="EPAY" Name="Epayment">ePayment - Transaktion.</Purpose>
+	<Purpose Code="FCIN" Name="FeeCollectionAndInterest">Zahlung von Gebühren und Zinsen.</Purpose>
+	<Purpose Code="FCOL" Name="FeeCollection">Ein Dienst, der kartentransaktionsbezogene Gebühren zwischen zwei Parteien begleicht.</Purpose>
+	<Purpose Code="GP2P" Name="Person to Person Payment">Allgemeine Zahlung von Person zu Person. Schuldner und Gläubiger sind natürliche Personen.</Purpose>
+	<Purpose Code="GOVT" Name="GovernmentPayment">Zahlung an oder von einer Regierungsbehörde.</Purpose>
+	<Purpose Code="HEDG" Name="Hedging">Transaktion im Zusammenhang mit der Zahlung einer Absicherungsoperation.</Purpose>
+	<Purpose Code="ICCP" Name="IrrevocableCreditCardPayment">Rückerstattung einer Kreditkartenzahlung.</Purpose>
+	<Purpose Code="IDCP" Name="IrrevocableDebitCardPayment">Rückerstattung einer Debit-/Bankkartenzahlung.</Purpose>
+	<Purpose Code="INTC" Name="IntraCompanyPayment">Konzerninterne Zahlung, d.h. Zahlung zwischen zwei Unternehmen derselben Firmengruppe.</Purpose>
+	<Purpose Code="INTE" Name="Interest">Zahlung von Zinsen.</Purpose>
+	<Purpose Code="LBOX" Name="Lockbox Transactions">Bargeldabwicklung über Night Safe oder Lockbox durch eine Bank oder einen Verkäufer im Namen eines physischen Geschäfts.</Purpose>
+	<Purpose Code="LOAN" Name="Loan">Übertragung eines Kredits an einen Kreditnehmer.</Purpose>
+	<Purpose Code="MP2B" Name="Commercial">Mobile P2B Zahlung.</Purpose>
+	<Purpose Code="MP2P" Name="Consumer">Mobile P2P Zahlung.</Purpose>
+	<Purpose Code="OTHR" Name="OtherPayment">Anderer Zahlungszweck.</Purpose>
+	<Purpose Code="PENS" Name="PensionPayment">Rentenzahlung.</Purpose>
+	<Purpose Code="RPRE" Name="Represented">Einzug um zuvor stornierte oder zurückgegebene Lastschrifttransaktionen darzustellen.</Purpose>
+	<Purpose Code="RRCT" Name="ReimbursementReceivedCreditTransfer">Erstattung einer korrekt erhaltenen Überweisung aus kaufmännischen Gründen.</Purpose>
+	<Purpose Code="RVPM" Name="ReceiveAgainstPayment">Code um den Kontobetreuer im Voraus über eine bevorstehende Anweisung zum Erhalt von Zahlungen zu informieren.</Purpose>
+	<Purpose Code="SALA" Name="SalaryPayment">Zahlung von Gehältern.</Purpose>
+	<Purpose Code="SECU" Name="Securities">Zahlung von Wertpapieren.</Purpose>
+	<Purpose Code="SSBE" Name="SocialSecurityBenefit">Leistung der sozialen Sicherheit, d.h. eine Zahlung durch eine Regierung, um Einzelpersonen zu unterstützen.</Purpose>
+	<Purpose Code="SUPP" Name="SupplierPayment">Zahlung an einen Lieferanten.</Purpose>
+	<Purpose Code="TAXS" Name="TaxPayment">Zahlung von Steuern.</Purpose>
+	<Purpose Code="TRAD" Name="Trade">Zahlung einer Handelsfinanzierungstransaktion.</Purpose>
+	<Purpose Code="TREA" Name="TreasuryPayment">Treasury-Operation. z.B. die Abwicklung von Finanzverträgen.</Purpose>
+	<Purpose Code="VATX" Name="ValueAddedTaxPayment">Zahlung von Mehrwertsteuer.</Purpose>
+	<Purpose Code="WHLD" Name="WithHolding">Zahlung von Quellensteuer.</Purpose>
+</CategoryPurposes>

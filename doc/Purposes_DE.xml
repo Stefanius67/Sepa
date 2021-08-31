@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="Purposes.xsl"?>
+<Purposes>
+	<Purpose code="BKDF" Class="Bankeinzug" Name="BankLoanDelayedDrawFunding">Delayed draw funding. Certain issuers may utilize delayed draw loans whereby the lender is committed to fund cash within a specified period once a call is made by the issuer. The lender receives a fee for entering into such a commitment</Purpose>
+	<Purpose code="BKFE" Class="Bankeinzug" Name="BankLoanFees">Bank loan fees. Cash activity related to specific bank loan fees, including (a) agent / assignment fees; (b) amendment fees; (c) commitment fees; (d) consent fees; (e) cost of carry fees; (f) delayed compensation fees; (g) facility fees; (h) fronting fees; (i) funding fees; (j) letter of credit assignment fees</Purpose>
+	<Purpose code="BKFM" Class="Bankeinzug" Name="BankLoanFundingMemo">Bank loan funding memo. Net cash movement for the loan contract final notification when sent separately from the loan contract final notification instruction.</Purpose>
+	<Purpose code="BKIP" Class="Bankeinzug" Name="BankLoanAccruedInterestPayment">Accrued interest payments. Specific to bank loans.</Purpose>
+	<Purpose code="BKPP" Class="Bankeinzug" Name="BankLoanPrincipalPaydown">Principal paydowns. Specific to bank loans</Purpose>
+	<Purpose code="CBLK" Class="Kartenabrechnung" Name="CardBulkClearing">A Service that is settling money for a bulk of card transactions, while referring to a specific transaction file or other information like terminal ID, card acceptor ID or other transaction details.</Purpose>
+	<Purpose code="CDCB" Class="Kartenabrechnung" Name="CardPaymentWithCashBack">Purchase of Goods and Services with additional Cash disbursement at the POI (Cashback)</Purpose>
+	<Purpose code="CDCD" Class="Kartenabrechnung" Name="CashDisbursementCashSettlement">ATM Cash Withdrawal in an unattended or Cash Advance in an attended environment (POI or bank counter)</Purpose>
+	<Purpose code="CDCS" Class="Kartenabrechnung" Name="CashDisbursementWithSurcharging">ATM Cash Withdrawal in an unattended or Cash Advance in an attended environment (POI or bank counter) with surcharging.</Purpose>
+	<Purpose code="CDDP" Class="Kartenabrechnung" Name="CardDeferredPayment">A combined service which enables the card acceptor to perform an authorisation for a temporary amount and a completion for the final amount within a limited time frame. Deferred Payment is only available in the unattended environment. Examples where this service is widely used are unattended petrol pumps and phone booths</Purpose>
+	<Purpose code="CDOC" Class="Kartenabrechnung" Name="OriginalCredit ">A service which allows the card acceptor to effect a credit to a cardholder' account. Unlike a Merchant Refund, an Original Credit is not preceded by a card payment. This service is used for example for crediting winnings from gaming.</Purpose>
+	<Purpose code="CDQC" Class="Kartenabrechnung" Name="QuasiCash ">Purchase of Goods which are equivalent to cash like coupons in casinos.</Purpose>
+	<Purpose code="ETUP" Class="Kartenabrechnung" Name="EPurseTopUp">Transaction is related to a Service that is first reserving money from a card account and then is loading an e-purse application by this amount.</Purpose>
+	<Purpose code="FCOL" Class="Kartenabrechnung" Name="FeeCollection">A Service that is settling card transaction related fees between two parties.</Purpose>
+	<Purpose code="MTUP" Class="Kartenabrechnung" Name="MobileTopUp">A Service that is first reserving money from a card account and then is loading a prepaid mobile phone amount by this amount.</Purpose>
+	<Purpose code="ACCT" Class="Bargeldverwaltung" Name="AccountManagement">Transaction moves funds between 2 accounts of same account holder at the same bank.</Purpose>
+	<Purpose code="CASH" Class="Bargeldverwaltung" Name="CashManagementTransfer">Transaction is a general cash management instruction.</Purpose>
+	<Purpose code="COLL" Class="Bargeldverwaltung" Name="CollectionPayment">Transaction is a collection of funds initiated via a credit transfer or direct debit.</Purpose>
+	<Purpose code="CSDB" Class="Bargeldverwaltung" Name="CashDisbursementCashManagement">Transaction is related to cash disbursement.</Purpose>
+	<Purpose code="DEPT" Class="Bargeldverwaltung" Name="Deposit">Transaction is releted to a payment of deposit.</Purpose>
+	<Purpose code="INTC" Class="Bargeldverwaltung" Name="IntraCompanyPayment">Transaction is an intra-company payment, ie, a payment between two companies belonging to the same group.</Purpose>
+	<Purpose code="INTP" Class="Bargeldverwaltung" Name="Intra Party Payment">Transaction is a payment between two accounts belonging to the same party (intra-party payment), where party is a natural person (identified by a private ID, not organisation ID).</Purpose>
+	<Purpose code="LIMA" Class="Bargeldverwaltung" Name="LiquidityManagement">Bank initiated account transfer to support zero target balance management, pooling or sweeping.</Purpose>
+	<Purpose code="NETT" Class="Bargeldverwaltung" Name="Netting">Transaction is related to a netting operation.</Purpose>
+	<Purpose code="BFWD" Class="Barsicherheiten" Name="BondForward">Cash collateral related to any securities traded out beyond 3 days which include treasury notes, JGBs and Gilts.</Purpose>
+	<Purpose code="CCIR" Class="Barsicherheiten" Name="CrossCurrencyIRS">Cash Collateral related to a Cross Currency Interest Rate Swap, indicating the exchange of fixed interest payments in one currency for those in another.</Purpose>
+	<Purpose code="CCPC" Class="Barsicherheiten" Name="CCPClearedInitialMargin">Cash Collateral associated with an ISDA or Central Clearing Agreement that is covering the initial margin requirements for OTC trades clearing through a CCP.</Purpose>
+	<Purpose code="CCPM" Class="Barsicherheiten" Name="CCPClearedVariationMargin">Cash Collateral associated with an ISDA or Central Clearing Agreement that is covering the variation margin requirements for OTC trades clearing through a CCP.</Purpose>
+	<Purpose code="CCSM" Class="Barsicherheiten" Name="CCPClearedInitialMarginSegregatedCash">CCP Segregated initial margin: Initial margin on OTC Derivatives cleared through a CCP that requires segregation</Purpose>
+	<Purpose code="CRDS" Class="Barsicherheiten" Name="CreditDefaultSwap">Cash collateral related to trading of credit default swap.</Purpose>
+	<Purpose code="CRPR" Class="Barsicherheiten" Name="CrossProduct">Cash collateral related to a combination of various types of trades.</Purpose>
+	<Purpose code="CRSP" Class="Barsicherheiten" Name="CreditSupport">Cash collateral related to cash lending/borrowing; letter of Credit; signing of master agreement.</Purpose>
+	<Purpose code="CRTL" Class="Barsicherheiten" Name="CreditLine">Cash collateral related to opening of a credit line before trading.</Purpose>
+	<Purpose code="EQPT" Class="Barsicherheiten" Name="EquityOption">Cash collateral related to trading of equity option (Also known as stock options).</Purpose>
+	<Purpose code="EQUS" Class="Barsicherheiten" Name="EquitySwap">Cash collateral related to equity swap trades where the return of an equity is exchanged for either a fixed or a floating rate of interest.</Purpose>
+	<Purpose code="EXPT" Class="Barsicherheiten" Name="ExoticOption">Cash collateral related to trading of an exotic option for example a non-standard option.</Purpose>
+	<Purpose code="EXTD" Class="Barsicherheiten" Name="ExchangeTradedDerivatives">Cash collateral related to trading of exchanged traded derivatives in general (Opposite to Over the Counter (OTC)).</Purpose>
+	<Purpose code="FIXI" Class="Barsicherheiten" Name="FixedIncome">Cash collateral related to a fixed income instrument</Purpose>
+	<Purpose code="FWBC" Class="Barsicherheiten" Name="ForwardBrokerOwnedCashCollateral">Cash collateral payment against a Master Forward Agreement (MFA) where the cash is held in a segregated account and is not available for use by the client. Includes any instruments with a forward settling date such TBAs, repurchase agreements and bond forwards</Purpose>
+	<Purpose code="FWCC" Class="Barsicherheiten" Name="ForwardClientOwnedCashCollateral">Cash collateral payment against a Master Forward Agreement (MFA) where the cash is owned and may be used by the client when returned. Includes any instruments with a forward settling date such TBAs, repurchase agreements and bond forwards</Purpose>
+	<Purpose code="FWSB" Class="Barsicherheiten" Name="ForwardBrokerOwnedCashCollateralSegregated">Any cash payment related to the collateral for a Master Agreement forward, which is segregated, and not available for use by the client. Example master agreement forwards include TBA, repo and Bond Forwards.</Purpose>
+	<Purpose code="FWSC" Class="Barsicherheiten" Name="ForwardClientOwnedSegregatedCashCollateral">Any cash payment related to the collateral for a Master agreement forward, which is owned by the client and is available for use by the client when it is returned to them from the segregated account. Example master agreement forwards include TBA, repo and Bond Forwards.</Purpose>
+	<Purpose code="MARG" Class="Barsicherheiten" Name="DailyMarginOnListedDerivatives ">Daily margin on listed derivatives – not segregated as collateral associated with an FCM agreement. Examples include listed futures and options margin payments; premiums for listed options not covered in the MT54X message</Purpose>
+	<Purpose code="MBSB" Class="Barsicherheiten" Name="MBSBrokerOwnedCashCollateral">MBS Broker Owned Segregated (40Act/Dodd Frank) Cash Collateral - Any cash payment related to the collateral for a Mortgage Back Security, which is segregated, and not available for use by the client.</Purpose>
+	<Purpose code="MBSC" Class="Barsicherheiten" Name="MBSClientOwnedCashCollateral ">MBS Client Owned Cash Segregated (40Act/Dodd Frank) Cash Collateral - Any cash payment related to the collateral for a Mortgage Back Security, which is owned by the client and is available for use by the client when it is returned to them from the segregated account</Purpose>
+	<Purpose code="MGCC" Class="Barsicherheiten" Name="FuturesInitialMargin  ">Initial futures margin. Where such payment is owned by the client and is available for use by them on return</Purpose>
+	<Purpose code="MGSC" Class="Barsicherheiten" Name="FuturesInitialMarginClientOwnedSegregatedCashCollateral ">Margin Client Owned Segregated Cash Collateral - Any cash payment related to the collateral for initial futures margin, which is owned by the client and is available for use by the client when it is returned to them from the segregated account.</Purpose>
+	<Purpose code="OCCC" Class="Barsicherheiten" Name="ClientOwnedOCCPledgedCollateral">Client owned collateral identified as eligible for OCC pledging</Purpose>
+	<Purpose code="OPBC" Class="Barsicherheiten" Name="OTCOptionBrokerOwnedCashCollateral ">Cash collateral payment for OTC options associated with an FCM agreement. Where such payment is segregated and not available for use by the client</Purpose>
+	<Purpose code="OPCC" Class="Barsicherheiten" Name="OTCOptionClientOwnedCashCollateral ">Cash collateral payment for OTC options associated with an FCM agreement. Where such payment is not segregated and is available for use by the client upon return</Purpose>
+	<Purpose code="OPSB" Class="Barsicherheiten" Name="OTCOptionBrokerOwnedSegregatedCashCollateral ">Option Broker Owned Segregated Cash Collateral - Any cash payment related to the collateral for an OTC option, which is segregated, and not available for use by the client.</Purpose>
+	<Purpose code="OPSC" Class="Barsicherheiten" Name="OTCOptionClientOwnedCashSegregatedCashCollateral ">Option Client Owned Cash Segregated Cash Collateral - Any cash payment related to the collateral for an OTC option, which is owned by the client and is available for use by the client when it is returned to them from the segregated account</Purpose>
+	<Purpose code="OPTN" Class="Barsicherheiten" Name="FXOption">Cash collateral related to trading of option on Foreign Exchange.</Purpose>
+	<Purpose code="OTCD" Class="Barsicherheiten" Name="OTCDerivatives">Cash collateral related to Over-the-counter (OTC) Derivatives in general for example contracts which are traded and privately negotiated.</Purpose>
+	<Purpose code="REPO" Class="Barsicherheiten" Name="RepurchaseAgreement">Cash collateral related to a repurchase agreement transaction.</Purpose>
+	<Purpose code="RPBC" Class="Barsicherheiten" Name="BilateralRepoBrokerOwnedCollateral ">Bi-lateral repo broker owned collateral associated with a repo master agreement – GMRA or MRA Master Repo Agreements</Purpose>
+	<Purpose code="RPCC" Class="Barsicherheiten" Name="RepoClientOwnedCollateral ">Repo client owned collateral associated with a repo master agreement – GMRA or MRA Master Repo Agreements</Purpose>
+	<Purpose code="RPSB" Class="Barsicherheiten" Name="BilateralRepoBrokerOwnedSegregatedCashCollateral ">Bi-lateral repo broker owned segregated cash collateral associated with a repo master agreement</Purpose>
+	<Purpose code="RPSC" Class="Barsicherheiten" Name="BilateralRepoClientOwnedSegregatedCashCollateral">Repo client owned segregated collateral associated with a repo master agreement</Purpose>
+	<Purpose code="RVPO" Class="Barsicherheiten" Name="ReverseRepurchaseAgreement">Cash collateral related to a reverse repurchase agreement transaction.</Purpose>
+	<Purpose code="SBSC" Class="Barsicherheiten" Name="SecuritiesBuySellSellBuyBack">Cash collateral related to a Securities Buy Sell Sell Buy Back</Purpose>
+	<Purpose code="SCIE" Class="Barsicherheiten" Name="SingleCurrencyIRSExotic">Cash collateral related to Exotic single currency interest rate swap.</Purpose>
+	<Purpose code="SCIR" Class="Barsicherheiten" Name="SingleCurrencyIRS">Cash collateral related to Single Currency Interest Rate Swap.</Purpose>
+	<Purpose code="SCRP" Class="Barsicherheiten" Name="SecuritiesCrossProducts">Cash collateral related to Combination of securities-related exposure types.</Purpose>
+	<Purpose code="SHBC" Class="Barsicherheiten" Name="BrokerOwnedCollateralShortSale">Short Sale broker owned collateral associated with a prime broker agreement</Purpose>
+	<Purpose code="SHCC" Class="Barsicherheiten" Name="ClientOwnedCollateralShortSale">Short Sale client owned collateral associated with a prime brokerage agreement</Purpose>
+	<Purpose code="SHSL" Class="Barsicherheiten" Name="ShortSell">Cash Collateral related to a Short Sell</Purpose>
+	<Purpose code="SLEB" Class="Barsicherheiten" Name="SecuritiesLendingAndBorrowing">Cash collateral related to Securities lending and borrowing.</Purpose>
+	<Purpose code="SLOA" Class="Barsicherheiten" Name="SecuredLoan">Cash collateral related to a Secured loan.</Purpose>
+	<Purpose code="SWBC" Class="Barsicherheiten" Name="SwapBrokerOwnedCashCollateral ">Cash collateral payment for swaps associated with an ISDA agreement. . Where such payment is segregated and not available for use by the client. Includes any cash collateral payments made under the terms of a CSA agreement for instruments such as swaps and FX forwards.</Purpose>
+	<Purpose code="SWCC" Class="Barsicherheiten" Name="SwapClientOwnedCashCollateral ">Cash collateral payment for swaps associated with an ISDA agreement. Where such payment is not segregated and is available for use by the client upon return. Includes any cash collateral payments made under the terms of a CSA agreement for instruments such as swaps and FX forwards.</Purpose>
+	<Purpose code="SWPT" Class="Barsicherheiten" Name="Swaption">Cash collateral related to an option on interest rate swap.</Purpose>
+	<Purpose code="SWSB" Class="Barsicherheiten" Name="SwapsBrokerOwnedSegregatedCashCollateral ">Swaps Broker Owned Segregated Cash Collateral - Any cash payment related to the collateral for Swap margin, which is segregated, and not available for use by the client. This includes any collateral identified in a CSA agreement such as Swap or FX Forward collateral.</Purpose>
+	<Purpose code="SWSC" Class="Barsicherheiten" Name="SwapsClientOwnedSegregatedCashCollateral ">Swaps Client Owned Segregated Cash Collateral - Any cash payment related to the collateral for Swap margin, which is owned by the client and is available for use by the client when returned from the segregated account. This includes any collateral identified in a CSA agreement such as Swap or FX Forward collateral.</Purpose>
+	<Purpose code="TBAS" Class="Barsicherheiten" Name="ToBeAnnounced">Cash collateral related to a To Be Announced (TBA)</Purpose>
+	<Purpose code="TBBC" Class="Barsicherheiten" Name="TBABrokerOwnedCashCollateral">Cash collateral payment (segregated) for TBA securities associated with a TBA Master Agreement. Where such payment is segregated and not available for use by the client.</Purpose>
+	<Purpose code="TBCC" Class="Barsicherheiten" Name="TBAClientOwnedCashCollateral">Cash collateral payment (for use by client)for TBA securities associated with a TBA Master Agreement. Where such payment is not segregated and is available for use by the client upon return.</Purpose>
+	<Purpose code="TRCP" Class="Barsicherheiten" Name="TreasuryCrossProduct">Cash collateral related to a combination of treasury-related exposure types.</Purpose>
+	<Purpose code="AGRT" Class="Kommerziell" Name="AgriculturalTransfer">Transaction is related to the agricultural domain.</Purpose>
+	<Purpose code="AREN" Class="Kommerziell" Name="AccountsReceivablesEntry">Transaction is related to a payment associated with an Account Receivable Entry</Purpose>
+	<Purpose code="BEXP" Class="Kommerziell" Name="BusinessExpenses">Transaction is related to a payment of business expenses.</Purpose>
+	<Purpose code="BOCE" Class="Kommerziell" Name="BackOfficeConversionEntry">Transaction is related to a payment associated with a Back Office Conversion Entry</Purpose>
+	<Purpose code="COMC" Class="Kommerziell" Name="CommercialPayment">Transaction is related to a payment of commercial credit or debit. (formerly CommercialCredit)</Purpose>
+	<Purpose code="CPYR" Class="Kommerziell" Name="Copyright">Transaction is payment of copyright.</Purpose>
+	<Purpose code="GDDS" Class="Kommerziell" Name="PurchaseSaleOfGoods">Transaction is related to purchase and sale of goods.</Purpose>
+	<Purpose code="GDSV" Class="Kommerziell" Name="PurchaseSaleOfGoodsAndServices">Transaction is related to purchase and sale of goods and services.</Purpose>
+	<Purpose code="GSCB" Class="Kommerziell" Name="PurchaseSaleOfGoodsAndServicesWithCashBack">Transaction is related to purchase and sale of goods and services with cash back.</Purpose>
+	<Purpose code="LICF" Class="Kommerziell" Name="LicenseFee">Transaction is payment of a license fee.</Purpose>
+	<Purpose code="MP2B" Class="Kommerziell" Name="MobileP2BPayment">A service which enables a user to use an app on its mobile to pay a merchant or other business payees by initiating a payment message. Within this context, the account information or an alias of the payee might be transported through different channels to the app, for example QR Code, NFC, Bluetooth, other Networks.</Purpose>
+	<Purpose code="POPE" Class="Kommerziell" Name="PointOfPurchaseEntry">Transaction is related to a payment associated with a Point of Purchase Entry.</Purpose>
+	<Purpose code="ROYA" Class="Kommerziell" Name="Royalties">Transaction is the payment of royalties.</Purpose>
+	<Purpose code="SCVE" Class="Kommerziell" Name="PurchaseSaleOfServices">Transaction is related to purchase and sale of services.</Purpose>
+	<Purpose code="SERV" Class="Kommerziell" Name="ServiceCharges">Transaction is related to service charges charged by a service provider.</Purpose>
+	<Purpose code="SUBS" Class="Kommerziell" Name="Subscription">Transaction is related to a payment of information or entertainment services either in printed or electronic form.</Purpose>
+	<Purpose code="SUPP" Class="Kommerziell" Name="SupplierPayment">Transaction is related to a payment to a supplier.</Purpose>
+	<Purpose code="TRAD" Class="Kommerziell" Name="Commercial">Transaction is related to a trade services operation.</Purpose>
+	<Purpose code="CHAR" Class="Privat" Name="CharityPayment">Transaction is a payment for charity reasons.</Purpose>
+	<Purpose code="COMT" Class="Privat" Name="ConsumerThirdPartyConsolidatedPayment">Transaction is a payment used by a third party who can collect funds to pay on behalf of consumers, ie credit counseling or bill payment companies.</Purpose>
+	<Purpose code="MP2P" Class="Privat" Name="MobileP2PPayment">A service which enables a user to use an app on its mobile to initiate moving funds from his/her bank account to another person’s bank account while not using the account number but an alias information like an MSISDN as account addressing information in his/her app.</Purpose>
+	<Purpose code="ECPG" Class="E-Commerce" Name="GuaranteedEPayment">E-Commerce payment with payment guarantee of the issuing bank.</Purpose>
+	<Purpose code="ECPR" Class="E-Commerce" Name="EPaymentReturn">E-Commerce payment return.</Purpose>
+	<Purpose code="ECPU" Class="E-Commerce" Name="NonGuaranteedEPayment">E-Commerce payment without payment guarantee of the issuing bank.</Purpose>
+	<Purpose code="EPAY" Class="E-Commerce" Name="Epayment">Transaction is related to ePayment.</Purpose>
+	<Purpose code="CLPR" Class="Finanzen" Name="CarLoanPrincipalRepayment">Transaction is a payment of car loan principal payment.</Purpose>
+	<Purpose code="COMP" Class="Finanzen" Name="CompensationPayment">Transaction is related to the payment of a compensation relating to interest loss/value date adjustment and can include fees.</Purpose>
+	<Purpose code="DBTC" Class="Finanzen" Name="DebitCollectionPayment">Collection of funds initiated via a debit transfer.</Purpose>
+	<Purpose code="GOVI" Class="Finanzen" Name="GovernmentInsurance">Transaction is related to a payment of government insurance.</Purpose>
+	<Purpose code="HLRP" Class="Finanzen" Name="HousingLoanRepayment">Transaction is related to a payment of housing loan.</Purpose>
+	<Purpose code="HLST" Class="Finanzen" Name="HomeLoanSettlement ">Transaction is related to the settlement of a home loan.</Purpose>
+	<Purpose code="INPC" Class="Finanzen" Name="InsurancePremiumCar">Transaction is a payment of car insurance premium.</Purpose>
+	<Purpose code="INPR" Class="Finanzen" Name="InsurancePremiumRefund">Transaction is related to an insurance premium refund.</Purpose>
+	<Purpose code="INSC" Class="Finanzen" Name="PaymentOfInsuranceClaim">Transaction is related to the payment of an insurance claim.</Purpose>
+	<Purpose code="INSU" Class="Finanzen" Name="InsurancePremium">Transaction is payment of an insurance premium.</Purpose>
+	<Purpose code="INTE" Class="Finanzen" Name="Interest">Transaction is payment of interest.</Purpose>
+	<Purpose code="LBRI" Class="Finanzen" Name="LaborInsurance">Transaction is a payment of labor insurance.</Purpose>
+	<Purpose code="LIFI" Class="Finanzen" Name="LifeInsurance">Transaction is a payment of life insurance.</Purpose>
+	<Purpose code="LOAN" Class="Finanzen" Name="Loan">Transaction is related to transfer of loan to borrower.</Purpose>
+	<Purpose code="LOAR" Class="Finanzen" Name="LoanRepayment">Transaction is related to repayment of loan to lender.</Purpose>
+	<Purpose code="PENO" Class="Finanzen" Name="PaymentBasedOnEnforcementOrder">Payment based on enforcement orders except those arising from judicial alimony decrees.</Purpose>
+	<Purpose code="PPTI" Class="Finanzen" Name="PropertyInsurance">Transaction is a payment of property insurance.</Purpose>
+	<Purpose code="RELG" Class="Finanzen" Name="RentalLeaseGeneral">Transaction is for general rental/lease.</Purpose>
+	<Purpose code="RINP" Class="Finanzen" Name="RecurringInstallmentPayment">Transaction is related to a payment of a recurring installment made at regular intervals.</Purpose>
+	<Purpose code="TRFD" Class="Finanzen" Name="TrustFund">Transaction is related to a payment of a trust fund.</Purpose>
+	<Purpose code="FORW" Class="Devisenmarkt" Name="ForwardForeignExchange">FX trades with a value date in the future.</Purpose>
+	<Purpose code="FXNT" Class="Devisenmarkt " Name="ForeignExchangeRelatedNetting">FX netting if cash is moved by separate wire instead of within the closing FX instruction</Purpose>
+	<Purpose code="ADMG" Class="Allgemein" Name="AdministrativeManagement">Transaction is related to a payment associated with administrative management.</Purpose>
+	<Purpose code="ADVA" Class="Allgemein" Name="AdvancePayment">Transaction is an advance payment.</Purpose>
+	<Purpose code="BCDM" Class="Allgemein" Name="BearerChequeDomestic">Transaction is the payment of a domestic bearer cheque.</Purpose>
+	<Purpose code="BCFG" Class="Allgemein" Name="BearerChequeForeign">Transaction is the payment of a foreign bearer cheque.</Purpose>
+	<Purpose code="BLDM" Class="Allgemein" Name="BuildingMaintenance">Transaction is related to a payment associated with building maintenance.</Purpose>
+	<Purpose code="BNET" Class="Allgemein" Name="BondForwardNetting">Bond Forward pair-off cash net movement</Purpose>
+	<Purpose code="CBFF" Class="Allgemein" Name="CapitalBuilding">Transaction is related to capital building fringe fortune, ie capital building in general</Purpose>
+	<Purpose code="CBFR" Class="Allgemein" Name="CapitalBuildingRetirement ">Transaction is related to capital building fringe fortune for retirement</Purpose>
+	<Purpose code="CCRD" Class="Allgemein" Name="CreditCardPayment ">Transaction is related to a payment of credit card account.</Purpose>
+	<Purpose code="CDBL" Class="Allgemein" Name="CreditCardBill">Transaction is related to a payment of credit card bill.</Purpose>
+	<Purpose code="CFEE" Class="Allgemein" Name="CancellationFee">Transaction is related to a payment of cancellation fee.</Purpose>
+	<Purpose code="CGDD" Class="Allgemein" Name="CardGeneratedDirectDebit">Transaction is related to a direct debit where the mandate was generated by using data from a payment card at the point of sale.</Purpose>
+	<Purpose code="CORT" Class="Allgemein" Name="TradeSettlementPayment">Transaction is related to settlement of a trade, e.g. a foreign exchange deal or a securities transaction.</Purpose>
+	<Purpose code="COST" Class="Allgemein" Name="Costs">Transaction is related to payment of costs.</Purpose>
+	<Purpose code="CPKC" Class="Allgemein" Name="CarparkCharges ">Transaction is related to carpark charges.</Purpose>
+	<Purpose code="DCRD" Class="Allgemein" Name="DebitCardPayment">Transaction is related to a debit card payment.</Purpose>
+	<Purpose code="DSMT" Class="Allgemein" Name="PrintedOrderDisbursement">Transaction is the payment of a disbursement due to a specific type of printed order for a payment of a specified sum, issued by a bank or a post office (Zahlungsanweisung zur Verrechnung)</Purpose>
+	<Purpose code="DVPM" Class="Allgemein" Name="DeliverAgainstPayment">Code used to pre-advise the account servicer of a forthcoming deliver against payment instruction.</Purpose>
+	<Purpose code="EDUC" Class="Allgemein" Name="Education ">Transaction is related to a payment of study/tuition fees.</Purpose>
+	<Purpose code="FACT" Class="Allgemein" Name="FactorUpdateRelatedPayment">Payment related to a factor update</Purpose>
+	<Purpose code="FAND" Class="Allgemein" Name="FinancialAidInCaseOfNaturalDisaster">Financial aid by State authorities for abolition of consequences of natural disasters.</Purpose>
+	<Purpose code="FCPM" Class="Allgemein" Name="LatePaymentOfFeesAndCharges">Transaction is the payment for late fees &amp; charges. E.g Credit card charges</Purpose>
+	<Purpose code="FEES" Class="Allgemein" Name="PaymentOfFees">Payment of fees/charges.</Purpose>
+	<Purpose code="GIFT" Class="Allgemein" Name="Gift">Payment with no commercial or statutory purpose.</Purpose>
+	<Purpose code="GOVT" Class="Allgemein" Name="GovernmentPayment">Transaction is a payment to or from a government department.</Purpose>
+	<Purpose code="ICCP" Class="Allgemein" Name="IrrevocableCreditCardPayment">Transaction is reimbursement of credit card payment.</Purpose>
+	<Purpose code="IDCP" Class="Allgemein" Name="IrrevocableDebitCardPayment">Transaction is reimbursement of debit card payment.</Purpose>
+	<Purpose code="IHRP" Class="Allgemein" Name="InstalmentHirePurchaseAgreement">Transaction is payment for an installment/hire-purchase agreement.</Purpose>
+	<Purpose code="INSM" Class="Allgemein" Name="Installment">Transaction is related to a payment of an installment.</Purpose>
+	<Purpose code="IVPT" Class="Allgemein" Name="InvoicePayment ">Transaction is the payment for invoices.</Purpose>
+	<Purpose code="MCDM" Class="Allgemein" Name="MultiCurrenyChequeDomestic">Transaction is the payment of a domestic multi-currency cheque</Purpose>
+	<Purpose code="MCFG" Class="Allgemein" Name="MultiCurrenyChequeForeign">Transaction is the payment of a foreign multi-currency cheque</Purpose>
+	<Purpose code="MSVC" Class="Allgemein" Name="MultipleServiceTypes">Transaction is related to a payment for multiple service types.</Purpose>
+	<Purpose code="NOWS" Class="Allgemein" Name="NotOtherwiseSpecified">Transaction is related to a payment for type of services not specified elsewhere.</Purpose>
+	<Purpose code="OCDM" Class="Allgemein" Name="OrderChequeDomestic">Transaction is the payment of a domestic order cheque</Purpose>
+	<Purpose code="OCFG" Class="Allgemein" Name="OrderChequeForeign">Transaction is the payment of a foreign order cheque</Purpose>
+	<Purpose code="OFEE" Class="Allgemein" Name="OpeningFee">Transaction is related to a payment of opening fee.</Purpose>
+	<Purpose code="OTHR" Class="Allgemein" Name="Other">Other payment purpose.</Purpose>
+	<Purpose code="PADD" Class="Allgemein" Name="PreauthorizedDebit">Transaction is related to a pre-authorized debit origination</Purpose>
+	<Purpose code="PTSP" Class="Allgemein" Name="PaymentTerms">Transaction is related to payment terms specifications</Purpose>
+	<Purpose code="RCKE" Class="Allgemein" Name="RepresentedCheckEntry">Transaction is related to a payment associated with a re-presented check entry</Purpose>
+	<Purpose code="RCPT" Class="Allgemein" Name="ReceiptPayment">Transaction is related to a payment of receipt.</Purpose>
+	<Purpose code="REBT" Class="Allgemein" Name="Rebate ">Transaction is the payment of a rebate.</Purpose>
+	<Purpose code="REFU" Class="Allgemein" Name="Refund">Transaction is the payment of a refund.</Purpose>
+	<Purpose code="RENT" Class="Allgemein" Name="Rent">Transaction is the payment of rent.</Purpose>
+	<Purpose code="REOD" Class="Allgemein" Name="AccountOverdraftRepayment">Transaction is for account overdraft repayment</Purpose>
+	<Purpose code="RIMB" Class="Allgemein" Name="ReimbursementOfAPreviousErroneousTransaction">Transaction is related to a reimbursement of a previous erroneous transaction.</Purpose>
+	<Purpose code="RPNT" Class="Allgemein" Name="BilateralRepoInternetNetting">Bi-lateral repo interest net/bulk payment at rollover/pair-off or other closing scenarios where applicable</Purpose>
+	<Purpose code="RRBN" Class="Allgemein" Name="RoundRobin">Cash payment resulting from a Round Robin</Purpose>
+	<Purpose code="RRCT" Class="Allgemein" Name="ReimbursementReceivedCreditTransfer">Transaction is related to a reimbursement for commercial reasons of a correctly received credit transfer.</Purpose>
+	<Purpose code="RRTP" Class="Allgemein" Name="Related Request To Pay">Transaction is related to a Request to Pay.</Purpose>
+	<Purpose code="RVPM" Class="Allgemein" Name="ReceiveAgainstPayment">Code used to pre-advise the account servicer of a forthcoming receive against payment instruction.</Purpose>
+	<Purpose code="SLPI" Class="Allgemein" Name="PaymentSlipInstruction">Transaction is payment of a well formatted payment slip.</Purpose>
+	<Purpose code="SPLT" Class="Allgemein" Name="SplitPayments">Split payments. To be used when cash and security movements for a security trade settlement are instructed separately.</Purpose>
+	<Purpose code="STDY" Class="Allgemein" Name="Study">Transaction is related to a payment of study/tuition costs.</Purpose>
+	<Purpose code="TBAN" Class="Allgemein" Name="TBAPairOffNetting">TBA pair-off cash wire net movement</Purpose>
+	<Purpose code="TBIL" Class="Allgemein" Name="TelecommunicationsBill ">Transaction is related to a payment of telecommunications related bill.</Purpose>
+	<Purpose code="TCSC" Class="Allgemein" Name="TownCouncilServiceCharges ">Transaction is related to a payment associated with charges levied by a town council.</Purpose>
+	<Purpose code="TELI" Class="Allgemein" Name="TelephoneInitiatedTransaction">Transaction is related to a payment initiated via telephone.</Purpose>
+	<Purpose code="TMPG" Class="Allgemein" Name="TMPGClaimPayment">Cash payment resulting from a TMPG Claim</Purpose>
+	<Purpose code="TPRI" Class="Allgemein" Name="TriPartyRepoInterest">Tri-Party Repo related interest</Purpose>
+	<Purpose code="TPRP" Class="Allgemein" Name="TriPartyRepoNetting">Tri-party Repo related net gain/loss cash movement</Purpose>
+	<Purpose code="TRNC" Class="Allgemein" Name="TruncatedPaymentSlip">Transaction is payment of a beneficiary prefilled payment slip where beneficiary to payer information is truncated.</Purpose>
+	<Purpose code="TRVC" Class="Allgemein" Name="TravellerCheque">Transaction is the payment of a travellers cheque</Purpose>
+	<Purpose code="WEBI" Class="Allgemein" Name="InternetInitiatedTransaction">Transaction is related to a payment initiated via internet.</Purpose>
+	<Purpose code="IPAY" Class="Sofortige Zahlungen" Name="InstantPayments ">Transaction in which the amount is available to the payee immediately.</Purpose>
+	<Purpose code="IPCA" Class="Sofortige Zahlungen" Name="InstantPaymentsCancellation">Transaction in which the Return of the amount is fully returned.</Purpose>
+	<Purpose code="IPDO" Class="Sofortige Zahlungen" Name="InstantPaymentsForDonations ">Transaction in which the amount is available to the payee immediately, done for donations, with sending the address data of the payer.</Purpose>
+	<Purpose code="IPEA" Class="Sofortige Zahlungen" Name="InstantPaymentsInECommerceWithoutAddressData">Transaction in which the amount is available to the payee immediately, done in E-commerce, without sending the address data of the payer.</Purpose>
+	<Purpose code="IPEC" Class="Sofortige Zahlungen" Name="InstantPaymentsInECommerceWithAddressData">Transaction in which the amount is available to the payee immediately, done in E-commerce, with sending the address data of the payer.</Purpose>
+	<Purpose code="IPEW" Class="Sofortige Zahlungen" Name="InstantPaymentsInECommerce ">Transaction in which the amount is available to the payee immediately, done in E-commerce.</Purpose>
+	<Purpose code="IPPS" Class="Sofortige Zahlungen" Name="InstantPaymentsAtPOS">Transaction in which the amount is available to the payee immediately, done at POS.</Purpose>
+	<Purpose code="IPRT" Class="Sofortige Zahlungen" Name="InstantPaymentsReturn">Transaction in which the Return of the amount is fully or partial returned.</Purpose>
+	<Purpose code="IPU2" Class="Sofortige Zahlungen" Name="InstantPaymentsUnattendedVendingMachineWith2FA">Transaction is made via an unattending vending machine by using 2-factor-authentification.</Purpose>
+	<Purpose code="IPUW" Class="Sofortige Zahlungen" Name="InstantPaymentsUnattendedVendingMachineWithout2FA">Transaction is made via an unattending vending machine by without using 2-factor-authentification.</Purpose>
+	<Purpose code="ANNI" Class="Investment" Name="Annuity">Transaction settles annuity related to credit, insurance, investments, other.n</Purpose>
+	<Purpose code="CAFI" Class="Investment" Name="CustodianManagementFeeInhouse">Transaction is the payment of custodian account management fee where custodian bank and current account servicing bank coincide</Purpose>
+	<Purpose code="CFDI" Class="Investment" Name="CapitalFallingDueInhouse">Transaction is the payment of capital falling due where custodian bank and current account servicing bank coincide</Purpose>
+	<Purpose code="CMDT" Class="Investment" Name="CommodityTransfer">Transaction is payment of commodities.</Purpose>
+	<Purpose code="DERI" Class="Investment" Name="Derivatives">Transaction is related to a derivatives transaction</Purpose>
+	<Purpose code="DIVD" Class="Investment" Name="Dividend">Transaction is payment of dividends.</Purpose>
+	<Purpose code="FREX" Class="Investment" Name="ForeignExchange">Transaction is related to a foreign exchange operation.</Purpose>
+	<Purpose code="HEDG" Class="Investment" Name="Hedging">Transaction is related to a hedging operation.</Purpose>
+	<Purpose code="INVS" Class="Investment" Name="InvestmentAndSecurities ">Transaction is for the payment of mutual funds, investment products and shares</Purpose>
+	<Purpose code="PRME" Class="Investment" Name="PreciousMetal">Transaction is related to a precious metal operation.</Purpose>
+	<Purpose code="SAVG" Class="Investment" Name="Savings">Transfer to savings/retirement account.</Purpose>
+	<Purpose code="SECU" Class="Investment" Name="Securities">Transaction is the payment of securities.</Purpose>
+	<Purpose code="SEPI" Class="Investment" Name="SecuritiesPurchaseInhouse">Transaction is the payment of a purchase of securities where custodian bank and current account servicing bank coincide</Purpose>
+	<Purpose code="TREA" Class="Investment" Name="TreasuryPayment">Transaction is related to treasury operations.</Purpose>
+	<Purpose code="UNIT" Class="Investment" Name="UnitTrustPurchase">Transaction is purchase of Unit Trust</Purpose>
+	<Purpose code="FNET" Class="Börsennotierte Derivate" Name="FuturesNettingPayment">Cash associated with a netting of futures payments. Refer to CCPM codeword for netting of initial and variation margin through a CCP</Purpose>
+	<Purpose code="FUTR" Class="Börsennotierte Derivate" Name="Futures">Cash related to futures trading activity.</Purpose>
+	<Purpose code="ANTS" Class="Gesundheit" Name="AnesthesiaServices">Transaction is a payment for anesthesia services.</Purpose>
+	<Purpose code="CVCF" Class="Gesundheit" Name="ConvalescentCareFacility">Transaction is a payment for convalescence care facility services.</Purpose>
+	<Purpose code="DMEQ" Class="Gesundheit" Name="DurableMedicaleEquipment">Transaction is a payment is for use of durable medical equipment.</Purpose>
+	<Purpose code="DNTS" Class="Gesundheit" Name="DentalServices">Transaction is a payment for dental services.</Purpose>
+	<Purpose code="HLTC" Class="Gesundheit" Name="HomeHealthCare">Transaction is a payment for home health care services.</Purpose>
+	<Purpose code="HLTI" Class="Gesundheit" Name="HealthInsurance">Transaction is a payment of health insurance.</Purpose>
+	<Purpose code="HSPC" Class="Gesundheit" Name="HospitalCare">Transaction is a payment for hospital care services.</Purpose>
+	<Purpose code="ICRF" Class="Gesundheit" Name="IntermediateCareFacility">Transaction is a payment for intermediate care facility services.</Purpose>
+	<Purpose code="LTCF" Class="Gesundheit" Name="LongTermCareFacility">Transaction is a payment for long-term care facility services.</Purpose>
+	<Purpose code="MAFC" Class="Gesundheit" Name="MedicalAidFundContribution">Transaction is contribution to medical aid fund.</Purpose>
+	<Purpose code="MARF" Class="Gesundheit" Name="MedicalAidRefund">Transaction is related to a medical aid refund.</Purpose>
+	<Purpose code="MDCS" Class="Gesundheit" Name="MedicalServices">Transaction is a payment for medical care services.</Purpose>
+	<Purpose code="VIEW" Class="Gesundheit" Name="VisionCare">Transaction is a payment for vision care services.</Purpose>
+	
+	<Purpose code="CDEP" Class="Direkthandel" Name="CreditDefaultEventPayment">Zahlung im Zusammenhang mit einem Kreditausfallereignis.</Purpose>
+	<Purpose code="SWFP" Class="Direkthandel" Name="SwapContractFinalPayment">Schlusszahlungen für einen Swap-Vertrag.</Purpose>
+	<Purpose code="SWPP" Class="Direkthandel" Name="SwapContractPartialPayment">Teilzahlung für einen Swap-Vertrag.</Purpose>
+	<Purpose code="SWRS" Class="Direkthandel" Name="SwapContractResetPayment">Zahlung um einen Swap-Kontrakt zurücksetzen.</Purpose>
+	<Purpose code="SWUF" Class="Direkthandel" Name="SwapContractUpfrontPayment">Vorauszahlung für einen Swap-Vertrag.</Purpose>
+	<Purpose code="ADCS" Class="Gehalt &amp; Zusatzleistungen" Name="AdvisoryDonationCopyrightServices">Zahlungen für Spenden, Sponsoring, Beratung, geistige und andere urheberrechtliche Dienstleistungen.</Purpose>
+	<Purpose code="AEMP" Class="Gehalt &amp; Zusatzleistungen" Name="ActiveEmploymentPolicy">Zahlung im Zusammenhang mit der aktiven Beschäftigungspolitik.</Purpose>
+	<Purpose code="ALLW" Class="Gehalt &amp; Zusatzleistungen" Name="Allowance ">Zahlung von Zulagen.</Purpose>
+	<Purpose code="ALMY" Class="Gehalt &amp; Zusatzleistungen" Name="AlimonyPayment">Zahlung von Alimenten.</Purpose>
+	<Purpose code="BBSC" Class="Gehalt &amp; Zusatzleistungen" Name="BabyBonusScheme ">Zahlung als Anreiz, um Eltern zu ermutigen, mehr Kinder zu bekommen.</Purpose>
+	<Purpose code="BECH" Class="Gehalt &amp; Zusatzleistungen" Name="ChildBenefit">Zahlung um einen Elternteil/Erziehungsberechtigten beim Unterhalt des Kindes zu unterstützen.</Purpose>
+	<Purpose code="BENE" Class="Gehalt &amp; Zusatzleistungen" Name="UnemploymentDisabilityBenefit">Zahlung an eine arbeitslose/behinderte Person.</Purpose>
+	<Purpose code="BONU" Class="Gehalt &amp; Zusatzleistungen" Name="BonusPayment.">Bonuszahlung.</Purpose>
+	<Purpose code="CCHD" Class="Gehalt &amp; Zusatzleistungen" Name="CashCompensationHelplessnessDisability">Zahlungen von Regierungsinstituten im Zusammenhang mit Barausgleich, Hilflosigkeit, Behinderung. Diese Zahlungen werden von der staatlichen Einrichtung als Sozialleistung zusätzlich zum regelmäßig gezahlten Gehalt oder zur Rente gezahlt.</Purpose>
+	<Purpose code="COMM" Class="Gehalt &amp; Zusatzleistungen" Name="Commission">Provisionszahlung.</Purpose>
+	<Purpose code="CSLP" Class="Gehalt &amp; Zusatzleistungen" Name="CompanySocialLoanPaymentToBank">Zahlung eines Unternehmens an eine Bank zur Finanzierung von Sozialdarlehen an Mitarbeiter.</Purpose>
+	<Purpose code="GFRP" Class="Gehalt &amp; Zusatzleistungen" Name="GuaranteeFundRightsPayment">Entschädigung von Arbeitslosen im Insolvenzverfahren.</Purpose>
+	<Purpose code="GVEA" Class="Gehalt &amp; Zusatzleistungen" Name="AustrianGovernmentEmployeesCategoryA">Zahlung an österreichische Staatsbedienstete der Kategorie A.</Purpose>
+	<Purpose code="GVEB" Class="Gehalt &amp; Zusatzleistungen" Name="AustrianGovernmentEmployeesCategoryB">Zahlung an österreichische Staatsbedienstete der Kategorie B.</Purpose>
+	<Purpose code="GVEC" Class="Gehalt &amp; Zusatzleistungen" Name="AustrianGovernmentEmployeesCategoryC">Zahlung an österreichische Staatsbedienstete der Kategorie C.</Purpose>
+	<Purpose code="GVED" Class="Gehalt &amp; Zusatzleistungen" Name="AustrianGovernmentEmployeesCategoryD">Zahlung an österreichische Staatsbedienstete der Kategorie D.</Purpose>
+	<Purpose code="GWLT" Class="Gehalt &amp; Zusatzleistungen" Name="GovermentWarLegislationTransfer">Zahlung an Opfer von Kriegsgewalt und an behinderte Soldaten.</Purpose>
+	<Purpose code="HREC" Class="Gehalt &amp; Zusatzleistungen" Name="HousingRelatedContribution">Beitrag des Arbeitgebers zu Wohnungsausgaben (Kauf, Bau, Renovierung) für der Arbeitnehmer im Rahmen eines steuerfreien Nebenleistungssystems.</Purpose>
+	<Purpose code="PAYR" Class="Gehalt &amp; Zusatzleistungen" Name="Payroll">Zahlung der Gehaltsabrechnung.</Purpose>
+	<Purpose code="PEFC" Class="Gehalt &amp; Zusatzleistungen" Name="PensionFundContribution">Beitrag zur Pensionskasse.</Purpose>
+	<Purpose code="PENS" Class="Gehalt &amp; Zusatzleistungen" Name="PensionPayment">Rentenzahlung.</Purpose>
+	<Purpose code="PRCP" Class="Gehalt &amp; Zusatzleistungen" Name="PricePayment">Zahlung eines Preises.</Purpose>
+	<Purpose code="RHBS" Class="Gehalt &amp; Zusatzleistungen" Name="RehabilitationSupport">Leistung für die Dauer einer beruflichen Rehabilitation.</Purpose>
+	<Purpose code="SALA" Class="Gehalt &amp; Zusatzleistungen" Name="SalaryPayment">Zahlung von Gehältern. </Purpose>
+	<Purpose code="SPSP" Class="Gehalt &amp; Zusatzleistungen" Name="SalaryPensionSumPayment">Gehalts- oder Rentenzahlung für mehrere Monate in einem Betrag oder eine verspätete Zahlung von Gehältern oder Renten.</Purpose>
+	<Purpose code="SSBE" Class="Gehalt &amp; Zusatzleistungen" Name="SocialSecurityBenefit">Leistung der sozialen Sicherheit, d.h. eine Zahlung durch eine Regierung, um Einzelpersonen zu unterstützen.</Purpose>
+	<Purpose code="LBIN" Class="Wertpapierleihe" Name="LendingBuyInNetting">Nettozahlung im Zusammenhang mit einem Buy-In. Wenn ein Anlageverwalter bei einem Verkaufsgeschäft gekauft wird, das aufgrund eines fehlgeschlagenen Rückrufs der Wertpapierleihe fehlschlägt, kann der IM die zugrunde liegende Sicherheit beschlagnahmen, um den Buy-in zu bezahlen. Jegliche Differenz zwischen dem Wert der Sicherheiten und dem Verkaufserlös würde gemäß diesem Kodex gezahlt oder erhalten.</Purpose>
+	<Purpose code="LCOL" Class="Wertpapierleihe" Name="LendingCashCollateralFreeMovement">Freier Verkehr von Barsicherheiten. Die Zahlung der Barsicherheiten durch den Entleiher erfolgt getrennt von der Lieferung der Aktien bei Krediteröffnung oder die Rückgabe der Sicherheiten getrennt von der Rückgabe des verliehenen Wertpapiers. Hinweis: üblich, wenn die Währung des Wertpapiers von der Währung der Barsicherheit abweicht.</Purpose>
+	<Purpose code="LFEE" Class="Wertpapierleihe" Name="LendingFees">Gebührenzahlungen, ausgenommen Rabatte, für Wertpapierleihgeschäfte. Umfasst (a) exklusive Gebühren; (b) Transaktionsgebühren; (c) Depotbankgebühren; (d) Mindestguthabengebühren.</Purpose>
+	<Purpose code="LMEQ" Class="Wertpapierleihe" Name="LendingEquityMarkedToMarketCashCollateral">Barsicherheitszahlungen, die aus der Marktbewertung eines Portfolios von verliehenen Beteiligungspapieren resultieren.</Purpose>
+	<Purpose code="LMFI" Class="Wertpapierleihe" Name="LendingFixedIncomeMarkedToMarketCashCollateral">Barsicherheitenzahlungen aus der Marktbewertung eines Portfolios von verliehenen festverzinslichen Wertpapieren.</Purpose>
+	<Purpose code="LMRK" Class="Wertpapierleihe" Name="LendingUnspecifiedTypeOfMarkedToMarketCashCollateral">Barsicherheitenzahlungen aus der Marktbewertung eines Portfolios von verliehenen Wertpapieren, bei denen die Instrumententypen nicht angegeben sind.</Purpose>
+	<Purpose code="LREB" Class="Wertpapierleihe" Name="LendingRebatePayments">Rabattzahlungen für Wertpapierleihe.</Purpose>
+	<Purpose code="LREV" Class="Wertpapierleihe" Name="LendingRevenuePayments">Ertragszahlungen des Kreditvermittlers an den Kunden.</Purpose>
+	<Purpose code="LSFL" Class="Wertpapierleihe" Name="LendingClaimPayment">Zahlungen eines Kreditnehmers an einen Kreditvermittler zur Befriedigung von Ansprüchen des Anlageverwalters im Zusammenhang mit dem scheitern des Verkaufs aufgrund verspäteter Kreditrückruflieferungen.</Purpose>
+	<Purpose code="ESTX" Class="Steuern" Name="EstateTax">Erbschaftssteuer.</Purpose>
+	<Purpose code="FWLV" Class="Steuern" Name="ForeignWorkerLevy ">ausländische Arbeitnehmerabgabe.</Purpose>
+	<Purpose code="GSTX" Class="Steuern" Name="GoodsServicesTax ">Waren- und Dienstleistungssteuer.</Purpose>
+	<Purpose code="HSTX" Class="Steuern" Name="HousingTax">Wohnsteuer.</Purpose>
+	<Purpose code="INTX" Class="Steuern" Name="IncomeTax">Einkommensteuer.</Purpose>
+	<Purpose code="NITX" Class="Steuern" Name="NetIncomeTax">Nettoeinkommensteuer.</Purpose>
+	<Purpose code="PTXP" Class="Steuern" Name="PropertyTax ">Grundsteuer.</Purpose>
+	<Purpose code="RDTX" Class="Steuern" Name="RoadTax ">Kfz-Steuer.</Purpose>
+	<Purpose code="TAXS" Class="Steuern" Name="TaxPayment">Steuern allgemein.</Purpose>
+	<Purpose code="VATX" Class="Steuern" Name="ValueAddedTaxPayment">Mehrwertsteuer.</Purpose>
+	<Purpose code="WHLD" Class="Steuern" Name="WithHolding">Quellensteuern.</Purpose>
+	<Purpose code="TAXR" Class="Steuern" Name="TaxRefund">Rückerstattung einer Steuerzahlung oder -verpflichtung.</Purpose>
+	<Purpose code="B112" Class="Bestandsprovisionen" Name="TrailerFeePayment">Zahlung der Trailergebühr für US-Investmentfonds (12b-1).</Purpose>
+	<Purpose code="BR12" Class="Bestandsprovisionen" Name="TrailerFeeRebate">Nachlassgebühr für US-Investmentfonds (12b-1).</Purpose>
+	<Purpose code="TLRF" Class="Bestandsprovisionen" Name="NonUSMutualFundTrailerFeePayment">Alle Nicht-US-Investmentfonds-Nachtragsgebühren (Retrozession) (verwenden Sie die ISIN, um die Onshore- oder Offshore-Ausweisung zu bestimmen).</Purpose>
+	<Purpose code="TLRR" Class="Bestandsprovisionen" Name="NonUSMutualFundTrailerFeeRebatePayment">Jegliche Nachlasszahlung für Nicht-US-Investmentfonds (Retrozession) (verwenden Sie die ISIN, um die Onshore- oder Offshore-Ausweisung zu bestimmen).</Purpose>
+	<Purpose code="AIRB" Class="Transport" Name="Air">Transportkosten im Flugerkehr.</Purpose>
+	<Purpose code="BUSB" Class="Transport" Name="Bus">Bus-Transportkosten.</Purpose>
+	<Purpose code="FERB" Class="Transport" Name="Ferry">Transportkosten mit Fähren. </Purpose>
+	<Purpose code="RLWY" Class="Transport" Name="Railway">Transportkosten im Eisenbahnverkehr.</Purpose>
+	<Purpose code="TRPT" Class="Transport" Name="RoadPricing">Prepaid oder elektronisch abgerechnete Straßenbenutzungsgebühren.</Purpose>
+	<Purpose code="CBTV" Class="Betriebskosten" Name="CableTVBill">Kosten für Kabelfernsehen.</Purpose>
+	<Purpose code="ELEC" Class="Betriebskosten" Name="ElectricityBill">Stromkosten.</Purpose>
+	<Purpose code="ENRG" Class="Betriebskosten" Name="Energies">Energiekosten.</Purpose>
+	<Purpose code="GASB" Class="Betriebskosten" Name="GasBill">Gaskosten.</Purpose>
+	<Purpose code="NWCH" Class="Betriebskosten" Name="NetworkCharge">Netzwergebühren.</Purpose>
+	<Purpose code="NWCM" Class="Betriebskosten" Name="NetworkCommunication">Kosten für Netzwerk Kommunikation.</Purpose>
+	<Purpose code="OTLC" Class="Betriebskosten" Name="OtherTelecomRelatedBill">Kosten für sonstige Telekommunikations.</Purpose>
+	<Purpose code="PHON" Class="Betriebskosten" Name="TelephoneBill">Telefonkosten.</Purpose>
+	<Purpose code="UBIL" Class="Betriebskosten" Name="Utilities ">Strom-, Gas- und/oder Wasserkosten.</Purpose>
+	<Purpose code="WTER" Class="Betriebskosten" Name="WaterBill">Wasserkosten.</Purpose>
+</Purposes>
