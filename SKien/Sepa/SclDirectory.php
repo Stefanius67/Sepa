@@ -197,7 +197,7 @@ class SclDirectory
         ]);
 
         $strResponse = curl_exec($curl);
-        if (!$strResponse) {
+        if (is_bool($strResponse)) {
             $this->strLastError = 'cURL-Error: ' . curl_error($curl);
             curl_close($curl);
             return false;
