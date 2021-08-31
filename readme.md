@@ -1,27 +1,17 @@
 # PHP SEPA XML Generator: Generate SEPA XML to define a payment instructions
 
- ![Latest Stable Version](https://img.shields.io/badge/release-v1.2.0-brightgreen.svg)
- ![License](https://img.shields.io/packagist/l/gomoob/php-pushwoosh.svg) 
- [![Donate](https://img.shields.io/static/v1?label=Donate&message=PayPal&color=orange)](https://www.paypal.me/SKientzler/5.00EUR)
- ![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)
- [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Stefanius67/Sepa/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Stefanius67/Sepa/?branch=master)
+![Latest Stable Version](https://img.shields.io/badge/release-v1.3.0-brightgreen.svg)
+![License](https://img.shields.io/packagist/l/gomoob/php-pushwoosh.svg) 
+[![Donate](https://img.shields.io/static/v1?label=Donate&message=PayPal&color=orange)](https://www.paypal.me/SKientzler/5.00EUR)
+![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Stefanius67/Sepa/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Stefanius67/Sepa/?branch=master)
+[![codecov](https://codecov.io/gh/Stefanius67/Sepa/branch/master/graph/badge.svg?token=3H5XGT08NC)](https://codecov.io/gh/Stefanius67/Sepa)
  
 ----------
-## History
-##### 2020-09-21
-  * added missing PHP 7.4 type hints
-  * added validation for Italy
-  * code quality improved through analysis by "Scrutinizer"
-  * added phpunit testcases to repository
-  
-##### 2020-05-21
-  * new static method init() have to be called first before any use of the package!
-  * added multi country validation for IBAN, BIC and CI
-  * added language support for error messages
-  * renamed namespace to fit PSR-4 recommendations for autoloading
+## New Features
 
-##### 2020-02-18
-  * initial Version
+#### Support of Sepa Versions 2.9 and 3.0
+#### Support of ISO 20022 Purpose / CategoryPurpose - Codes
 
 ## Overview
 
@@ -52,6 +42,8 @@ You can download the  Latest [release version ](https://www.phpclasses.org/packa
 
 ## Usage
 *SepaTest* shows simple code to generate a valid SEPA XML-File.
+
+A full documentation can be found on [Github](https://github.com/Stefanius67/Sepa/wiki)
 
 ### Specify additional country validation(s)
 If the validation for a required country is not yet included in the package, it can be added as described below.
