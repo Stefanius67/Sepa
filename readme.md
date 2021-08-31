@@ -10,8 +10,10 @@
 ----------
 ## New Features
 
-#### Support of Sepa Versions 2.9 and 3.0
-#### Support of ISO 20022 Purpose / CategoryPurpose - Codes
+- **Support of Sepa Versions 2.9 and 3.0**
+- **Support of ISO 20022 Purpose / CategoryPurpose - Codes**
+- **A full documentation on [Github](https://github.com/Stefanius67/Sepa/wiki)**
+
 
 ## Overview
 
@@ -47,7 +49,7 @@ A full documentation can be found on [Github](https://github.com/Stefanius67/Sep
 
 ### Specify additional country validation(s)
 If the validation for a required country is not yet included in the package, it can be added as described below.
-(It would be nice to send new validations to me. So I can integrate them into the package in order that other users can also benefit from - [S.Kien@online.de](mailto:S.Kien@online.de))
+(It would be nice to send new validations to me. So I can integrate them into the package in order that other users can also benefit from - [S.Kientzler@online.de](mailto:S.Kientzler@online.de))
 
 To define country specific validation for IBAN, BIC and CI create a class extending ***SepaCntryValidationBase***
 and call ***Sepa::addValidation('CC', 'MyValidationClassName');***
