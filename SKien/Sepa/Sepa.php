@@ -388,7 +388,7 @@ class Sepa
         $strClass = self::$aValidation[$strCntry];
         $oValidate = new $strClass($strCntry);
 
-        return $oValidate->validateIBAN($strIBAN);  /** @phpstan-ignore-line */
+        return $oValidate->validateIBAN($strIBAN); /** @phpstan-ignore-line */
     }
 
     /**
@@ -424,7 +424,7 @@ class Sepa
         $strClass = self::$aValidation[$strCntry];
         $oValidate = new $strClass($strCntry);
 
-        return $oValidate->validateBIC($strBIC);  /** @phpstan-ignore-line */
+        return $oValidate->validateBIC($strBIC); /** @phpstan-ignore-line */
     }
 
     /**
@@ -455,7 +455,7 @@ class Sepa
         $strClass = self::$aValidation[$strCntry];
         $oValidate = new $strClass($strCntry);
 
-        return $oValidate->validateCI($strCI);  /** @phpstan-ignore-line */
+        return $oValidate->validateCI($strCI); /** @phpstan-ignore-line */
     }
 
     /**

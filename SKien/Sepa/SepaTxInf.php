@@ -194,7 +194,7 @@ class SepaTxInf
         } else if (is_numeric($DateOfSignature)) {
             $this->strDateOfSignature = date('Y-m-d', intval($DateOfSignature));
         } else {
-            $this->strDateOfSignature = (string) $DateOfSignature;
+            $this->strDateOfSignature = (string)$DateOfSignature;
         }
     }
 

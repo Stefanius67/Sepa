@@ -211,7 +211,7 @@ class SepaPmtInf extends \DOMElement
         }
         $xmlNode = $this->sepaDoc->createElement($strNode);
         if (!empty($value)) {
-            $xmlNode->nodeValue = (string) $value;
+            $xmlNode->nodeValue = (string)$value;
         }
         $xmlParent->appendChild($xmlNode);
 
@@ -374,7 +374,7 @@ class SepaPmtInf extends \DOMElement
         } else if (is_numeric($date)) {
             $this->uxtsCollExecDate = intval($date);
         } else {
-            $uxts = strtotime((string) $date);
+            $uxts = strtotime((string)$date);
             if ($uxts !== false) {
                 $this->uxtsCollExecDate = $uxts;
             }

@@ -241,7 +241,7 @@ class SepaDoc extends \DOMDocument
     {
         $xmlNode = $this->createElement($strNode);
         if (!empty($value)) {
-            $xmlNode->nodeValue = (string) $value;
+            $xmlNode->nodeValue = (string)$value;
         }
         $xmlParent->appendChild($xmlNode);
 
