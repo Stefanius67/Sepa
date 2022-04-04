@@ -234,14 +234,14 @@ class SepaDoc extends \DOMDocument
      * Create child element for given parent.
      * @param \DOMElement   $xmlParent  parent for the node. If null, child of current instance is created
      * @param string        $strNode    nodename
-     * @param mixed         $value      nodevalue. If empty, no value will be assigned (to create node only containing child elements)
+     * @param int|string    $value      nodevalue. If empty, no value will be assigned (to create node only containing child elements)
      * @return \DOMElement
      */
     protected function addChild(\DOMElement $xmlParent, string $strNode, $value = '') : \DOMElement
     {
         $xmlNode = $this->createElement($strNode);
         if (!empty($value)) {
-            $xmlNode->nodeValue = $value;
+            $xmlNode->nodeValue = (string) $value;
         }
         $xmlParent->appendChild($xmlNode);
 

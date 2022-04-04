@@ -201,7 +201,7 @@ class SepaPmtInf extends \DOMElement
      * Create a element and set it as child for given parent.
      * @param \DOMElement   $xmlParent  parent for the node. If null, child of current instance is created
      * @param string        $strNode    nodename
-     * @param mixed         $value      nodevalue. If empty, no value will be assigned (to create node only containing child elements)
+     * @param int|string    $value      nodevalue. If empty, no value will be assigned (to create node only containing child elements)
      * @return \DOMElement
      */
     protected function addChild(?\DOMElement $xmlParent, string $strNode, $value = '') : \DOMElement
@@ -211,7 +211,7 @@ class SepaPmtInf extends \DOMElement
         }
         $xmlNode = $this->sepaDoc->createElement($strNode);
         if (!empty($value)) {
-            $xmlNode->nodeValue = $value;
+            $xmlNode->nodeValue = (string) $value;
         }
         $xmlParent->appendChild($xmlNode);
 
@@ -364,7 +364,7 @@ class SepaPmtInf extends \DOMElement
      * > <b>Note:</b><br/>
      * > Banks are not obliged to process order data that was submitted more than 15 calendar days
      * BEFORE the execution date.
-     * @param mixed $date    may be string (format YYYY-MM-DD), int (unixtimestamp) or DateTime - object
+     * @param \DateTime|int|string $date    may be string (format YYYY-MM-DD), int (unixtimestamp) or DateTime - object
      */
     public function setCollExecDate($date) : void
     {
@@ -374,7 +374,10 @@ class SepaPmtInf extends \DOMElement
         } else if (is_numeric($date)) {
             $this->uxtsCollExecDate = intval($date);
         } else {
-            $this->uxtsCollExecDate = strtotime($date);
+            $uxts = strtotime((string) $date);
+            if ($uxts !== false) {
+                $this->uxtsCollExecDate = $uxts;
+            }
         }
     }
 

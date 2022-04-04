@@ -184,7 +184,7 @@ class SepaTxInf
 
     /**
      * Set the date when the mandate identification signed (only CDD).
-     * @param mixed $DateOfSignature    may be string (format YYYY-MM-DD), int (unixtimestamp) or DateTime - object
+     * @param \DateTime|int|string $DateOfSignature    may be string (format YYYY-MM-DD), int (unixtimestamp) or DateTime - object
      */
     public function setDateOfSignature($DateOfSignature) : void
     {
@@ -194,7 +194,7 @@ class SepaTxInf
         } else if (is_numeric($DateOfSignature)) {
             $this->strDateOfSignature = date('Y-m-d', intval($DateOfSignature));
         } else {
-            $this->strDateOfSignature = $DateOfSignature;
+            $this->strDateOfSignature = (string) $DateOfSignature;
         }
     }
 

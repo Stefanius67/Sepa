@@ -201,6 +201,7 @@ class Sepa
         self::addValidation('GB', 'SKien\Sepa\CntryValidation\SepaCntryValidationGB');
         self::addValidation('EE', 'SKien\Sepa\CntryValidation\SepaCntryValidationEE');
         self::addValidation('IT', 'SKien\Sepa\CntryValidation\SepaCntryValidationIT');
+        self::addValidation('ES', 'SKien\Sepa\CntryValidation\SepaCntryValidationES');
 
         self::$aIBANError = array(
             Sepa::ERR_IBAN_INVALID_CNTRY   => 'The country code of the IBAN is not supported!',
@@ -338,17 +339,17 @@ class Sepa
         if (file_exists($strFilename)) {
             $strJson = file_get_contents($strFilename);
             $jsonData = json_decode((string)$strJson, true);
-            if ($jsonData) {
-                if (isset($jsonData['aIBAN'])) {
+            if ($jsonData && is_array($jsonData)) {
+                if (isset($jsonData['aIBAN']) && is_array($jsonData['aIBAN'])) {
                     self::$aIBANError = $jsonData['aIBAN'];
                 }
-                if (isset($jsonData['aCI'])) {
+                if (isset($jsonData['aCI']) && is_array($jsonData['aCI'])) {
                     self::$aCIError = $jsonData['aCI'];
                 }
-                if (isset($jsonData['aPmtInf'])) {
+                if (isset($jsonData['aPmtInf']) && is_array($jsonData['aPmtInf'])) {
                     self::$aPmtInfError = $jsonData['aPmtInf'];
                 }
-                if (isset($jsonData['aTxInf'])) {
+                if (isset($jsonData['aTxInf']) && is_array($jsonData['aTxInf'])) {
                     self::$aTxInfError = $jsonData['aTxInf'];
                 }
             } else {
@@ -387,7 +388,7 @@ class Sepa
         $strClass = self::$aValidation[$strCntry];
         $oValidate = new $strClass($strCntry);
 
-        return $oValidate->validateIBAN($strIBAN);
+        return $oValidate->validateIBAN($strIBAN);  /** @phpstan-ignore-line */
     }
 
     /**
@@ -423,7 +424,7 @@ class Sepa
         $strClass = self::$aValidation[$strCntry];
         $oValidate = new $strClass($strCntry);
 
-        return $oValidate->validateBIC($strBIC);
+        return $oValidate->validateBIC($strBIC);  /** @phpstan-ignore-line */
     }
 
     /**
@@ -454,7 +455,7 @@ class Sepa
         $strClass = self::$aValidation[$strCntry];
         $oValidate = new $strClass($strCntry);
 
-        return $oValidate->validateCI($strCI);
+        return $oValidate->validateCI($strCI);  /** @phpstan-ignore-line */
     }
 
     /**
@@ -464,7 +465,7 @@ class Sepa
      */
     public static function errorMsg(int $iError) : string
     {
-        $aError = array_merge(self::$aIBANError, self::$aBICError, self::$aCIError);
+        $aError = self::$aIBANError + self::$aBICError + self::$aCIError;
         $strMsg = 'unknown Error (' . $iError . ')!';
         if (isset($aError[$iError])) {
             $strMsg = $aError[$iError];
