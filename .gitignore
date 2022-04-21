@@ -1,7 +1,9 @@
 /.settings/
 /.buildpath
 /.project
+/.phpunit.result.cache
 /scl-directory.xml
+/sepatestFG.php
 /wiki/
 /SKien/Test/Sepa/coverage/
 /SKien/Test/Sepa/temp/
