@@ -202,6 +202,7 @@ class Sepa
         self::addValidation('EE', 'SKien\Sepa\CntryValidation\SepaCntryValidationEE');
         self::addValidation('IT', 'SKien\Sepa\CntryValidation\SepaCntryValidationIT');
         self::addValidation('ES', 'SKien\Sepa\CntryValidation\SepaCntryValidationES');
+        self::addValidation('NL', 'SKien\Sepa\CntryValidation\SepaCntryValidationNL');
 
         self::$aIBANError = array(
             Sepa::ERR_IBAN_INVALID_CNTRY   => 'The country code of the IBAN is not supported!',

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SCL-Directory created="2022-04-04 12:29:29">
+<SCL-Directory created="2022-06-01 14:00:07">
   <Providers>
     <Provider CC="FI" BIC="AABAFI22">BANK OF ALAND PLC</Provider>
     <Provider CC="SE" BIC="AABASESS">Bank of Aland, Finland (branch Sweden)</Provider>
     <Provider CC="DE" BIC="AABSDE31">AACHENER BAUSPARKASSE AKTIENGESELLSCHAFT</Provider>
     <Provider CC="DE" BIC="AACSDE33">SPARKASSE AACHEN</Provider>
-    <Provider CC="DK" BIC="AAKRDK22">KREDITBANKEN</Provider>
+    <Provider CC="DK" BIC="AAKRDK22">KREDITBANKEN AS</Provider>
     <Provider CC="DE" BIC="AARBDE5W">AAREAL BANK AG</Provider>
     <Provider CC="IT" BIC="AARBITR1">AAREAL BANK AG ROMA BRANCH</Provider>
     <Provider CC="NO" BIC="AASANO21">AASEN SPAREBANK</Provider>
@@ -43,10 +43,10 @@
     <Provider CC="CH" BIC="AEKTCH22">AEK BANK 1826</Provider>
     <Provider CC="CH" BIC="AEXTCHZZ">BANQUE ALGERIENNE DU COMMERCE EXTERIEUR S.A.</Provider>
     <Provider CC="NO" BIC="AFJONO21">AFJORD SPAREBANK</Provider>
-    <Provider CC="DE" BIC="AFOPDEB2">AFONE PAIEMENT SA</Provider>
+    <Provider CC="DE" BIC="AFOPDEB2">NOELSE PAY (DE)</Provider>
     <Provider CC="FR" BIC="AFOPFR21">AFONE PAIEMENT</Provider>
-    <Provider CC="IT" BIC="AFOPITM2">AFONE PAIEMENT SA</Provider>
-    <Provider CC="FR" BIC="AFPMFR22">AFONE PAIEMENT</Provider>
+    <Provider CC="IT" BIC="AFOPITM2">NOELSE PAY (IT)</Provider>
+    <Provider CC="FR" BIC="AFPMFR22">NOELSE PAY (FR)</Provider>
     <Provider CC="FR" BIC="AFRIFRPP">BOA-FRANCE</Provider>
     <Provider CC="CZ" BIC="AGBACZPP">MONETA Money Bank, a.s.</Provider>
     <Provider CC="LT" BIC="AGBLLT2X">Luminor Bank AS Lithuanian branch</Provider>
@@ -59,7 +59,7 @@
     <Provider CC="ES" BIC="AGRIESMM">CREDIT AGRICOLE LUXEMBOURG SUCURSAL EN ESPANA</Provider>
     <Provider CC="FR" BIC="AGRIFRPP">CREDIT AGRICOLE SA</Provider>
     <Provider CC="FR" BIC="AGRIFRPP777">CREDIT AGRICOLE PAYMENT SERVICES</Provider>
-    <Provider CC="FR" BIC="AGRIFRPP802">CRCAM DU NORD EST</Provider>
+    <Provider CC="FR" BIC="AGRIFRPP802">CRCAM NORD EST</Provider>
     <Provider CC="FR" BIC="AGRIFRPP810">CRCAM CHAMPAGNE BOURGOGNE</Provider>
     <Provider CC="FR" BIC="AGRIFRPP812">CRCAM NORD MIDI PYRENEES</Provider>
     <Provider CC="FR" BIC="AGRIFRPP813">CREDIT AGRICOLE ALPES PROVENCE</Provider>
@@ -89,18 +89,18 @@
     <Provider CC="FR" BIC="AGRIFRPP878">CRCAM CENTRE EST</Provider>
     <Provider CC="FR" BIC="AGRIFRPP879">CRCAM DE L ANJOU ET DU MAINE</Provider>
     <Provider CC="FR" BIC="AGRIFRPP881">CREDIT AGRICOLE DES SAVOIE</Provider>
-    <Provider CC="FR" BIC="AGRIFRPP882">CRCAM DE PARIS ET D ILE DE FRA</Provider>
+    <Provider CC="FR" BIC="AGRIFRPP882">CRCAM DE PARIS ET ILE DE FRANCE</Provider>
     <Provider CC="FR" BIC="AGRIFRPP883">CRCAM NORMANDIE SEINE</Provider>
     <Provider CC="FR" BIC="AGRIFRPP887">CRCAM BRIE PICARDIE</Provider>
     <Provider CC="FR" BIC="AGRIFRPP891">CRCAM PROVENCE COTE D AZUR</Provider>
-    <Provider CC="FR" BIC="AGRIFRPP894">CRCAM DE LA TOURAINE ET DU POITOU</Provider>
+    <Provider CC="FR" BIC="AGRIFRPP894">CRCAM DE LA TOURAINE ET DU POI</Provider>
     <Provider CC="FR" BIC="AGRIFRPP895">CRCAM DU CENTRE OUEST</Provider>
     <Provider CC="FR" BIC="AGRIFRPP907">CREDIT AGRICOLE TITRES</Provider>
     <Provider CC="FR" BIC="AGRIFRP1ACF">CA CONSUMER FINANCE</Provider>
     <Provider CC="FR" BIC="AGRIFRP1EFG">CREDIT AGRICOLE LEASING &amp; FACTORING</Provider>
     <Provider CC="GP" BIC="AGRIGPGX">CRCAM DE LA GUADELOUPE</Provider>
     <Provider CC="LU" BIC="AGRILULA">CREDIT AGRICOLE LUXEMBOURG</Provider>
-    <Provider CC="MC" BIC="AGRIMCM1">CREDIT AGRICOLE PROVENCE COTE D AZUR MONACO</Provider>
+    <Provider CC="MC" BIC="AGRIMCM1">CA PROVENCE COTE AZUR MONACO</Provider>
     <Provider CC="MQ" BIC="AGRIMQMX">CRCAM DE LA MARTINIQUE ET DE LA GUYANE</Provider>
     <Provider CC="PL" BIC="AGRIPLPR">CREDIT AGRICOLE BANK POLSKA</Provider>
     <Provider CC="RE" BIC="AGRIRERX">CRCAM DE LA REUNION</Provider>
@@ -123,7 +123,8 @@
     <Provider CC="ES" BIC="ALCLESMM">BANCO ALCALA SA</Provider>
     <Provider CC="ES" BIC="ALCLESMMXXX">BANCO ALCALA</Provider>
     <Provider CC="IT" BIC="ALETITMM">BANCA ALETTI E C. S.P.A.</Provider>
-    <Provider CC="IT" BIC="ALOAIT21">ALTO ADIGE BANCA S.P.A.</Provider>
+    <Provider CC="IT" BIC="ALLFITMM">ALLFUNDS BANK SAU MILAN BRANCH</Provider>
+    <Provider CC="IT" BIC="ALOAIT21">ALTO ADIGE BANCA SPA</Provider>
     <Provider CC="AT" BIC="ALPEAT22">ALPENBANK AG</Provider>
     <Provider CC="IT" BIC="ALPEIT21">ALPENBANK AG</Provider>
     <Provider CC="IT" BIC="ALSSITM1">BANCA ALBERTINI SYZ SPA</Provider>
@@ -152,15 +153,14 @@
     <Provider CC="GB" BIC="ARPYGB21">ARCAPAY LTD</Provider>
     <Provider CC="IE" BIC="ARRUIE21">Arklow Credit Union Limited</Provider>
     <Provider CC="NL" BIC="ARSNNL21">ARGENTA NEDERLAND</Provider>
-    <Provider CC="BE" BIC="ARSPBE22">ARGENTA</Provider>
+    <Provider CC="BE" BIC="ARSPBE22">ARGENTA SPAARBANK NV</Provider>
     <Provider CC="IT" BIC="ARTCITR1">ARTIGIANCASSA</Provider>
     <Provider CC="NO" BIC="ASKSNO21">ASKIM SPAREBANK</Provider>
-    <Provider CC="NL" BIC="ASNBNL21">ASN BANK N.V.</Provider>
+    <Provider CC="NL" BIC="ASNBNL21">ASN BANK</Provider>
     <Provider CC="AT" BIC="ASPKAT2L">ALLG.SPARKASSE OBEROESTERREICH BANK AG</Provider>
     <Provider CC="IE" BIC="ASRNIE21">Education Credit Union Limited</Provider>
-    <Provider CC="NL" BIC="ATBANL2A">Amsterdam Trade Bank N.V.</Provider>
     <Provider CC="IE" BIC="ATCUIE21">Athboy Credit Union Limited</Provider>
-    <Provider CC="IE" BIC="ATEUIE21">People First Credit Union Limited</Provider>
+    <Provider CC="IE" BIC="ATEUIE21">PEOPLE FIRST CREDIT UNION LIMITED</Provider>
     <Provider CC="IT" BIC="ATPIITM1">A-TONO PAYMENT INSTITUTE SPA</Provider>
     <Provider CC="IE" BIC="ATROIE21">Athlone Credit Union Limited</Provider>
     <Provider CC="IE" BIC="ATRUIE21">Athenry Credit Union Limited</Provider>
@@ -180,6 +180,7 @@
     <Provider CC="IT" BIC="AXEVIT22">AXERVE SPA</Provider>
     <Provider CC="IE" BIC="AYCUIE21">Member First Credit Union Limited</Provider>
     <Provider CC="ES" BIC="AYGBESMM">A&amp;G BANCA PRIVADA</Provider>
+    <Provider CC="ES" BIC="AYGBESMMXXX">A G BANCA PRIVADA S.A.U</Provider>
     <Provider CC="IT" BIC="AZZBITT1">BANCO DI CREDITO P.AZZOAGLIO S.P.A.</Provider>
     <Provider CC="IT" BIC="AZZBITT3">BANCO DI CREDITO P.AZZOAGLIO S.P.A.</Provider>
     <Provider CC="DK" BIC="BAAADK21">TOTALBANKEN AS</Provider>
@@ -192,7 +193,7 @@
     <Provider CC="FR" BIC="BACCFR23">ONEY BANK</Provider>
     <Provider CC="CH" BIC="BACECH22">BANCA DEL CERESIO SA</Provider>
     <Provider CC="GB" BIC="BACMGB2L">BRITISH ARAB COMMERCIAL BANK</Provider>
-    <Provider CC="IT" BIC="BACRIT21">CREDITO EMILIANO SPA</Provider>
+    <Provider CC="IT" BIC="BACRIT21">CREDITO EMILIANO S.P.A.</Provider>
     <Provider CC="IT" BIC="BACRIT22">CREDITO EMILIANO S.P.A.</Provider>
     <Provider CC="CZ" BIC="BACXCZPP">UNICREDIT BANK CZECH REPUBLIC AND SLOVAKIA, A. S.</Provider>
     <Provider CC="HU" BIC="BACXHUHB">UNICREDIT BANK HUNGARY ZRT</Provider>
@@ -213,11 +214,11 @@
     <Provider CC="IT" BIC="BAMAIT3A">NUOVA BANCA MARCHE</Provider>
     <Provider CC="IT" BIC="BAMAIT31">Banca Adriatica Spa</Provider>
     <Provider CC="IT" BIC="BAMEITMM">MEDIOBANCA SPA</Provider>
-    <Provider CC="FR" BIC="BAMYFR22">BANQUE MICHEL INCHAUSPE</Provider>
+    <Provider CC="FR" BIC="BAMYFR22">BANQUE MICHEL INCHAUSPE - BAMI</Provider>
     <Provider CC="ES" BIC="BAOFESM1">BANCOFAR, S.A.</Provider>
     <Provider CC="ES" BIC="BAOFESM1XXX">BANCOFAR S A</Provider>
-    <Provider CC="AT" BIC="BAOSATWW">S BAUSPARKASSE</Provider>
-    <Provider CC="PT" BIC="BAPAPTPL">BANCO PRIVADO ATLANTICO EUROPA, SA</Provider>
+    <Provider CC="AT" BIC="BAOSATWW">BAUSPARKASSE DER OESTERR. SPK. AG</Provider>
+    <Provider CC="PT" BIC="BAPAPTPL">BANCO PRIVADO ATLANTICO EUROPA SA</Provider>
     <Provider CC="IT" BIC="BAPPIT21">BANCO BPM SPA</Provider>
     <Provider CC="IT" BIC="BAPPIT22">Banco BPM s.p.a.</Provider>
     <Provider CC="ES" BIC="BAPUES22">BANCA PUEYO</Provider>
@@ -238,6 +239,7 @@
     <Provider CC="PT" BIC="BARCPTPC">Barclays Bank Ireland Plc, Portugal branch</Provider>
     <Provider CC="CH" BIC="BASECH22">BANCA DEL SEMPIONE SA</Provider>
     <Provider CC="ES" BIC="BASKES2B">KUTXABANK</Provider>
+    <Provider CC="ES" BIC="BASKES2BXXX">KUTXABANK</Provider>
     <Provider CC="SM" BIC="BASMSMSM">BANCA AGRICOLA COMMERCIALE</Provider>
     <Provider CC="FR" BIC="BATIFRP1">BTP BANQUE</Provider>
     <Provider CC="CH" BIC="BAUMCHBB">BAUMANN &amp; CIE BANQUIERS, BASEL</Provider>
@@ -248,7 +250,7 @@
     <Provider CC="CH" BIC="BBOBCH22">BBO BANK BRIENZ OBERHASLI AG</Provider>
     <Provider CC="PT" BIC="BBPIPTPL">BANCO BPI SA</Provider>
     <Provider CC="LU" BIC="BBPPLULL">BANQUE DE PATRIMOINES PRIVES</Provider>
-    <Provider CC="DK" BIC="BBRODK21">SPAREKASSEN BREDEBRO</Provider>
+    <Provider CC="DK" BIC="BBRODK21">Bredebro Sparekasse</Provider>
     <Provider CC="BE" BIC="BBRUBEBB">ING BELGIUM NV-SA</Provider>
     <Provider CC="BE" BIC="BBRUBEBC">ING BELGIUM NV/SA</Provider>
     <Provider CC="CH" BIC="BBRUCHGT">ING BELGIUM SA, Brussels, Geneva Branch</Provider>
@@ -260,7 +262,7 @@
     <Provider CC="DE" BIC="BBVADEFF">BANCO BILBAO VIZCAYA ARGENTARIA S.A.</Provider>
     <Provider CC="ES" BIC="BBVAESMM">BANCO BILBAO VIZCAYA</Provider>
     <Provider CC="FR" BIC="BBVAFRPP">BBVA FRANCIA</Provider>
-    <Provider CC="GB" BIC="BBVAGB2L">BBVA LONDON</Provider>
+    <Provider CC="GB" BIC="BBVAGB2L">BBVA LONDRES</Provider>
     <Provider CC="IT" BIC="BBVAITMM">BBVA MILAN</Provider>
     <Provider CC="PT" BIC="BBVAPTPL">BANCO BILBAO VIZCAYA ARGENTARIA SA SUC PORTUGAL</Provider>
     <Provider CC="IT" BIC="BCABIT21">BANCO DI BRESCIA S.P.A.</Provider>
@@ -286,7 +288,7 @@
     <Provider CC="ES" BIC="BCITESMM">INTESA SANPAOLO SPA MADRID</Provider>
     <Provider CC="FR" BIC="BCITFRPP">BANCA INTESA FRANCE</Provider>
     <Provider CC="GB" BIC="BCITGB2L">INTESA SANPAOLO SPA LONDON</Provider>
-    <Provider CC="IE" BIC="BCITIE2D">INTESA SANPAOLO BANK IRELAND</Provider>
+    <Provider CC="IE" BIC="BCITIE2D">INTESA SANPAOLO BANK IRELAND PLC</Provider>
     <Provider CC="IT" BIC="BCITITMM">INTESA SANPAOLO SPA</Provider>
     <Provider CC="IT" BIC="BCITITM1">INTESA SANPAOLO SPA</Provider>
     <Provider CC="IT" BIC="BCITITM3">INTESA SANPAOLO PRIVATE BANKING</Provider>
@@ -298,7 +300,7 @@
     <Provider CC="DE" BIC="BCLSDE22">BANKHAUS C.L. SEELIGER</Provider>
     <Provider CC="DE" BIC="BCMADEFF">ATTIJARIWAFA BANK EUROPE</Provider>
     <Provider CC="ES" BIC="BCMAESMM">ATTIJARIWAFA BANK EUROPE SUCURSAL ESPANA</Provider>
-    <Provider CC="FR" BIC="BCMAFRPP">Attijariwafa Bank</Provider>
+    <Provider CC="FR" BIC="BCMAFRPP">ATTIJARIWAFA BANK EUROPE</Provider>
     <Provider CC="IT" BIC="BCMAITMM">ATTIJARIWAFA BANK EUROPE SEDE ITALIANA</Provider>
     <Provider CC="CH" BIC="BCNNCH22">BANQUE CANTONALE NEUCHATELOISE</Provider>
     <Provider CC="ES" BIC="BCOEESMM">BANCO COOPERATIVO</Provider>
@@ -344,7 +346,7 @@
     <Provider CC="ES" BIC="BCOEESMM190">GLOBALCAJA</Provider>
     <Provider CC="ES" BIC="BCOEESMM191">CAJA RURAL DE ARAGON, S.C.C.</Provider>
     <Provider CC="PT" BIC="BCOMPTPL">BANCO COMERCIAL PORTUGUES SA</Provider>
-    <Provider CC="IT" BIC="BCPCIT2P">BANCA DI PIACENZA SCPA</Provider>
+    <Provider CC="IT" BIC="BCPCIT2P">BANCA DI PIACENZA</Provider>
     <Provider CC="IT" BIC="BCPTITNN">BANCA DI CREDITO POPOLARE</Provider>
     <Provider CC="IT" BIC="BCPTITN1">BANCA CREDITO POPOLARE</Provider>
     <Provider CC="CH" BIC="BCRECH22">BANCA CREDINVEST SA</Provider>
@@ -368,16 +370,16 @@
     <Provider CC="IE" BIC="BDRIIE21">BLESSINGTON AND DISTRICT CREDIT UNION LTD</Provider>
     <Provider CC="IE" BIC="BDRNIE21">BLANCHARDSTOWN CU</Provider>
     <Provider CC="DE" BIC="BDWBDEMM">BAADER BANK AG</Provider>
-    <Provider CC="ES" BIC="BEDFESM1">BANCO EUROPEO DE FINANZAS</Provider>
+    <Provider CC="ES" BIC="BEDFESM1">BANCO EUROPEO DE FINANZAS SA</Provider>
     <Provider CC="ES" BIC="BEDFESM1XXX">BANCO EUROPEO DE FINANZAS</Provider>
     <Provider CC="CZ" BIC="BEFKCZP1">B-EFEKT, A.S.</Provider>
     <Provider CC="CH" BIC="BEFRCH22">BANQUE CANTONALE DE FRIBOURG</Provider>
     <Provider CC="CH" BIC="BEGOCHZZ">BERGOS AG</Provider>
     <Provider CC="DE" BIC="BEGODEHH">JOH. BERENBERG,GOSSLER UND CO.KG</Provider>
     <Provider CC="DE" BIC="BELADEBE">BERLINER SPARKASSE - LANDESBANK BERLIN AG</Provider>
-    <Provider CC="FR" BIC="BEMOFRPP">BANQUE DE L EUROPE MERIDIONALE SA</Provider>
+    <Provider CC="FR" BIC="BEMOFRPP">BEMO BP Paris Branch</Provider>
     <Provider CC="LU" BIC="BEMOLULL">BEMO EUROPE BANQUE PRIVEE LUX</Provider>
-    <Provider CC="IT" BIC="BEPOIT21">Banca Popolare di Bergamo</Provider>
+    <Provider CC="IT" BIC="BEPOIT21">BANCA POPOLARE DI BERGAMO S.P.A.</Provider>
     <Provider CC="MC" BIC="BERLMCMC">EDMOND DE ROTHSCHILD (MONACO)</Provider>
     <Provider CC="PT" BIC="BESAPTPA">NOVO BANCO DOS ACORES SA</Provider>
     <Provider CC="LU" BIC="BESCLULL">NOVO BANCO, SA SUCCURSALE LUXEMBOURG</Provider>
@@ -388,9 +390,9 @@
     <Provider CC="DE" BIC="BEVODEBB">BERLINER VOLKSBANK EG</Provider>
     <Provider CC="FR" BIC="BFBKFRP1">SPECIALISTE EPARGNE EN LIGNE</Provider>
     <Provider CC="FR" BIC="BFCOFRPP">BANQUE FRANCAISE COMMERCIALE OCEAN INDIEN PARIS</Provider>
-    <Provider CC="RE" BIC="BFCORERX">BANQUE FRANCAISE COMMERCIALE OCEAN INDIEN  REUNION</Provider>
+    <Provider CC="RE" BIC="BFCORERX">BANQUE FRANCAISE COMMERCIALE D</Provider>
     <Provider CC="YT" BIC="BFCOYTYT">BANQUE FRANCAISE COMMERCIALE OCEAN INDIEN  MAYOTTE</Provider>
-    <Provider CC="IT" BIC="BFDVIT31">BANCA FEDERICO DEL VECCHIO</Provider>
+    <Provider CC="IT" BIC="BFDVIT31">Banca Federico del Vecchio</Provider>
     <Provider CC="RO" BIC="BFERROBU">TECHVENTURES BANK S.A.</Provider>
     <Provider CC="NO" BIC="BFHSNO21">ROMSDAL SPAREBANK</Provider>
     <Provider CC="PT" BIC="BFIAPTPL">BANCO FINANTIA SA</Provider>
@@ -435,15 +437,14 @@
     <Provider CC="AT" BIC="BIIWATWW">FLATEXDEGIRO BANK AG</Provider>
     <Provider CC="FR" BIC="BIKCFRP1">BINCKBANK</Provider>
     <Provider CC="DE" BIC="BILADE55">KREISSPARKASSE BIRKENFELD (BIRKENFELDER LANDESBANK)</Provider>
-    <Provider CC="IT" BIC="BILLITMM">RBC INVESTORS BANK</Provider>
-    <Provider CC="LU" BIC="BILLLULL">BANQUE INTERNATIONALE A LUXEMBOURG S.A.</Provider>
+    <Provider CC="LU" BIC="BILLLULL">BANQUE INTERNATIONALE A LUXEMBOURG</Provider>
     <Provider CC="CH" BIC="BILSCHZZ">BIL SUISSE SA ZURICH</Provider>
-    <Provider CC="IT" BIC="BIMTITTT">BANCA INTERMOBILIARE SPA</Provider>
+    <Provider CC="IT" BIC="BIMTITTT">BANCA INTERMOBILIARE</Provider>
     <Provider CC="IT" BIC="BIMTITT1">BANCA INTERMOBILIARE E GESTIONI SPA</Provider>
     <Provider CC="AD" BIC="BINAADAD">MORA BANC GRUP SA</Provider>
     <Provider CC="NL" BIC="BINKNL21">BINCK BANK NV</Provider>
     <Provider CC="IE" BIC="BIRIIE21">Bishopstown Credit Union Limited</Provider>
-    <Provider CC="IE" BIC="BIRNIE21">BIRR CREDIT UNION LIMITED</Provider>
+    <Provider CC="IE" BIC="BIRNIE21">Athenry Credit Union Limited</Provider>
     <Provider CC="IE" BIC="BIRUIE21">LINK CREDIT UNION LTD.</Provider>
     <Provider CC="NO" BIC="BISNNO21">BIRKENES SPAREBANK</Provider>
     <Provider CC="IT" BIC="BITAITRR">BANCA DITALIA</Provider>
@@ -459,10 +460,10 @@
     <Provider CC="NO" BIC="BJUGNO21">BJUGN SPAREBANK</Provider>
     <Provider CC="AT" BIC="BKAUATWW">UniCredit Bank Austria AG</Provider>
     <Provider CC="CH" BIC="BKBBCHBB">BASLER KANTONALBANK</Provider>
-    <Provider CC="ES" BIC="BKBKESMM">BANKINTER SA</Provider>
+    <Provider CC="ES" BIC="BKBKESMM">BANKINTER</Provider>
     <Provider CC="ES" BIC="BKBKESMMXXX">BANKINTER</Provider>
     <Provider CC="LU" BIC="BKBKLULL">BANKINTER LUX S.A.</Provider>
-    <Provider CC="PT" BIC="BKBKPTPL">BANKINTER, SA - SUC PORTUGAL</Provider>
+    <Provider CC="PT" BIC="BKBKPTPL">BANKINTER S.A. SUC. PORTUGAL</Provider>
     <Provider CC="AT" BIC="BKCHATWW">BANK OF CHINA (CEE) LTD. VIENNA BRANCH</Provider>
     <Provider CC="BE" BIC="BKCHBEBB">BANK OF CHINA BRUSSELS BRANCH</Provider>
     <Provider CC="CZ" BIC="BKCHCZPP">BANK OF CHINA (CEE) LTD.PRAGUE BRANCH</Provider>
@@ -481,7 +482,7 @@
     <Provider CC="DE" BIC="BKMADE61">BANKHAUS E. MAYER AKTIENGESELLSCHAFT</Provider>
     <Provider CC="NL" BIC="BKMGNL2A">BANK MENDES GANS</Provider>
     <Provider CC="DE" BIC="BKMZDE51">BAUSPARKASSE MAINZ AKTIENGESELLSCHAFT</Provider>
-    <Provider CC="ES" BIC="BKOAES22">BANKOA</Provider>
+    <Provider CC="ES" BIC="BKOAES22">BANKOA SA CREDIT AGRICOLE</Provider>
     <Provider CC="IT" BIC="BKRAITMM">ALLIANZ BANK FINANCIAL ADVISORS</Provider>
     <Provider CC="CH" BIC="BKTHCH22">BANK THALWIL (FORMERLY SPARKASSE THALWIL)</Provider>
     <Provider CC="IE" BIC="BLCIIE21">BALLINA CREDIT UNION LIMITED</Provider>
@@ -522,33 +523,33 @@
     <Provider CC="ES" BIC="BMARES2M">BANCA MARCH</Provider>
     <Provider CC="ES" BIC="BMARES2MXXX">BANCA MARCH</Provider>
     <Provider CC="ES" BIC="BMCEESMM">BANQUE MAROCAINE DU COMMERCE EXTERIEUR INT. S.A.U.</Provider>
-    <Provider CC="FR" BIC="BMCEFRPP">BMCE BANK INTERNATIONAL PLC SUCCURSALE EN FRANCE</Provider>
+    <Provider CC="FR" BIC="BMCEFRPP">BMCE Bank International Plc, Paris</Provider>
     <Provider CC="LU" BIC="BMECLULL">BANQUE BCP SA LUXEMBOURG</Provider>
     <Provider CC="IT" BIC="BMEDITN1">BANCA POP. DEL MEDITERRANEO S.C.P.A.</Provider>
     <Provider CC="FR" BIC="BMEUFRP1">BMCE EUROSERVICES</Provider>
     <Provider CC="FR" BIC="BMISFRPP">BANQUE MISR - SUCCURSALE DE PARIS</Provider>
     <Provider CC="IT" BIC="BMLUIT3L">BANCA DEL MONTE DI LUCCA S.P.A.</Provider>
-    <Provider CC="FR" BIC="BMMMFR2A">LA BANQUE MARTIN MAUREL</Provider>
+    <Provider CC="FR" BIC="BMMMFR2A">BANQUE MARTIN MAUREL</Provider>
     <Provider CC="BE" BIC="BMPBBEBB">AION S.A.</Provider>
-    <Provider CC="BE" BIC="BMPBBEBBVOD">AION SA</Provider>
+    <Provider CC="BE" BIC="BMPBBEBBVOD">AION S.A.</Provider>
     <Provider CC="DE" BIC="BMPBDEF2">AION BANK SA GERMAN BRANCH</Provider>
     <Provider CC="PL" BIC="BMPBPLPP">AION BANK S.A. BRANCH IN POLAND</Provider>
+    <Provider CC="SE" BIC="BMPBSESS">AION BANK SA SWEDISH BRANCH</Provider>
     <Provider CC="DE" BIC="BMWBDEMU">BMW BANK GMBH</Provider>
     <Provider CC="DE" BIC="BMWBDEM1">BMW BANK GMBH</Provider>
-    <Provider CC="BE" BIC="BNAGBEBB">DELTA LLOYD BANK SA</Provider>
+    <Provider CC="BE" BIC="BNAGBEBB">DELTA LLOYD BANK</Provider>
     <Provider CC="BG" BIC="BNBGBGSF">BULGARIAN NATIONAL BANK</Provider>
     <Provider CC="NL" BIC="BNDANL2A">Brand New Day Vermogensopbouw NV</Provider>
     <Provider CC="PT" BIC="BNFIPTPL">BANIF-BANCO DE INVESTIMENTO, SA</Provider>
-    <Provider CC="NL" BIC="BNGHNL2G">BNG BANK N.V.</Provider>
+    <Provider CC="NL" BIC="BNGHNL2G">BANK NEDERLANDSE GEMEENTEN</Provider>
     <Provider CC="GR" BIC="BNGRGRAA">BANK OF GREECE</Provider>
     <Provider CC="PT" BIC="BNICPTPL">BNI - BANCO DE NEGOCIOS INTERNACIONAL (EUROPA), SA</Provider>
     <Provider CC="MT" BIC="BNIFMTMT">BNF BANK PLC</Provider>
     <Provider CC="IT" BIC="BNLIITRI">BANCA NAZIONALE DEL LAVORO SPA</Provider>
-    <Provider CC="IT" BIC="BNLIITRR">BNL</Provider>
+    <Provider CC="IT" BIC="BNLIITRR">BANCA NAZIONALE DEL LAVORO S.P.A.</Provider>
     <Provider CC="IT" BIC="BNLIITR1">BANCO NAZIONALE DEL LAVORO S.P.A.</Provider>
     <Provider CC="BG" BIC="BNPABGSX">BNP PARIBAS SA SOFIA</Provider>
     <Provider CC="DE" BIC="BNPADEFF">BNP PARIBAS S.A. NIEDERLASSUNG FRANKFURT AM MAIN</Provider>
-    <Provider CC="ES" BIC="BNPAESMM">BNP PARIBAS ESPANA, S.A.</Provider>
     <Provider CC="ES" BIC="BNPAESMS">BNP PARIBAS SUCURSAL EN ESPANA</Provider>
     <Provider CC="ES" BIC="BNPAESM2">BANCO CETELEM S.A.U</Provider>
     <Provider CC="FR" BIC="BNPAFRPP">BNP PARIBAS SA</Provider>
@@ -562,7 +563,7 @@
     <Provider CC="NL" BIC="BNPANL2A">BNP PARIBAS AMSTERDAM</Provider>
     <Provider CC="NO" BIC="BNPANOKK">BNP PARIBAS OSLO BRANCH</Provider>
     <Provider CC="PL" BIC="BNPAPLPX">BNP PARIBAS POLOGNE</Provider>
-    <Provider CC="PT" BIC="BNPAPTPL">BNP PARIBAS PORTUGAL</Provider>
+    <Provider CC="PT" BIC="BNPAPTPL">BNP PARIBAS SUCURSAL EM PORTUGAL</Provider>
     <Provider CC="RE" BIC="BNPARERX">BNP PARIBAS LA REUNION</Provider>
     <Provider CC="FR" BIC="BNPCFR21">BNP PARIBAS FACTOR</Provider>
     <Provider CC="CY" BIC="BNPICY2I">BNP PARIBAS CYPRUS LTD</Provider>
@@ -571,19 +572,20 @@
     <Provider CC="DE" BIC="BNYMDEF1">BANK OF NEW YORK MELLON SA/NV</Provider>
     <Provider CC="IE" BIC="BNYMIE2D">THE BANK OF NEW YORK MELLON SA./NV, DUBLIN BRANCH</Provider>
     <Provider CC="NL" BIC="BNYMNL22">BANK OF NEW YORK MELLON SA/NV, AMSTERDAM BRANCH</Provider>
-    <Provider CC="DK" BIC="BOBJDK21">Borbjerg Sparekasse</Provider>
+    <Provider CC="DK" BIC="BOBJDK21">BORBJERG SPAREKASSE</Provider>
     <Provider CC="BE" BIC="BOFABE3X">BANK OF AMERICA EUROPE DAC BRUSSELS</Provider>
     <Provider CC="CH" BIC="BOFACH2X">BANK OF AMERICA EUROPE DAC ZURICH</Provider>
     <Provider CC="DE" BIC="BOFADEFX">BANK OF AMERICA EUROPE DAC FRANKFURT</Provider>
     <Provider CC="DE" BIC="BOFADEFXVAM">BANK OF AMERICA EUROPE DAC FRANKFURT VAM</Provider>
     <Provider CC="ES" BIC="BOFAES2X">BANK OF AMERICA EUROPE DAC MADRID</Provider>
     <Provider CC="FR" BIC="BOFAFRPP">BANK OF AMERICA EUROPE DAC PARIS</Provider>
-    <Provider CC="GB" BIC="BOFAGB2UAUS">BANK OF AMERICA LONDON RE AUSTRIA</Provider>
+    <Provider CC="FR" BIC="BOFAFRPPVAM">BANK OF AMERICA EUROPE DAC PARIS VAM</Provider>
+    <Provider CC="GB" BIC="BOFAGB2UAUS">BANK OF AMERICA RE AUSTRIA</Provider>
     <Provider CC="GB" BIC="BOFAGB2UFIN">BANK OF AMERICA LONDON RE FINLAND</Provider>
-    <Provider CC="GB" BIC="BOFAGB2ULUX">BANK OF AMERICA LONDON RE LUXEMBOURG</Provider>
+    <Provider CC="GB" BIC="BOFAGB2ULUX">BANK OF AMERICA RE LUXEMBOURG</Provider>
     <Provider CC="GB" BIC="BOFAGB2UPOR">BANK OF AMERICA LONDON RE PORTUGAL</Provider>
     <Provider CC="GB" BIC="BOFAGB2USKK">BANK OF AMERICA LONDON RE SLOVAKIA</Provider>
-    <Provider CC="GB" BIC="BOFAGB22">BANK OF AMERICA LONDON</Provider>
+    <Provider CC="GB" BIC="BOFAGB22">BANK OF AMERICA NA LONDON</Provider>
     <Provider CC="GB" BIC="BOFAGB22VAM">BANK OF AMERICA NA LONDON</Provider>
     <Provider CC="GR" BIC="BOFAGR2X">BANK OF AMERICA EUROPE DAC ATHENS</Provider>
     <Provider CC="IE" BIC="BOFAIE3X">BANK OF AMERICA EUROPE DAC DUBLIN</Provider>
@@ -634,27 +636,25 @@
     <Provider CC="DE" BIC="BPKODEFF">PKO BANK POLSKI S.A. NIEDERLASSUNG DEUTSCHLAND</Provider>
     <Provider CC="PL" BIC="BPKOPLPW">PKO BANK POLSKI SA</Provider>
     <Provider CC="SK" BIC="BPKOSKBB">PKO BP S.A., POBOCKA ZAHRANICNEJ BANKY</Provider>
-    <Provider CC="ES" BIC="BPLCESMM">BARCLAYS BANK IRELAND PLC, SPAIN BRANCH</Provider>
+    <Provider CC="ES" BIC="BPLCESMM">Barclays Bank Ireland Plc, Spain branch</Provider>
     <Provider CC="IT" BIC="BPLCITMM">Barclays Bank Ireland - Italy Branch</Provider>
     <Provider CC="IT" BIC="BPLZIT3V">BANCA POPOLARE DEL LAZIO SCPA</Provider>
-    <Provider CC="IT" BIC="BPMIITMM">BANCO BPM SPA (FORMERLY BANCA POPOLARE DI MILANO)</Provider>
-    <Provider CC="IT" BIC="BPMIITM1">BANCO BPM SPA (FORMERLY BANCA POPOLARE DI MILANO)</Provider>
     <Provider CC="IT" BIC="BPMOIT22">BPER Banca S.p.A.</Provider>
     <Provider CC="LU" BIC="BPMOLULS">BANCA POPOLARE DELL EMILIA ROM</Provider>
     <Provider CC="DE" BIC="BPNDDE52">PSA BANK DEUTSCHLAND GMBH</Provider>
     <Provider CC="PT" BIC="BPNPPTPL">BANCO BIC PORTUGUES SA</Provider>
     <Provider CC="BE" BIC="BPOTBEBE">BPOST BANK N.V. S.A.</Provider>
     <Provider CC="BE" BIC="BPOTBEB1">BPOST BANK N.V.</Provider>
-    <Provider CC="CH" BIC="BPPBCHGG">BNP PARIBAS (SUISSE) SA</Provider>
-    <Provider CC="MC" BIC="BPPBMCMC">BNP PARIBAS WM MONACO</Provider>
+    <Provider CC="CH" BIC="BPPBCHGG">BNP PARIBAS SUISSE SA</Provider>
+    <Provider CC="MC" BIC="BPPBMCMC">BNP PARIBAS WLTH MNGT MONACO</Provider>
     <Provider CC="CZ" BIC="BPPFCZP1">BNP PARIBAS PERSONAL FINANCE CZECH REPUBLIC</Provider>
-    <Provider CC="IT" BIC="BPPIITRR">POSTE ITALIANE</Provider>
+    <Provider CC="IT" BIC="BPPIITRR">POSTE ITALIANE SPA</Provider>
     <Provider CC="IT" BIC="BPPNIT2P">BANCA POPOLARE FRIULADRIA SPA</Provider>
     <Provider CC="IT" BIC="BPPUIT31">BANCA POPOLARE PUGLIESE</Provider>
     <Provider CC="IT" BIC="BPPUIT33">BANCA POPOLARE PUGLIESE</Provider>
     <Provider CC="IT" BIC="BPSAIT31">BANCA DI SASSARI</Provider>
     <Provider CC="FR" BIC="BPSMFRPP">BANQUE BCP</Provider>
-    <Provider CC="IT" BIC="BPTTITMM">BANCA PROGETTO S.p.A.</Provider>
+    <Provider CC="IT" BIC="BPTTITMM">BANCA PROGETTO S.p.A</Provider>
     <Provider CC="IT" BIC="BPVMIT2R">BANCA POPOLARE VALCONCA</Provider>
     <Provider CC="CH" BIC="BQBHCHGG">ONE SWISS BANK SA</Provider>
     <Provider CC="AT" BIC="BRASATWW">Banco do Brasil Vienna</Provider>
@@ -698,14 +698,14 @@
     <Provider CC="ES" BIC="BSABESBB">BANCO DE SABADELL SA</Provider>
     <Provider CC="FR" BIC="BSABFRPP">BANCO SABADELL</Provider>
     <Provider CC="GB" BIC="BSABGB2L">BANCO DE SABADELL S.A.</Provider>
-    <Provider CC="PT" BIC="BSABPTPL">BANCO DE SABADELL, S.A. SUCURSAL EM PORTUGAL</Provider>
+    <Provider CC="PT" BIC="BSABPTPL">BANCO DE SABADELL SUCURSAL EM PORTUGAL</Provider>
     <Provider CC="LU" BIC="BSAFLULL">BANQUE J. SAFRA SARASIN (LUXEMBOURG) SA</Provider>
     <Provider CC="AD" BIC="BSANADAD">BANC SABADELL D'ANDORRA</Provider>
     <Provider CC="FR" BIC="BSAOFR21">BANQUE SAINT OLIVE</Provider>
     <Provider CC="FR" BIC="BSAVFR2C">BANQUE DE SAVOIE</Provider>
     <Provider CC="BE" BIC="BSCHBEBB">SANTANDER BENELUX</Provider>
     <Provider CC="DE" BIC="BSCHDEFF">BANCO SANTANDER S.A.</Provider>
-    <Provider CC="ES" BIC="BSCHESMM">BANCO SANTANDER SA</Provider>
+    <Provider CC="ES" BIC="BSCHESMM">BANCO SANTANDER S.A.</Provider>
     <Provider CC="FR" BIC="BSCHFRPP">BANCO SANTANDER S.A.</Provider>
     <Provider CC="GB" BIC="BSCHGB2L">BANCO SANTANDER S.A.</Provider>
     <Provider CC="IT" BIC="BSCHITMM">BANCO SANTANDER, S.A. MILANO BRANCH</Provider>
@@ -717,11 +717,11 @@
     <Provider CC="SI" BIC="BSLJSI2X">BANKA SLOVENIJE</Provider>
     <Provider CC="SK" BIC="BSLOSK22">PRIVATBANKA AS BRATISLAVA</Provider>
     <Provider CC="NO" BIC="BSPANO21">BO SPAREBANK</Provider>
-    <Provider CC="FR" BIC="BSPFFRPP">PALATINE</Provider>
+    <Provider CC="FR" BIC="BSPFFRPP">BANQUE PALATINE</Provider>
     <Provider CC="CH" BIC="BSSACHGG">CBH COMPAGNIE BANCAIRE HELVETIQUE SA</Provider>
     <Provider CC="ES" BIC="BSSSESM2">SANTANDER SECURITY SERVICES S.A.</Provider>
     <Provider CC="AT" BIC="BSSWATWW">Schelhammer Capital Bank AG</Provider>
-    <Provider CC="DE" BIC="BSUIDEFF">CA CIB GERMANY</Provider>
+    <Provider CC="DE" BIC="BSUIDEFF">CREDIT AGRICOLE CIB DEUTSCHLAND</Provider>
     <Provider CC="ES" BIC="BSUIESMM">CREDIT AGRICOLE CIB MADRID</Provider>
     <Provider CC="FI" BIC="BSUIFIHH">CREDIT AGRICOLE CIB HELSINKI</Provider>
     <Provider CC="FR" BIC="BSUIFRPP">CREDIT AGRICOLE CIB</Provider>
@@ -740,7 +740,6 @@
     <Provider CC="NO" BIC="BTWONOK1">BANK 2 ASA</Provider>
     <Provider CC="RO" BIC="BUCUROBU">ALPHA BANK ROMANIA S.A.</Provider>
     <Provider CC="HU" BIC="BUDAHUHB">BUDAPEST BANK PRIVATE CO LTD</Provider>
-    <Provider CC="GB" BIC="BUEEGB22">Bureau Buttercrane Ltd</Provider>
     <Provider CC="BG" BIC="BUINBGSF">ALLIANZ BANK BULGARIA AD</Provider>
     <Provider CC="BG" BIC="BUINBGSFXXX">ALLIANZ BANK BULGARIA AD</Provider>
     <Provider CC="GB" BIC="BUKBGB22">Barclays Bank UK Plc</Provider>
@@ -754,7 +753,7 @@
     <Provider CC="IT" BIC="BUNQITM2">bunq BV sede secondaria</Provider>
     <Provider CC="NL" BIC="BUNQNL2A">BUNQ B.V.</Provider>
     <Provider CC="IE" BIC="BURUIE21">Inishowen Credit Union Limited</Provider>
-    <Provider CC="IT" BIC="BVCAIT21">Banca della Val Camonica</Provider>
+    <Provider CC="IT" BIC="BVCAIT21">BANCA DI VALLE CAMONICA S.P.A.</Provider>
     <Provider CC="DE" BIC="BVDHDEMM">BANKHAUS VON DER HEYDT GMBH UND CO. KG</Provider>
     <Provider CC="AT" BIC="BWFBATW1">Österreichische Ärzte- und Apothekerbank AG</Provider>
     <Provider CC="CY" BIC="BYBACY2I">Byblos Bank S.A.L.</Provider>
@@ -851,7 +850,7 @@
     <Provider CC="ES" BIC="CAGLESMMXXX">ABANCA</Provider>
     <Provider CC="PT" BIC="CAGLPTPL">ABANCA CORP BANCARIA SA, SUC PORTUGAL</Provider>
     <Provider CC="CH" BIC="CAGYCH21">CAISSE D'EPARGNE DE NYON</Provider>
-    <Provider CC="ES" BIC="CAHMESMM">BANKIA SA</Provider>
+    <Provider CC="ES" BIC="CAHMESMM">BANKIA S.A</Provider>
     <Provider CC="DE" BIC="CAIXDEFF">CaixaBank, S.A., Zweigniederlassung Deutschland</Provider>
     <Provider CC="ES" BIC="CAIXESBB">CAIXABANK S.A.</Provider>
     <Provider CC="FR" BIC="CAIXFRPP">CAIXABANK S.A., SUCCURSALE EN FRANCE</Provider>
@@ -868,7 +867,7 @@
     <Provider CC="IT" BIC="CASRIT22">CASSA DI RISPARMIO DI ASTI</Provider>
     <Provider CC="ES" BIC="CAZRES2Z">IBERCAJA BANCO SAU</Provider>
     <Provider CC="ES" BIC="CAZRES2ZXXX">IBERCAJA BANCO</Provider>
-    <Provider CC="LV" BIC="CBBRLV22">AS BLUEORANGE BANK</Provider>
+    <Provider CC="LV" BIC="CBBRLV22">BluOr Bank AS</Provider>
     <Provider CC="FR" BIC="CBCRFR21">CBCMA</Provider>
     <Provider CC="CY" BIC="CBCYCY2N">CENTRAL BANK OF CYPRUS</Provider>
     <Provider CC="CH" BIC="CBLUCH22">CORNER BANCA S.A.</Provider>
@@ -897,11 +896,11 @@
     <Provider CC="FR" BIC="CCMNFR21">CREDIT MUNICIPAL DE NIMES</Provider>
     <Provider CC="FR" BIC="CCMOFR21">CAISSE DE CREDIT MUNICIPAL DE BORDEAUX</Provider>
     <Provider CC="FR" BIC="CCMTFR21">CREDIT MUNICIPAL DE NANTES</Provider>
-    <Provider CC="ES" BIC="CCOCESMM">BANCO CAMINOS</Provider>
-    <Provider CC="ES" BIC="CCOCESMMXXX">BANCO CAMINOS, S.A.</Provider>
+    <Provider CC="ES" BIC="CCOCESMM">CAJA CAMINOS SDAD COOP DE CTO</Provider>
+    <Provider CC="ES" BIC="CCOCESMMXXX">BANCO CAMINOS</Provider>
     <Provider CC="FR" BIC="CCOPFRPP">CREDIT COOPERATIF</Provider>
     <Provider CC="LU" BIC="CCPLLULL">ENTREPRISE DES P ET T</Provider>
-    <Provider CC="LU" BIC="CCRALULL">BANQUE RAIFFEISEN S.C.</Provider>
+    <Provider CC="LU" BIC="CCRALULL">BANQUE RAIFFEISEN SC LUXEMBOURG</Provider>
     <Provider CC="IT" BIC="CCRGIT21">CONAD Centro Nord</Provider>
     <Provider CC="ES" BIC="CCRIES2A">CAJAMAR</Provider>
     <Provider CC="ES" BIC="CCRIES2AXXX">CAJAMAR CAJA RURAL</Provider>
@@ -982,22 +981,21 @@
     <Provider CC="IT" BIC="CCRTIT2T04A">CASSA RURALE ALTO GARDA</Provider>
     <Provider CC="IT" BIC="CCRTIT2T06A">CASSA RURALE DI LEDRO</Provider>
     <Provider CC="IT" BIC="CCRTIT2T20A">CASSA RURALE GIUDICARIE VALSABBIA PAGANELLA</Provider>
-    <Provider CC="IT" BIC="CCRTIT2T27A">CASSA RURALE BASSA VALSUGANA</Provider>
+    <Provider CC="IT" BIC="CCRTIT2T27A">CASSA RURALE VALSUGANA E TESINO</Provider>
     <Provider CC="IT" BIC="CCRTIT2T37A">CASSA RURALE DI MEZZOLOMBARDO E SAN MICHELE A/A</Provider>
     <Provider CC="IT" BIC="CCRTIT2T38A">CASSA RURALE VAL DI FASSA AGOR</Provider>
     <Provider CC="IT" BIC="CCRTIT2T43A">CASSA RURALE ALTA VALDISOLE E PEJO</Provider>
     <Provider CC="IT" BIC="CCRTIT2T47A">CASSA RURALE PERGINE VALSUGANA</Provider>
     <Provider CC="IT" BIC="CCRTIT2T50A">CASSA RURALE DI FIEMME</Provider>
-    <Provider CC="IT" BIC="CCRTIT2T54A">CASSA RURALE NOVELLA ALTA ANAU</Provider>
+    <Provider CC="IT" BIC="CCRTIT2T54A">CASSA RURALE NOVELLA E ALTA ANAUNIA</Provider>
     <Provider CC="IT" BIC="CCRTIT2T73A">CASSA RURALE DI TUENNO VAL DI NON</Provider>
     <Provider CC="IT" BIC="CCRTIT2T76A">CASSA RURALE DI TRENTO BCC</Provider>
-    <Provider CC="IT" BIC="CCRTIT2T77A">CASSA RURALE ALTA VALLAGARINA</Provider>
     <Provider CC="IT" BIC="CCRTIT2T84A">BANCA POPOLARE ETICA SCARL</Provider>
     <Provider CC="IT" BIC="CCRTIT2T95A">CRA DI CORTINA D'AMPEZZO E DELLE DOLOMITI</Provider>
     <Provider CC="IT" BIC="CCRTIT2T96A">CRA DI LUCINICO FARRA E CAPRIVA</Provider>
-    <Provider CC="IT" BIC="CCRTIT2T97A">BANCA ADRIA CREDITO COOPERATIVO DEL DELTA</Provider>
+    <Provider CC="IT" BIC="CCRTIT2T97A">BCC SANTA MARIA ASSUNTA ADRIA</Provider>
     <Provider CC="IT" BIC="CCRTIT2T99A">BCC DEL FRIULI CENTRALE</Provider>
-    <Provider CC="IT" BIC="CCRTIT21">CASSA CENTRALE BANCA</Provider>
+    <Provider CC="IT" BIC="CCRTIT21">CASSA CENTRALE</Provider>
     <Provider CC="MT" BIC="CCUHMTMT">MoneyBase LTD.</Provider>
     <Provider CC="FR" BIC="CCUTFR21">CREDIT MUNICIPAL DE TOULON</Provider>
     <Provider CC="IE" BIC="CDCEIE21">Castlerea and District Credit Union Limited</Provider>
@@ -1015,7 +1013,7 @@
     <Provider CC="ES" BIC="CECAESMM">CECABANK S.A.</Provider>
     <Provider CC="ES" BIC="CECAESMMXXX">CECABANK</Provider>
     <Provider CC="ES" BIC="CECAESMM045">CAIXA ONTINYENT</Provider>
-    <Provider CC="ES" BIC="CECAESMM048">LIBERBANK</Provider>
+    <Provider CC="ES" BIC="CECAESMM048">CAJA DE AHORROS DE ASTURIAS</Provider>
     <Provider CC="ES" BIC="CECAESMM056">CAIXA D ESTALVIS DE POLLENSA</Provider>
     <Provider CC="BG" BIC="CECBBGSF">CENTRAL COOPERATIVE BANK AD</Provider>
     <Provider CC="BG" BIC="CECBBGSFXXX">Central Cooperative Bank PLC</Provider>
@@ -1031,7 +1029,7 @@
     <Provider CC="PT" BIC="CEMAPTP2">CAIXA ECONOMICA DA MISER ANGRA DO HEROISMO</Provider>
     <Provider CC="AT" BIC="CENBATWW">RAIFFEISEN CENTROBANK AG</Provider>
     <Provider CC="BE" BIC="CEPABEB2">CAISSE D'EPARGNE HAUTS DE FRANCE</Provider>
-    <Provider CC="FR" BIC="CEPAFRPP">CAISSES D'EPARGNE - GROUPE BPCE</Provider>
+    <Provider CC="FR" BIC="CEPAFRPP">CAISSES D EPARGNE GROUPE BPCE</Provider>
     <Provider CC="MC" BIC="CEPAMCM1">CAISSE D'EPARGNE COTE D'AZUR MONACO</Provider>
     <Provider CC="PT" BIC="CERTPTP1">CAIXA CR AGRIC MUTUO BOMBARRAL</Provider>
     <Provider CC="FR" BIC="CETEFRP1">BNP PARIBAS PERSONAL FINANCE</Provider>
@@ -1054,7 +1052,7 @@
     <Provider CC="FR" BIC="CHASFRPPIPB">JPMORGAN CHASE BANK, N.A. PARIS, INT. PRIV. BANK.</Provider>
     <Provider CC="GB" BIC="CHASGB2L">JP MORGAN CHASE BANK LONDON</Provider>
     <Provider CC="IE" BIC="CHASIE4L">J.P. Morgan SE - Dublin Branch</Provider>
-    <Provider CC="IT" BIC="CHASITMX">JP MORGAN CHASE BANK MILAN</Provider>
+    <Provider CC="IT" BIC="CHASITMX">JPMORGAN CHASE BANK MILAN</Provider>
     <Provider CC="LU" BIC="CHASLULX">J.P. Morgan SE - Luxembourg Branch</Provider>
     <Provider CC="NL" BIC="CHASNL2X">J.P. Morgan SE - Amsterdam Branch</Provider>
     <Provider CC="IE" BIC="CHCUIE21">CAHIR CREDIT UNION LIMITED</Provider>
@@ -1077,7 +1075,7 @@
     <Provider CC="BE" BIC="CITIBEBX">CITIBANK EUROPE PLC BELGIUM</Provider>
     <Provider CC="BG" BIC="CITIBGSF">CITIBANK EUROPE PLC BULGARIA</Provider>
     <Provider CC="CZ" BIC="CITICZPX">CITIBANK EUROPE PLC CZECH</Provider>
-    <Provider CC="DE" BIC="CITIDEFF">CITIGROUP GLOBAL MKTS DEUTSCHLAND AG UND CO KGAA</Provider>
+    <Provider CC="DE" BIC="CITIDEFF">CITIBANK GLOBAL MARKETS DEUTSC</Provider>
     <Provider CC="DK" BIC="CITIDKKX">CITIBANK EUROPE PLC DENMARK</Provider>
     <Provider CC="ES" BIC="CITIESMX">CITIBANK EUROPE PLC SPAIN</Provider>
     <Provider CC="FI" BIC="CITIFIHX">CITIBANK EUROPE PLC FINLAND</Provider>
@@ -1086,9 +1084,9 @@
     <Provider CC="GR" BIC="CITIGRAA">CITIBANK EUROPE PLC (CEP)</Provider>
     <Provider CC="HU" BIC="CITIHUHX">CITIBANK EUROPE PLC HUNGARY</Provider>
     <Provider CC="IE" BIC="CITIIE2X">CITIBANK EUROPE PLC</Provider>
-    <Provider CC="IT" BIC="CITIITMX">CITIBANK NA ITALY</Provider>
+    <Provider CC="IT" BIC="CITIITMX">CITIBANK ITALY</Provider>
     <Provider CC="LU" BIC="CITILULX">CITIBANK EUROPE PLC LUXEMBOURG</Provider>
-    <Provider CC="NL" BIC="CITINL2X">CITIBANK EUROPE PLC  AMSTERDAM</Provider>
+    <Provider CC="NL" BIC="CITINL2X">CITIBANK EUROPE PLC NETHERLANDS</Provider>
     <Provider CC="NO" BIC="CITINOKX">CITIBANK EUROPE PLC NORWAY</Provider>
     <Provider CC="PL" BIC="CITIPLPX">BANK HANDLOWY W WARSZAWIE SA</Provider>
     <Provider CC="PT" BIC="CITIPTPX">CITIBANK EUROPE PLC PORTUGAL</Provider>
@@ -1121,14 +1119,14 @@
     <Provider CC="DE" BIC="CMCIDEF1">BANQUE EUROPEENNE DU CREDIT MUTUEL</Provider>
     <Provider CC="ES" BIC="CMCIESMM">TARGOBANK SA</Provider>
     <Provider CC="ES" BIC="CMCIESMMXXX">TARGOBANK SA</Provider>
-    <Provider CC="FR" BIC="CMCIFRPA">CREDIT MUTUEL CIC BANQUES</Provider>
+    <Provider CC="FR" BIC="CMCIFRPA">CREDIT MUTUEL - CIC BANQUES</Provider>
     <Provider CC="FR" BIC="CMCIFRPP">CM CIC BANQUES CREDIT INDUSTRI</Provider>
     <Provider CC="FR" BIC="CMCIFRP1">CREDIT MUTUEL - CIC BANQUES</Provider>
     <Provider CC="FR" BIC="CMCIFRP1PSF">PAYSURF</Provider>
-    <Provider CC="FR" BIC="CMCIFR2A">CREDIT MUTUEL</Provider>
+    <Provider CC="FR" BIC="CMCIFR2A">CREDIT MUTUEL BANQUE FEDERATIV</Provider>
     <Provider CC="FR" BIC="CMCIFR21">CREDIT MUTUEL</Provider>
     <Provider CC="LU" BIC="CMCILUL1">BQ TRANSATLANTIQUE LXBG</Provider>
-    <Provider CC="MC" BIC="CMCIMCM1">CM-CIC BANQUES MONACO</Provider>
+    <Provider CC="MC" BIC="CMCIMCM1">CM CIC MONACO</Provider>
     <Provider CC="MC" BIC="CMMDMCM1">CREDIT MOBILIER DE MONACO</Provider>
     <Provider CC="IT" BIC="CMPYITM1">COMPASS SPA</Provider>
     <Provider CC="FR" BIC="CMROFR21">CAISSE CREDIT MUNICIPAL ROUBAIX</Provider>
@@ -1146,11 +1144,11 @@
     <Provider CC="BE" BIC="COBABEBX">COMMERZBANK AG</Provider>
     <Provider CC="BE" BIC="COBABEB1022">COMMERZBANK AG</Provider>
     <Provider CC="CH" BIC="COBACHZH">COMMERZBANK AG ZURICH</Provider>
-    <Provider CC="CZ" BIC="COBACZPX">Commerzbank AG</Provider>
+    <Provider CC="CZ" BIC="COBACZPX">COMMERZBANK AG</Provider>
     <Provider CC="DE" BIC="COBADEBB">COMMERZBANK AG</Provider>
     <Provider CC="DE" BIC="COBADEDD">COMMERZBANK AG</Provider>
     <Provider CC="DE" BIC="COBADEDH">COMMERZBANK AG</Provider>
-    <Provider CC="DE" BIC="COBADEFF">COMMERZBANK AG</Provider>
+    <Provider CC="DE" BIC="COBADEFF">COMMERZBANK AG FRANKFURT</Provider>
     <Provider CC="DE" BIC="COBADEF1">COMMERZBANK AG</Provider>
     <Provider CC="DE" BIC="COBADEHD">COMDIRECT BANK AG</Provider>
     <Provider CC="DE" BIC="COBADEHH">COMMERZBANK AG</Provider>
@@ -1163,7 +1161,7 @@
     <Provider CC="NL" BIC="COBANL2X">COMMERZBANK AG</Provider>
     <Provider CC="SK" BIC="COBASKBX">COMMERZBANK AG</Provider>
     <Provider CC="GR" BIC="COESGR21">COOPERATIVE BANK OF CENTRAL MAKEDONIA</Provider>
-    <Provider CC="FR" BIC="COFIFRPP">EDMOND DE ROTHSCHILD</Provider>
+    <Provider CC="FR" BIC="COFIFRPP">COMPAGNIE FINANCIERE EDMOND DE</Provider>
     <Provider CC="IT" BIC="COFIITM1">EDMOND DE ROTHSCHILD BANQUE</Provider>
     <Provider CC="DE" BIC="COKSDE33">KREISSPARKASSE KOELN</Provider>
     <Provider CC="FR" BIC="COLQFR21">COMPAGNIE DE L'ARC ATLANTIQUE</Provider>
@@ -1199,7 +1197,7 @@
     <Provider CC="CH" BIC="CRESCHZZ">CREDIT SUISSE (SCHWEIZ) AG</Provider>
     <Provider CC="DE" BIC="CRESDE55">Credit Suisse (Deutschland) AG</Provider>
     <Provider CC="ES" BIC="CRESESMM">CREDIT SUISSE SUCURSAL EN ESPA</Provider>
-    <Provider CC="IT" BIC="CRESITMM">CREDIT SUISSE MILANO</Provider>
+    <Provider CC="IT" BIC="CRESITMM">CREDIT SUISSE ITALY SPA</Provider>
     <Provider CC="LU" BIC="CRESLULL">CREDIT SUISSE (LUXEMBOURG) SA</Provider>
     <Provider CC="LU" BIC="CRESLULLDLX">CREDIT SUISSE LUXEMBOURG SA DEPOSITORY BANK</Provider>
     <Provider CC="BG" BIC="CREXBGSF">TOKUDA BANK BULGARIA</Provider>
@@ -1211,9 +1209,9 @@
     <Provider CC="IT" BIC="CRLOIT3L">CASSA DI RISPARMIO DI LORETO</Provider>
     <Provider CC="IT" BIC="CRLVIT21">CREDITO LOMBARDO VENETO SPA</Provider>
     <Provider CC="BE" BIC="CRLYBEBB">CREDIT AGRICOLE CIB BELGIUM</Provider>
-    <Provider CC="FR" BIC="CRLYFRPP">LE CREDIT LYONNAIS</Provider>
+    <Provider CC="FR" BIC="CRLYFRPP">LCL LE CREDIT LYONNAIS</Provider>
     <Provider CC="GB" BIC="CRLYGB2L">CREDIT AGRICOLE CIB LONDON BRANCH</Provider>
-    <Provider CC="MC" BIC="CRLYMCM1">LCL LE CREDIT LYONNAIS MONACO</Provider>
+    <Provider CC="MC" BIC="CRLYMCM1">LCL MONACO</Provider>
     <Provider CC="FR" BIC="CRMPFRP1">CREDIT MUNICIPAL DE PARIS</Provider>
     <Provider CC="FR" BIC="CRNPFRP1">LA BANQUE POSTALE CREDIT ENTREPRISES</Provider>
     <Provider CC="HR" BIC="CROAHR2X">CROATIA BANKA D.D.</Provider>
@@ -1223,7 +1221,7 @@
     <Provider CC="IT" BIC="CRRAIT2R">CASSA DI RISPARMIO DI RAVENNA SPA</Provider>
     <Provider CC="IT" BIC="CRSAIT22">CASSA DI RISPARMIO DI SALUZZO</Provider>
     <Provider CC="IT" BIC="CRSNIT31">CREDITO SALERNITANO</Provider>
-    <Provider CC="FR" BIC="CRTAFR21">CREATIS SA</Provider>
+    <Provider CC="FR" BIC="CRTAFR21">CREATIS</Provider>
     <Provider CC="LT" BIC="CRUGLT21">CREDIT UNION SAULEGRAZA</Provider>
     <Provider CC="IE" BIC="CRUNIE21">B AND S CREDIT UNION LIMITED</Provider>
     <Provider CC="IT" BIC="CRVOIT3V">CASSA DI RISPARMIO DI VOLTERRA</Provider>
@@ -1237,7 +1235,7 @@
     <Provider CC="IE" BIC="CSDOIE21">Public Service Credit Union Limited</Provider>
     <Provider CC="IE" BIC="CSDUIE21">CONNEMARA CREDIT UNION LIMITED</Provider>
     <Provider CC="IE" BIC="CSENIE21">CASTLECOMER CREDIT UNION LIMITED</Provider>
-    <Provider CC="IE" BIC="CSEOIE21">MULLINGAR CREDIT UNION LTD</Provider>
+    <Provider CC="IE" BIC="CSEOIE21">North Midlands Credit Union Limited</Provider>
     <Provider CC="IT" BIC="CSRFITR1">CASSA RISP E SOVV PERSONALE BANCA D ITALIA</Provider>
     <Provider CC="IE" BIC="CSRIIE21">Castleblayney Credit Union Limited</Provider>
     <Provider CC="IE" BIC="CSRNIE21">FIRST CHOICE CREDIT UNION LIMITED</Provider>
@@ -1245,6 +1243,7 @@
     <Provider CC="SM" BIC="CSSMSMSM">CASSA RISP REBUBBLICA SAN MARINO</Provider>
     <Provider CC="GB" BIC="CSUKGB2L">CREDIT SUISSE UK LTD</Provider>
     <Provider CC="ES" BIC="CSURES2C">BBK BANK CAJASUR SAU</Provider>
+    <Provider CC="ES" BIC="CSURES2CXXX">CAJASUR BANCO</Provider>
     <Provider CC="CZ" BIC="CTASCZ22">ZALOZNA CREDITAS SPORITELNI DRUZSTVO</Provider>
     <Provider CC="BE" BIC="CTBKBEBX">BEOBANK NV/SA</Provider>
     <Provider CC="IE" BIC="CTCNIE21">Cootehill Credit Union Limited</Provider>
@@ -1259,12 +1258,12 @@
     <Provider CC="CY" BIC="CYDBCY2N">CYPRUS DEVELOPMENT BANK P.C. LTD</Provider>
     <Provider CC="GB" BIC="CZNBGB2L">KOOKMIN BANK INTERNATIONAL LTD</Provider>
     <Provider CC="DE" BIC="DAAEDEDD">DEUTSCHE APOTHEKER- UND AERZTEBANK</Provider>
-    <Provider CC="DE" BIC="DABADEHH">DANSKE BANK</Provider>
-    <Provider CC="DK" BIC="DABADKKK">DANSKE BANK</Provider>
-    <Provider CC="FI" BIC="DABAFIHH">DANSKE BANK PLC</Provider>
+    <Provider CC="DE" BIC="DABADEHH">DANSKE BANK HAMBURG BRANCH</Provider>
+    <Provider CC="DK" BIC="DABADKKK">DANSKE BANK AS</Provider>
+    <Provider CC="FI" BIC="DABAFIHH">DANSKE BANK A/S, FINLAND BRANCH</Provider>
     <Provider CC="FI" BIC="DABAFIHX">DANSKE BANK HELSINKI BRANCH</Provider>
     <Provider CC="GB" BIC="DABAGB2B">NORTHERN BANK LIMITED TRADING AS DANSKE BANK</Provider>
-    <Provider CC="GB" BIC="DABAGB2L">DANSKE BANK LONDON</Provider>
+    <Provider CC="GB" BIC="DABAGB2L">DANSKE BANK LONDON BRANCH</Provider>
     <Provider CC="IE" BIC="DABAIE2D">DANSKE BANK AS</Provider>
     <Provider CC="LU" BIC="DABALULL">DANSKE BANK LUXEMBOURG</Provider>
     <Provider CC="NO" BIC="DABANO22">DANSKE BANK AS</Provider>
@@ -1282,7 +1281,6 @@
     <Provider CC="DE" BIC="DEFFDEFF">C24 BANK GMBH</Provider>
     <Provider CC="BE" BIC="DEGRBEBB">DEGROOF</Provider>
     <Provider CC="ES" BIC="DEGRESBB">WEALTHPRIVAT BANK SAU</Provider>
-    <Provider CC="ES" BIC="DEGRESBBXXX">BANK DEGROOF PETERCAM SPAIN SA</Provider>
     <Provider CC="DE" BIC="DEGUDEFF">DEGUSSA BANK AG</Provider>
     <Provider CC="DE" BIC="DEKTDE7G">DEUTSCHE HANDELSBANK AG</Provider>
     <Provider CC="DE" BIC="DEKTDE71">DEUTSCHE HANDELSBANK AG</Provider>
@@ -1306,15 +1304,15 @@
     <Provider CC="DE" BIC="DEUTDEBR">DEUTSCHE BANK AG ROSTOCK</Provider>
     <Provider CC="DE" BIC="DEUTDEDB">Deutsche Bank AG</Provider>
     <Provider CC="DE" BIC="DEUTDEDBPAL">Deutsche Bank AG</Provider>
-    <Provider CC="DE" BIC="DEUTDEDD">DEUTSCHE BANK AG DUESSELDORF</Provider>
+    <Provider CC="DE" BIC="DEUTDEDD">DEUTSCHE BANK AG</Provider>
     <Provider CC="DE" BIC="DEUTDEDE">DEUTSCHE BANK AG ESSEN</Provider>
     <Provider CC="DE" BIC="DEUTDEDK">DEUTSCHE BANK AG KOELN</Provider>
     <Provider CC="DE" BIC="DEUTDEDW">DEUTSCHE BANK AG WUPPERTAL</Provider>
     <Provider CC="DE" BIC="DEUTDEFF">DEUTSCHE BANK AG</Provider>
     <Provider CC="DE" BIC="DEUTDEFFVAC">DEUTSCHE BANK AG</Provider>
-    <Provider CC="DE" BIC="DEUTDEHB">DEUTSCHE BANK AG BREMEN</Provider>
+    <Provider CC="DE" BIC="DEUTDEHB">DEUTSCHE BANK AG</Provider>
     <Provider CC="DE" BIC="DEUTDEHH">DEUTSCHE BANK AG HAMBURG</Provider>
-    <Provider CC="DE" BIC="DEUTDEMM">DEUTSCHE BANK AG MUENCHEN</Provider>
+    <Provider CC="DE" BIC="DEUTDEMM">DEUTSCHE BANK AG</Provider>
     <Provider CC="DE" BIC="DEUTDESM">DEUTSCHE BANK AG MANNHEIM</Provider>
     <Provider CC="DE" BIC="DEUTDESS">DEUTSCHE BANK AG STUTTGART</Provider>
     <Provider CC="DE" BIC="DEUTDE2H">DEUTSCHE BANK AG HANNOVER</Provider>
@@ -1372,7 +1370,6 @@
     <Provider CC="IE" BIC="DRCUIE21">DROGHEDA CREDIT UNION LTD.</Provider>
     <Provider CC="DE" BIC="DRESDEFF">COMMERZBANK AG FORMERLY DRESDNER BANK AG</Provider>
     <Provider CC="CH" BIC="DREYCHBB">DREYFUS SONS AND CO LIMITED, BANQUIERS</Provider>
-    <Provider CC="DK" BIC="DRONDK21">DRONNINGLUND SPAREKASSE</Provider>
     <Provider CC="LT" BIC="DSFELT21">DSBC Financial Europe UAB</Provider>
     <Provider CC="DE" BIC="DTABDED1">KFW</Provider>
     <Provider CC="HU" BIC="DTBAHUHB">DUNA TAKAREK BANK ZRT.</Provider>
@@ -1381,12 +1378,12 @@
     <Provider CC="IE" BIC="DUCIIE21">DUNDALK CU</Provider>
     <Provider CC="IE" BIC="DUCUIE21">DUBCO CREDIT UNION LIMITED</Provider>
     <Provider CC="DE" BIC="DUISDE33">SPARKASSE DUISBURG</Provider>
-    <Provider CC="IE" BIC="DURNIE21">DUNGARVAN CREDIT UNION LIMITED</Provider>
+    <Provider CC="IE" BIC="DURNIE21">CAIRDE CREDIT UNION</Provider>
     <Provider CC="IE" BIC="DURUIE21">Capital Credit Union Limited</Provider>
     <Provider CC="DE" BIC="DUSSDEDD">STADTSPARKASSE DUESSELDORF</Provider>
     <Provider CC="DE" BIC="DVKBDEFF">DVB BANK SE</Provider>
     <Provider CC="FR" BIC="DXMAFRPP">CAISSE FRANCAISE DE FINANCEMENT LOCAL</Provider>
-    <Provider CC="GB" BIC="DYPYGB21">DYNAPAY LIMITED</Provider>
+    <Provider CC="GB" BIC="DYPYGB21">Multipass Platforms Limited</Provider>
     <Provider CC="DE" BIC="DZBMDEF1">DZB BANK GMBH</Provider>
     <Provider CC="GB" BIC="DZNNGB22">DZING FINANCE LTD</Provider>
     <Provider CC="ES" BIC="EAPFESM2">EASY PAYMENT AND FINANCE, E.P., S.A</Provider>
@@ -1458,14 +1455,14 @@
     <Provider CC="IT" BIC="ESPEITMM">BANCA ESPERIA SPA</Provider>
     <Provider CC="BG" BIC="ESPYBGS1">EASYPAY AD</Provider>
     <Provider CC="DE" BIC="ESSEDEFF">SKANDINAVISKA ENSKILDA BANKEN (PUBL) FRANKFURT BRANCH</Provider>
-    <Provider CC="DK" BIC="ESSEDKKK">SEB COPENHAGEN</Provider>
+    <Provider CC="DK" BIC="ESSEDKKK">SKANDINAVISKA ENSKILDA BANKEN</Provider>
     <Provider CC="DK" BIC="ESSEDK22">SEB PRIVATEBANKING DENMARK</Provider>
-    <Provider CC="FI" BIC="ESSEFIHX">SEB AB HELSINKI BRANCH</Provider>
+    <Provider CC="FI" BIC="ESSEFIHX">SEB FINLAND</Provider>
     <Provider CC="GB" BIC="ESSEGB2L">SEB LONDON</Provider>
     <Provider CC="LU" BIC="ESSELULL">SKANDINAVISKA ENSKILDA BANKEN</Provider>
-    <Provider CC="NO" BIC="ESSENOKX">SEB OSLO</Provider>
+    <Provider CC="NO" BIC="ESSENOKX">SKANDINAVISKA ENSKILDA BANKEN</Provider>
     <Provider CC="NO" BIC="ESSENO22">SEB PIRVATBANKEN OSLO</Provider>
-    <Provider CC="PL" BIC="ESSEPLPW">SEB WARSAW BRANCH</Provider>
+    <Provider CC="PL" BIC="ESSEPLPW">SKANDINAVISKA ENSKILDA BANKEN</Provider>
     <Provider CC="SE" BIC="ESSESESS">SKANDINAVISKA ENSKILDA BANKEN</Provider>
     <Provider CC="PT" BIC="ESSIPTPL">BANCO ESPIRITO SANTO INVESTIMENTO</Provider>
     <Provider CC="DE" BIC="ESSLDE66">KREISSPARKASSE ESSLINGEN-NUERTINGEN</Provider>
@@ -1485,7 +1482,7 @@
     <Provider CC="BE" BIC="EURBBE99">EUROPABANK</Provider>
     <Provider CC="LT" BIC="EVIULT2V">Paysera LT, UAB</Provider>
     <Provider CC="NO" BIC="EVJENO21">EVJE OG HORNNES SPAREBANK</Provider>
-    <Provider CC="ES" BIC="EVOBESMM">EVO BANCO, S.A.</Provider>
+    <Provider CC="ES" BIC="EVOBESMM">EVO BANCO S.A.</Provider>
     <Provider CC="ES" BIC="EVOBESMMXXX">EVO BANCO</Provider>
     <Provider CC="LU" BIC="EWUBLULL">EAST WEST UNITED BANK SA</Provider>
     <Provider CC="LU" BIC="EWUBLUL2">EAST WEST UNITED BANK LUX</Provider>
@@ -1505,7 +1502,7 @@
     <Provider CC="IT" BIC="FARBIT22">FARBANCA</Provider>
     <Provider CC="DK" BIC="FASLDK21">FANOE SPAREKASSE</Provider>
     <Provider CC="ES" BIC="FASNESM1">BANCA FARMAFACTORING SE</Provider>
-    <Provider CC="ES" BIC="FASNESM1XXX">BANCA FARMAFACTORING SE</Provider>
+    <Provider CC="ES" BIC="FASNESM1XXX">BFF Bank SE</Provider>
     <Provider CC="DE" BIC="FBGADEF1">FRANKFURTER BANKGESELLSCHAFT AG</Provider>
     <Provider CC="CH" BIC="FBGSCHZZ">FRANKFURTER BANKGESELLSCHAFT SCHWEIZ AG</Provider>
     <Provider CC="DE" BIC="FBHLDEFF">CREDIT EUROPE BANK N.V. NIEDERLASSUNG DEUTSCHLAND</Provider>
@@ -1584,10 +1581,10 @@
     <Provider CC="GB" BIC="FTBKGB2B">FIRST TRUST BANK</Provider>
     <Provider CC="SE" BIC="FTCSSESS">INTERGIRO INTL AB (PUBL)</Provider>
     <Provider CC="FR" BIC="FTNOFRP1">FORTUNEO DIRECT FINANCE</Provider>
-    <Provider CC="DE" BIC="FTSBDEFA">ABN AMRO NV ZWEIGNIEDERLASSUNG FRANKFURT AM MAIN</Provider>
+    <Provider CC="DE" BIC="FTSBDEFA">ABN AMRO BANK NV FRANKFURT</Provider>
     <Provider CC="DK" BIC="FTSBDKKK">FORTIS BANK SA NV DENMARK BRANCH</Provider>
     <Provider CC="GB" BIC="FTSBGB2L">ABN AMRO BANK NV UK BRANCH</Provider>
-    <Provider CC="RO" BIC="FTSBROBU">FORTIS BANK BUCHAREST BRANCH</Provider>
+    <Provider CC="RO" BIC="FTSBROBU">FORTIS BANK SA/NV SUCURSALA BUCURESTI</Provider>
     <Provider CC="SE" BIC="FTSBSESS">FORTIS BANK SA NV STOCKHOLM BRANCH</Provider>
     <Provider CC="DE" BIC="FUBKDE71">FUERST FUGGER PRIVATBANK AKTIENGESELLSCHAFT</Provider>
     <Provider CC="DE" BIC="FUCEDE77">FUERSTLICH CASTELL'SCHE BANK CREDIT-CASSE AG</Provider>
@@ -1607,7 +1604,7 @@
     <Provider CC="IE" BIC="GDCIIE21">Greystones &amp; District Credit Union</Provider>
     <Provider CC="IE" BIC="GDCNIE21">Glanmire and District Credit Union Ltd</Provider>
     <Provider CC="IE" BIC="GDCUIE21">GREENHILLS AND DISTRICT CREDIT UNION LIMITED</Provider>
-    <Provider CC="AT" BIC="GEBAATWW">FORTIS BANK SA NV BRANCH AUSTRIA</Provider>
+    <Provider CC="AT" BIC="GEBAATWW">FORTIS BANK OSTERREICH</Provider>
     <Provider CC="BE" BIC="GEBABEBB">BNP PARIBAS FORTIS SA</Provider>
     <Provider CC="CZ" BIC="GEBACZPP">FORTIS BANK SA CZECH REPUBLIC</Provider>
     <Provider CC="DE" BIC="GEBADE33">BNP PARIBAS FORTIS SA/NV NIEDERLASSUNG DEUTSCHLAND</Provider>
@@ -2016,7 +2013,7 @@
     <Provider CC="DE" BIC="GENODEF1HPS">VOLKSBANK WILDESHAUSER GEEST EG</Provider>
     <Provider CC="DE" BIC="GENODEF1HRV">VR PARTNERBANK CHATTENGAU-SCHWALM-EDER</Provider>
     <Provider CC="DE" BIC="GENODEF1HR1">ROSTOCKER VOLKS-UND RAIFFEISENBANK EG</Provider>
-    <Provider CC="DE" BIC="GENODEF1HSB">RAIFFEISENBANK HERSBRUCK EG</Provider>
+    <Provider CC="DE" BIC="GENODEF1HSB">RAIFFEISENBANK IM NUERNBERGER LAND EG</Provider>
     <Provider CC="DE" BIC="GENODEF1HSC">RAIFFEISENBANK HIRSCHAU EG</Provider>
     <Provider CC="DE" BIC="GENODEF1HSE">RAIFFEISENBANK SEEBACHGRUND EG</Provider>
     <Provider CC="DE" BIC="GENODEF1HST">POMMERSCHE VOBA EG</Provider>
@@ -2077,7 +2074,7 @@
     <Provider CC="DE" BIC="GENODEF1LIA">VOLKSBANK LINDENBERG EG</Provider>
     <Provider CC="DE" BIC="GENODEF1LIB">VOLKSBANK ELSTERLAND EG</Provider>
     <Provider CC="DE" BIC="GENODEF1LIF">VR-BANK LICHTENFELS-EBERN</Provider>
-    <Provider CC="DE" BIC="GENODEF1LIG">VOLKSBANK LINGEN EG</Provider>
+    <Provider CC="DE" BIC="GENODEF1LIG">EMSLAENDISCHE VOLKSBANK EG</Provider>
     <Provider CC="DE" BIC="GENODEF1LIR">VOLKSBANK EG LOENINGEN</Provider>
     <Provider CC="DE" BIC="GENODEF1LND">VR-BANK LANDAU-MENGKOFEN EG</Provider>
     <Provider CC="DE" BIC="GENODEF1LN1">SPREEWALDBANK EG</Provider>
@@ -2186,7 +2183,7 @@
     <Provider CC="DE" BIC="GENODEF1OL2">RAIFFEISENBANK OLDENBURG EG</Provider>
     <Provider CC="DE" BIC="GENODEF1ORF">RAIFFEISENBANK STRUECKLINGEN-IDAFEHN EG</Provider>
     <Provider CC="DE" BIC="GENODEF1ORT">RAIFFEISENBANK ORTENBURG EG</Provider>
-    <Provider CC="DE" BIC="GENODEF1OSV">VOLKSBANK OSNABRUECK EG</Provider>
+    <Provider CC="DE" BIC="GENODEF1OSV">VEREINIGTE VOLKSBANK EG BRAMGAU OSNABRUECK WITTLAGE</Provider>
     <Provider CC="DE" BIC="GENODEF1OVI">RAIFFEISENBANK IM OBERPFAELZER WALD EG</Provider>
     <Provider CC="DE" BIC="GENODEF1OWS">RAIFFEISENBANK EG OWSCHLAG</Provider>
     <Provider CC="DE" BIC="GENODEF1OYT">VOLKSBANK OYTEN EG</Provider>
@@ -2401,7 +2398,6 @@
     <Provider CC="DE" BIC="GENODEF1WEO">RAIFFEISENBANK WEIDEN EG</Provider>
     <Provider CC="DE" BIC="GENODEF1WER">OSTHARZER VOLKSBANK EG</Provider>
     <Provider CC="DE" BIC="GENODEF1WEV">VOLKSBANK RAIFFEISENBANK NORDOBERPFALZ</Provider>
-    <Provider CC="DE" BIC="GENODEF1WEW">RAIFFEISENKASSE WESUWE EG</Provider>
     <Provider CC="DE" BIC="GENODEF1WE1">VR BANK WEIMAR EG</Provider>
     <Provider CC="DE" BIC="GENODEF1WFN">RAIFFEISENBANK SCHROBENHAUSENER LAND EG</Provider>
     <Provider CC="DE" BIC="GENODEF1WFV">VOLKSBANK EG</Provider>
@@ -2992,7 +2988,7 @@
     <Provider CC="AT" BIC="GIBAAT21">DIE ZWEITE WIENER VEREINS-SPARCASSE</Provider>
     <Provider CC="CZ" BIC="GIBACZPX">CESKA SPORITELNA A.S.</Provider>
     <Provider CC="HU" BIC="GIBAHUHB">ERSTE BANK HUNGARY ZRT</Provider>
-    <Provider CC="SK" BIC="GIBASKBX">SLOVENSKA SPORITELNA A.S.</Provider>
+    <Provider CC="SK" BIC="GIBASKBX">SLOVENSKA SPORITELNA AS</Provider>
     <Provider CC="GI" BIC="GIBKGIGI">GIBRALTAR INTERNATIONAL BANK LIMITED</Provider>
     <Provider CC="NL" BIC="GILLNL2A">THEODOOR GILISSEN</Provider>
     <Provider CC="NO" BIC="GJASNO21">GJENSIDIGE BANK ASA</Provider>
@@ -3040,13 +3036,13 @@
     <Provider CC="NO" BIC="HALTNO21">HALTDALEN SPAREBANK</Provider>
     <Provider CC="GB" BIC="HAMBGB2L">SG HAMBROS BANK LIMITED</Provider>
     <Provider CC="GI" BIC="HAMBGIGI">SG HAMBROS BANK (GIBRALTAR) LIMITED</Provider>
-    <Provider CC="DK" BIC="HANDDKKK">SVENSKA HANDELSBANKEN</Provider>
+    <Provider CC="DK" BIC="HANDDKKK">SVENSKA HANDELSBANKEN AB</Provider>
     <Provider CC="FI" BIC="HANDFIHH">SVENSKA HANDELSBANKEN AB</Provider>
     <Provider CC="FR" BIC="HANDFRPP">SVENSKA HANDELSBANKEN</Provider>
-    <Provider CC="GB" BIC="HANDGB22">SVENSKA HANDELSBANKEN</Provider>
+    <Provider CC="GB" BIC="HANDGB22">SVENSKA HANDELSBANKEN AB</Provider>
     <Provider CC="LU" BIC="HANDLULB">SVENSKA HANDELSBANKEN AB LUXEMBOURG BRANCH</Provider>
     <Provider CC="NL" BIC="HANDNL2A">SVENSKA HANDELSBANKEN</Provider>
-    <Provider CC="NO" BIC="HANDNOKK">SVENSKA HANDELSBANKEN AB</Provider>
+    <Provider CC="NO" BIC="HANDNOKK">SVENSKA HANDELSBANKEN</Provider>
     <Provider CC="SE" BIC="HANDSESS">SVENSKA HANDELSBANKEN</Provider>
     <Provider CC="NO" BIC="HASBNO21">SPAREBANK 68 GRADER NORD</Provider>
     <Provider CC="DE" BIC="HASPDEHH">HAMBURGER SPARKASSE AG</Provider>
@@ -3159,11 +3155,10 @@
     <Provider CC="AT" BIC="HSEEAT2K">Addiko Bank AG</Provider>
     <Provider CC="DE" BIC="HSHNDEHH">HSH NORDBANK AG</Provider>
     <Provider CC="GB" BIC="HSHNGB2L">HSH NORDBANK AG</Provider>
-    <Provider CC="LU" BIC="HSHNLULL">HSH NORDBANK SECURITIES SA</Provider>
     <Provider CC="IE" BIC="HSSRIE21">Health Services Staffs Credit Union Limited</Provider>
     <Provider CC="DE" BIC="HSTBDEHH">HANSEATIC BANK GMBH AND CO KG</Provider>
     <Provider CC="HU" BIC="HUSTHUHB">HUNGARIAN STATE TREASURY</Provider>
-    <Provider CC="DK" BIC="HVBADK21">HVIDBJERG BANK AKTIESELSKAB</Provider>
+    <Provider CC="DK" BIC="HVBADK21">HVIDBJERG BANK AS</Provider>
     <Provider CC="DE" BIC="HVBKDEFF">WOORI BANK EUROPE GMBH</Provider>
     <Provider CC="IT" BIC="HYEEIT22">HYPE SpA</Provider>
     <Provider CC="LI" BIC="HYIBLI22">VALARTIS BANK (LIECHTENSTEIN) AG</Provider>
@@ -3174,20 +3169,20 @@
     <Provider CC="AT" BIC="HYPVAT2B">Hypo Vorarlberg Bank AG</Provider>
     <Provider CC="AT" BIC="HYSTAT2G">LANDESHYPOTHEKENBANK STEIERMARK AG</Provider>
     <Provider CC="DE" BIC="HYVEDEMM">UNICREDIT BANK AG (HYPOVEREINSBANK)</Provider>
-    <Provider CC="GB" BIC="HYVEGB2L">UNICREDIT BANK AG LONDON</Provider>
-    <Provider CC="GR" BIC="HYVEGRAA">UNICREDIT BANK AG ATHENS</Provider>
+    <Provider CC="GB" BIC="HYVEGB2L">UNICREDIT BANK AG LONDON BRANCH</Provider>
+    <Provider CC="GR" BIC="HYVEGRAA">UNICREDIT BANK AG ATHENS BRANCH</Provider>
     <Provider CC="LU" BIC="HYVELULL">UNICREDIT LUXEMBOURG S.A.</Provider>
     <Provider CC="BG" BIC="IABGBGSF">INTERNATIONAL ASSET BANK AD</Provider>
     <Provider CC="DE" BIC="IBBBDEBB">INVESTITIONSBANK BERLIN</Provider>
     <Provider CC="DE" BIC="IBBFDE81">INTERNATIONALES BANKHAUS BODENSEE AKTIENGESELLSCHAFT</Provider>
     <Provider CC="SE" BIC="IBCASES1">ICA BANKEN AB</Provider>
     <Provider CC="LT" BIC="IBIULT21">UAB IBS Lithuania</Provider>
-    <Provider CC="DE" BIC="IBKBDES1">IBM DEUTSCHLAND KREDITBANK</Provider>
+    <Provider CC="DE" BIC="IBKBDES1">IBM DEUTSCHLAND KREDITBANK GMB</Provider>
     <Provider CC="IT" BIC="IBLBITRR">IBL - ISTITUTO BANCARIO DEL LAVORO</Provider>
     <Provider CC="PT" BIC="IBNBPTP1">BANCO SANTANDER CONSUMER PORTUGAL, SA</Provider>
     <Provider CC="GR" BIC="IBOGGRAA">OPTIMA BANK S.A.</Provider>
     <Provider CC="FR" BIC="ICBCFRPP">MEGA INTERNATIONAL COMMERCIAL BANK</Provider>
-    <Provider CC="NL" BIC="ICBCNL2A">MEGA INTERNATIONAL COMMERCIAL BANK CO.LTD.</Provider>
+    <Provider CC="NL" BIC="ICBCNL2A">MEGA INTERNATIONAL COMMERCIAL BANK CO.LTD</Provider>
     <Provider CC="AT" BIC="ICBKATWW">ICBC AUSTRIA BANK GMBH, VIENNA</Provider>
     <Provider CC="BE" BIC="ICBKBEBB">ICBC BRUSSELS BRANCH</Provider>
     <Provider CC="CH" BIC="ICBKCHZZ">ICBC ZURICH BRANCH</Provider>
@@ -3227,13 +3222,13 @@
     <Provider CC="IT" BIC="IMCOIT2A">BANCA DI IMOLA SPA</Provider>
     <Provider CC="AT" BIC="IMMIAT21">immigon portfolioabbau ag i.A.</Provider>
     <Provider CC="DE" BIC="IMMODE5M">WESTDEUTSCHE IMMOBILIENBANK AG</Provider>
-    <Provider CC="IT" BIC="IMPAITRR">IMPREBANCA S.P.A.</Provider>
+    <Provider CC="IT" BIC="IMPAITRR">IMPREBANCA SPA</Provider>
     <Provider CC="HR" BIC="IMXXHR22">IMEX BANKA LTD.</Provider>
     <Provider CC="CH" BIC="INCOCHZZ">INCORE BANK AG</Provider>
     <Provider CC="LT" BIC="INDULT2X">AB CITADELE BANKAS</Provider>
-    <Provider CC="AT" BIC="INGBATWW">ING BANK NV VIENNA BRANCH AUST</Provider>
+    <Provider CC="AT" BIC="INGBATWW">ING BANK NV VIENNA BRANCH AUSTRIA</Provider>
     <Provider CC="BG" BIC="INGBBGSF">ING BANK NV SOFIA BRANCH</Provider>
-    <Provider CC="CZ" BIC="INGBCZPP">ING BANK NV</Provider>
+    <Provider CC="CZ" BIC="INGBCZPP">ING PRAGUE</Provider>
     <Provider CC="DE" BIC="INGBDEFF">ING-DIBA AG (COMMERCIAL BANKING)</Provider>
     <Provider CC="FR" BIC="INGBFRPP">ING BELGIUM SA PARIS BRANCH FR</Provider>
     <Provider CC="FR" BIC="INGBFR21">ING BANK FRANCE - RETAIL BANKING - ING DIRECT</Provider>
@@ -3245,7 +3240,7 @@
     <Provider CC="NL" BIC="INGBNL2A">ING BANK NV AMSTERDAM</Provider>
     <Provider CC="PL" BIC="INGBPLPW">ING BANK SLASKI SA</Provider>
     <Provider CC="RO" BIC="INGBROBU">ING BANK NV BUCHAREST BRANCH</Provider>
-    <Provider CC="SK" BIC="INGBSKBX">ING BANK POBOCKA ZAHRANICNEJ BANKY</Provider>
+    <Provider CC="SK" BIC="INGBSKBX">ING BANK NV POBOCKA ZAHR BANKY</Provider>
     <Provider CC="DE" BIC="INGDDEFF">ING-DIBA AG (RETAIL BANKING)</Provider>
     <Provider CC="ES" BIC="INGDESMM">ING DIRECT NV ESPANA</Provider>
     <Provider CC="ES" BIC="INGDESMMXXX">ING BANK</Provider>
@@ -3296,8 +3291,7 @@
     <Provider CC="IT" BIC="JPMGITMM">JP MORGAN INTL BANK LTD, MILAN</Provider>
     <Provider CC="CZ" BIC="JTBPCZPP">J&amp;T BANKA, A.S., PRAGUE, CZECH REPUBLIC</Provider>
     <Provider CC="SK" BIC="JTBPSKBA">J AND T BANKA</Provider>
-    <Provider CC="DK" BIC="JUTBDK21">JUTLANDER BANK</Provider>
-    <Provider CC="BE" BIC="JVBABE22">BANK J VAN BREDA</Provider>
+    <Provider CC="BE" BIC="JVBABE22">BANK J. VAN BREDA &amp; C</Provider>
     <Provider CC="DE" BIC="JYBADEHH">JYSKE BANK A/S, HAMBURG BRANCH</Provider>
     <Provider CC="DK" BIC="JYBADKKK">JYSKE BANK</Provider>
     <Provider CC="DK" BIC="JYSPDK2G">DEN JYSKE SPAREKASSE</Provider>
@@ -3332,7 +3326,7 @@
     <Provider CC="IE" BIC="KIENIE21">Kilrush Credit Union Limited</Provider>
     <Provider CC="IE" BIC="KIEUIE21">Kilmallock Credit Union Limited</Provider>
     <Provider CC="IE" BIC="KIRIIE21">KILDARE CREDIT UNION LTD</Provider>
-    <Provider CC="IE" BIC="KIROIE21">Killarney Credit Union Limited</Provider>
+    <Provider CC="IE" BIC="KIROIE21">Killarney Credit Union Ltd</Provider>
     <Provider CC="CH" BIC="KLARCH22">KLARPAY AG</Provider>
     <Provider CC="NO" BIC="KLBUNO21">NIDAROS SPAREBANK</Provider>
     <Provider CC="NO" BIC="KLEPNO21">KLEPP SPAREBANK</Provider>
@@ -3352,7 +3346,7 @@
     <Provider CC="CZ" BIC="KOMBCZPP">KOMERCNI BANKA</Provider>
     <Provider CC="SK" BIC="KOMBSKBA">KOMERCNI BANKA A. S. BRANCH OF FOREIGN BANK</Provider>
     <Provider CC="IE" BIC="KPDCIE21">Kilcloon Parish and District Credit Union Ltd</Provider>
-    <Provider CC="AT" BIC="KRECAT2G">BANKHAUS KRENTSCHKER &amp; CO AG</Provider>
+    <Provider CC="AT" BIC="KRECAT2G">BANKHAUS KRENTSCHKER UND CO AG</Provider>
     <Provider CC="BE" BIC="KREDBEBB">KBC BANK NV</Provider>
     <Provider CC="DE" BIC="KREDDEDD">KBC BANK NIEDERLASSUNG DEUTSCHLAND</Provider>
     <Provider CC="FR" BIC="KREDFRPP">KBC FRANCE</Provider>
@@ -3423,10 +3417,10 @@
     <Provider CC="DE" BIC="LOEBDEBB">BANKHAUS LOEBBECKE AG</Provider>
     <Provider CC="IT" BIC="LOMCITMM">CASSA LOMBARDA</Provider>
     <Provider CC="IT" BIC="LOMCIT21">CASSA LOMBARDA</Provider>
-    <Provider CC="IE" BIC="LORNIE21">MULLINGAR CREDIT UNION LTD</Provider>
+    <Provider CC="IE" BIC="LORNIE21">North Midlands Credit Union Limited</Provider>
     <Provider CC="DK" BIC="LOSADKKK">LAAN SPAR BANK AS</Provider>
     <Provider CC="NO" BIC="LOSKNO21">LOM OG SKJAK SPAREBANK</Provider>
-    <Provider CC="FR" BIC="LOYDFRPP">LLOYDS TSB BANK PLC PARIS</Provider>
+    <Provider CC="FR" BIC="LOYDFRPP">LLOYDS TSB BANK PLC FRANCE</Provider>
     <Provider CC="GB" BIC="LOYDGB2L">LLOYDS TSB BANK PLC</Provider>
     <Provider CC="GB" BIC="LOYDGB2LCTY">LLOYDS TSB BANK PLC LONDON</Provider>
     <Provider CC="GB" BIC="LOYDGB21">LLOYDS TSB BANK PLC LONDON</Provider>
@@ -3563,7 +3557,7 @@
     <Provider CC="CH" BIC="MEDSCHGG">BANKMED (SUISSE) S.A.</Provider>
     <Provider CC="DE" BIC="MEFIDEMM">MERCK FINCK A QUINTET PRIVATE BANK (EUROPE) S.A. BRANCH</Provider>
     <Provider CC="DE" BIC="MEGHDE81">MEDISERV GMBH</Provider>
-    <Provider CC="DK" BIC="MEKUDK21">DEN ALMENNYTTIGE ANDELSKASSE - MERKUR</Provider>
+    <Provider CC="DK" BIC="MEKUDK21">MERKUR ANDELSKASSE</Provider>
     <Provider CC="NO" BIC="MELHNO21">MELHUS SPAREBANK</Provider>
     <Provider CC="DE" BIC="MELIDEHH">BANK MELLI IRAN</Provider>
     <Provider CC="FR" BIC="MEMOFRP2">MEMO BANK</Provider>
@@ -3575,7 +3569,7 @@
     <Provider CC="CH" BIC="MGTCCHGG">JP MORGAN SUISSE SA</Provider>
     <Provider CC="DE" BIC="MHBFDEFF">RAISIN BANK AG</Provider>
     <Provider CC="PL" BIC="MHBFPLPW">BANK DNB NORD POLSKA S.A.</Provider>
-    <Provider CC="AT" BIC="MHCBATWW">MIZUHO BANK NEDERLAND N.V. VIENNA BRANCH</Provider>
+    <Provider CC="AT" BIC="MHCBATWW">MIZUHO BANK NEDERLAND N.V., VIENNA BRANCH</Provider>
     <Provider CC="BE" BIC="MHCBBEBB">MIZUHO BANK NEDERLAND N.V. BRUSSELS BRANCH</Provider>
     <Provider CC="DE" BIC="MHCBDEDD">MIZUHO BANK, LTD. DUESSELDORF BRANCH</Provider>
     <Provider CC="FR" BIC="MHCBFRPP">MIZUHO BANK, LTD. PARIS BRANCH</Provider>
@@ -3585,8 +3579,8 @@
     <Provider CC="DE" BIC="MHSBDEHB">MAX HEINR. SUTOR OHG</Provider>
     <Provider CC="DE" BIC="MHYPDEMM">MUENCHENER HYPOTHEKENBANK E.G.</Provider>
     <Provider CC="DE" BIC="MIBEDEFF">MISR BANK-EUROPE GMBH</Provider>
-    <Provider CC="IE" BIC="MICIIE21">St Michaels Credit Union Limited</Provider>
-    <Provider CC="IT" BIC="MICSITM1">CHE BANCA</Provider>
+    <Provider CC="IE" BIC="MICIIE21">St Michaels Credit union Limited</Provider>
+    <Provider CC="IT" BIC="MICSITM1">CHEBANCA SPA</Provider>
     <Provider CC="CZ" BIC="MIDLCZPP">HSBC CONTINENTAL EUROPE, CZECH REPUBLIC</Provider>
     <Provider CC="ES" BIC="MIDLESMM">HSBC CONTINENTAL EUROPE, SECURSAL EN ESPANA</Provider>
     <Provider CC="GB" BIC="MIDLGB21">HSBC BANK PLC</Provider>
@@ -3599,7 +3593,7 @@
     <Provider CC="LT" BIC="MIEGLT21">Secure Nordic Payments, UAB</Provider>
     <Provider CC="IE" BIC="MIEUIE21">Mitchelstown Credit Union Limited</Provider>
     <Provider CC="CH" BIC="MIGRCHZZ">MIGROS BANK</Provider>
-    <Provider CC="ES" BIC="MIKBESB1">NUEVO MICRO BANK, S.A.U.</Provider>
+    <Provider CC="ES" BIC="MIKBESB1">NUEVO MICRO BANK, S.A.U</Provider>
     <Provider CC="CH" BIC="MILBCHGG">UNION BANCAIRE PRIVEE, UBP SA</Provider>
     <Provider CC="RO" BIC="MINDROBU">BANCA ROMANA DE CREDITE SI INVESTITII S.A.</Provider>
     <Provider CC="CH" BIC="MIRACHGG">MIRABAUD AND CIE LTD., GENEVE</Provider>
@@ -3615,7 +3609,7 @@
     <Provider CC="DE" BIC="MLBKDEH1MUE">MUENSTERLANDISCHE BANK THIE AND CO. KG</Provider>
     <Provider CC="DE" BIC="MLBKDE3M">MUNSTERLANDISCHE BANK THIE AND CO. KG</Provider>
     <Provider CC="DE" BIC="MLPBDE61">MLP BANKING AG</Provider>
-    <Provider CC="MT" BIC="MMEBMTMT">HSBC BANK MALTA PLC</Provider>
+    <Provider CC="MT" BIC="MMEBMTMT">HSBC BANK MALTA</Provider>
     <Provider CC="MC" BIC="MMSEMCM1">ROTHSCHILD MARTIN MAUREL MONACO</Provider>
     <Provider CC="DE" BIC="MMWHDEH1">M.M.WARBURG AND CO HYPOTHEKENBANK AKTIENGESELLSCHAFT</Provider>
     <Provider CC="DE" BIC="MNBIDEF1">BANK OF AMERICA, N.A. MILITARY BANK</Provider>
@@ -3630,15 +3624,15 @@
     <Provider CC="IE" BIC="MOEIIE21">Monasterevan Credit Union Limited</Provider>
     <Provider CC="IE" BIC="MOEOIE21">Mountmellick Credit Union Limited</Provider>
     <Provider CC="IT" BIC="MOETIT31">MONEYNET SPA</Provider>
-    <Provider CC="FR" BIC="MOEYFRPP">GE MONEY BANK</Provider>
-    <Provider CC="FR" BIC="MOEYFRPPCRE">MY MONEY BANK</Provider>
+    <Provider CC="FR" BIC="MOEYFRPP">GE MONEY BANK SCA</Provider>
+    <Provider CC="FR" BIC="MOEYFRPPCRE">MY MOMEY BANK</Provider>
     <Provider CC="GB" BIC="MOLUGB22">3S MONEY CLUB LIMITED</Provider>
     <Provider CC="NL" BIC="MOLUNL22">3S MONEY CLUB LIMITED</Provider>
-    <Provider CC="DK" BIC="MONSDK21">AS MOENS BANK</Provider>
+    <Provider CC="DK" BIC="MONSDK21">MONS BANK AS</Provider>
     <Provider CC="FR" BIC="MONTFRPP">MONTE PASCHI BANQUE</Provider>
     <Provider CC="MC" BIC="MONTMCMC">MONTE PASCHI MONACO</Provider>
     <Provider CC="GB" BIC="MONZGB2L">MONZO BANK LIMITED</Provider>
-    <Provider CC="GB" BIC="MOOWGB22">Moorwand LTD</Provider>
+    <Provider CC="GB" BIC="MOOWGB22">Moorwand Ltd</Provider>
     <Provider CC="LT" BIC="MOTOLT21">Foxpay, UAB</Provider>
     <Provider CC="FR" BIC="MOXEFR22">MONEXT</Provider>
     <Provider CC="NL" BIC="MOYONL21">Moneyou B.V</Provider>
@@ -3655,7 +3649,7 @@
     <Provider CC="LU" BIC="MUGCLULLBAS">MITSUBISHI UFJ INVESTOR SERVICES&amp;BANKING (LUX)SA</Provider>
     <Provider CC="LV" BIC="MULTLV2X">AS Industra Bank</Provider>
     <Provider CC="IE" BIC="MURNIE21">Mulclair Credit Union Limited</Provider>
-    <Provider CC="IE" BIC="MURUIE21">MULLINGAR CREDIT UNION LTD</Provider>
+    <Provider CC="IE" BIC="MURUIE21">North Midlands Credit Union Limited</Provider>
     <Provider CC="DE" BIC="MVBMDE55">MAINZER VOLKSBANK E.G.</Provider>
     <Provider CC="AT" BIC="MVOGAT22">Marchfelder Bank eG</Provider>
     <Provider CC="BG" BIC="MYFNBGSF">MYFIN EAD</Provider>
@@ -3687,7 +3681,7 @@
     <Provider CC="PL" BIC="NBPLPLPW">NARODOWY BANK POLSKI</Provider>
     <Provider CC="SK" BIC="NBSBSKBX">NARODNA BANKA SLOVENSKA</Provider>
     <Provider CC="DK" BIC="NDEADKKK">NORDEA BANK DENMARK AS</Provider>
-    <Provider CC="FI" BIC="NDEAFIHH">NORDEA BANK AB (publ), Finnish Branch</Provider>
+    <Provider CC="FI" BIC="NDEAFIHH">Nordea Bank Abp</Provider>
     <Provider CC="GB" BIC="NDEAGB2L">NORDEA BANK FINLAND PLC LONDON</Provider>
     <Provider CC="NO" BIC="NDEANOKK">NORDEA BANK NORGE ASA</Provider>
     <Provider CC="SE" BIC="NDEASESS">NORDEA BANK AB PUBL</Provider>
@@ -3707,7 +3701,7 @@
     <Provider CC="LU" BIC="NIKOLULL">NIKKO BANK LUXEMBOURG SA</Provider>
     <Provider CC="LT" BIC="NIKULT22">NIKULIPE UAB</Provider>
     <Provider CC="IT" BIC="NIPSITR1">ADMIRAL PAY IP SRL</Provider>
-    <Provider CC="IE" BIC="NLACIE21">North Longford and Arva Credit Union Limited</Provider>
+    <Provider CC="IE" BIC="NLACIE21">NORTH LONGFORD &amp; ARVA CREDIT UNION LTD</Provider>
     <Provider CC="NL" BIC="NNBANL2G">NATIONALE NEDERLANDEN BANK</Provider>
     <Provider CC="GB" BIC="NOEHGB22">NOVATUM TECH LIMITED</Provider>
     <Provider CC="DE" BIC="NOLADEHAFI1">NordLB Kommunikations-BIC Niedersachsen</Provider>
@@ -3805,7 +3799,7 @@
     <Provider CC="FR" BIC="NORDFRPP">CREDIT DU NORD</Provider>
     <Provider CC="MC" BIC="NORDMCM1">CREDIT DU NORD - MONACO</Provider>
     <Provider CC="DE" BIC="NORSDE51">NORISBANK GMBH</Provider>
-    <Provider CC="DE" BIC="NORSDE71">NORISBANK GMBH</Provider>
+    <Provider CC="DE" BIC="NORSDE71">NORISBANK AG</Provider>
     <Provider CC="ES" BIC="NORTESMM">BANCO SANTANDER S.A.</Provider>
     <Provider CC="NO" BIC="NORVNO21">SPAREBANK 1 NORDVEST</Provider>
     <Provider CC="NO" BIC="NORWNOK1">BANK NORWEGIAN AS</Provider>
@@ -3850,10 +3844,10 @@
     <Provider CC="DE" BIC="OLBODEH2">OLDENBURGISCHE LANDESBANK AG</Provider>
     <Provider CC="IE" BIC="OLCCIE21">Our Lady Crowned Credit Union Limited</Provider>
     <Provider CC="IE" BIC="OLCUIE21">OLDCASTLE CREDIT UNION LIMITED</Provider>
-    <Provider CC="LU" BIC="OLKILUL1">OLKY PAYMENT SERVICE PROVIDER SA LUXEMBOURG</Provider>
+    <Provider CC="LU" BIC="OLKILUL1">OLKY PAYMENT SERVICE PROVIDER SA</Provider>
     <Provider CC="BE" BIC="OONXBEBB">OONEX SA</Provider>
     <Provider CC="ES" BIC="OPENESMM">Openbank</Provider>
-    <Provider CC="ES" BIC="OPENESMMXXX">Openbank</Provider>
+    <Provider CC="ES" BIC="OPENESMMXXX">OPENBANK</Provider>
     <Provider CC="GB" BIC="OPEXGB2L">OPENAX LIMITED</Provider>
     <Provider CC="NO" BIC="OPPDNO21">OPDALS SPAREBANK</Provider>
     <Provider CC="FI" BIC="OPSEFIH1">OP CORPORATE BANK PLC, MARKETS CS</Provider>
@@ -3880,8 +3874,8 @@
     <Provider CC="CZ" BIC="PAERCZP1">Payment Execution s.r.o.</Provider>
     <Provider CC="IE" BIC="PAEUIE21">PALMERSTOWN CREDIT UNION</Provider>
     <Provider CC="DE" BIC="PAGMDEM1">PAYCENTER GMBH</Provider>
-    <Provider CC="BE" BIC="PANXBEB1">PAY-NXT-SA</Provider>
-    <Provider CC="DE" BIC="PANXDEF2">PAY - NXT SA</Provider>
+    <Provider CC="BE" BIC="PANXBEB1">PAY-NXT SA</Provider>
+    <Provider CC="DE" BIC="PANXDEF2">PAY NXT SA</Provider>
     <Provider CC="EE" BIC="PANXEE22">UNIFIEDPOST PAYMENTS SA</Provider>
     <Provider CC="FR" BIC="PANXFR22">PAY NEXT SA</Provider>
     <Provider CC="IT" BIC="PANXITM2">UNIFIEDPOST PAYMENTS SA</Provider>
@@ -3896,14 +3890,14 @@
     <Provider CC="CH" BIC="PARBCHZZ">BP2S SUISSE</Provider>
     <Provider CC="DE" BIC="PARBDEFF">BNP PARIBAS SECURITIES FRANKFU</Provider>
     <Provider CC="ES" BIC="PARBESMX">BP2S ESPAGNE</Provider>
-    <Provider CC="FR" BIC="PARBFRPP">BP2S FRANCE</Provider>
+    <Provider CC="FR" BIC="PARBFRPP">BNP PARIBAS SECURITIES PARIS S</Provider>
     <Provider CC="GB" BIC="PARBGB2L">BNP PARIBAS SECURITIES LONDON</Provider>
     <Provider CC="GR" BIC="PARBGRAX">BP2S GRECE</Provider>
-    <Provider CC="IT" BIC="PARBITMM">BP2S ITALIE</Provider>
+    <Provider CC="IT" BIC="PARBITMM">BNP PARIBAS SECURITIES MILAN B</Provider>
     <Provider CC="LU" BIC="PARBLULL">BNP PARIBAS SECURITIES LUXEMBO</Provider>
     <Provider CC="EE" BIC="PARXEE22">CITADELE BANKA AS EESTI FILIAAL</Provider>
     <Provider CC="LV" BIC="PARXLV22">CITADELE BANKA AS</Provider>
-    <Provider CC="IT" BIC="PASBITGG">BANCA PASSADORE S.P.A.</Provider>
+    <Provider CC="IT" BIC="PASBITGG">BANCA PASSADORE SPA</Provider>
     <Provider CC="GB" BIC="PASCGB2L">BANCA MONTE DEI PASCHI DI SIENA SPA - LONDON</Provider>
     <Provider CC="IT" BIC="PASCITMM">BANCA MONTE DEI PASCHI DI SIENA SPA</Provider>
     <Provider CC="IT" BIC="PASCITM1">BANCA MONTE DEI PASCHI DI SIENA</Provider>
@@ -3928,7 +3922,7 @@
     <Provider CC="HR" BIC="PDKCHR2X">PODRAVSKA BANKA D.D.</Provider>
     <Provider CC="IT" BIC="PDSCIT31">Igea Digital Bank</Provider>
     <Provider CC="LT" BIC="PEPGLT21">Perlas Finance, UAB</Provider>
-    <Provider CC="BE" BIC="PESOBEB1">PREPAYMENT SOLUTIONS EU SA</Provider>
+    <Provider CC="BE" BIC="PESOBEB1">PREPAYMENT SOLUTION EU SA</Provider>
     <Provider CC="IE" BIC="PFSRIE21">PFS CARD SERVICES IRELAND LIMITED</Provider>
     <Provider CC="ES" BIC="PFSSESM1">PFS CARD SERVICES IRELAND LIMITED SUCCURSAL ESPANA</Provider>
     <Provider CC="IE" BIC="PGCUIE21">ST. PAUL'S GARDA CREDIT UNION LTD.</Provider>
@@ -3958,12 +3952,12 @@
     <Provider CC="DE" BIC="PNTADEBB">SOLARISBANK AG</Provider>
     <Provider CC="SK" BIC="POBNSKBA">365.bank, a. s.</Provider>
     <Provider CC="IT" BIC="POCAIT3C">BANCA POPOLARE DEL CASSINATE</Provider>
-    <Provider CC="IT" BIC="POCIITM1">Banca Pop.Commercio e Industria</Provider>
+    <Provider CC="IT" BIC="POCIITM1">BANCA POPOLARE COMMERCIO E INDUSTRIA S.P.A.</Provider>
     <Provider CC="IE" BIC="POCOIE21">PEOPLE FIRST CREDIT UNION LIMITED</Provider>
     <Provider CC="IT" BIC="POCSIT31">BANCA POPOLARE DI CORTONA</Provider>
     <Provider CC="IE" BIC="POCUIE21">PORTARLINGTON CREDIT UNION LTD</Provider>
     <Provider CC="PL" BIC="POCZPLP4">BANK POCZTOWY S.A.</Provider>
-    <Provider CC="CH" BIC="POFICHBE">POSTFINANCE LTD.</Provider>
+    <Provider CC="CH" BIC="POFICHBE">POSTFINANCE AG</Provider>
     <Provider CC="IT" BIC="POFOIT3F">BANCA POPOLARE DI FONDI</Provider>
     <Provider CC="HU" BIC="POLBHU22">POLGARI BANK ZRT.</Provider>
     <Provider CC="PL" BIC="POLUPLPR">BANK POLSKIEJ SPOLZIELCZOSCI</Provider>
@@ -3983,7 +3977,7 @@
     <Provider CC="MC" BIC="POSOMCM1">BANCA POPOLARE DI SONDRIO (SUISSE) SA</Provider>
     <Provider CC="FR" BIC="POUYFR21">BANQUE POUYANNE</Provider>
     <Provider CC="IT" BIC="POVEIT33">BANCA POPOLARE VESUVIANA</Provider>
-    <Provider CC="CY" BIC="POWHCY22">POWERCASH21 LIMITED</Provider>
+    <Provider CC="CY" BIC="POWHCY22">Payabl. CY Limited</Provider>
     <Provider CC="PL" BIC="PPABPLPK">Bank BNP Paribas Polska SA</Provider>
     <Provider CC="PL" BIC="PPABPLP1">Bank BNP Paribas Polska SA</Provider>
     <Provider CC="IT" BIC="PPAYITR1">PosteMobile S.p.A.</Provider>
@@ -4025,7 +4019,7 @@
     <Provider CC="IE" BIC="PSCUIE21">Prison Service Credit Union Limited</Provider>
     <Provider CC="FR" BIC="PSSSFR22">PREPAYMENT SOLUTION EU SA</Provider>
     <Provider CC="FR" BIC="PSSTFRPP">LA BANQUE POSTALE</Provider>
-    <Provider CC="ES" BIC="PSTRESMM">BANCO SANTANDER S.A. (FORMERLY BANCO PASTOR)</Provider>
+    <Provider CC="ES" BIC="PSTRESMM">BANCO SANTANDER S.A.(FORMERLY BANCO PASTOR)</Provider>
     <Provider CC="IE" BIC="PSTSIE21">An Post</Provider>
     <Provider CC="NO" BIC="PTAANOK1">PARETO BANK</Provider>
     <Provider CC="BE" BIC="PUILBEBB">PUILAETCO DEWAAY PRIVATE BANKERS</Provider>
@@ -4054,20 +4048,19 @@
     <Provider CC="CH" BIC="RAHNCHZZ">RAHN UND BODMER CO.</Provider>
     <Provider CC="CH" BIC="RAIFCH22">RAIFFEISEN SCHWEIZ GENOSSENSCHAFT</Provider>
     <Provider CC="DE" BIC="RAISDEFF">RAISIN BANK AG</Provider>
-    <Provider CC="AT" BIC="RAKGAT21">RAIFFEISEN-KREDIT-GARANTIE GES.M.B.H.</Provider>
+    <Provider CC="DE" BIC="RAISDEFFXXX">RAISIN BANK AG</Provider>
+    <Provider CC="AT" BIC="RAKGAT21">RAIFFEISEN-KREDIT-GARANTIE G.M.B.H.</Provider>
     <Provider CC="FR" BIC="RALPFR2G">BANQUE RHONE ALPES</Provider>
-    <Provider CC="AT" BIC="RANJAT2B">RAIFFEISENBANK KLEINWALSERTAL AG</Provider>
-    <Provider CC="AT" BIC="RANMAT21">RAIFFEISENBANK HOHENEMS</Provider>
-    <Provider CC="AT" BIC="RAOCAT21">RAIFFEISENBANK LUSTENAU REG.GEN.M.B.H.</Provider>
-    <Provider CC="LU" BIC="RAPSLULL">RAKUTEN EUROPE BANK LUXEMBOURG</Provider>
-    <Provider CC="LU" BIC="RAPSLUL1">RAKUTEN EUROPE BANK LUXEMBOURG</Provider>
-    <Provider CC="AT" BIC="RAVMATW1">RAIFFEISEN VERMOEGENSVERWALTUNGSBANK AG</Provider>
+    <Provider CC="AT" BIC="RANJAT2B">RB KLEINWALSERTAL AG</Provider>
+    <Provider CC="AT" BIC="RANMAT21">RAIFFEISENBANK HOHENEMS REG.GEN.M.B.H.</Provider>
+    <Provider CC="AT" BIC="RAOCAT21">RAIFFEISENBANK LUSTENAU</Provider>
+    <Provider CC="AT" BIC="RAVMATW1">RAIFFEISEN VERMOEGENSVERWALTUN</Provider>
     <Provider CC="CH" BIC="RBABCH22">ENTRIS BANKING AG (FORMERLY RBA-ZENTRALBANK)</Provider>
     <Provider CC="DE" BIC="RBMFDEF1">RAIFFEISENBANK MAINTAL NDL. D. FRANKFURTER VB</Provider>
     <Provider CC="GB" BIC="RBOSGB2L">Royal Bank of Scotland UK</Provider>
     <Provider CC="GI" BIC="RBOSGIGI">NATWEST-GIBRALTAR</Provider>
     <Provider CC="LU" BIC="RBOSLULL">Royal Bank of Scotland International Luxembourg</Provider>
-    <Provider CC="NL" BIC="RBRBNL21">REGIOBANK NV</Provider>
+    <Provider CC="NL" BIC="RBRBNL21">REGIOBANK</Provider>
     <Provider CC="AT" BIC="RBRTAT22">RAIFFEISENBANK REUTTE REG.GEN.M.B.H.</Provider>
     <Provider CC="GB" BIC="RBSIGB2L">Royal Bank of Scotland International London</Provider>
     <Provider CC="AT" BIC="RBSKATW1">RAIFFEISEN BAUSPARKASSE</Provider>
@@ -4084,7 +4077,7 @@
     <Provider CC="IE" BIC="RDCUIE21">HERITAGE CREDIT UNION LIMITED</Provider>
     <Provider CC="IE" BIC="RDRNIE21">RATHMORE &amp; DISTRICT CREDIT UNION</Provider>
     <Provider CC="GB" BIC="REAYGB22">RECARY LTD</Provider>
-    <Provider CC="DE" BIC="REBMDEMM">HYPO REAL ESTATE BANK AG</Provider>
+    <Provider CC="DE" BIC="REBMDEMM">DEUTSCHE PFANDBRIEFBANK AG</Provider>
     <Provider CC="DE" BIC="REBMDEMMCPM">DEUTSCHE PFANDBRIEFBANK AG</Provider>
     <Provider CC="DE" BIC="REBMDEMMCPP">DEUTSCHE PFANDBRIEFBANK AG</Provider>
     <Provider CC="DE" BIC="REBMDEMMXXX">DEUTSCHE PFANDBRIEFBANK AG</Provider>
@@ -4104,11 +4097,11 @@
     <Provider CC="NO" BIC="RINDNO21">RINDAL SPAREBANK</Provider>
     <Provider CC="DK" BIC="RINGDK22">RINGKJOBING LANDBOBANK</Provider>
     <Provider CC="NO" BIC="RIRINO21">SPAREBANK 1 RINGERIKE HADELAND</Provider>
-    <Provider CC="DK" BIC="RISEDK21">RISE SPARE OG LAANEKASSE</Provider>
+    <Provider CC="DK" BIC="RISEDK21">Rise Sparekasse</Provider>
     <Provider CC="AT" BIC="RKAGATWW">RAIFFEISEN KAPITALANLAGE GES M</Provider>
     <Provider CC="AT" BIC="RLBBAT2E">RAIFFEISENLANDESBANK BURGENLAND AG</Provider>
     <Provider CC="AT" BIC="RLNWATWW">RAIFFEISENLANDESBANK NIEDEROESTERREICHWIEN AG</Provider>
-    <Provider CC="AT" BIC="RLNWATW1">RAIFFEISENLANDESBANK NIEDEROES</Provider>
+    <Provider CC="AT" BIC="RLNWATW1">RAIFFEISENLANDESBANK NIEDEROESTERREICHWIEN AG</Provider>
     <Provider CC="RO" BIC="RNCBROBU">BANCA COMERCIALA ROMANA SA</Provider>
     <Provider CC="IE" BIC="ROCIIE21">ROWLAGH CREDIT UNION LIMITED</Provider>
     <Provider CC="IE" BIC="ROCUIE21">The Rosses Credit Union Limited</Provider>
@@ -4134,7 +4127,7 @@
     <Provider CC="CZ" BIC="RZBCCZPP">RAIFFEISENBANK A.S.</Provider>
     <Provider CC="HR" BIC="RZBHHR2X">RAIFFEISENBANK AUSTRIA D.D.</Provider>
     <Provider CC="RO" BIC="RZBRROBU">RAIFFEISEN BANK S A</Provider>
-    <Provider CC="AT" BIC="RZKTAT2K">RAIFFEISENLANDESBANK KAERNTEN</Provider>
+    <Provider CC="AT" BIC="RZKTAT2K">RAIFFEISENLANDESBANK KAERNTEN REG.GEN.M.B.H.</Provider>
     <Provider CC="AT" BIC="RZOOAT2L">RAIFFEISENLANDESBANK OBEROESTERREICH AG</Provider>
     <Provider CC="DE" BIC="RZOODE77">RAIFFEISENLANDESBANK OBEROESTERREICH AKTIENGESELLSCHAFT ZWEIGNIEDERLAS</Provider>
     <Provider CC="IT" BIC="RZSBIT2B">RAIFFEISEN LANDESBANK SUEDTIROL</Provider>
@@ -4150,14 +4143,14 @@
     <Provider CC="IT" BIC="RZSBIT21710">RAIFFEISENKASSE SCHLERN-ROSENGARTEN</Provider>
     <Provider CC="IT" BIC="RZSBIT21810">RAIFFEISENKASSE SCHLERN-ROSENGARTEN</Provider>
     <Provider CC="IT" BIC="RZSBIT21919">RAIFFEISENKASSE MERAN CASSA RAIFFEISEN MERANO</Provider>
-    <Provider CC="AT" BIC="RZSTAT2G">RAIFFEISENLANDESBANK STEIERMARK AG</Provider>
-    <Provider CC="AT" BIC="RZTIAT22">RAIFFEISENLANDESBANK TIROL</Provider>
+    <Provider CC="AT" BIC="RZSTAT2G">RAIFFEISENLANDESBANK STEIERMAR</Provider>
+    <Provider CC="AT" BIC="RZTIAT22">RAIFFEISENLANDESBANK TIROL AG</Provider>
     <Provider CC="DE" BIC="RZTIDE71">RAIFFEISEN-LANDESBANK TIROL AG ZWNL JUNGHOLZ</Provider>
     <Provider CC="DE" BIC="SABADE5S">BANK 1 SAAR EG</Provider>
     <Provider CC="DE" BIC="SABDDE81">SACHSISCHE AUFBAUBANK - FOERDERBANK</Provider>
-    <Provider CC="ES" BIC="SABNESMM">SANTANDER INVESTMENT, S.A.</Provider>
+    <Provider CC="ES" BIC="SABNESMM">SANTANDER INVESTMENT</Provider>
     <Provider CC="AT" BIC="SABRATWW">SBERBANK EUROPE AG</Provider>
-    <Provider CC="SI" BIC="SABRSI2X">SBERBANK BANKA DD</Provider>
+    <Provider CC="SI" BIC="SABRSI2X">N Banka d.d., Ljubljana</Provider>
     <Provider CC="DE" BIC="SABUDES1">RSB RETAIL   SERVICE BANK GMBH</Provider>
     <Provider CC="DE" BIC="SABUDE6S">RSB RETAIL AND SERVICE BANK GMBH (PREV.:SABU SCHUH AND MARKETING GMBH)</Provider>
     <Provider CC="IE" BIC="SADNIE21">SARSFIELD CREDIT UNION LIMITED</Provider>
@@ -4181,7 +4174,7 @@
     <Provider CC="DK" BIC="SAXODK21">SAXOBANK A/S</Provider>
     <Provider CC="FR" BIC="SBAAFRPP">BANQUE SBA</Provider>
     <Provider CC="NO" BIC="SBAKNOBB">SBANKEN ASA</Provider>
-    <Provider CC="FI" BIC="SBANFIHH">S BANK PLC</Provider>
+    <Provider CC="FI" BIC="SBANFIHH">S-BANK PLC</Provider>
     <Provider CC="DE" BIC="SBCRDE66">KREISSPARKASSE BIBERACH</Provider>
     <Provider CC="IE" BIC="SBDCIE21">CORE CREDIT UNION LTD.</Provider>
     <Provider CC="FR" BIC="SBEXFRP1">SOCIETE DE BANQUE ET D EXPANSION</Provider>
@@ -4212,15 +4205,15 @@
     <Provider CC="DE" BIC="SEATDE21">SEAT BANK GMBH</Provider>
     <Provider CC="LU" BIC="SEBKLULL">INTESA SANPAOLO BANK LUXEMBOURG SA</Provider>
     <Provider CC="DE" BIC="SECGDEFF">SWISS EURO CLEARING BANK GMBH</Provider>
-    <Provider CC="IT" BIC="SELBIT2B">BANCA SELLA SPA</Provider>
+    <Provider CC="IT" BIC="SELBIT2B">BANCA SELLA</Provider>
     <Provider CC="IT" BIC="SELBIT21">BANCA SELLA</Provider>
-    <Provider CC="IT" BIC="SELBIT22">BANCA SELLA HOLDING SPA</Provider>
-    <Provider CC="ES" BIC="SELFESMM">SELF TRADE BANK</Provider>
+    <Provider CC="IT" BIC="SELBIT22">SELLA HOLDING BANCA</Provider>
+    <Provider CC="ES" BIC="SELFESMM">SELF TRADE BANK S A</Provider>
     <Provider CC="ES" BIC="SELFESMMXXX">SINGULAR BANK</Provider>
     <Provider CC="NO" BIC="SELJNO21">SELJORD SPAREBANK</Provider>
     <Provider CC="GB" BIC="SELNGB21">SENTENIAL</Provider>
     <Provider CC="NO" BIC="SELSNO21">SELBU SPAREBANK</Provider>
-    <Provider CC="IT" BIC="SENVITT1">BANCA PATRIMONI SELLA E C. SPA</Provider>
+    <Provider CC="IT" BIC="SENVITT1">BANCA PATRIMONI E INVESTIMENTI</Provider>
     <Provider CC="GB" BIC="SEOUGB21">Settlego Solutions Limited</Provider>
     <Provider CC="DE" BIC="SEPBDEFF">BANK SEPAH-IRAN</Provider>
     <Provider CC="IT" BIC="SEPFIT31">SE.PA.FIN SPA</Provider>
@@ -4239,11 +4232,11 @@
     <Provider CC="CH" BIC="SGABCHZZ">SOCIETE GENERALE ZURICH</Provider>
     <Provider CC="LU" BIC="SGABLULL">SOCIETE GENERALE BANK AND TRUS</Provider>
     <Provider CC="LU" BIC="SGABLU2SLUX">SOCIETE GENERALE LUXEMBOURG</Provider>
-    <Provider CC="MC" BIC="SGBTMCMC">SG PRIVATE BANKING MONACO</Provider>
+    <Provider CC="MC" BIC="SGBTMCMC">SOCIETE GENERALE PRIVATE BANKING (MONACO)</Provider>
     <Provider CC="NO" BIC="SGFSNO21">SPAREBANK 1 GUDBRANDSDAL</Provider>
     <Provider CC="IT" BIC="SGIUIT21">BANCA SANTA GIULIA S.P.A.</Provider>
     <Provider CC="DE" BIC="SHBKDEFF">SHINHAN BANK EUROPE GMBH</Provider>
-    <Provider CC="IE" BIC="SHCUIE21">SHEEPHAVEN CREDIT UNION LIMITED</Provider>
+    <Provider CC="IE" BIC="SHCUIE21">Sheephaven Credit Union Limited</Provider>
     <Provider CC="NO" BIC="SHEDNO22">SPAREBANKEN HEDMARK</Provider>
     <Provider CC="LT" BIC="SHFRLT21">SHIFT FINANCIAL SERVICES LT</Provider>
     <Provider CC="BE" BIC="SHIZBEBB">SHIZUOKA BANK EUROPE SA</Provider>
@@ -4253,7 +4246,7 @@
     <Provider CC="FR" BIC="SIBLFRPP">CA INDOSUEZ WEALTH (France)</Provider>
     <Provider CC="DE" BIC="SIBSDEHH">SIGNAL IDUNA BAUSPAR AG</Provider>
     <Provider CC="FR" BIC="SIFBFRP1">QUILVEST BANQUE PRIVEE</Provider>
-    <Provider CC="IT" BIC="SIGPITM1">Mooney S.p.A.</Provider>
+    <Provider CC="IT" BIC="SIGPITM1">Mooney S.p.A</Provider>
     <Provider CC="DE" BIC="SIHRDEH1FFM">BANK SADERAT IRAN FRANKFURT BRANCH</Provider>
     <Provider CC="DE" BIC="SIHRDEH1HAM">BANK SADERAT IRAN HAMBURG BRANCH</Provider>
     <Provider CC="DE" BIC="SIKBDE55">SIKB AG-SAARLAENDISCHE INVESTITIONSKREDIT-BANK AG</Provider>
@@ -4278,7 +4271,7 @@
     <Provider CC="SK" BIC="SLZBSKBA">SLOVENSKA ZARUCNA A ROZVOJOVA BANKA A.S.</Provider>
     <Provider CC="DE" BIC="SLZODE22">LANDESSPARKASSE ZU OLDENBURG</Provider>
     <Provider CC="BE" BIC="SMBCBEBB">SUMITOMO MITSUI BANKING CORPORATION BRUSSELS</Provider>
-    <Provider CC="DE" BIC="SMBCDEDD">SUMITOMO MITSUI BANKING CORPOR</Provider>
+    <Provider CC="DE" BIC="SMBCDEDD">SUMITOMO MITSUI BANKING CORPORATION DUESSELDORF</Provider>
     <Provider CC="DE" BIC="SMBCDEFF">SMBC BANK EU AG</Provider>
     <Provider CC="FR" BIC="SMBCFRPP">SUMITOMO MITSUI BANKING CORPORATION PARIS</Provider>
     <Provider CC="GB" BIC="SMBCGB2L">SUMITOMO MITSUI BANKING CORPOR</Provider>
@@ -4310,14 +4303,14 @@
     <Provider CC="FR" BIC="SOGEFRPP">SOCIETE GENERALE</Provider>
     <Provider CC="GB" BIC="SOGEGB2L">SOCIETE GENERALE LONDON</Provider>
     <Provider CC="GB" BIC="SOGEGB2LLON">SOCIETE GENERALE LONDON</Provider>
-    <Provider CC="GP" BIC="SOGEGPGP">SOCIETE GENERALE  DE BANQUE AUX ANTILLES</Provider>
-    <Provider CC="IT" BIC="SOGEITMM">SOCIETE GENERALE MILAN</Provider>
+    <Provider CC="GP" BIC="SOGEGPGP">SOCIETE GENERALE DE BANQUE AUX</Provider>
+    <Provider CC="IT" BIC="SOGEITMM">SOCIETE GENERALE MILANO</Provider>
     <Provider CC="MC" BIC="SOGEMCM1">SOCIETE GENERALE MONACO</Provider>
     <Provider CC="NL" BIC="SOGENL2A">SOCIETE GENERALE AMSTERDAM</Provider>
     <Provider CC="PL" BIC="SOGEPLPW">SOCIETE GENERALE S A ODDZIAL W</Provider>
     <Provider CC="NO" BIC="SOGSNO21">SOGNE OG GREIPSTAD SPAREBANK</Provider>
     <Provider CC="DK" BIC="SOHODK21">SOENDERHAA-HOERSTED SPAREKASSE</Provider>
-    <Provider CC="IT" BIC="SOIFIT31">SOGEFIN Spa DI CONAD</Provider>
+    <Provider CC="IT" BIC="SOIFIT31">SOGEFIN Spa di CONAD</Provider>
     <Provider CC="NO" BIC="SOKNNO21">SOKNEDAL SPAREBANK</Provider>
     <Provider CC="DE" BIC="SOLADEP1FI7">LBBW Kommunikations-BIC</Provider>
     <Provider CC="DE" BIC="SOLADEP1SI1">BADEN-WUERTTEMBERGISCHE BANK                         (UP) wegen EBICS</Provider>
@@ -4419,7 +4412,7 @@
     <Provider CC="AT" BIC="SPPDAT21">SPARKASSE POYSDORF AG</Provider>
     <Provider CC="AT" BIC="SPPLAT21">SPARKASSE POELLAU AG</Provider>
     <Provider CC="AT" BIC="SPPOAT21">SPARKASSE POTTENSTEIN N.OE.</Provider>
-    <Provider CC="AT" BIC="SPPRAT21">SPARKASSE PREGARTEN - UNTERWEISSENBACH AG</Provider>
+    <Provider CC="AT" BIC="SPPRAT21">SPARKASSE PREGARTEN-UNTERWEISSENBACH AG</Provider>
     <Provider CC="GB" BIC="SPPVGB2L">SPECTRUM PAYMENT SERVICES LIMITED</Provider>
     <Provider CC="AT" BIC="SPREAT21">SPARKASSE REUTTE AG</Provider>
     <Provider CC="AT" BIC="SPRHAT21">SPARKASSE RIED IM INNKREIS-HAAG AM HAUSRUCK</Provider>
@@ -4436,7 +4429,7 @@
     <Provider CC="NO" BIC="SPTLNO21">SPAREBANK 1 TELEMARK</Provider>
     <Provider CC="NO" BIC="SPTRNO22">SPAREBANK1 MIDT NORGE SPTRNO22</Provider>
     <Provider CC="AT" BIC="SPVOAT21">SPARKASSE VOITSBERG-KOEFLACH BANK AG</Provider>
-    <Provider CC="AT" BIC="SPWTAT21">WALDVIERTLER SPK. BANK AG WAIDHOFEN A.D. THAYA</Provider>
+    <Provider CC="AT" BIC="SPWTAT21">WALDVIERTLER SPARKASSE BANK AG</Provider>
     <Provider CC="NO" BIC="SPYDNO21">SPYDEBERG SPAREBANK</Provider>
     <Provider CC="AT" BIC="SPZWAT21">WALDVIERTLER SPARKASSE BANK AG</Provider>
     <Provider CC="IE" BIC="SRGCIE21">SAINT RAPHAEL'S GARDA CREDIT UNION LIMITED</Provider>
@@ -4459,7 +4452,7 @@
     <Provider CC="GR" BIC="STKAGRA1">COOPERATIVE BANK OF KARDITSA COOP. L.L.</Provider>
     <Provider CC="NO" BIC="STMMNO21">STROMMEN SPAREBANK</Provider>
     <Provider CC="GR" BIC="STPGGRAA">PANCRETA BANK S.A.</Provider>
-    <Provider CC="GR" BIC="STPIGR21">COOPERATIVE BANK OF CENTRAL MAKEDONIA (FORMER PIERIA)</Provider>
+    <Provider CC="GR" BIC="STPIGR21">COOPERATIVE BANK OF CENTRAL MAKEDONIA FORM.PIERIA</Provider>
     <Provider CC="BG" BIC="STSABGSF">DSK BANK EAD</Provider>
     <Provider CC="BG" BIC="STSABGSFXXX">DSK Bank PLC</Provider>
     <Provider CC="AT" BIC="STSPAT2G">STEIERMAERKISCHE BANK UND SPARKASSEN AG</Provider>
@@ -4514,13 +4507,14 @@
     <Provider CC="IE" BIC="TDCNIE21">TUBBERCURRY AND DISTRICT CREDIT UNION LIMITED</Provider>
     <Provider CC="IE" BIC="TDCOIE21">TALLAGHT AND DISTRICT CREDIT UNION LIMITED</Provider>
     <Provider CC="DE" BIC="TEAMDE71">TEAMBANK AG</Provider>
-    <Provider CC="IT" BIC="TEAYITR1">TELEPASS PAY</Provider>
+    <Provider CC="IT" BIC="TEAYITR1">TELEPASS SPA</Provider>
     <Provider CC="DE" BIC="TEKRDE71">TEBA KREDITBANK GMBH AND CO. KG</Provider>
     <Provider CC="NO" BIC="TELENO21">FORNEBU BANKEN</Provider>
     <Provider CC="IE" BIC="TERIIE21">TEMPLEMORE CREDIT UNION LTD</Provider>
     <Provider CC="LT" BIC="TEUALT22">TESLAPAY UAB</Provider>
     <Provider CC="BG" BIC="TEXIBGSF">TEXIM BANK</Provider>
     <Provider CC="BG" BIC="TEXIBGSFXXX">Texim Bank AD</Provider>
+    <Provider CC="CY" BIC="TFIMCY2N">TFI MARKETS LIMITED</Provider>
     <Provider CC="CH" BIC="THALCHGG">BANQUE THALER S.A.</Provider>
     <Provider CC="IE" BIC="THCNIE21">THOMASTOWN CREDIT UNION LTD</Provider>
     <Provider CC="IE" BIC="THCUIE21">Thurles Credit Union Limited</Provider>
@@ -4626,7 +4620,7 @@
     <Provider CC="DE" BIC="UMWEDE7N">UMWELTBANK AG</Provider>
     <Provider CC="DE" BIC="UNBNDE21">UNION - BANK AKTIENGESELLSCHAFT</Provider>
     <Provider CC="CH" BIC="UNCECH22">AXION SWISS BANK SA</Provider>
-    <Provider CC="BG" BIC="UNCRBGSF">UNICREDIT BULBANK AD</Provider>
+    <Provider CC="BG" BIC="UNCRBGSF">UNICREDIT BULBANK A D</Provider>
     <Provider CC="BG" BIC="UNCRBGSFXXX">UniCredit Bulbank</Provider>
     <Provider CC="IT" BIC="UNCRITMM">UNICREDIT S.P.A.</Provider>
     <Provider CC="IT" BIC="UNCRITM1">UNICREDIT SPA</Provider>
@@ -4656,7 +4650,7 @@
     <Provider CC="BE" BIC="VAPEBE22">VAN DE PUT AND CO PRIVATE BANKERS</Provider>
     <Provider CC="LT" BIC="VAUALT21">Valyuz, UAB</Provider>
     <Provider CC="DE" BIC="VBANDEMM">V-BANK AG</Provider>
-    <Provider CC="HR" BIC="VBCRHR22">SBERBANK D.D.</Provider>
+    <Provider CC="HR" BIC="VBCRHR22">NOVA HRVATSKA BANKA D.D., ZAGREB</Provider>
     <Provider CC="AT" BIC="VBGOAT21">Volksbank Salzburg eG</Provider>
     <Provider CC="DE" BIC="VBGTDE3M">VOLKSBANK BIELEFELD-GUETERSLOH EG</Provider>
     <Provider CC="DE" BIC="VBMHDE5F">VOLKSBANK MITTELHESSEN EG</Provider>
@@ -4670,7 +4664,7 @@
     <Provider CC="AT" BIC="VBWIATW1">Volksbank Wien AG</Provider>
     <Provider CC="BE" BIC="VDSPBE91">vdk bank</Provider>
     <Provider CC="NO" BIC="VEFONO21">SPAREBANK 1 BUSKERUD VESTFOLD</Provider>
-    <Provider CC="DK" BIC="VEHODK22">VESTJYSK BANK</Provider>
+    <Provider CC="DK" BIC="VEHODK22">VESTJYSKBANK AS</Provider>
     <Provider CC="LT" BIC="VEPALT2X">VERIFIED PAYMENTS JSC</Provider>
     <Provider CC="LT" BIC="VEPALT21">Verified Payments UAB</Provider>
     <Provider CC="DK" BIC="VESBDK22">FYNSKE BANK AS</Provider>
@@ -4681,7 +4675,7 @@
     <Provider CC="AT" BIC="VIAUATW1">CARD COMPLETE SERVICE BANK AG</Provider>
     <Provider CC="IE" BIC="VICNIE21">Virginia Credit Union Limited</Provider>
     <Provider CC="LT" BIC="VIPULT22">Via Payments, UAB</Provider>
-    <Provider CC="DK" BIC="VIVIDK21">SPAREKASSEN DJURSLAND</Provider>
+    <Provider CC="DK" BIC="VIVIDK21">Sparekassen Djursland</Provider>
     <Provider CC="AT" BIC="VKBLAT2L">Volkskreditbank AG</Provider>
     <Provider CC="AT" BIC="VLRTATWW">VALARTIS BANK AUSTRIA AG</Provider>
     <Provider CC="AT" BIC="VLTHAT21">Volksbank Wien AG</Provider>
@@ -4932,15 +4926,15 @@
     <Country CC="BE">95</Country>
     <Country CC="BG">41</Country>
     <Country CC="CH">167</Country>
-    <Country CC="CY">26</Country>
+    <Country CC="CY">27</Country>
     <Country CC="CZ">35</Country>
     <Country CC="DE">2268</Country>
-    <Country CC="DK">63</Country>
+    <Country CC="DK">61</Country>
     <Country CC="EE">15</Country>
-    <Country CC="ES">195</Country>
+    <Country CC="ES">196</Country>
     <Country CC="FI">19</Country>
-    <Country CC="FR">260</Country>
-    <Country CC="GB">159</Country>
+    <Country CC="FR">261</Country>
+    <Country CC="GB">158</Country>
     <Country CC="GG">7</Country>
     <Country CC="GI">4</Country>
     <Country CC="GP">2</Country>
@@ -4950,22 +4944,22 @@
     <Country CC="IE">242</Country>
     <Country CC="IM">4</Country>
     <Country CC="IS">4</Country>
-    <Country CC="IT">363</Country>
+    <Country CC="IT">360</Country>
     <Country CC="JE">7</Country>
     <Country CC="LI">11</Country>
     <Country CC="LT">94</Country>
-    <Country CC="LU">97</Country>
+    <Country CC="LU">94</Country>
     <Country CC="LV">19</Country>
     <Country CC="MC">30</Country>
     <Country CC="MQ">3</Country>
     <Country CC="MT">32</Country>
-    <Country CC="NL">74</Country>
+    <Country CC="NL">73</Country>
     <Country CC="NO">125</Country>
     <Country CC="PL">35</Country>
     <Country CC="PT">49</Country>
     <Country CC="RE">4</Country>
     <Country CC="RO">30</Country>
-    <Country CC="SE">18</Country>
+    <Country CC="SE">19</Country>
     <Country CC="SI">15</Country>
     <Country CC="SK">29</Country>
     <Country CC="SM">5</Country>
