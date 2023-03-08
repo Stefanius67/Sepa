@@ -11,6 +11,8 @@ namespace SKien\Sepa;
  */
 trait SepaHelper
 {
+    static array $aTarget2 = [];
+
     /**
      * Check for valid type and trigger error in case of invalid type.
      * @param string $type
@@ -177,26 +179,71 @@ trait SepaHelper
      *  - Good Day
      *  - Easter Monday
      *  - 1'st May
-     *  - 1.Christmas
-     *  - 2.Christmas
-     * @todo change to dynamic calculation of eastern and remove $aTarget2 - array
+     *  - 1'st Christmasday
+     *  - 2'nd Christmasday
      * @param int $dt  unix timestamp to check
      * @return bool
      */
     public static function isTarget2Day(int $dt) : bool
     {
+        $bTarget2Day = true;
         $iWeekDay = date('N', $dt);
-
-        //  New Year        Good Day     Easter Monday  1'stMay      1.Christmas   2.Christmas
-        $aTarget2 = array(
-            '2019-01-01', '2019-04-18', '2019-04-21', '2019-05-01', '2019-12-25', '2019-12-26',
-            '2020-01-01', '2020-04-10', '2020-04-13', '2020-05-01', '2020-12-25', '2020-12-26',
-            '2021-01-01', '2021-04-02', '2021-04-05', '2021-05-01', '2021-12-25', '2021-12-26',
-            '2022-01-01', '2022-04-15', '2022-04-18', '2022-05-01', '2022-12-25', '2022-12-26',
+        if ($iWeekDay <= 5) {
+            // no weekend - we check for special target2 day...
+            $iYear = intval(date('Y', $dt));
+            if (!isset(self::$aTarget2[$iYear])) {
+                // just generate yearly days once
+                // first the fixed days...
+                self::$aTarget2[$iYear] = [
+                    $iYear . '-01-01', // New Year
+                    $iYear . '-05-01', // 1'st May
+                    $iYear . '-12-25', // 1'st Christmas
+                    $iYear . '-12-26', // 2'nd Christmas
+                ];
+                /*
+                 * ... and then we have the easter days dynamic to calc
+                 * https://praxistipps.chip.de/ostern-berechnen-so-entsteht-das-datum-jedes-jahr_101993
+                 */
+                $a = $iYear % 4;
+                $b = $iYear % 7;
+                $c = $iYear % 19;
+                $d = (19 * $c + 24) % 30;
+                $e = (2 * $a + 4 * $b + 6 * $d + 5) % 7;
+                $f = intdiv($c + 11 * $d + 22 * $e, 451);
+                $iEasterMonth = 3;
+                $iEasterSunday = 22 + $d + $e -7 * $f;
+                if ($iEasterSunday > 31) {
+                    $iEasterSunday -= 31;
+                    $iEasterMonth++;
+                    if ($iEasterSunday == 26) {
+                        $iEasterSunday = 19;
+                        $iEasterMonth = 3;
+                    }
+                }
+                $uxtsEasterSunnday = mktime(0, 0, 0, $iEasterMonth, $iEasterSunday, $iYear);
+                /*
+                 * calc friday and monday from sunday: 1day = 60sec  * 60min * 24h
+                 * - Good Day: Easter Sunnday - 2days ()
+                 * - Easter Monday: Easter Sunnday + 1day
+                 */
+                self::$aTarget2[$iYear][] = date('Y-m-d', $uxtsEasterSunnday - 172800);
+                self::$aTarget2[$iYear][] = date('Y-m-d', $uxtsEasterSunnday + 86400);
+            }
+            $bTarget2Day = !in_array(date('Y-m-d', $dt), self::$aTarget2[$iYear]);
+        }
+        return $bTarget2Day;
+        /*
+        self::$aTarget2 = [
+            // New Year    Good Day     Easter Monday  1'stMay         2.Christmas
+            '2022-01-01', '2022-04-02', '2022-03-26', '2022-03-29', '2022-12-25', '2022-12-26',
             '2023-01-01', '2023-04-07', '2023-04-10', '2023-05-01', '2023-12-25', '2023-12-26',
             '2024-01-01', '2024-03-29', '2024-04-01', '2024-05-01', '2024-12-25', '2024-12-26',
             '2025-01-01', '2025-04-18', '2025-04-21', '2025-05-01', '2025-12-25', '2025-12-26',
-        );
-        return !($iWeekDay > 5 || in_array(date('Y-m-d', $dt), $aTarget2));
+        ];
+        if (intval(date('Y', $dt)) >= array_pop(self::$aTarget2)) {
+            trigger_error('No Target2 dates are specified for [' . date('Y-m-d', $dt) . '] so far!', E_USER_ERROR);
+        }
+        return !($iWeekDay > 5 || in_array(date('Y-m-d', $dt), self::$aTarget2));
+        */
     }
 }

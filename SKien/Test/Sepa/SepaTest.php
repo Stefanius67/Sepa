@@ -227,6 +227,12 @@ class SepaTest extends TestCase
         $this->assertTrue(Sepa::isTarget2Day($dt));
         $dt = mktime(0, 0, 0, 6, 21, 2020); // Sunday...
         $this->assertFalse(Sepa::isTarget2Day($dt));
+        $dt = mktime(0, 0, 0, 4, 10, 2023); // Eastermondey 2023-04-10
+        $this->assertFalse(Sepa::isTarget2Day($dt));
+        $dt = mktime(0, 0, 0, 3, 29, 2024); // Good Day 2024-03-29
+        $this->assertFalse(Sepa::isTarget2Day($dt));
+        $dt = mktime(0, 0, 0, 4, 21, 2025); // Eastermondey 2025-04-21
+        $this->assertFalse(Sepa::isTarget2Day($dt));
     }
 
     public function testCalcCollectionDate()
