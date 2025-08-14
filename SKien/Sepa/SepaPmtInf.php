@@ -19,7 +19,7 @@ class SepaPmtInf extends \DOMElement
     use SepaHelper;
 
     /** @var string  unique id*/
-    protected string $id = '';
+    protected string $strID = '';
     /** @var string  full name of applicant*/
     protected string $strName = '';
     /** @var string  IBAN*/
@@ -56,7 +56,7 @@ class SepaPmtInf extends \DOMElement
 
         // don't append any child at this point - created element have to be associated with a document after creation
         $this->sepaDoc = $sepaDoc;
-        $this->id = self::createUID();
+        $this->strID = self::createUID();
     }
 
     /**
@@ -78,7 +78,7 @@ class SepaPmtInf extends \DOMElement
     /**
      * Get the error message for given error code.
      * Since a payment info can contain multiple errors, the result may contain more than
-     * one message separated by a separator. <br/>
+     * one message separated by a separator. <br>
      * The separator can be specified to meet the needs of different output destinations.
      * Default value is a linefeed.
      * @param int $iError   the errorcode
@@ -93,7 +93,7 @@ class SepaPmtInf extends \DOMElement
 
     /**
      * Add a transaction.
-     * <b>Important:</b><br/>
+     * <b>Important:</b><br>
      * The PPI <b>must</b> be attached to the SepaDoc <b>before</b> the first transaktion is added!
      * @param SepaTxInf $oTxInf
      * @return int Sepa::OK or error code from SepaTxInf::validate()
@@ -240,7 +240,7 @@ class SepaPmtInf extends \DOMElement
      */
     public function getId() : string
     {
-        return $this->id;
+        return $this->strID;
     }
 
     /**
@@ -361,7 +361,7 @@ class SepaPmtInf extends \DOMElement
     /**
      * Set the requested collection/execution date.
      * If no date set, the next possible date for execution/collection is calculated.
-     * > <b>Note:</b><br/>
+     * > <b>Note:</b><br>
      * > Banks are not obliged to process order data that was submitted more than 15 calendar days
      * BEFORE the execution date.
      * @param \DateTime|int|string $date    may be string (format YYYY-MM-DD), int (unixtimestamp) or DateTime - object
@@ -388,7 +388,7 @@ class SepaPmtInf extends \DOMElement
      * Referr to the actual list that is available in worksheet '4-CategoryPurpose 'of the Excel
      * file provided in the download at
      * [www.iso20022.org](https://www.iso20022.org/catalogue-messages/additional-content-messages/external-code-sets)
-     * > <b>Attention:</b><br/>
+     * > <b>Attention:</b><br>
      * > There is no validation whether in this module nor through the provided XSD schemas for
      * this value. To avoid rejection of your data, you have to take care for valid values on your own.
      * @link ./Category-Purpose-Codes

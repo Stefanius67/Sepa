@@ -13,7 +13,7 @@ class SepaDoc extends \DOMDocument
     use SepaHelper;
 
     /** @var string  unique id  */
-    protected string $id = '';
+    protected string $strID = '';
     /** @var string type of sepa document  */
     protected string $type = '';
     /** @var string sepa version to use  */
@@ -71,23 +71,23 @@ class SepaDoc extends \DOMDocument
 
     /**
      * Creating group header and required elements.
-     * If no `id` i spassed, a unique identifier is internaly generated. This id
+     * If no `strID` is spassed, a unique identifier is internaly generated. This id
      * can be used to assign it to the data elements that were used to generate the
      * transactions contained in this file.
      * This ID is used by the receiving bank institute to avoid double processing.
      * @param string $strName   name (initiator of the transactions)
-     * @param string $id        unique id for the document (if null, id will be generated)
+     * @param string $strID     unique id for the document (if null, id will be generated)
      * @return string           the (possibly created) id for the document
      */
-    public function createGroupHeader(string $strName, string $id = null) : string
+    public function createGroupHeader(string $strName, string $strID = null) : string
     {
         if ($this->xmlBase != null) {
             $xmlGrpHdr = $this->createElement("GrpHdr");
             $this->xmlBase->appendChild($xmlGrpHdr);
 
-            $this->id = $id ?? self::createUID();
+            $this->strID = $strID ?? self::createUID();
 
-            $this->addChild($xmlGrpHdr, 'MsgId', $this->id);
+            $this->addChild($xmlGrpHdr, 'MsgId', $this->strID);
             $this->addChild($xmlGrpHdr, 'CreDtTm', date(DATE_ATOM)); // str_replace(' ', 'T', date('Y-m-d h:i:s')));
             $this->xmlTxCount = $this->addChild($xmlGrpHdr, 'NbOfTxs', 0);
             $this->xmlCtrlSum = $this->addChild($xmlGrpHdr, 'CtrlSum', sprintf("%01.2f", 0.0));
@@ -97,7 +97,7 @@ class SepaDoc extends \DOMDocument
             // SEPA spec recommends not to support 'InitgPty' -> 'Id'
         }
 
-        return $this->id;
+        return $this->strID;
     }
 
     /**
@@ -118,7 +118,7 @@ class SepaDoc extends \DOMDocument
             if ($iErr == Sepa::OK) {
                 $this->xmlBase->appendChild($oPmtInf);
 
-                $this->addChild($oPmtInf, 'PmtInfId', $this->id);
+                $this->addChild($oPmtInf, 'PmtInfId', $this->strID);
                 $this->addChild($oPmtInf, 'PmtMtd', $this->type);
                 $oPmtInf->setTxCountNode($this->addChild($oPmtInf, 'NbOfTxs', 0));
                 $oPmtInf->setCtrlSumNode($this->addChild($oPmtInf, 'CtrlSum', sprintf("%01.2f", 0.0)));
@@ -182,11 +182,11 @@ class SepaDoc extends \DOMDocument
 
     /**
      * Outputs the generated SEPA document as XML-File through the browser.
-     * > - To save the XML file direct anywhere on the server, use the `DOMDocument::save()` method.<br/>
-     * > - To save the XML file in a database use the `DOMDocument::saveXML()` method.<br/>
+     * > - To save the XML file direct anywhere on the server, use the `DOMDocument::save()` method.<br>
+     * > - To save the XML file in a database use the `DOMDocument::saveXML()` method.<br>
      *
      * The target should always be 'attachment' (<i>indicating it should be downloaded; most browsers
-     * presenting a 'Save as' dialog, prefilled with the value of the filename parameter</i>). <br/>
+     * presenting a 'Save as' dialog, prefilled with the value of the filename parameter</i>). <br>
      * For test purposes you can change it to 'inline' to display the XML inside of the browser
      * rather than save it to a file.
      * @param string $strName       output filename
@@ -254,7 +254,7 @@ class SepaDoc extends \DOMDocument
      */
     public function getId() : string
     {
-        return $this->id;
+        return $this->strID;
     }
 
     /**
