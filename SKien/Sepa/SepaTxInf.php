@@ -18,7 +18,7 @@ namespace SKien\Sepa;
  * - Mandate date of signature
  * - If no payment ID is set, an unique ID is created internaly
  *
- * > <b>Note:</b><br/>
+ * > <b>Note:</b><br>
  * > The return values of the `getXXX()` methods can differ from the passed values
  * (`setXXX() / fromArray()`) since they  may have been converted too allowed charecters and
  * limited to a max. length.
@@ -87,7 +87,7 @@ class SepaTxInf
     /**
      * Get the error message for given error code.
      * Since a transaction info can contain multiple errors, the result may contain more than
-     * one message separated by a separator. <br/>
+     * one message separated by a separator. <br>
      * The separator can be specified to meet the needs of different output destinations.
      * Default value is a linefeed.
      * @param int $iError   the errorcode
@@ -120,7 +120,7 @@ class SepaTxInf
      * The array does not have to contain all of the properties. Mandatory properties
      * can be set later using the respective `setXXX()` method, optional ones can be left out.
      *
-     * @param array<string> $aProperties    see description
+     * @param array<mixed> $aProperties    see description
      */
     public function fromArray(array $aProperties) : void
     {
@@ -237,7 +237,7 @@ class SepaTxInf
      * Referr to the actual list that is available in worksheet '11-Purpose 'of the Excel
      * file provided in the download at
      * [www.iso20022.org](https://www.iso20022.org/catalogue-messages/additional-content-messages/external-code-sets)
-     * > <b>Attention:</b><br/>
+     * > <b>Attention:</b><br>
      * > There is no validation whether in this module nor through the provided XSD schemas for
      * this value. To avoid rejection of your data, you have to take care for valid values on your own.
      * @link ./Transaction-Purpose-Codes

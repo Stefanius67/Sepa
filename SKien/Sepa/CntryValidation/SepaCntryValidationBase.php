@@ -101,7 +101,7 @@ class SepaCntryValidationBase implements SepaCntryValidation
 
     /**
      * Validates given BIC.
-     * Follows <b> ISO 9362 </b><br/>
+     * Follows <b> ISO 9362 </b><br>
      * as far as I have determined, the format of the BIC is uniform within
      * the participating countries for SEPA.
      * @param string $strBIC    BIC to validate

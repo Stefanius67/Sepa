@@ -160,7 +160,7 @@ trait SepaHelper
     {
         $dtEarliest = time();
 
-        // FORWARD: should daytime ( < 08:30 / < 18:30 ) bear in mind ?
+        // Annotation: should daytime ( < 08:30 / < 18:30 ) bear in mind ?
         $iBDays = 0;
         while ($iBDays < $iDaysDelay) {
             $dtEarliest += 86400; // add day ( 24 * 60 * 60 );

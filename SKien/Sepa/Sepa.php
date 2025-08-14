@@ -183,7 +183,7 @@ class Sepa
 
     /**
      * Initializition of the package.
-     * This static method must be called before using the package. <br/>
+     * This static method must be called before using the package. <br>
      * All available country validations are added and the errormessages are
      * initialized in english language.
      */
@@ -285,9 +285,9 @@ class Sepa
 
     /**
      * Set the validation level.
-     * This method can be used to disable some or complete validation. <br/>
+     * This method can be used to disable some or complete validation. <br>
      * > It is recommended to deactivate the validations only for test purposes or if you can
-     * guarantee the validity of all values based on previous checks. <br/>
+     * guarantee the validity of all values based on previous checks. <br>
      * A partial deactivation with `Sepa::V_IGNORE_MISSING_CNTRY` may be useful if you sometimes
      * have to process data from a country for which there is (still) no validation in the package.
      *
