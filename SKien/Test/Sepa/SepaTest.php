@@ -225,9 +225,9 @@ class SepaTest extends TestCase
         $this->assertFalse(Sepa::isTarget2Day($dt));
         $dt = mktime(0, 0, 0, 12, 16, 2020); // Wednesday...
         $this->assertTrue(Sepa::isTarget2Day($dt));
-        $dt = mktime(0, 0, 0, 6, 21, 2020); // Sunday...
+        $dt = mktime(0, 0, 0, 8, 10, 2025); // Sunday...
         $this->assertFalse(Sepa::isTarget2Day($dt));
-        $dt = mktime(0, 0, 0, 4, 10, 2023); // Eastermondey 2023-04-10
+        $dt = mktime(0, 0, 0, 4, 10, 2023); // Eastermonday 2023-04-10
         $this->assertFalse(Sepa::isTarget2Day($dt));
         $dt = mktime(0, 0, 0, 3, 29, 2024); // Good Day 2024-03-29
         $this->assertFalse(Sepa::isTarget2Day($dt));
@@ -238,7 +238,7 @@ class SepaTest extends TestCase
     public function testCalcCollectionDate()
     {
         $dtCalc = Sepa::calcDelayedDate(5);
-        $this->assertTrue($dtCalc >= mktime() + 5 * 86400);
+        $this->assertTrue($dtCalc >= time() + 5 * 86400);
     }
 
     /**

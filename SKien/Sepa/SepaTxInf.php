@@ -120,7 +120,7 @@ class SepaTxInf
      * The array does not have to contain all of the properties. Mandatory properties
      * can be set later using the respective `setXXX()` method, optional ones can be left out.
      *
-     * @param array<mixed> $aProperties    see description
+     * @param array<string,string|int|float> $aProperties    see description
      */
     public function fromArray(array $aProperties) : void
     {
@@ -193,8 +193,8 @@ class SepaTxInf
             $this->strDateOfSignature = $DateOfSignature->format('Y-m-d');
         } else if (is_numeric($DateOfSignature)) {
             $this->strDateOfSignature = date('Y-m-d', intval($DateOfSignature));
-        } else {
-            $this->strDateOfSignature = (string)$DateOfSignature;
+        } else if (is_string($DateOfSignature)) {
+            $this->strDateOfSignature = $DateOfSignature;
         }
     }
 

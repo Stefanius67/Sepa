@@ -92,7 +92,7 @@ class SclDirectoryTest extends TestCase
         $oSCL = new SclDirectory(self::DATAPATH . DIRECTORY_SEPARATOR . 'expired');
         $oSCL->Init();
         $this->assertFalse($oSCL->loadFromInternet('bad'));
-        $this->assertStringContainsString('DateInterval::__construct()', $oSCL->getError());
+        $this->assertStringContainsString('DateMalformedIntervalStringException: ', $oSCL->getError());
     }
 
     public function testLoadFromInternetCurlFail() : void

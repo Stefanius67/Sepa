@@ -373,8 +373,8 @@ class SepaPmtInf extends \DOMElement
             $this->uxtsCollExecDate = $date->getTimestamp();
         } else if (is_numeric($date)) {
             $this->uxtsCollExecDate = intval($date);
-        } else {
-            $uxts = strtotime((string)$date);
+        } else  if (is_string($date)) {
+            $uxts = strtotime($date);
             if ($uxts !== false) {
                 $this->uxtsCollExecDate = $uxts;
             }

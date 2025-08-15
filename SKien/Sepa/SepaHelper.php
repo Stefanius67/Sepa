@@ -11,6 +11,7 @@ namespace SKien\Sepa;
  */
 trait SepaHelper
 {
+    /** @var array<int,array<string>>   array containing target2-dates per year     */
     static array $aTarget2 = [];
 
     /**
@@ -186,7 +187,7 @@ trait SepaHelper
      */
     public static function isTarget2Day(int $dt) : bool
     {
-        $bTarget2Day = true;
+        $bTarget2Day = false;
         $iWeekDay = date('N', $dt);
         if ($iWeekDay <= 5) {
             // no weekend - we check for special target2 day...
@@ -211,20 +212,28 @@ trait SepaHelper
                 $e = (2 * $a + 4 * $b + 6 * $d + 5) % 7;
                 $f = intdiv($c + 11 * $d + 22 * $e, 451);
                 $iEasterMonth = 3;
-                $iEasterSunday = 22 + $d + $e -7 * $f;
+                $iEasterSunday = 22 + $d + $e - 7 * $f;
                 if ($iEasterSunday > 31) {
                     $iEasterSunday -= 31;
                     $iEasterMonth++;
+                    /*
+                     * Since the earliest possible date for Easter Sunday is March 22nd, this
+                     * special case mentioned by the calculation rules by Gauß never occurs...
+                     * ... and therefore cannot be covered by any test case.
+                     *
+                     * https://de.wikipedia.org/wiki/Osterdatum
+                     *
                     if ($iEasterSunday == 26) {
                         $iEasterSunday = 19;
                         $iEasterMonth = 3;
                     }
+                    */
                 }
                 $uxtsEasterSunnday = mktime(0, 0, 0, $iEasterMonth, $iEasterSunday, $iYear);
                 /*
                  * calc friday and monday from sunday: 1day = 60sec  * 60min * 24h
-                 * - Good Day: Easter Sunnday - 2days ()
-                 * - Easter Monday: Easter Sunnday + 1day
+                 * - Good Day: Easter Sunday - 2days ()
+                 * - Easter Monday: Easter Sunday + 1day
                  */
                 self::$aTarget2[$iYear][] = date('Y-m-d', $uxtsEasterSunnday - 172800);
                 self::$aTarget2[$iYear][] = date('Y-m-d', $uxtsEasterSunnday + 86400);

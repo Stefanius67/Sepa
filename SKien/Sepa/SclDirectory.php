@@ -119,7 +119,7 @@ class SclDirectory
         $strName = '';
         $oNode = $this->getProviderNode($strBIC);
         if ($oNode !== null) {
-            $strName = ($bToUCWords ? $this->convToUCWords($oNode->nodeValue) : $oNode->nodeValue);
+            $strName = ($bToUCWords ? $this->convToUCWords($oNode->nodeValue ?? '') : $oNode->nodeValue ?? '');
         }
         return $strName;
     }
@@ -130,7 +130,7 @@ class SclDirectory
      * can be converted to upper case words by setting the `$bToUCWords`parameter to true.
      * @param string $strCC country code the list should be generated for (leave empty for full list)
      * @param bool $bToUCWords convert the provider names to Uppercase Words
-     * @return array<string>
+     * @return array<string,string>
      */
     public function getProviderList(string $strCC = '', bool $bToUCWords = false) : array
     {
@@ -145,7 +145,7 @@ class SclDirectory
             if ($oNodelist !== false) {
                 foreach ($oNodelist as $oNode) {
                     if ($oNode instanceof \DOMElement && $oNode->hasAttribute('BIC')) {
-                        $aList[$oNode->getAttribute('BIC')] = ($bToUCWords ? $this->convToUCWords($oNode->nodeValue) : $oNode->nodeValue);
+                        $aList[$oNode->getAttribute('BIC')] = ($bToUCWords ? $this->convToUCWords($oNode->nodeValue ?? '') : $oNode->nodeValue ?? '');
                     }
                 }
             }
